@@ -11,13 +11,6 @@ class MyPageViewController: BaseViewController {
     private var customCollectionView: CustomCollectionView!
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
-//    let trailView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .orange
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-    
     let dummyList = [UIImage(systemName: "pencil"),UIImage(systemName: "pencil"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo")]
     
     let contentScrollView: UIScrollView = {
@@ -151,16 +144,6 @@ class MyPageViewController: BaseViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
-//    var collectionView: UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.minimumLineSpacing = 10
-//        layout.scrollDirection = .vertical
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cv.translatesAutoresizingMaskIntoConstraints = false
-//        return cv
-//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -391,7 +374,7 @@ class MyPageViewController: BaseViewController {
 
 extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return dummyList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -419,3 +402,4 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
 }
+

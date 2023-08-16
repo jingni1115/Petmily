@@ -145,7 +145,6 @@
 				569A35162A89C98600FE098E /* Assets.xcassets */,
 				569A35182A89C98600FE098E /* LaunchScreen.storyboard */,
 				569A351B2A89C98600FE098E /* Info.plist */,
-				569A35AE2A8C9D2000FE098E /* .gitignore */,
 			);
 			path = Petmily;
 			sourceTree = "<group>";
@@ -191,7 +190,6 @@
 			children = (
 				569A35412A89CB6E00FE098E /* BaseViewController.swift */,
 				569A35432A89CB7D00FE098E /* BaseTabbarController.swift */,
-				569A35A32A8C795300FE098E /* BaseHeaderViewController.swift */,
 				569A35AB2A8C7B6500FE098E /* CommonHeaderView */,
 			);
 			path = Base;
@@ -222,7 +220,6 @@
 			children = (
 				569A355D2A89D13400FE098E /* Datamanager.swift */,
 				569A355B2A89D10A00FE098E /* CommonUtil.swift */,
-				569A35A92A8C7B1D00FE098E /* Common.swift */,
 				569A35792A89FC5900FE098E /* Extension */,
 			);
 			path = Util;
@@ -231,8 +228,6 @@
 		569A35AB2A8C7B6500FE098E /* CommonHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				569A35A52A8C798900FE098E /* CommonHeaderView.swift */,
-				569A35A72A8C798F00FE098E /* CommonHeaderView.xib */,
 			);
 			path = CommonHeaderView;
 			sourceTree = "<group>";
@@ -345,10 +340,8 @@
 				569A35712A89DB6D00FE098E /* AddViewController.xib in Resources */,
 				569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
-				569A35AF2A8C9D2000FE098E /* .gitignore in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
 				569A35172A89C98600FE098E /* Assets.xcassets in Resources */,
-				569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */,
 				569A35782A89FB8600FE098E /* Main.storyboard in Resources */,
 				569A35702A89DB6D00FE098E /* MyPageViewController.xib in Resources */,
 				569A35722A89DB6D00FE098E /* InfoViewController.xib in Resources */,
@@ -376,7 +369,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				569A35AA2A8C7B1D00FE098E /* Common.swift in Sources */,
 				569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */,
 				569A35532A89CE5300FE098E /* AdoptViewController.swift in Sources */,
 				569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */,
@@ -390,7 +382,6 @@
 				FF26632B2A8CB77C000222B3 /* MyPageCollectionViewCell.swift in Sources */,
 				569A35442A89CB7D00FE098E /* BaseTabbarController.swift in Sources */,
 				569A35572A89CE7200FE098E /* MyPageViewController.swift in Sources */,
-				569A35A42A8C795300FE098E /* BaseHeaderViewController.swift in Sources */,
 				569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */,
 				569A354B2A89CE2200FE098E /* InfoViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
