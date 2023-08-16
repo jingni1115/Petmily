@@ -37,6 +37,13 @@
 		569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35A72A8C798F00FE098E /* CommonHeaderView.xib */; };
 		569A35AA2A8C7B1D00FE098E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A92A8C7B1D00FE098E /* Common.swift */; };
 		569A35AF2A8C9D2000FE098E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 569A35AE2A8C9D2000FE098E /* .gitignore */; };
+		56DD2D8F2A8CBA24008A9E12 /* ReelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD2D8D2A8CBA24008A9E12 /* ReelCollectionViewCell.swift */; };
+		56DD2D902A8CBA24008A9E12 /* ReelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D8E2A8CBA24008A9E12 /* ReelCollectionViewCell.xib */; };
+		56DD2D922A8CBEF8008A9E12 /* ReelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD2D912A8CBEF8008A9E12 /* ReelData.swift */; };
+		56DD2D972A8CC781008A9E12 /* demo1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D932A8CC68F008A9E12 /* demo1.mp4 */; };
+		56DD2D982A8CC781008A9E12 /* demo2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D962A8CC68F008A9E12 /* demo2.mp4 */; };
+		56DD2D992A8CC781008A9E12 /* demo3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D942A8CC68F008A9E12 /* demo3.mp4 */; };
+		56DD2D9A2A8CC781008A9E12 /* demo4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D952A8CC68F008A9E12 /* demo4.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +98,13 @@
 		569A35A72A8C798F00FE098E /* CommonHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 		569A35A92A8C7B1D00FE098E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		569A35AE2A8C9D2000FE098E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		56DD2D8D2A8CBA24008A9E12 /* ReelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelCollectionViewCell.swift; sourceTree = "<group>"; };
+		56DD2D8E2A8CBA24008A9E12 /* ReelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReelCollectionViewCell.xib; sourceTree = "<group>"; };
+		56DD2D912A8CBEF8008A9E12 /* ReelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelData.swift; sourceTree = "<group>"; };
+		56DD2D932A8CC68F008A9E12 /* demo1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo1.mp4; sourceTree = "<group>"; };
+		56DD2D942A8CC68F008A9E12 /* demo3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo3.mp4; sourceTree = "<group>"; };
+		56DD2D952A8CC68F008A9E12 /* demo4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo4.mp4; sourceTree = "<group>"; };
+		56DD2D962A8CC68F008A9E12 /* demo2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo2.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +157,7 @@
 			children = (
 				569A350D2A89C98500FE098E /* AppDelegate.swift */,
 				569A35112A89C98500FE098E /* ViewController.swift */,
+				56DD2D882A8CB84A008A9E12 /* Video */,
 				569A357D2A89FCA900FE098E /* Util */,
 				569A357A2A89FC6300FE098E /* ViewControllers */,
 				569A35772A89FB8600FE098E /* Main.storyboard */,
@@ -206,6 +221,9 @@
 			children = (
 				569A35452A89CE0C00FE098E /* DailyViewController.swift */,
 				569A35692A89DB6C00FE098E /* DailyViewController.xib */,
+				56DD2D8D2A8CBA24008A9E12 /* ReelCollectionViewCell.swift */,
+				56DD2D8E2A8CBA24008A9E12 /* ReelCollectionViewCell.xib */,
+				56DD2D912A8CBEF8008A9E12 /* ReelData.swift */,
 				569A35492A89CE2200FE098E /* InfoViewController.swift */,
 				569A356C2A89DB6D00FE098E /* InfoViewController.xib */,
 				569A354D2A89CE2F00FE098E /* AddViewController.swift */,
@@ -236,6 +254,17 @@
 				569A35A72A8C798F00FE098E /* CommonHeaderView.xib */,
 			);
 			path = CommonHeaderView;
+			sourceTree = "<group>";
+		};
+		56DD2D882A8CB84A008A9E12 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				56DD2D932A8CC68F008A9E12 /* demo1.mp4 */,
+				56DD2D962A8CC68F008A9E12 /* demo2.mp4 */,
+				56DD2D942A8CC68F008A9E12 /* demo3.mp4 */,
+				56DD2D952A8CC68F008A9E12 /* demo4.mp4 */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +371,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56DD2D972A8CC781008A9E12 /* demo1.mp4 in Resources */,
+				56DD2D982A8CC781008A9E12 /* demo2.mp4 in Resources */,
+				56DD2D992A8CC781008A9E12 /* demo3.mp4 in Resources */,
+				56DD2D9A2A8CC781008A9E12 /* demo4.mp4 in Resources */,
 				569A351A2A89C98600FE098E /* LaunchScreen.storyboard in Resources */,
 				569A35712A89DB6D00FE098E /* AddViewController.xib in Resources */,
 				569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */,
@@ -352,6 +385,7 @@
 				569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */,
 				569A35782A89FB8600FE098E /* Main.storyboard in Resources */,
 				569A35702A89DB6D00FE098E /* MyPageViewController.xib in Resources */,
+				56DD2D902A8CBA24008A9E12 /* ReelCollectionViewCell.xib in Resources */,
 				569A35722A89DB6D00FE098E /* InfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +427,8 @@
 				569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */,
 				569A354B2A89CE2200FE098E /* InfoViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
+				56DD2D8F2A8CBA24008A9E12 /* ReelCollectionViewCell.swift in Sources */,
+				56DD2D922A8CBEF8008A9E12 /* ReelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
