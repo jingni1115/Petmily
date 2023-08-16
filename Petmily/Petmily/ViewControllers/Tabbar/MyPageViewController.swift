@@ -11,7 +11,7 @@ class MyPageViewController: BaseViewController {
     
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
-    let dummyList = [UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo")]
+    let dummyList = [UIImage(systemName: "pencil"),UIImage(systemName: "pencil"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo")]
     let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -213,8 +213,9 @@ class MyPageViewController: BaseViewController {
         firstStackView.addArrangedSubview(profileView)
         firstStackView.addArrangedSubview(petView)
         firstStackView.addArrangedSubview(btnStackView)
-//        firstStackView.addArrangedSubview(tableView)
+        firstStackView.addArrangedSubview(tableView)
         firstStackView.addArrangedSubview(collectionView)
+        firstStackView.addArrangedSubview(myName)
         
         NSLayoutConstraint.activate([
             firstStackView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
@@ -359,7 +360,12 @@ class MyPageViewController: BaseViewController {
     func setCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        collectionView.register(MyPageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cellIdentifier")
+//
+//        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width), height: (UIScreen.main.bounds.width))
+//        layout.minimumLineSpacing = 0
+//        layout.minimumInteritemSpacing = 0
+        
+        collectionView.register(MyPageCollectionViewCell.self, forCellWithReuseIdentifier: "cellIdentifier")
         collectionView = CustomCollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -367,7 +373,7 @@ class MyPageViewController: BaseViewController {
 //        collectionView.bounds.size.height = 100
         
         NSLayoutConstraint.activate([
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: firstStackView.bottomAnchor)
         ])
     }
 }
@@ -387,7 +393,7 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let width = view.bounds.width
         let itemSpacing: CGFloat = 10
         let cellWidth: CGFloat = (width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3
-        let cellHeigt: CGFloat = ((width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3) + 40
+        let cellHeigt: CGFloat = ((width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3)
         return CGSize(width: cellWidth, height: cellHeigt)
     }
     
