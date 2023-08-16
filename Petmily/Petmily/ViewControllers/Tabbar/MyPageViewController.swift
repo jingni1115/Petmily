@@ -8,20 +8,36 @@
 import UIKit
 
 class MyPageViewController: BaseViewController {
-    let firstStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-//        stackView.distribution = .equalSpacing
-//        stackView.spacing = 8
-        return stackView
+    let contentScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .white
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
     }()
+    
     let menuBtn: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
+    
+    let firstStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+//        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 10
+        return stackView
+    }()
+
+    var profileView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     var profileImg: UIImageView = {
         let movieImg = UIImageView()
         movieImg.image = UIImage(systemName: "photo")
@@ -29,125 +45,194 @@ class MyPageViewController: BaseViewController {
         movieImg.layer.cornerRadius = 50
         return movieImg
     }()
+
     var myName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
     var petName: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    let introFirstView: UIView = {
+    
+    let secondStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 4
+        stackView.backgroundColor = .black
+        return stackView
+    }()
+    
+    var petView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    let introSecondView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+
     var petComment: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    let thirdStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        return stackView
+    }()
+
     var petGender: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
     var petBirth: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
     var petBreed: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+
+    let btnStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+//        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+//        stackView.spacing = 2
+        return stackView
+    }()
+
     let dailyBtn: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("데일리", for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         return btn
     }()
+
     let infoBtn: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitle("정보", for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         return btn
     }()
-//    var myCollectionView = UICollectionView()
-//    var myTableView = UITableView()
+    
+    var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureView()
-        // Do any additional setup after loading the view.
     }
     
     func configureView() {
         setMenuBtn()
-        setFisrtStackView()
+        setScrollView()
+        
+        setFirstStackView()
+        setProfileView()
         setProfileImg()
         setMyName()
         setPetName()
-        setIntroFirstView()
-        setIntroSecondView()
         setPetComment()
+        
+        setPetView()
+        setSecondStackView()
         setPetGender()
         setPetBirth()
         setPetBreed()
-        setDailyBtn()
-        setInfoBtn()
+        
+        setBtnStackView()
+        setTableView()
     }
     
     func setMenuBtn() {
         view.addSubview(menuBtn)
         menuBtn.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
         NSLayoutConstraint.activate([
-            menuBtn.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            menuBtn.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            menuBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            menuBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             menuBtn.widthAnchor.constraint(equalToConstant: 50),
             menuBtn.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
-    func setFisrtStackView() {
-        view.addSubview(firstStackView)
+    func setScrollView() {
+        view.addSubview(contentScrollView)
+        contentScrollView.backgroundColor = .cyan
         NSLayoutConstraint.activate([
-            firstStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            firstStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            firstStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            firstStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            contentScrollView.topAnchor.constraint(equalTo: menuBtn.bottomAnchor, constant: 16),
+            contentScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            contentScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            contentScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
-    func setProfileImg() {
-        view.addSubview(profileImg)
+    func setFirstStackView() {
+        contentScrollView.addSubview(firstStackView)
+        firstStackView.backgroundColor = .systemGray4
+        firstStackView.cornerRadius = 10
+        
+        firstStackView.addArrangedSubview(profileView)
+        firstStackView.addArrangedSubview(petView)
+        firstStackView.addArrangedSubview(btnStackView)
+        firstStackView.addArrangedSubview(tableView)
+        
         NSLayoutConstraint.activate([
-            profileImg.topAnchor.constraint(equalTo: menuBtn.bottomAnchor),
-            profileImg.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            firstStackView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
+            firstStackView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor),
+            firstStackView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
+            firstStackView.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor),
+            firstStackView.widthAnchor.constraint(equalTo: contentScrollView.widthAnchor)
+        ])
+    }
+    
+    func setProfileView() {
+        profileView.backgroundColor = .yellow
+    }
+    
+    func setProfileImg() {
+        profileView.addSubview(profileImg)
+        NSLayoutConstraint.activate([
+            profileImg.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 4),
+            profileImg.leadingAnchor.constraint(equalTo: profileView.leadingAnchor, constant: 16),
+            profileImg.bottomAnchor.constraint(equalTo: profileView.bottomAnchor, constant: -4),
             profileImg.heightAnchor.constraint(equalToConstant: 50),
-            profileImg.widthAnchor.constraint(equalToConstant: 50),
+            profileImg.widthAnchor.constraint(equalToConstant: 50)
         ])
     }
     
     func setMyName() {
-        view.addSubview(myName)
+        profileView.addSubview(myName)
         myName.text = "OO님의"
         myName.font = UIFont.systemFont(ofSize: 18)
         NSLayoutConstraint.activate([
-            myName.topAnchor.constraint(equalTo: menuBtn.bottomAnchor, constant: 4),
+            myName.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 4),
             myName.leadingAnchor.constraint(equalTo: profileImg.trailingAnchor, constant: 16)
         ])
     }
-
+    
     func setPetName() {
-        view.addSubview(petName)
+        profileView.addSubview(petName)
         petName.text = "동물이름"
         petName.font = UIFont.boldSystemFont(ofSize: 22)
         NSLayoutConstraint.activate([
@@ -156,94 +241,73 @@ class MyPageViewController: BaseViewController {
         ])
     }
     
-    func setIntroFirstView() {
-        view.addSubview(introFirstView)
-        introFirstView.backgroundColor = .systemGray4
-        introFirstView.cornerRadius = 10
-        NSLayoutConstraint.activate([
-            introFirstView.topAnchor.constraint(equalTo: profileImg.bottomAnchor, constant: 16),
-            introFirstView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            introFirstView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            introFirstView.heightAnchor.constraint(equalToConstant: 100)
-        ])
-    }
-    
     func setPetComment() {
-        introFirstView.addSubview(petComment)
         petComment.text = "\"안녕하세요 OO이네 강아지 OO입니다\""
         petComment.font = UIFont.systemFont(ofSize: 14)
+    }
+    
+    func setPetView() {
+        petView.addSubview(secondStackView)
+        petView.backgroundColor = .purple
+    }
+    
+    func setSecondStackView() {
+        secondStackView.backgroundColor = .white
+        secondStackView.cornerRadius = 10
+        secondStackView.isLayoutMarginsRelativeArrangement = true
+        secondStackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        
+        secondStackView.addArrangedSubview(petGender)
+        secondStackView.addArrangedSubview(petBirth)
+        secondStackView.addArrangedSubview(petBreed)
+        
         NSLayoutConstraint.activate([
-            petComment.topAnchor.constraint(equalTo: introFirstView.safeAreaLayoutGuide.topAnchor, constant: 18),
-            petComment.leadingAnchor.constraint(equalTo: introFirstView.safeAreaLayoutGuide.leadingAnchor, constant: 18),
-            petComment.trailingAnchor.constraint(equalTo: introFirstView.safeAreaLayoutGuide.trailingAnchor, constant: -18),
-            petComment.bottomAnchor.constraint(equalTo: introSecondView.topAnchor, constant: -12)
+            secondStackView.topAnchor.constraint(equalTo: petView.safeAreaLayoutGuide.topAnchor, constant: 12),
+            secondStackView.leadingAnchor.constraint(equalTo: petView.safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            secondStackView.trailingAnchor.constraint(equalTo: petView.safeAreaLayoutGuide.trailingAnchor, constant: -12),
+            secondStackView.bottomAnchor.constraint(equalTo: petView.safeAreaLayoutGuide.bottomAnchor, constant: -12)
         ])
     }
     
-    func setIntroSecondView() {
-        introFirstView.addSubview(introSecondView)
-        introSecondView.backgroundColor = .white
-        introSecondView.cornerRadius = 10
-        NSLayoutConstraint.activate([
-            introSecondView.leadingAnchor.constraint(equalTo: introFirstView.safeAreaLayoutGuide.leadingAnchor, constant: 18),
-            introSecondView.trailingAnchor.constraint(equalTo: introFirstView.safeAreaLayoutGuide.trailingAnchor, constant: -18),
-            introSecondView.bottomAnchor.constraint(equalTo: introFirstView.safeAreaLayoutGuide.bottomAnchor, constant: -18)
-        ])
-    }
-   
-
     func setPetGender() {
-        introSecondView.addSubview(petGender)
         petGender.text = "성별: O"
         petGender.font = UIFont.systemFont(ofSize: 12)
-        NSLayoutConstraint.activate([
-            petGender.topAnchor.constraint(equalTo: introSecondView.safeAreaLayoutGuide.topAnchor),
-            petGender.leadingAnchor.constraint(equalTo: introSecondView.safeAreaLayoutGuide.leadingAnchor),
-//            petGender.trailingAnchor.constraint(equalTo: petBirth.leadingAnchor),
-//            petGender.trailingAnchor.constraint(equalTo: petBreed.leadingAnchor),
-            petGender.bottomAnchor.constraint(equalTo: introSecondView.safeAreaLayoutGuide.bottomAnchor),
-        ])
+        petGender.backgroundColor = .brown
     }
+    
     func setPetBirth() {
-//        introSecondView.addSubview(petBirth)
-//        petBirth.text = "생일: OOOO-OO-OO"
-//        petBirth.font = UIFont.systemFont(ofSize: 12)
-//        NSLayoutConstraint.activate([
-//            petBirth.topAnchor.constraint(equalTo: introSecondView.safeAreaLayoutGuide.topAnchor),
-//            petBirth.leadingAnchor.constraint(equalTo: petGender.trailingAnchor, constant: 4),
-//            petBirth.trailingAnchor.constraint(equalTo: petBreed.leadingAnchor, constant: 4),
-//            petBirth.bottomAnchor.constraint(equalTo: introSecondView.safeAreaLayoutGuide.bottomAnchor),
-//        ])
+        petBirth.text = "생일: OOOO-OO-OO"
+        petBirth.font = UIFont.systemFont(ofSize: 12)
     }
     
     func setPetBreed() {
-        introSecondView.addSubview(petBreed)
         petBreed.text = "종: OOO"
         petBreed.font = UIFont.systemFont(ofSize: 12)
-        NSLayoutConstraint.activate([
-            petBreed.topAnchor.constraint(equalTo: introSecondView.safeAreaLayoutGuide.topAnchor),
-//            petBreed.leadingAnchor.constraint(equalTo: petBirth.trailingAnchor),
-            petBreed.leadingAnchor.constraint(equalTo: petGender.trailingAnchor),
-            petBreed.trailingAnchor.constraint(equalTo: introSecondView.safeAreaLayoutGuide.trailingAnchor),
-            petBreed.bottomAnchor.constraint(equalTo: introSecondView.safeAreaLayoutGuide.bottomAnchor),
-        ])
     }
     
-    func setDailyBtn() {
+    func setBtnStackView() {
+        btnStackView.addArrangedSubview(dailyBtn)
+        btnStackView.addArrangedSubview(infoBtn)
         
+        btnStackView.backgroundColor = .yellow
+        dailyBtn.backgroundColor = .blue
+        infoBtn.backgroundColor = .red
     }
     
-    func setInfoBtn() {
-        
+    func setTableView() {
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.backgroundColor = .brown
     }
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
 }
