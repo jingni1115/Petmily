@@ -25,13 +25,23 @@ class InfoTableViewCell: UITableViewCell {
     
     func setInfo(_ _info: Info) {
         info = _info
-        guard let info else {return}
+        
+        guard let info = info else {
+            return
+        }
+        
         tagLabel.text = info.tag
         titleLabel.text = info.title
         descriptionLabel.text = info.description
-        userTimeLabel.text = "\(info.user) · \(DateFormatter.formatInfoDate(date: info.time))"
-        imageLabel.image = info.image
+        userTimeLabel.text = "\(info.userName) · \(DateFormatter.formatInfoDate(date: info.time))"
+        
+        if let image = info.images.first {
+            imageLabel.image = image
+        } else {
+            imageLabel.image = nil
+        }
     }
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

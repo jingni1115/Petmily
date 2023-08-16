@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "chichi.jpg",
+      "filename" : "danjy.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "chichi 1.jpg",
+      "filename" : "danjy 1.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "chichi 2.jpg",
+      "filename" : "danjy 2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

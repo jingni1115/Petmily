@@ -13,7 +13,7 @@
 		569A351A2A89C98600FE098E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569A35182A89C98600FE098E /* LaunchScreen.storyboard */; };
 		569A35252A89C98700FE098E /* PetmilyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35242A89C98700FE098E /* PetmilyTests.swift */; };
 		569A352F2A89C98700FE098E /* PetmilyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A352E2A89C98700FE098E /* PetmilyUITests.swift */; };
-		569A35312A89C98700FE098E /* PetmilyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35302A89C98700FE098E /*ca PetmilyUITestsLaunchTests.swift */; };
+		569A35312A89C98700FE098E /* PetmilyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35302A89C98700FE098E /* PetmilyUITestsLaunchTests.swift */; };
 		569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A353D2A89CB3B00FE098E /* IntroViewController.swift */; };
 		569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35412A89CB6E00FE098E /* BaseViewController.swift */; };
 		569A35442A89CB7D00FE098E /* BaseTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35432A89CB7D00FE098E /* BaseTabbarController.swift */; };
@@ -32,16 +32,20 @@
 		569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A356D2A89DB6D00FE098E /* AdoptViewController.xib */; };
 		569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35752A89DBBD00FE098E /* IntroViewController.xib */; };
 		569A35782A89FB8600FE098E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569A35772A89FB8600FE098E /* Main.storyboard */; };
+		569A35A42A8C795300FE098E /* BaseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A32A8C795300FE098E /* BaseHeaderViewController.swift */; };
+		569A35A62A8C798900FE098E /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A52A8C798900FE098E /* CommonHeaderView.swift */; };
+		569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35A72A8C798F00FE098E /* CommonHeaderView.xib */; };
+		569A35AA2A8C7B1D00FE098E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A92A8C7B1D00FE098E /* Common.swift */; };
+		DF06F8412A8CAE3500B8A875 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8402A8CAE3500B8A875 /* User.swift */; };
+		DF06F8432A8CAF2100B8A875 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8422A8CAF2100B8A875 /* UserList.swift */; };
+		DF06F8462A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8442A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift */; };
+		DF06F8472A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF06F8452A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib */; };
 		DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */; };
 		DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */; };
 		DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */; };
 		DF1059CB2A8C749900F10DE1 /* InfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */; };
 		DF1059CE2A8C7AD300F10DE1 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059CD2A8C7AD300F10DE1 /* Info.swift */; };
 		DF1059D02A8C7B5100F10DE1 /* InfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */; };
-		569A35A42A8C795300FE098E /* BaseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A32A8C795300FE098E /* BaseHeaderViewController.swift */; };
-		569A35A62A8C798900FE098E /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A52A8C798900FE098E /* CommonHeaderView.swift */; };
-		569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35A72A8C798F00FE098E /* CommonHeaderView.xib */; };
-		569A35AA2A8C7B1D00FE098E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A92A8C7B1D00FE098E /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,16 +95,20 @@
 		569A356D2A89DB6D00FE098E /* AdoptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdoptViewController.xib; sourceTree = "<group>"; };
 		569A35752A89DBBD00FE098E /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		569A35772A89FB8600FE098E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		569A35A32A8C795300FE098E /* BaseHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHeaderViewController.swift; sourceTree = "<group>"; };
+		569A35A52A8C798900FE098E /* CommonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
+		569A35A72A8C798F00FE098E /* CommonHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
+		569A35A92A8C7B1D00FE098E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		DF06F8402A8CAE3500B8A875 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DF06F8422A8CAF2100B8A875 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
+		DF06F8442A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		DF06F8452A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
 		DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailViewController.xib; sourceTree = "<group>"; };
 		DF1059CD2A8C7AD300F10DE1 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoList.swift; sourceTree = "<group>"; };
-		569A35A32A8C795300FE098E /* BaseHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHeaderViewController.swift; sourceTree = "<group>"; };
-		569A35A52A8C798900FE098E /* CommonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
-		569A35A72A8C798F00FE098E /* CommonHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
-		569A35A92A8C7B1D00FE098E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +164,7 @@
 				569A357D2A89FCA900FE098E /* Util */,
 				569A357A2A89FC6300FE098E /* ViewControllers */,
 				DF1059C62A8C564400F10DE1 /* Cell */,
-				DF1059C72A8C743A00F10DE1 /* DetailPage */,
+				DF1059C72A8C743A00F10DE1 /* DetailView */,
 				DF1059CC2A8C7AB100F10DE1 /* Model */,
 				569A35772A89FB8600FE098E /* Main.storyboard */,
 				569A35162A89C98600FE098E /* Assets.xcassets */,
@@ -241,33 +249,6 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		DF1059C62A8C564400F10DE1 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */,
-				DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		DF1059C72A8C743A00F10DE1 /* DetailPage */ = {
-			isa = PBXGroup;
-			children = (
-				DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */,
-				DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */,
-			);
-			path = DetailPage;
-			sourceTree = "<group>";
-		};
-		DF1059CC2A8C7AB100F10DE1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DF1059CD2A8C7AD300F10DE1 /* Info.swift */,
-				DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-        };
 		569A35AB2A8C7B6500FE098E /* CommonHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +256,37 @@
 				569A35A72A8C798F00FE098E /* CommonHeaderView.xib */,
 			);
 			path = CommonHeaderView;
+			sourceTree = "<group>";
+		};
+		DF1059C62A8C564400F10DE1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */,
+				DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */,
+				DF06F8442A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift */,
+				DF06F8452A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DF1059C72A8C743A00F10DE1 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */,
+				DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		DF1059CC2A8C7AB100F10DE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF1059CD2A8C7AD300F10DE1 /* Info.swift */,
+				DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */,
+				DF06F8402A8CAE3500B8A875 /* User.swift */,
+				DF06F8422A8CAF2100B8A875 /* UserList.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +396,7 @@
 				569A351A2A89C98600FE098E /* LaunchScreen.storyboard in Resources */,
 				569A35712A89DB6D00FE098E /* AddViewController.xib in Resources */,
 				569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */,
+				DF06F8472A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
 				DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */,
@@ -421,6 +434,7 @@
 				569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */,
 				DF1059CE2A8C7AD300F10DE1 /* Info.swift in Sources */,
 				569A35532A89CE5300FE098E /* AdoptViewController.swift in Sources */,
+				DF06F8462A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift in Sources */,
 				569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */,
 				569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,
@@ -431,12 +445,14 @@
 				569A35A62A8C798900FE098E /* CommonHeaderView.swift in Sources */,
 				569A35442A89CB7D00FE098E /* BaseTabbarController.swift in Sources */,
 				569A35572A89CE7200FE098E /* MyPageViewController.swift in Sources */,
+				DF06F8432A8CAF2100B8A875 /* UserList.swift in Sources */,
 				569A35A42A8C795300FE098E /* BaseHeaderViewController.swift in Sources */,
 				569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */,
 				DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */,
 				DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */,
 				569A354B2A89CE2200FE098E /* InfoViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
+				DF06F8412A8CAE3500B8A875 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

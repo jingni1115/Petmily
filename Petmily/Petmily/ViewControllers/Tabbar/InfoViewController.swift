@@ -18,6 +18,10 @@ class InfoViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
+    }
+    
+    func setUI() {
         tbvInfo.delegate = self
         tbvInfo.dataSource = self
         tbvInfo.register(InfoTableViewCell.self, forCellReuseIdentifier: "InfoTableViewCell")
@@ -28,7 +32,6 @@ class InfoViewController: BaseViewController {
         infoSearchBar.backgroundImage = UIImage()
         infoSearchBar.placeholder = "원하시는 동물 종을 검색해보세요"
     }
-    
     
 }
 
@@ -50,10 +53,16 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         // 셀 선택 해제
         tbvInfo.deselectRow(at: indexPath, animated: true)
         
+        // 선택한 정보 가져오기
+        let selectedInfo = InfoList.list[indexPath.row]
+        
         // 목표 뷰 컨트롤러 초기화
         let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
+        vc.selectedInfo = selectedInfo // 정보 전달
         navigationPushController(viewController: vc, animated: true)
     }
+
+
     
     public override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         // 스크롤 뷰의 현재 Y 오프셋
