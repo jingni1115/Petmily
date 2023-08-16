@@ -8,10 +8,18 @@
 import UIKit
 
 class MyPageViewController: BaseViewController {
-    
+    private var customCollectionView: CustomCollectionView!
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
+//    let trailView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .orange
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
+    
     let dummyList = [UIImage(systemName: "pencil"),UIImage(systemName: "pencil"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo")]
+    
     let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -144,15 +152,15 @@ class MyPageViewController: BaseViewController {
         return tableView
     }()
     
-    var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 10
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        return cv
-    }()
+//    var collectionView: UICollectionView = {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.minimumLineSpacing = 10
+//        layout.scrollDirection = .vertical
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        cv.translatesAutoresizingMaskIntoConstraints = false
+//        return cv
+//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,6 +169,9 @@ class MyPageViewController: BaseViewController {
     }
     
     func configureView() {
+        setTableView()
+        setCollectionView()
+        
         setMenuBtn()
         setScrollView()
         
@@ -180,7 +191,8 @@ class MyPageViewController: BaseViewController {
         setBtnStackView()
         setDailyBtn()
         setInfoBtn()
-        setTableView()
+//        setTableView()
+//        setCollectionView()
     }
     
     func setMenuBtn() {
@@ -196,7 +208,15 @@ class MyPageViewController: BaseViewController {
     
     func setScrollView() {
         view.addSubview(contentScrollView)
+//        trailView.addSubview(contentScrollView)
         contentScrollView.backgroundColor = .cyan
+//        NSLayoutConstraint.activate([
+//            trailView.topAnchor.constraint(equalTo: menuBtn.bottomAnchor, constant: 16),
+//            trailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+//            trailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+//            trailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+//        ])
+        
         NSLayoutConstraint.activate([
             contentScrollView.topAnchor.constraint(equalTo: menuBtn.bottomAnchor, constant: 16),
             contentScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -213,16 +233,15 @@ class MyPageViewController: BaseViewController {
         firstStackView.addArrangedSubview(profileView)
         firstStackView.addArrangedSubview(petView)
         firstStackView.addArrangedSubview(btnStackView)
-        firstStackView.addArrangedSubview(tableView)
-        firstStackView.addArrangedSubview(collectionView)
-        firstStackView.addArrangedSubview(myName)
+//        firstStackView.addArrangedSubview(tableView)
+        firstStackView.addArrangedSubview(customCollectionView)
         
         NSLayoutConstraint.activate([
             firstStackView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
             firstStackView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor),
             firstStackView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
-            firstStackView.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor),
-            firstStackView.widthAnchor.constraint(equalTo: contentScrollView.widthAnchor)
+//            firstStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            firstStackView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
         ])
     }
     
@@ -335,17 +354,17 @@ class MyPageViewController: BaseViewController {
     @objc
     func setDailybtn() {
         tableView.isHidden = !isHidden
-        collectionView.isHidden = isHidden
+        customCollectionView.isHidden = isHidden
         print("table: \(tableView.isHidden)")
-        print("collection: \(collectionView.isHidden)")
+        print("collection: \(customCollectionView.isHidden)")
     }
     
     @objc
     func setInfobtn() {
         tableView.isHidden = isHidden
-        collectionView.isHidden = !isHidden
+        customCollectionView.isHidden = !isHidden
         print("table: \(tableView.isHidden)")
-        print("collection: \(collectionView.isHidden)")
+        print("collection: \(customCollectionView.isHidden)")
     }
     
     func setTableView() {
@@ -354,27 +373,19 @@ class MyPageViewController: BaseViewController {
         tableView.delegate = self
         tableView.backgroundColor = .brown
         tableView.isHidden = true
-        tableView.bounds.size.height = 100
+//        tableView.bounds.size.height = 100
     }
     
     func setCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-//
-//        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width), height: (UIScreen.main.bounds.width))
-//        layout.minimumLineSpacing = 0
-//        layout.minimumInteritemSpacing = 0
+        customCollectionView = CustomCollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+        customCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        customCollectionView.register(MyPageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cellIdentifier")
         
-        collectionView.register(MyPageCollectionViewCell.self, forCellWithReuseIdentifier: "cellIdentifier")
-        collectionView = CustomCollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.backgroundColor = .systemPink
-//        collectionView.bounds.size.height = 100
-        
-        NSLayoutConstraint.activate([
-            collectionView.bottomAnchor.constraint(equalTo: firstStackView.bottomAnchor)
-        ])
+        customCollectionView.delegate = self
+        customCollectionView.dataSource = self
+        customCollectionView.backgroundColor = .systemPink
+//        customCollectionView.bounds.size.height = 100
+//        customCollectionView.bounds.size.width = view.bounds.width
     }
 }
 
@@ -390,6 +401,7 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print(dummyList.count)
         let width = view.bounds.width
         let itemSpacing: CGFloat = 10
         let cellWidth: CGFloat = (width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3
@@ -402,7 +414,7 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdentifier", for: indexPath) as! MyPageCollectionViewCell
+        let cell = customCollectionView.dequeueReusableCell(withReuseIdentifier: "cellIdentifier", for: indexPath) as! MyPageCollectionViewCell
         cell.collectionViewImage.image = dummyList[indexPath.row]
         return cell
     }
