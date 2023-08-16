@@ -266,6 +266,7 @@
 				DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
         };
 		569A35AB2A8C7B6500FE098E /* CommonHeaderView */ = {
 			isa = PBXGroup;

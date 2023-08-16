@@ -53,7 +53,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Ort-L1-r2t" secondAttribute="trailing" id="uOT-Q1-xhE"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_5504" translatesAutoresizingMaskIntoConstraints="NO" id="DGL-6T-AS6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DGL-6T-AS6">
                                 <rect key="frame" x="257" y="0.0" width="104" height="104"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="5wf-3L-NWn"/>
@@ -76,10 +76,14 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="Ort-L1-r2t" id="Vsw-ww-7nS"/>
+                <outlet property="imageLabel" destination="DGL-6T-AS6" id="BZc-Ya-pQr"/>
+                <outlet property="tagLabel" destination="823-we-yEs" id="20K-Q3-70V"/>
+                <outlet property="titleLabel" destination="gwR-0o-DQ7" id="9sO-cF-Xkb"/>
+                <outlet property="userTimeLabel" destination="Np3-Hs-FXA" id="eBC-m0-6mx"/>
+            </connections>
             <point key="canvasLocation" x="349.61832061068702" y="237.32394366197184"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="IMG_5504" width="3024" height="4032"/>
-    </resources>
 </document>
