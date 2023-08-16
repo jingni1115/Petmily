@@ -36,6 +36,7 @@
 		569A35A62A8C798900FE098E /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A52A8C798900FE098E /* CommonHeaderView.swift */; };
 		569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35A72A8C798F00FE098E /* CommonHeaderView.xib */; };
 		569A35AA2A8C7B1D00FE098E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A92A8C7B1D00FE098E /* Common.swift */; };
+		569A35AF2A8C9D2000FE098E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 569A35AE2A8C9D2000FE098E /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		569A35A52A8C798900FE098E /* CommonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
 		569A35A72A8C798F00FE098E /* CommonHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 		569A35A92A8C7B1D00FE098E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		569A35AE2A8C9D2000FE098E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				569A35162A89C98600FE098E /* Assets.xcassets */,
 				569A35182A89C98600FE098E /* LaunchScreen.storyboard */,
 				569A351B2A89C98600FE098E /* Info.plist */,
+				569A35AE2A8C9D2000FE098E /* .gitignore */,
 			);
 			path = Petmily;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				569A35712A89DB6D00FE098E /* AddViewController.xib in Resources */,
 				569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
+				569A35AF2A8C9D2000FE098E /* .gitignore in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
 				569A35172A89C98600FE098E /* Assets.xcassets in Resources */,
 				569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */,
