@@ -33,6 +33,8 @@
 		569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35752A89DBBD00FE098E /* IntroViewController.xib */; };
 		569A35782A89FB8600FE098E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569A35772A89FB8600FE098E /* Main.storyboard */; };
 		FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2663282A8CB300000222B3 /* ProfileViewController.swift */; };
+		FF26632B2A8CB77C000222B3 /* MyPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */; };
+		FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		569A35752A89DBBD00FE098E /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		569A35772A89FB8600FE098E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FF2663282A8CB300000222B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
+		FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,8 @@
 				569A35552A89CE7200FE098E /* MyPageViewController.swift */,
 				569A356A2A89DB6D00FE098E /* MyPageViewController.xib */,
 				FF2663282A8CB300000222B3 /* ProfileViewController.swift */,
+				FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */,
+				FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -362,8 +368,10 @@
 				FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,
 				569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */,
+				FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */,
 				569A35122A89C98500FE098E /* ViewController.swift in Sources */,
 				569A355E2A89D13400FE098E /* Datamanager.swift in Sources */,
+				FF26632B2A8CB77C000222B3 /* MyPageCollectionViewCell.swift in Sources */,
 				569A35442A89CB7D00FE098E /* BaseTabbarController.swift in Sources */,
 				569A35572A89CE7200FE098E /* MyPageViewController.swift in Sources */,
 				569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */,
