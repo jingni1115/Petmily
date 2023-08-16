@@ -32,6 +32,7 @@
 		569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A356D2A89DB6D00FE098E /* AdoptViewController.xib */; };
 		569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35752A89DBBD00FE098E /* IntroViewController.xib */; };
 		569A35782A89FB8600FE098E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569A35772A89FB8600FE098E /* Main.storyboard */; };
+		FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2663282A8CB300000222B3 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		569A356D2A89DB6D00FE098E /* AdoptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdoptViewController.xib; sourceTree = "<group>"; };
 		569A35752A89DBBD00FE098E /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		569A35772A89FB8600FE098E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FF2663282A8CB300000222B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				569A356D2A89DB6D00FE098E /* AdoptViewController.xib */,
 				569A35552A89CE7200FE098E /* MyPageViewController.swift */,
 				569A356A2A89DB6D00FE098E /* MyPageViewController.xib */,
+				FF2663282A8CB300000222B3 /* ProfileViewController.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				569A35532A89CE5300FE098E /* AdoptViewController.swift in Sources */,
 				569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */,
 				569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */,
+				FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,
 				569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */,
 				569A35122A89C98500FE098E /* ViewController.swift in Sources */,

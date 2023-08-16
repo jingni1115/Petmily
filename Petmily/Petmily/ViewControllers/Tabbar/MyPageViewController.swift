@@ -115,6 +115,8 @@ class MyPageViewController: BaseViewController {
 //        stackView.spacing = 2
         return stackView
     }()
+    
+    var isHidden = false
 
     let dailyBtn: UIButton = {
         let btn = UIButton()
@@ -136,6 +138,16 @@ class MyPageViewController: BaseViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
+    }()
+    
+    var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+//        layout.translatesAutoresizingMaskIntoConstraints = false
+//        layout.minimumLineSpacing = 10
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return cv
     }()
 
     override func viewDidLoad() {
@@ -162,6 +174,8 @@ class MyPageViewController: BaseViewController {
         setPetBreed()
         
         setBtnStackView()
+        setDailyBtn()
+        setInfoBtn()
         setTableView()
     }
     
@@ -196,6 +210,7 @@ class MyPageViewController: BaseViewController {
         firstStackView.addArrangedSubview(petView)
         firstStackView.addArrangedSubview(btnStackView)
         firstStackView.addArrangedSubview(tableView)
+        firstStackView.addArrangedSubview(collectionView)
         
         NSLayoutConstraint.activate([
             firstStackView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
@@ -249,6 +264,16 @@ class MyPageViewController: BaseViewController {
     func setPetView() {
         petView.addSubview(secondStackView)
         petView.backgroundColor = .purple
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(updateProfile(_:)))
+        petView.addGestureRecognizer(tapGesture)
+        petView.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    func updateProfile(_ gesture: UITapGestureRecognizer) {
+        let vc = ProfileViewController.init(nibName: "ProfileViewController", bundle: nil)
+              navigationPushController(viewController: vc, animated: true)
+        self.present(ProfileViewController(), animated: true)
     }
     
     func setSecondStackView() {
@@ -294,11 +319,40 @@ class MyPageViewController: BaseViewController {
         infoBtn.backgroundColor = .red
     }
     
+    func setDailyBtn() {
+        dailyBtn.addTarget(self, action: #selector(setDailybtn), for: .touchUpInside)
+    }
+        
+    func setInfoBtn() {
+        infoBtn.addTarget(self, action: #selector(setInfobtn), for: .touchUpInside)
+    }
+    
+    @objc
+    func setDailybtn() {
+        tableView.isHidden = isHidden
+        collectionView.isHidden = !isHidden
+        print(tableView.isHidden)
+    }
+    
+    @objc
+    func setInfobtn() {
+        tableView.isHidden = !isHidden
+        collectionView.isHidden = isHidden
+        print(tableView.isHidden)
+    }
+    
     func setTableView() {
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .brown
+    }
+    
+    func setCollectionView() {
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .systemPink
     }
 }
 
@@ -309,5 +363,15 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+}
+
+extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
     }
 }
