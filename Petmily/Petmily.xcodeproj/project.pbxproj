@@ -43,6 +43,7 @@
 		56DD2D9A2A8CC781008A9E12 /* demo4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D952A8CC68F008A9E12 /* demo4.mp4 */; };
 		56DD2DB82A8E41B5008A9E12 /* ReelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */; };
 		6BBEA34B2A8E791F00406C4C /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BBEA34A2A8E791F00406C4C /* CommonHeaderView.xib */; };
+		6BBEA34D2A8E800200406C4C /* AddViewController in Sources */ = {isa = PBXBuildFile; fileRef = 6BBEA34C2A8E800200406C4C /* AddViewController */; };
 		DF06F8412A8CAE3500B8A875 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8402A8CAE3500B8A875 /* User.swift */; };
 		DF06F8462A8CBFC500B8A875 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		DF06F8472A8CBFC500B8A875 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -118,6 +119,7 @@
 		56DD2D962A8CC68F008A9E12 /* demo2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo2.mp4; sourceTree = "<group>"; };
 		56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelCollectionViewCell.swift; sourceTree = "<group>"; };
 		6BBEA34A2A8E791F00406C4C /* CommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
+		6BBEA34C2A8E800200406C4C /* AddViewController */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AddViewController; path = "../../../../../../Desktop/무제 폴더/PetUI/PetUI/AddViewController"; sourceTree = "<group>"; };
 		DF06F8402A8CAE3500B8A875 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DF06F8422A8CAF2100B8A875 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		569A357B2A89FC7500FE098E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				6BBEA34C2A8E800200406C4C /* AddViewController */,
 				56C3CF302A8E4A4200541EB8 /* BaseHeaderViewController.swift */,
 				569A35412A89CB6E00FE098E /* BaseViewController.swift */,
 				569A35432A89CB7D00FE098E /* BaseTabbarController.swift */,
@@ -488,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BBEA34D2A8E800200406C4C /* AddViewController in Sources */,
 				569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */,
 				DF1059CE2A8C7AD300F10DE1 /* Info.swift in Sources */,
 				569A35532A89CE5300FE098E /* AdoptViewController.swift in Sources */,
