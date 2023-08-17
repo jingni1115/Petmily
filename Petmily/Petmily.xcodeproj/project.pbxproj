@@ -37,6 +37,8 @@
 		569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35A72A8C798F00FE098E /* CommonHeaderView.xib */; };
 		569A35AA2A8C7B1D00FE098E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A92A8C7B1D00FE098E /* Common.swift */; };
 		569A35AF2A8C9D2000FE098E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 569A35AE2A8C9D2000FE098E /* .gitignore */; };
+		B3DF358A2A8DC7D200948630 /* UrlBtnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DF35882A8DC7D200948630 /* UrlBtnCollectionViewCell.swift */; };
+		B3DF358B2A8DC7D200948630 /* UrlBtnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DF35892A8DC7D200948630 /* UrlBtnCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		569A35A72A8C798F00FE098E /* CommonHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 		569A35A92A8C7B1D00FE098E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		569A35AE2A8C9D2000FE098E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B3DF35882A8DC7D200948630 /* UrlBtnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlBtnCollectionViewCell.swift; sourceTree = "<group>"; };
+		B3DF35892A8DC7D200948630 /* UrlBtnCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UrlBtnCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,8 @@
 				569A356B2A89DB6D00FE098E /* AddViewController.xib */,
 				569A35512A89CE5300FE098E /* AdoptViewController.swift */,
 				569A356D2A89DB6D00FE098E /* AdoptViewController.xib */,
+				B3DF35882A8DC7D200948630 /* UrlBtnCollectionViewCell.swift */,
+				B3DF35892A8DC7D200948630 /* UrlBtnCollectionViewCell.xib */,
 				569A35552A89CE7200FE098E /* MyPageViewController.swift */,
 				569A356A2A89DB6D00FE098E /* MyPageViewController.xib */,
 			);
@@ -349,6 +355,7 @@
 				569A35AF2A8C9D2000FE098E /* .gitignore in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
 				569A35172A89C98600FE098E /* Assets.xcassets in Resources */,
+				B3DF358B2A8DC7D200948630 /* UrlBtnCollectionViewCell.xib in Resources */,
 				569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */,
 				569A35782A89FB8600FE098E /* Main.storyboard in Resources */,
 				569A35702A89DB6D00FE098E /* MyPageViewController.xib in Resources */,
@@ -381,6 +388,7 @@
 				569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */,
 				569A35532A89CE5300FE098E /* AdoptViewController.swift in Sources */,
 				569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */,
+				B3DF358A2A8DC7D200948630 /* UrlBtnCollectionViewCell.swift in Sources */,
 				569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,
 				569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */,
