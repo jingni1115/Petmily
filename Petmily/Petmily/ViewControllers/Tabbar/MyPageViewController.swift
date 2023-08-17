@@ -16,7 +16,6 @@ class MyPageViewController: BaseViewController {
     let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .white
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
@@ -66,18 +65,12 @@ class MyPageViewController: BaseViewController {
     let secondStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.alignment = .fill
+        stackView.axis = .vertical
+        stackView.alignment = .center
         stackView.distribution = .fillEqually
-        stackView.spacing = 4
-        stackView.backgroundColor = .black
+        stackView.spacing = 2
+        stackView.cornerRadius = 5
         return stackView
-    }()
-    
-    var petView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
 
     var petComment: UILabel = {
@@ -89,7 +82,10 @@ class MyPageViewController: BaseViewController {
     let thirdStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 10
         return stackView
     }()
 
@@ -159,14 +155,13 @@ class MyPageViewController: BaseViewController {
         setScrollView()
         
         setFirstStackView()
-        setProfileView()
         setProfileImg()
         setMyName()
         setPetName()
-        setPetComment()
         
-        setPetView()
+        setPetComment()
         setSecondStackView()
+        setThirdStackView()
         setPetGender()
         setPetBirth()
         setPetBreed()
@@ -174,8 +169,6 @@ class MyPageViewController: BaseViewController {
         setBtnStackView()
         setDailyBtn()
         setInfoBtn()
-//        setTableView()
-//        setCollectionView()
     }
     
     func setMenuBtn() {
@@ -183,7 +176,7 @@ class MyPageViewController: BaseViewController {
         menuBtn.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
         NSLayoutConstraint.activate([
             menuBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            menuBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            menuBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             menuBtn.widthAnchor.constraint(equalToConstant: 50),
             menuBtn.heightAnchor.constraint(equalToConstant: 50)
         ])
@@ -191,14 +184,6 @@ class MyPageViewController: BaseViewController {
     
     func setScrollView() {
         view.addSubview(contentScrollView)
-//        trailView.addSubview(contentScrollView)
-        contentScrollView.backgroundColor = .cyan
-//        NSLayoutConstraint.activate([
-//            trailView.topAnchor.constraint(equalTo: menuBtn.bottomAnchor, constant: 16),
-//            trailView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            trailView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            trailView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-//        ])
         
         NSLayoutConstraint.activate([
             contentScrollView.topAnchor.constraint(equalTo: menuBtn.bottomAnchor, constant: 16),
@@ -210,26 +195,21 @@ class MyPageViewController: BaseViewController {
     
     func setFirstStackView() {
         contentScrollView.addSubview(firstStackView)
-        firstStackView.backgroundColor = .systemGray4
         firstStackView.cornerRadius = 10
         
         firstStackView.addArrangedSubview(profileView)
-        firstStackView.addArrangedSubview(petView)
+        firstStackView.addArrangedSubview(secondStackView)
         firstStackView.addArrangedSubview(btnStackView)
-//        firstStackView.addArrangedSubview(tableView)
+        firstStackView.addArrangedSubview(tableView)
         firstStackView.addArrangedSubview(customCollectionView)
         
         NSLayoutConstraint.activate([
             firstStackView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
             firstStackView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor),
             firstStackView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
-//            firstStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            firstStackView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
+            firstStackView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor),
+            firstStackView.widthAnchor.constraint(greaterThanOrEqualTo: view.widthAnchor)
         ])
-    }
-    
-    func setProfileView() {
-        profileView.backgroundColor = .yellow
     }
     
     func setProfileImg() {
@@ -263,48 +243,47 @@ class MyPageViewController: BaseViewController {
         ])
     }
     
-    func setPetComment() {
-        petComment.text = "\"안녕하세요 OO이네 강아지 OO입니다\""
-        petComment.font = UIFont.systemFont(ofSize: 14)
+    func setSecondStackView() {
+        secondStackView.addArrangedSubview(thirdStackView)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(updateProfile(_:)))
+        secondStackView.addGestureRecognizer(tapGesture)
+        secondStackView.isUserInteractionEnabled = true
+        secondStackView.backgroundColor = .systemGray3
+        secondStackView.isLayoutMarginsRelativeArrangement = true
+        secondStackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     
-    func setPetView() {
-        petView.addSubview(secondStackView)
-        petView.backgroundColor = .purple
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(updateProfile(_:)))
-        petView.addGestureRecognizer(tapGesture)
-        petView.isUserInteractionEnabled = true
+    func setPetComment() {
+        secondStackView.addArrangedSubview(petComment)
+        petComment.text = "\"안녕하세요 OO이네 강아지 OO입니다\""
+        petComment.font = UIFont.boldSystemFont(ofSize: 14)
     }
     
     @objc
     func updateProfile(_ gesture: UITapGestureRecognizer) {
-        let vc = ProfileViewController.init(nibName: "ProfileViewController", bundle: nil)
-              navigationPushController(viewController: vc, animated: true)
-        self.present(ProfileViewController(), animated: true)
+        let vc = ProfileViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
-    func setSecondStackView() {
-        secondStackView.backgroundColor = .white
-        secondStackView.cornerRadius = 10
-        secondStackView.isLayoutMarginsRelativeArrangement = true
-        secondStackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    func setThirdStackView() {
+        thirdStackView.cornerRadius = 10
+        thirdStackView.isLayoutMarginsRelativeArrangement = true
+        thirdStackView.layoutMargins = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        thirdStackView.backgroundColor = .white
         
-        secondStackView.addArrangedSubview(petGender)
-        secondStackView.addArrangedSubview(petBirth)
-        secondStackView.addArrangedSubview(petBreed)
+        thirdStackView.addArrangedSubview(petGender)
+        thirdStackView.addArrangedSubview(petBirth)
+        thirdStackView.addArrangedSubview(petBreed)
         
         NSLayoutConstraint.activate([
-            secondStackView.topAnchor.constraint(equalTo: petView.safeAreaLayoutGuide.topAnchor, constant: 12),
-            secondStackView.leadingAnchor.constraint(equalTo: petView.safeAreaLayoutGuide.leadingAnchor, constant: 12),
-            secondStackView.trailingAnchor.constraint(equalTo: petView.safeAreaLayoutGuide.trailingAnchor, constant: -12),
-            secondStackView.bottomAnchor.constraint(equalTo: petView.safeAreaLayoutGuide.bottomAnchor, constant: -12)
+            thirdStackView.leadingAnchor.constraint(equalTo: secondStackView.leadingAnchor, constant: 20),
+            thirdStackView.trailingAnchor.constraint(equalTo: secondStackView.trailingAnchor, constant: -20)
         ])
     }
     
     func setPetGender() {
         petGender.text = "성별: O"
         petGender.font = UIFont.systemFont(ofSize: 12)
-        petGender.backgroundColor = .brown
     }
     
     func setPetBirth() {
@@ -320,24 +299,24 @@ class MyPageViewController: BaseViewController {
     func setBtnStackView() {
         btnStackView.addArrangedSubview(dailyBtn)
         btnStackView.addArrangedSubview(infoBtn)
-        
-        btnStackView.backgroundColor = .yellow
-        dailyBtn.backgroundColor = .blue
-        infoBtn.backgroundColor = .red
     }
     
     func setDailyBtn() {
         dailyBtn.addTarget(self, action: #selector(setDailybtn), for: .touchUpInside)
+        dailyBtn.backgroundColor = .systemGray
     }
         
     func setInfoBtn() {
         infoBtn.addTarget(self, action: #selector(setInfobtn), for: .touchUpInside)
+        infoBtn.backgroundColor = .systemGray3
     }
     
     @objc
     func setDailybtn() {
         tableView.isHidden = !isHidden
         customCollectionView.isHidden = isHidden
+        dailyBtn.backgroundColor = .systemGray
+        infoBtn.backgroundColor = .systemGray3
         print("table: \(tableView.isHidden)")
         print("collection: \(customCollectionView.isHidden)")
     }
@@ -346,45 +325,47 @@ class MyPageViewController: BaseViewController {
     func setInfobtn() {
         tableView.isHidden = isHidden
         customCollectionView.isHidden = !isHidden
+        dailyBtn.backgroundColor = .systemGray3
+        infoBtn.backgroundColor = .systemGray
         print("table: \(tableView.isHidden)")
         print("collection: \(customCollectionView.isHidden)")
     }
     
     func setTableView() {
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        let nibName = UINib(nibName: "InfoTableViewCell", bundle: nil)
+        tableView.register(nibName, forCellReuseIdentifier: "InfoTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .brown
         tableView.isHidden = true
-//        tableView.bounds.size.height = 100
     }
     
     func setCollectionView() {
         customCollectionView = CustomCollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-        customCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        customCollectionView.register(MyPageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "cellIdentifier")
+        customCollectionView.register(MyPageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "MyPageCollectionViewCell")
         
         customCollectionView.delegate = self
         customCollectionView.dataSource = self
-        customCollectionView.backgroundColor = .systemPink
-//        customCollectionView.bounds.size.height = 100
-//        customCollectionView.bounds.size.width = view.bounds.width
     }
 }
 
 extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dummyList.count
+        return InfoList.list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
+        cell.tagLabel.isHidden = true
+        cell.userTimeLabel.isHidden = true
+        cell.imageLabel.image = InfoList.list[indexPath.row].images[0]
+        cell.titleLabel.text = InfoList.list[indexPath.row].title
+        cell.descriptionLabel.text = InfoList.list[indexPath.row].description
+        return cell
     }
 }
 
 extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print(dummyList.count)
         let width = view.bounds.width
         let itemSpacing: CGFloat = 10
         let cellWidth: CGFloat = (width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3
@@ -393,12 +374,12 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dummyList.count
+        return InfoList.list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = customCollectionView.dequeueReusableCell(withReuseIdentifier: "cellIdentifier", for: indexPath) as! MyPageCollectionViewCell
-        cell.collectionViewImage.image = dummyList[indexPath.row]
+        let cell = customCollectionView.dequeueReusableCell(withReuseIdentifier: "MyPageCollectionViewCell", for: indexPath) as! MyPageCollectionViewCell
+        cell.collectionViewImage.image = InfoList.list[indexPath.row].images[0]
         return cell
     }
 }

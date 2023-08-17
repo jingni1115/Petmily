@@ -10,7 +10,7 @@ import UIKit
 class MyPageCollectionViewCell: UICollectionViewCell {
     var collectionViewImage: UIImageView = {
         let Img = UIImageView()
-        Img.backgroundColor = .yellow
+        Img.backgroundColor = .systemGray3
         Img.translatesAutoresizingMaskIntoConstraints = false
         return Img
     }()
