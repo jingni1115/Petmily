@@ -12,29 +12,11 @@ class DailyViewController: UIViewController {
     /** @brief collectionView*/
     @IBOutlet weak var cvMain: UICollectionView!
     
-    /** @brief containerView 상단 마진*/
-    @IBOutlet weak var containerTopMargin: NSLayoutConstraint!
-    
-    /** @brief containerView 하단 마진*/
-    @IBOutlet weak var containerBottomMargin: NSLayoutConstraint!
-    
     var isPlay = false
-    var isMute = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let layout = UICollectionViewFlowLayout.init()
-        cvMain.translatesAutoresizingMaskIntoConstraints = false
-        cvMain.showsVerticalScrollIndicator = false
-        layout.scrollDirection = .vertical
-        
-        
-        cvMain.contentInsetAdjustmentBehavior = .never
-        cvMain.setCollectionViewLayout(layout, animated: false)
         cvMain.register(ReelCollectionViewCell.self, forCellWithReuseIdentifier: "ReelCollectionViewCell")
-        cvMain.isPagingEnabled = true
-        cvMain.backgroundColor = .systemBackground
         cvMain.delegate = self
         cvMain.dataSource = self
     }
@@ -53,7 +35,6 @@ extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSo
         var reels : [ReelData] = [ReelData(video: "demo1"), ReelData(video: "demo2"), ReelData(video: "demo3"), ReelData(video: "demo4")]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReelCollectionViewCell", for: indexPath) as! ReelCollectionViewCell
         cell.reelData = reels[indexPath.row]
-//        cell.delegate = self
         if let urlPath = Bundle.main.url(forResource: reels[indexPath.row].video, withExtension: "mp4"){
             cell.setUpPlayer(url: urlPath, bounds: collectionView.frame)
             if !isPlay{

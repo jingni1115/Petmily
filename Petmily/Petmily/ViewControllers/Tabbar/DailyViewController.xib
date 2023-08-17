@@ -19,10 +19,10 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6Lh-4s-pRY">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6Lh-4s-pRY">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xuL-g1-kf6">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aZl-YT-DHc">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>

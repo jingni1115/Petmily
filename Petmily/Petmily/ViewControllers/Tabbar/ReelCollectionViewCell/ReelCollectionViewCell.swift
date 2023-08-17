@@ -9,15 +9,12 @@ import UIKit
 import AVKit
 
 class ReelCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet weak var vPlayer: UIView!
     
-    var avQueuePlayer : AVQueuePlayer?
-    var avplayerLayer : AVPlayerLayer?
+    var avQueuePlayer : AVQueuePlayer? // 일련의 플레이어 항목을 재생하는 개체
+    var avplayerLayer : AVPlayerLayer? // 플레이어 개체의 시각적 콘텐츠를 나타내는 개체
     var isMuted = false
     var pause = false
 
-        
     var reelData : ReelData?
     
     let playerView : UIView = {
@@ -31,8 +28,6 @@ class ReelCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    // MARK: LifeCycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,7 +59,7 @@ class ReelCollectionViewCell: UICollectionViewCell {
         avQueuePlayer = AVQueuePlayer(url: url)
         avplayerLayer = AVPlayerLayer(player: avQueuePlayer!)
         avplayerLayer?.frame = bounds
-        avplayerLayer?.fillMode = .both
+        avplayerLayer?.fillMode = .both // 애니메이션 시작과 끝에 어떻게 보일지 설정하는 속성
         avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         playerView.layer.addSublayer(avplayerLayer!)
     }
@@ -85,67 +80,67 @@ class ReelCollectionViewCell: UICollectionViewCell {
     
     
     
-    @objc func doubleTap(_ gesture : UIGestureRecognizer){
-        guard let gestureView = gesture.view else {return}
-        let size = gestureView.frame.width / 4
-        let heart = UIImageView(image: UIImage(named: "white-heart"))
-        heart.frame = CGRect(x: (gestureView.frame.width-size)/2,
-                             y: (gestureView.frame.height-size)/2,
-                             width: size ,
-                             height: size)
-        gestureView.addSubview(heart)
-//        self.reelData?.isLiked = true/
-        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseIn) {
-            heart.transform = .init(scaleX: 1.5, y: 1.5)
-        } completion: { finished in
-            heart.transform = .identity
-            heart.removeFromSuperview()
-        }
-
-
-        
-    }
-    
-    @objc func muteTap(_ gesture:UIGestureRecognizer){
-        isMuted = !isMuted
-        guard let gestureView = gesture.view else {return}
-        let size = gestureView.frame.width / 4
-        let mute = UIImageView(image: UIImage(named: "mute"))
-        mute.tintColor = .white
-        mute.frame = CGRect(x: (gestureView.frame.width-size + 25)/2,
-                             y: (gestureView.frame.height-size + 25)/2,
-                             width: size - 25,
-                             height: size - 25)
-        
-        let unmute = UIImageView(image: UIImage(named: "unmute"))
-        unmute.tintColor = .white
-        unmute.frame = CGRect(x: (gestureView.frame.width-size + 25)/2,
-                             y: (gestureView.frame.height-size + 25)/2,
-                             width: size - 25,
-                             height: size - 25)
-                
-        if isMuted {
-            gestureView.addSubview(mute)
-            avQueuePlayer?.isMuted = true
-            UIView.animate(withDuration: 1) {
-                mute.alpha = 0
-            } completion: { done in
-                if done {mute.removeFromSuperview()
-                }
-            }
-            
-        }else {
-            gestureView.addSubview(unmute)
-            avQueuePlayer?.isMuted = false
-            
-            UIView.animate(withDuration: 1) {
-                unmute.alpha = 0
-            } completion: { done in
-                if done {unmute.removeFromSuperview()
-                }
-            }
-        }
-    }
+//    @objc func doubleTap(_ gesture : UIGestureRecognizer){
+//        guard let gestureView = gesture.view else {return}
+//        let size = gestureView.frame.width / CGFloat(reelData?.video?.count ?? 0)
+//        let heart = UIImageView(image: UIImage(named: "white-heart"))
+//        heart.frame = CGRect(x: (gestureView.frame.width-size)/2,
+//                             y: (gestureView.frame.height-size)/2,
+//                             width: size ,
+//                             height: size)
+//        gestureView.addSubview(heart)
+////        self.reelData?.isLiked = true/
+//        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseIn) {
+//            heart.transform = .init(scaleX: 1.5, y: 1.5)
+//        } completion: { finished in
+//            heart.transform = .identity
+//            heart.removeFromSuperview()
+//        }
+//
+//
+//        
+//    }
+//    
+//    @objc func muteTap(_ gesture:UIGestureRecognizer){
+//        isMuted = !isMuted
+//        guard let gestureView = gesture.view else {return}
+//        let size = gestureView.frame.width / CGFloat(reelData?.video?.count ?? 0)
+//        let mute = UIImageView(image: UIImage(named: "mute"))
+//        mute.tintColor = .white
+//        mute.frame = CGRect(x: (gestureView.frame.width-size + 25)/2,
+//                             y: (gestureView.frame.height-size + 25)/2,
+//                             width: size - 25,
+//                             height: size - 25)
+//        
+//        let unmute = UIImageView(image: UIImage(named: "unmute"))
+//        unmute.tintColor = .white
+//        unmute.frame = CGRect(x: (gestureView.frame.width-size + 25)/2,
+//                             y: (gestureView.frame.height-size + 25)/2,
+//                             width: size - 25,
+//                             height: size - 25)
+//                
+//        if isMuted {
+//            gestureView.addSubview(mute)
+//            avQueuePlayer?.isMuted = true
+//            UIView.animate(withDuration: 1) {
+//                mute.alpha = 0
+//            } completion: { done in
+//                if done {mute.removeFromSuperview()
+//                }
+//            }
+//            
+//        }else {
+//            gestureView.addSubview(unmute)
+//            avQueuePlayer?.isMuted = false
+//            
+//            UIView.animate(withDuration: 1) {
+//                unmute.alpha = 0
+//            } completion: { done in
+//                if done {unmute.removeFromSuperview()
+//                }
+//            }
+//        }
+//    }
     
 //    @objc func longPressAction(_ gesture : UILongPressGestureRecognizer){
 //        if gesture.state == .began {

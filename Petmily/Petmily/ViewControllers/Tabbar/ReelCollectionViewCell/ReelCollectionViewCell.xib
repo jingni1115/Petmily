@@ -29,9 +29,6 @@
                 <constraint firstAttribute="trailing" secondItem="t0k-8G-KR1" secondAttribute="trailing" id="f8l-bS-KgR"/>
             </constraints>
             <size key="customSize" width="250" height="461"/>
-            <connections>
-                <outlet property="vPlayer" destination="t0k-8G-KR1" id="HnO-kd-tOR"/>
-            </connections>
             <point key="canvasLocation" x="140.45801526717557" y="164.43661971830986"/>
         </collectionViewCell>
     </objects>

@@ -221,8 +221,7 @@
 			children = (
 				569A35452A89CE0C00FE098E /* DailyViewController.swift */,
 				569A35692A89DB6C00FE098E /* DailyViewController.xib */,
-				56DD2D8D2A8CBA24008A9E12 /* ReelCollectionViewCell.swift */,
-				56DD2D8E2A8CBA24008A9E12 /* ReelCollectionViewCell.xib */,
+				56DD2D9B2A8D3256008A9E12 /* ReelCollectionViewCell */,
 				56DD2D912A8CBEF8008A9E12 /* ReelData.swift */,
 				569A35492A89CE2200FE098E /* InfoViewController.swift */,
 				569A356C2A89DB6D00FE098E /* InfoViewController.xib */,
@@ -265,6 +264,15 @@
 				56DD2D952A8CC68F008A9E12 /* demo4.mp4 */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		56DD2D9B2A8D3256008A9E12 /* ReelCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				56DD2D8D2A8CBA24008A9E12 /* ReelCollectionViewCell.swift */,
+				56DD2D8E2A8CBA24008A9E12 /* ReelCollectionViewCell.xib */,
+			);
+			path = ReelCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
