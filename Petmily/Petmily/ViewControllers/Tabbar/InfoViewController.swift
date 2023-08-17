@@ -56,10 +56,12 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         
         // 선택한 정보 가져오기
         let selectedInfo = InfoList.list[indexPath.row]
+        let selectedUser = UserList.list[indexPath.row]
         
         // 목표 뷰 컨트롤러 초기화
         let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
         vc.selectedInfo = selectedInfo // 정보 전달
+        vc.selectedUser = selectedUser // 유저 정보
         navigationPushController(viewController: vc, animated: true)
     }
 
@@ -90,14 +92,16 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         DispatchQueue.global().async { [weak self] in
             // 새 데이터를 로드
             let newData = InfoList.loadMoreData(page: self?.currentPage ?? 1, itemsPerPage: self?.itemsPerPage ?? 10)
+            let newUserData = UserList.loadMoreUserData(page: self?.currentPage ?? 1, itemsPerPage: self?.itemsPerPage ?? 10)
             
             DispatchQueue.main.async {
                 // 로드된 데이터가 없으면 추가 데이터 없음으로 표시
-                if newData.isEmpty {
+                if newData.isEmpty || newUserData.isEmpty {
                     self?.isMoreDataAvailable = false
                 } else {
                     // 로드된 데이터를 배열의 맨 앞에 추가
                     InfoList.list.insert(contentsOf: newData, at: 0)
+                    UserList.list.insert(contentsOf: newUserData, at: 0)
                     // 현재 페이지를 증가시킴
                     self?.currentPage += 1
                 }

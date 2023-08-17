@@ -34,11 +34,7 @@
                     <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <items>
                         <navigationItem title="정보공유" id="6wh-uF-SoS">
-                            <barButtonItem key="leftBarButtonItem" title="Back" image="arrow.backward" catalog="system" id="8st-bW-4Wk">
-                                <connections>
-                                    <action selector="backButtonTapped:" destination="-1" id="yBF-hc-bpJ"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem key="leftBarButtonItem" title="Back" image="arrow.backward" catalog="system" id="8st-bW-4Wk"/>
                         </navigationItem>
                     </items>
                 </navigationBar>

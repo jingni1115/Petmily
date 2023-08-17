@@ -38,7 +38,7 @@ class InfoTableViewCell: UITableViewCell {
         userTimeLabel.text = "\(info.userName) · \(DateFormatter.formatInfoDate(date: info.time))"
         
         // 첫 번째 이미지를 셀의 이미지 뷰에 설정
-        if let image = info.images.first {
+        if let image = info.images?.first {
             imageLabel.image = image
         } else {
             // 이미지가 없을 경우 이미지 뷰를 비움

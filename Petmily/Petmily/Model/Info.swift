@@ -3,7 +3,7 @@ import UIKit
 // 정보를 나타내는 구조체
 struct Info {
     // 이미지 배열, nil 포함 가능한 UIImage 타입
-    var images: [UIImage?]
+    var images: [UIImage?]?
     // 정보 식별자
     var id: Int
     // 정보 제목
