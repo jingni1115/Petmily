@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DailyViewController" customModule="Petmily" customModuleProvider="target">
             <connections>
+                <outlet property="cvMain" destination="6Lh-4s-pRY" id="S0b-k7-c5i"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,20 +19,77 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="daily" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEU-Pa-ZkZ">
-                    <rect key="frame" x="133" y="268" width="36" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="6Lh-4s-pRY">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aZl-YT-DHc">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="데일리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEU-Pa-ZkZ">
+                    <rect key="frame" x="16.000000000000004" y="107" width="62.333333333333343" height="28.666666666666657"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tC2-xn-lfg">
+                    <rect key="frame" x="334" y="669" width="43" height="129"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pv4-jn-05q">
+                            <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="43" id="14T-Am-pJY"/>
+                                <constraint firstAttribute="width" constant="43" id="CC4-nU-B1a"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="heart" catalog="system"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2d-CQ-tYi">
+                            <rect key="frame" x="0.0" y="43" width="43" height="43"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="43" id="gTi-7w-H6O"/>
+                                <constraint firstAttribute="height" constant="43" id="xpg-AX-vv8"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="text.bubble" catalog="system"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3lZ-EP-jfL">
+                            <rect key="frame" x="0.0" y="86" width="43" height="43"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="43" id="fl0-Rc-hsz"/>
+                                <constraint firstAttribute="width" constant="43" id="ox0-h7-pLW"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="arrowshape.turn.up.right" catalog="system"/>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="-13" y="20"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tC2-xn-lfg" secondAttribute="bottom" constant="20" id="VoK-zr-AKv"/>
+                <constraint firstItem="rEU-Pa-ZkZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="48" id="Wo7-XI-3sU"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Lh-4s-pRY" secondAttribute="trailing" id="ZiL-Xq-u14"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tC2-xn-lfg" secondAttribute="trailing" constant="16" id="bjX-3O-Nhd"/>
+                <constraint firstAttribute="bottom" secondItem="6Lh-4s-pRY" secondAttribute="bottom" id="fpc-ve-Yzk"/>
+                <constraint firstItem="rEU-Pa-ZkZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="hdo-26-sng"/>
+                <constraint firstItem="6Lh-4s-pRY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pdM-4K-FVP"/>
+                <constraint firstItem="6Lh-4s-pRY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qxU-tL-Maj"/>
+            </constraints>
+            <point key="canvasLocation" x="-14.503816793893129" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
+        <image name="arrowshape.turn.up.right" catalog="system" width="128" height="104"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="text.bubble" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
