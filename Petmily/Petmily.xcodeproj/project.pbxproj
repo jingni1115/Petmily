@@ -31,7 +31,6 @@
 		569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35752A89DBBD00FE098E /* IntroViewController.xib */; };
 		569A35782A89FB8600FE098E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569A35772A89FB8600FE098E /* Main.storyboard */; };
 		56C3CF282A8E475E00541EB8 /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF262A8E475E00541EB8 /* CommonHeaderView.swift */; };
-		56C3CF2B2A8E480600541EB8 /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C3CF2A2A8E480600541EB8 /* CommonHeaderView.xib */; };
 		56C3CF2E2A8E482900541EB8 /* UrlBtnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF2C2A8E482900541EB8 /* UrlBtnCollectionViewCell.swift */; };
 		56C3CF2F2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C3CF2D2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib */; };
 		56C3CF312A8E4A4200541EB8 /* BaseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF302A8E4A4200541EB8 /* BaseHeaderViewController.swift */; };
@@ -43,6 +42,7 @@
 		56DD2D992A8CC781008A9E12 /* demo3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D942A8CC68F008A9E12 /* demo3.mp4 */; };
 		56DD2D9A2A8CC781008A9E12 /* demo4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D952A8CC68F008A9E12 /* demo4.mp4 */; };
 		56DD2DB82A8E41B5008A9E12 /* ReelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */; };
+		6BBEA34B2A8E791F00406C4C /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BBEA34A2A8E791F00406C4C /* CommonHeaderView.xib */; };
 		DF06F8412A8CAE3500B8A875 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8402A8CAE3500B8A875 /* User.swift */; };
 		DF06F8462A8CBFC500B8A875 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		DF06F8472A8CBFC500B8A875 /* (null) in Resources */ = {isa = PBXBuildFile; };
@@ -106,9 +106,7 @@
 		569A356D2A89DB6D00FE098E /* AdoptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdoptViewController.xib; sourceTree = "<group>"; };
 		569A35752A89DBBD00FE098E /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		569A35772A89FB8600FE098E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		569A35A72A8C798F00FE098E /* CommonHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 		56C3CF262A8E475E00541EB8 /* CommonHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
-		56C3CF2A2A8E480600541EB8 /* CommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CommonHeaderView.xib; path = ../../../../../../../../.Trash/CommonHeaderView.xib; sourceTree = "<group>"; };
 		56C3CF2C2A8E482900541EB8 /* UrlBtnCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlBtnCollectionViewCell.swift; sourceTree = "<group>"; };
 		56C3CF2D2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UrlBtnCollectionViewCell.xib; sourceTree = "<group>"; };
 		56C3CF302A8E4A4200541EB8 /* BaseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHeaderViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +117,7 @@
 		56DD2D952A8CC68F008A9E12 /* demo4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo4.mp4; sourceTree = "<group>"; };
 		56DD2D962A8CC68F008A9E12 /* demo2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo2.mp4; sourceTree = "<group>"; };
 		56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelCollectionViewCell.swift; sourceTree = "<group>"; };
+		6BBEA34A2A8E791F00406C4C /* CommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 		DF06F8402A8CAE3500B8A875 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DF06F8422A8CAF2100B8A875 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -279,7 +278,7 @@
 		569A35AB2A8C7B6500FE098E /* CommonHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				56C3CF2A2A8E480600541EB8 /* CommonHeaderView.xib */,
+				6BBEA34A2A8E791F00406C4C /* CommonHeaderView.xib */,
 				56C3CF262A8E475E00541EB8 /* CommonHeaderView.swift */,
 			);
 			path = CommonHeaderView;
@@ -288,7 +287,6 @@
 		56C3CF242A8E457000541EB8 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				569A35A72A8C798F00FE098E /* CommonHeaderView.xib */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -450,7 +448,6 @@
 			files = (
 				56DD2D972A8CC781008A9E12 /* demo1.mp4 in Resources */,
 				56DD2D982A8CC781008A9E12 /* demo2.mp4 in Resources */,
-				56C3CF2B2A8E480600541EB8 /* CommonHeaderView.xib in Resources */,
 				56DD2D992A8CC781008A9E12 /* demo3.mp4 in Resources */,
 				56DD2D9A2A8CC781008A9E12 /* demo4.mp4 in Resources */,
 				569A351A2A89C98600FE098E /* LaunchScreen.storyboard in Resources */,
@@ -460,6 +457,7 @@
 				DF06F8472A8CBFC500B8A875 /* (null) in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
+				6BBEA34B2A8E791F00406C4C /* CommonHeaderView.xib in Resources */,
 				DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */,
 				56C3CF342A8E4AE600541EB8 /* InfoDetailViewController.xib in Resources */,
 				569A35172A89C98600FE098E /* Assets.xcassets in Resources */,
