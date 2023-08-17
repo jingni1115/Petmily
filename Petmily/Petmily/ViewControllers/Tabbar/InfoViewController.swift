@@ -22,13 +22,14 @@ class InfoViewController: BaseViewController {
     }
     
     func setUI() {
+        // 테이블 뷰 설정
         tbvInfo.delegate = self
         tbvInfo.dataSource = self
         tbvInfo.register(InfoTableViewCell.self, forCellReuseIdentifier: "InfoTableViewCell")
         let nib = UINib(nibName: "InfoTableViewCell", bundle: nil)
         tbvInfo.register(nib, forCellReuseIdentifier: "InfoTableViewCell")
         
-        
+        // 서치바 설정
         infoSearchBar.backgroundImage = UIImage()
         infoSearchBar.placeholder = "원하시는 동물 종을 검색해보세요"
     }
