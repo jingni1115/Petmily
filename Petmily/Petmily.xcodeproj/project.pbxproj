@@ -37,6 +37,8 @@
 		569A35A82A8C798F00FE098E /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35A72A8C798F00FE098E /* CommonHeaderView.xib */; };
 		569A35AA2A8C7B1D00FE098E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35A92A8C7B1D00FE098E /* Common.swift */; };
 		569A35AF2A8C9D2000FE098E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 569A35AE2A8C9D2000FE098E /* .gitignore */; };
+		B3960F9F2A8E36E500BF2221 /* ContentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3960F9D2A8E36E500BF2221 /* ContentsCollectionViewCell.swift */; };
+		B3960FA02A8E36E500BF2221 /* ContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3960F9E2A8E36E500BF2221 /* ContentsCollectionViewCell.xib */; };
 		B3DF358A2A8DC7D200948630 /* UrlBtnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DF35882A8DC7D200948630 /* UrlBtnCollectionViewCell.swift */; };
 		B3DF358B2A8DC7D200948630 /* UrlBtnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DF35892A8DC7D200948630 /* UrlBtnCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -93,6 +95,8 @@
 		569A35A72A8C798F00FE098E /* CommonHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 		569A35A92A8C7B1D00FE098E /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		569A35AE2A8C9D2000FE098E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B3960F9D2A8E36E500BF2221 /* ContentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B3960F9E2A8E36E500BF2221 /* ContentsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B3DF35882A8DC7D200948630 /* UrlBtnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlBtnCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3DF35892A8DC7D200948630 /* UrlBtnCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UrlBtnCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -248,6 +252,8 @@
 			children = (
 				B3DF35882A8DC7D200948630 /* UrlBtnCollectionViewCell.swift */,
 				B3DF35892A8DC7D200948630 /* UrlBtnCollectionViewCell.xib */,
+				B3960F9D2A8E36E500BF2221 /* ContentsCollectionViewCell.swift */,
+				B3960F9E2A8E36E500BF2221 /* ContentsCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
 				569A35AF2A8C9D2000FE098E /* .gitignore in Resources */,
+				B3960FA02A8E36E500BF2221 /* ContentsCollectionViewCell.xib in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
 				569A35172A89C98600FE098E /* Assets.xcassets in Resources */,
 				B3DF358B2A8DC7D200948630 /* UrlBtnCollectionViewCell.xib in Resources */,
@@ -396,6 +403,7 @@
 				569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */,
 				569A35532A89CE5300FE098E /* AdoptViewController.swift in Sources */,
 				569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */,
+				B3960F9F2A8E36E500BF2221 /* ContentsCollectionViewCell.swift in Sources */,
 				B3DF358A2A8DC7D200948630 /* UrlBtnCollectionViewCell.swift in Sources */,
 				569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,

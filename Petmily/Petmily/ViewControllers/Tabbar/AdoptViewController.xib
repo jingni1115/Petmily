@@ -10,7 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdoptViewController" customModule="Petmily" customModuleProvider="target">
             <connections>
+                <outlet property="cmButton" destination="PqY-HF-4bf" id="IG5-Mp-PWg"/>
                 <outlet property="cvMain" destination="400-lG-1Q4" id="RKp-Ne-ld9"/>
+                <outlet property="heighView" destination="KLO-6t-5iH" id="6F1-AE-63D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,11 +27,35 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="400-lG-1Q4">
-                    <rect key="frame" x="16" y="128" width="361" height="690"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="400-lG-1Q4">
+                    <rect key="frame" x="16" y="120" width="361" height="280"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="280" id="KLO-6t-5iH"/>
+                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6zI-Vg-pAj">
                         <size key="itemSize" width="140" height="160"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqY-HF-4bf">
+                    <rect key="frame" x="16" y="424" width="361" height="140"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="140" id="IFV-mI-z7M"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="nbmimage"/>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IdW-XK-vzd">
+                    <rect key="frame" x="16" y="588" width="361" height="140"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="140" id="x64-f7-86G"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="w0z-02-QMB">
+                        <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -39,18 +65,24 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="400-lG-1Q4" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="JVo-M4-ivW"/>
-                <constraint firstItem="400-lG-1Q4" firstAttribute="top" secondItem="5ye-eH-TpW" secondAttribute="bottom" constant="20.329999999999998" id="Psr-CW-yeO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PqY-HF-4bf" secondAttribute="trailing" constant="16" id="8ED-q6-FnM"/>
+                <constraint firstItem="400-lG-1Q4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="At7-XF-rAL"/>
+                <constraint firstItem="400-lG-1Q4" firstAttribute="top" secondItem="5ye-eH-TpW" secondAttribute="bottom" constant="12.33" id="HqK-Ss-9Un"/>
+                <constraint firstItem="IdW-XK-vzd" firstAttribute="top" secondItem="PqY-HF-4bf" secondAttribute="bottom" constant="24" id="Lhb-j1-n3f"/>
+                <constraint firstItem="IdW-XK-vzd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="OLD-nm-RlP"/>
+                <constraint firstItem="PqY-HF-4bf" firstAttribute="top" secondItem="400-lG-1Q4" secondAttribute="bottom" constant="24" id="Pak-s4-S2U"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5ye-eH-TpW" secondAttribute="trailing" constant="16" id="RgD-q6-KIF"/>
-                <constraint firstItem="400-lG-1Q4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="SiY-PF-E4g"/>
                 <constraint firstItem="5ye-eH-TpW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="USQ-mS-1wS"/>
                 <constraint firstItem="5ye-eH-TpW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Z1D-Zf-M7x"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="400-lG-1Q4" secondAttribute="trailing" constant="16" id="ncH-KH-W4X"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IdW-XK-vzd" secondAttribute="trailing" constant="16" id="a0y-Rl-VEZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="400-lG-1Q4" secondAttribute="trailing" constant="16" id="ouc-nW-yaQ"/>
+                <constraint firstItem="PqY-HF-4bf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ysX-5e-xzL"/>
             </constraints>
             <point key="canvasLocation" x="-14.503816793893129" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
+        <image name="nbmimage" width="580" height="215"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
