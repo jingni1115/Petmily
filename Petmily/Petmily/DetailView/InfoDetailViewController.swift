@@ -10,12 +10,13 @@ import UIKit
 class InfoDetailViewController: UIViewController {
     
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var nameLabel: UILabel!
     
-
+    
     @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var userImageLabel: UIImageView!
@@ -24,7 +25,10 @@ class InfoDetailViewController: UIViewController {
     
     @IBOutlet weak var tagLabel: UILabel!
     
-    @IBOutlet weak var cvInfo: UICollectionView!
+    @IBOutlet weak var contentImageLabel: UIImageView!
+    
+    @IBOutlet weak var contentImageHeight: NSLayoutConstraint!
+    
     
     var selectedInfo: Info?
     
@@ -39,64 +43,47 @@ class InfoDetailViewController: UIViewController {
     }
     
     func setupUI() {
+        
+        // 본문 줄 제한 해제
+        contentLabel.numberOfLines = 0
+        // 본문 단어 줄 바꿈
+        contentLabel.lineBreakMode = .byWordWrapping
+        // 스크롤뷰 가능 설정
+        scrollView.isScrollEnabled = true
+        
+        // 내비게이션 바 색깔 변경
+        navigationController?.navigationBar.barTintColor = UIColor.white
+
+
+        
         guard let info = selectedInfo else {
             return
         }
         
         // 사용자 정보를 가져와서 사용
         if let user = info.user {
-            userImageLabel.image = user.image
+            if let profileImage = user.image {
+                userImageLabel.image = profileImage
+            } else {
+                userImageLabel.image = UIImage(named: "profile-placeholder")
+            }
             // 사용자 정보 관련 UI 설정
             nameLabel.text = info.userName
             titleLabel.text = info.title
             timeLabel.text = DateFormatter.formatInfoDate(date: info.time)
             contentLabel.text = info.description
             tagLabel.text = info.tag
-        }
-        
-        // 콜렉션 뷰 셀 등록
-        cvInfo.register(InfoDetailCollectionViewCell.self, forCellWithReuseIdentifier: "InfoDetailCollectionViewCell")
-        
-        // 나머지 UI 설정
-        cvInfo.isHidden = info.images.isEmpty
-        cvInfo.delegate = self
-        cvInfo.dataSource = self
-        cvInfo.reloadData()
-        
-        // 데이터 확인용 로그 출력
-        print("Selected Info Title: \(info.title)")
-        print("Selected Info Time: \(info.time)")
-        
-        // nil인지 확인
-        if userImageLabel.image == nil {
-            print("User Image is nil")
-        } else {
-            print("User Image is not nil")
-        }
-        
-        
-        if let firstImage = info.images.first {
-            print("Image is not nil")
-        } else {
-            print("Image is nil")
+            // 이미지뷰에 이미지 설정 및 히든 처리
+            if let firstImage = info.images.first, let actualImage = firstImage {
+                contentImageLabel.image = actualImage
+                contentImageLabel.isHidden = false
+                contentImageHeight.constant = (actualImage.size.height / actualImage.size.width) * contentImageLabel.frame.width
+            } else {
+                contentImageLabel.isHidden = true
+                contentImageHeight.constant = 0
+            }
+            view.layoutIfNeeded()
         }
     }
-
 }
-
-extension InfoDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedInfo?.images.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InfoDetailCollectionViewCell", for: indexPath) as? InfoDetailCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-
-        let image = selectedInfo?.images[indexPath.row]
-        cell.configure(with: image)
-
-        return cell
-    }}
+        

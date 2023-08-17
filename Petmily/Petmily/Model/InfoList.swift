@@ -2,10 +2,10 @@ import UIKit
 struct InfoList {
     // 기존 초기 데이터
     static var list: [Info] = [
-        Info(images: [UIImage(named: "chichi.jpg")], id: 0, title: "치치는 귀여워요", description: "정말 귀엽답니다", userName: "박상우", time: Date(), tag: "#페르시안#친칠라#고양이"),
+        Info(images: [UIImage(named: "chichi.jpg")], id: 0, title: "치치는 귀여워요", description: "정말 귀엽답니다다 다다다 다다다다다다 ㅏ다다 다다다다다다 다다ㅏ다다다다람쥐돌이이이 이이이이이 이이ㅣ이이이 이이이이이 이이이이 이야야야 야야야 호호호 호호호호", userName: "박상우", time: Date(), tag: "#페르시안#친칠라#고양이"),
         Info(images: [UIImage(named: "chichi.jpg")], id: 1, title: "치치는 이뻐요", description: "정말 이쁘답니다", userName: "김지은", time: Date(), tag: "#페르시안#친칠라#고양이"),
-        Info(images: [UIImage(named: "chichi.jpg")], id: 2, title: "치치는 사랑스러워요", description: "정말 사랑스럽답니다", userName: "최진훈", time: Date(), tag: "#페르시안#친칠라#고양이"),
-        Info(images: [UIImage(named: "chichi.jpg")], id: 3, title: "치치는 멋져요", description: "정말 멋지답니다", userName: "박현빈", time: Date(), tag: "#페르시안#친칠라#고양이"),
+        Info(images: [nil], id: 2, title: "치치는 사랑스러워요", description: "정말 사랑스럽답니다", userName: "최진훈", time: Date(), tag: "#페르시안#친칠라#고양이"),
+        Info(images: [UIImage(named: "chici.jpg")], id: 3, title: "치치는 멋져요", description: "정말 멋지답니다", userName: "박현빈", time: Date(), tag: "#페르시안#친칠라#고양이"),
         Info(images: [UIImage(named: "chichi.jpg")], id: 4, title: "치치는 똑똑해요", description: "정말 똑똑하답니다", userName: "허수빈", time: Date(), tag: "#페르시안#친칠라#고양이")
     ]
 

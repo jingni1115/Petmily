@@ -39,8 +39,6 @@
 		569A35AF2A8C9D2000FE098E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 569A35AE2A8C9D2000FE098E /* .gitignore */; };
 		DF06F8412A8CAE3500B8A875 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8402A8CAE3500B8A875 /* User.swift */; };
 		DF06F8432A8CAF2100B8A875 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8422A8CAF2100B8A875 /* UserList.swift */; };
-		DF06F8462A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8442A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift */; };
-		DF06F8472A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF06F8452A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib */; };
 		DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */; };
 		DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */; };
 		DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */; };
@@ -103,8 +101,6 @@
 		569A35AE2A8C9D2000FE098E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		DF06F8402A8CAE3500B8A875 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DF06F8422A8CAF2100B8A875 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
-		DF06F8442A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailCollectionViewCell.swift; sourceTree = "<group>"; };
-		DF06F8452A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
@@ -266,8 +262,6 @@
 			children = (
 				DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */,
 				DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */,
-				DF06F8442A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift */,
-				DF06F8452A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -399,7 +393,6 @@
 				569A351A2A89C98600FE098E /* LaunchScreen.storyboard in Resources */,
 				569A35712A89DB6D00FE098E /* AddViewController.xib in Resources */,
 				569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */,
-				DF06F8472A8CBFC500B8A875 /* InfoDetailCollectionViewCell.xib in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
 				569A35AF2A8C9D2000FE098E /* .gitignore in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
@@ -438,7 +431,6 @@
 				569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */,
 				DF1059CE2A8C7AD300F10DE1 /* Info.swift in Sources */,
 				569A35532A89CE5300FE098E /* AdoptViewController.swift in Sources */,
-				DF06F8462A8CBFC500B8A875 /* InfoDetailCollectionViewCell.swift in Sources */,
 				569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */,
 				569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,
