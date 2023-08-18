@@ -273,6 +273,9 @@ class MyPageViewController: BaseViewController {
         secondStackView.layer.shadowOffset = CGSize(width: 0, height: 1)
         secondStackView.layer.shadowOpacity = 1
         secondStackView.layer.shadowRadius = 5.0
+        
+//        secondStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+//        secondStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
     }
     
     func setPetComment() {
@@ -301,7 +304,7 @@ class MyPageViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             thirdStackView.leadingAnchor.constraint(equalTo: secondStackView.leadingAnchor, constant: 20),
-            thirdStackView.trailingAnchor.constraint(equalTo: secondStackView.trailingAnchor, constant: -20)
+//            thirdStackView.trailingAnchor.constraint(equalTo: secondStackView.trailingAnchor, constant: -20)
         ])
     }
     
@@ -323,6 +326,8 @@ class MyPageViewController: BaseViewController {
     func setBtnStackView() {
         btnStackView.addArrangedSubview(dailyBtn)
         btnStackView.addArrangedSubview(infoBtn)
+        btnStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        btnStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
     func setDailyBtn() {
@@ -385,6 +390,11 @@ class MyPageViewController: BaseViewController {
         
         customCollectionView.delegate = self
         customCollectionView.dataSource = self
+        
+        customCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+//        customCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+//        customCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
 }
 
@@ -438,6 +448,21 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = customCollectionView.dequeueReusableCell(withReuseIdentifier: "MyPageCollectionViewCell", for: indexPath) as! MyPageCollectionViewCell
         cell.collectionViewImage.image = InfoList.list[indexPath.row].images?[0]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 셀 선택 해제
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        // 선택한 정보 가져오기
+        let selectedInfo = InfoList.list[indexPath.row]
+        let selectedUser = UserList.list[indexPath.row]
+        
+        // 목표 뷰 컨트롤러 초기화
+        let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
+        vc.selectedInfo = selectedInfo // 정보 전달
+        vc.selectedUser = selectedUser // 유저 정보
+        navigationPushController(viewController: vc, animated: true)
     }
 }
 
