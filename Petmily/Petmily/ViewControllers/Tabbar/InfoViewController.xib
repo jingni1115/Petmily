@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoViewController" customModule="Petmily" customModuleProvider="target">
             <connections>
+                <outlet property="infoSearchBar" destination="7mO-Gl-jtx" id="tj6-AF-fTw"/>
+                <outlet property="tbvInfo" destination="9Es-A2-h6T" id="Msw-u4-nWP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,17 +20,39 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOq-R8-d5P">
-                    <rect key="frame" x="124" y="399" width="29" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정보공유" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blk-xc-Uja">
+                    <rect key="frame" x="16" y="81" width="83.333333333333329" height="28.666666666666671"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7mO-Gl-jtx">
+                    <rect key="frame" x="8" y="125.66666666666669" width="377" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="BMQ-Gm-fvj"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Es-A2-h6T">
+                    <rect key="frame" x="0.0" y="189.66666666666669" width="393" height="628.33333333333326"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="-13" y="20"/>
+            <constraints>
+                <constraint firstItem="9Es-A2-h6T" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4mg-Gb-dHa"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9Es-A2-h6T" secondAttribute="bottom" id="DjK-fp-AJx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7mO-Gl-jtx" secondAttribute="trailing" constant="8" id="ERM-UD-rUV"/>
+                <constraint firstItem="9Es-A2-h6T" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="FGZ-5t-hCg"/>
+                <constraint firstItem="7mO-Gl-jtx" firstAttribute="top" secondItem="blk-xc-Uja" secondAttribute="bottom" constant="16" id="L5V-Zp-3xz"/>
+                <constraint firstItem="blk-xc-Uja" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Lv6-mx-xbF"/>
+                <constraint firstItem="9Es-A2-h6T" firstAttribute="top" secondItem="7mO-Gl-jtx" secondAttribute="bottom" constant="8" id="UBM-CS-YGF"/>
+                <constraint firstItem="7mO-Gl-jtx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="Y3O-FY-4Xk"/>
+                <constraint firstItem="blk-xc-Uja" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="81" id="v2W-yj-CEf"/>
+            </constraints>
+            <point key="canvasLocation" x="-14.503816793893129" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
