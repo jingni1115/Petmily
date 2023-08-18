@@ -19,14 +19,13 @@ class ContentsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         // 이미지 뷰의 반지름을 절반으로 설정하여 동그라미 모양으로 만듭니다.
-        secondImage.layer.cornerRadius = secondImage.frame.size.width / 2
+        secondImage.layer.cornerRadius = secondImage.frame.size.width / 3
         secondImage.clipsToBounds = true
 
         secondLinkBtn.addTarget(self, action: #selector(openLink), for: .touchUpInside)
         
         secondTextLabel.font = UIFont.systemFont(ofSize: 14) // 원하는 폰트 크기로 변경
         
-        secondTextLabel.text = "Your Text Here"
 
     }
     @objc func openLink() {

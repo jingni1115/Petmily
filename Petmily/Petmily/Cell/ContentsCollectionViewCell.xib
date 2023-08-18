@@ -16,11 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nyG-Rr-0dZ">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nyG-Rr-0dZ">
                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="120" id="FDf-ER-dgG"/>
-                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaD-70-Qwq">
                         <rect key="frame" x="0.0" y="119" width="120" height="21"/>
@@ -30,10 +27,6 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiG-y6-0Xr">
                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="120" id="N4c-WE-VhS"/>
-                            <constraint firstAttribute="height" constant="120" id="kcT-Ja-mva"/>
-                        </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain"/>
                     </button>
@@ -45,11 +38,13 @@
                 <constraint firstAttribute="trailing" secondItem="yiG-y6-0Xr" secondAttribute="trailing" id="HiT-Xn-Fck"/>
                 <constraint firstAttribute="bottom" secondItem="ZaD-70-Qwq" secondAttribute="bottom" id="Jxu-zl-stP"/>
                 <constraint firstItem="nyG-Rr-0dZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XIy-54-CqF"/>
+                <constraint firstItem="yiG-y6-0Xr" firstAttribute="top" secondItem="nyG-Rr-0dZ" secondAttribute="top" id="bko-yB-99M"/>
                 <constraint firstItem="nyG-Rr-0dZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hzS-Qe-Yhz"/>
                 <constraint firstItem="yiG-y6-0Xr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pHW-ZS-CB9"/>
-                <constraint firstItem="yiG-y6-0Xr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pbL-6N-EDq"/>
+                <constraint firstItem="yiG-y6-0Xr" firstAttribute="bottom" secondItem="nyG-Rr-0dZ" secondAttribute="bottom" id="pzH-Ai-1sd"/>
                 <constraint firstAttribute="trailing" secondItem="ZaD-70-Qwq" secondAttribute="trailing" id="sqW-vn-NLD"/>
                 <constraint firstItem="ZaD-70-Qwq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wfY-EY-TNg"/>
+                <constraint firstAttribute="bottom" secondItem="nyG-Rr-0dZ" secondAttribute="bottom" constant="20" id="zMZ-yw-vt8"/>
             </constraints>
             <connections>
                 <outlet property="secondImage" destination="nyG-Rr-0dZ" id="zzW-qu-lpQ"/>

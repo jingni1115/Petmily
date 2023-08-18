@@ -28,6 +28,12 @@ class AdoptViewController: BaseViewController {
             "https://brand.naver.com/gatoblanco/products/3354340321?NaPm=ct%3Dllewdwkw%7Cci%3D0zS0002YQrPycYuSKf2S%7Ctr%3Dpla%7Chk%3Dbcc8dfc6c2693b4d6080d3850ff56fc6b1e531bb"
             
         ]
+    let secondLinkURLs = [
+            "https://smartstore.naver.com/nosework/products/2370335571?n_media=27758&n_query=%EA%B0%95%EC%95%84%EC%A7%80%EC%9E%A5%EB%82%9C%EA%B0%90&n_rank=1&n_ad_group=grp-a001-02-000000036744324&n_ad=nad-a001-02-000000258879157&n_campaign_type=2&n_mall_id=ncp_1nlbcr_01&n_mall_pid=2370335571&n_ad_group_type=2&NaPm=ct%3Dllg879ps%7Cci%3D0z80001Q4XXyH%2DsspfjV%7Ctr%3Dpla%7Chk%3D6ffa0b4059c051520d8b17f7401cff8a61249c99",
+            "http://www.puppymarket.co.kr/",
+            "https://namu.wiki/w/%EA%B0%95%ED%98%95%EC%9A%B1",
+            "https://www.naver.com/"
+        ]
     
     
     override func viewDidLoad() {
@@ -45,7 +51,6 @@ class AdoptViewController: BaseViewController {
 
         let secondNibName = UINib(nibName: "ContentsCollectionViewCell", bundle: nil)
         cvSecondMain.register(secondNibName, forCellWithReuseIdentifier: "ContentsCollectionViewCell")
-
     }
     
     // viewDidLayoutSubviews에 reloadData()를 호출하여 레이아웃이 완료된 후 콜렉션 뷰를 새로 고칩니다.
@@ -66,6 +71,7 @@ extension AdoptViewController: UICollectionViewDelegate, UICollectionViewDataSou
         if collectionView == cvMain {
             return 8 // 첫 번째 컬렉션 뷰의 아이템 개수
         } else if collectionView == cvSecondMain {
+            
             return 4 // 두 번째 컬렉션 뷰의 아이템 개수
         }
         return 0
@@ -84,13 +90,18 @@ extension AdoptViewController: UICollectionViewDelegate, UICollectionViewDataSou
             return cell
         } else if collectionView == cvSecondMain {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContentsCollectionViewCell", for: indexPath) as! ContentsCollectionViewCell
+            
             // 두 번째 컬렉션 뷰 셀의 설정을 필요에 맞게 해주세요.
             let secondImageNames = ["image9", "image10", "image11", "image12"]
             cell.secondImage.image = UIImage(named: secondImageNames[indexPath.item])
             
-            let secondLabelTexts = ["강아지 장난감", "애완 마켓", "강형욱", "몰라 이제"] // 원하는 텍스트로 변경
+            let secondLabelTexts = ["장난감", "애완 마켓", "강형욱", "몰라 이제"] // 원하는 텍스트로 변경
             cell.secondTextLabel.text = secondLabelTexts[indexPath.item]
-
+        
+            if indexPath.item < secondLinkURLs.count {
+                cell.linkTwo = secondLinkURLs[indexPath.item]
+            }
+            
             return cell
         }
         
