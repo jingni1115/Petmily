@@ -11,8 +11,9 @@ class AdoptViewController: BaseViewController {
     @IBOutlet weak var cvMain: UICollectionView!
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var cmButton: UIButton!
-    
     @IBOutlet weak var heighView: NSLayoutConstraint!
+    @IBOutlet weak var cvSecondMain: UICollectionView!
+    
     
     let imageNames = ["image1", "image2", "image3", "image4", "image5", "image6", "image7", "image8"] // 이미지 파일 이름
     let textNames = ["분양", "강아지 MBTI", "애견동반 펜션", "고양이 츄르", "애견 미용", "동물 병원", "산책로", "캣타워" ]
@@ -37,8 +38,14 @@ class AdoptViewController: BaseViewController {
         
         let nibName = UINib(nibName: "UrlBtnCollectionViewCell", bundle: nil)
         cvMain.register(nibName, forCellWithReuseIdentifier: "UrlBtnCollectionViewCell")
-        
         cmButton.addTarget(self, action: #selector(openLink), for: .touchUpInside)
+        
+        cvSecondMain.delegate = self
+        cvSecondMain.dataSource = self
+
+        let secondNibName = UINib(nibName: "ContentsCollectionViewCell", bundle: nil)
+        cvSecondMain.register(secondNibName, forCellWithReuseIdentifier: "ContentsCollectionViewCell")
+
     }
     
     // viewDidLayoutSubviews에 reloadData()를 호출하여 레이아웃이 완료된 후 콜렉션 뷰를 새로 고칩니다.
@@ -56,20 +63,38 @@ class AdoptViewController: BaseViewController {
 
 extension AdoptViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        if collectionView == cvMain {
+            return 8 // 첫 번째 컬렉션 뷰의 아이템 개수
+        } else if collectionView == cvSecondMain {
+            return 4 // 두 번째 컬렉션 뷰의 아이템 개수
+        }
+        return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UrlBtnCollectionViewCell", for: indexPath) as! UrlBtnCollectionViewCell
-        cell.imageView.image = UIImage(named: imageNames[indexPath.item])
-        cell.textLabel.text = textNames[indexPath.item]
-        
-        // 각 셀에 해당하는 링크를 설정
-        if indexPath.item < linkURLs.count {
-            cell.link = linkURLs[indexPath.item]
+        if collectionView == cvMain {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UrlBtnCollectionViewCell", for: indexPath) as! UrlBtnCollectionViewCell
+            cell.imageView.image = UIImage(named: imageNames[indexPath.item])
+            cell.textLabel.text = textNames[indexPath.item]
+            
+            if indexPath.item < linkURLs.count {
+                cell.link = linkURLs[indexPath.item]
+            }
+            
+            return cell
+        } else if collectionView == cvSecondMain {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContentsCollectionViewCell", for: indexPath) as! ContentsCollectionViewCell
+            // 두 번째 컬렉션 뷰 셀의 설정을 필요에 맞게 해주세요.
+            let secondImageNames = ["image9", "image10", "image11", "image12"]
+            cell.secondImage.image = UIImage(named: secondImageNames[indexPath.item])
+            
+            let secondLabelTexts = ["강아지 장난감", "애완 마켓", "강형욱", "몰라 이제"] // 원하는 텍스트로 변경
+            cell.secondTextLabel.text = secondLabelTexts[indexPath.item]
+
+            return cell
         }
         
-        return cell
+        return UICollectionViewCell()
     }
     
     // 셀의 크기를 설정합니다.

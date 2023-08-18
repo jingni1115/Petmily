@@ -9,15 +9,54 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ContentsCollectionViewCell" customModule="Petmily" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="130" height="128"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContentsCollectionViewCell" id="gTV-IL-0wX" customClass="ContentsCollectionViewCell" customModule="Petmily" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="130" height="128"/>
+                <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nyG-Rr-0dZ">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="120" id="FDf-ER-dgG"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaD-70-Qwq">
+                        <rect key="frame" x="0.0" y="119" width="120" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiG-y6-0Xr">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="N4c-WE-VhS"/>
+                            <constraint firstAttribute="height" constant="120" id="kcT-Ja-mva"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain"/>
+                    </button>
+                </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <point key="canvasLocation" x="131.29770992366412" y="-11.267605633802818"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="nyG-Rr-0dZ" secondAttribute="trailing" id="F8b-4Q-fyd"/>
+                <constraint firstAttribute="trailing" secondItem="yiG-y6-0Xr" secondAttribute="trailing" id="HiT-Xn-Fck"/>
+                <constraint firstAttribute="bottom" secondItem="ZaD-70-Qwq" secondAttribute="bottom" id="Jxu-zl-stP"/>
+                <constraint firstItem="nyG-Rr-0dZ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XIy-54-CqF"/>
+                <constraint firstItem="nyG-Rr-0dZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hzS-Qe-Yhz"/>
+                <constraint firstItem="yiG-y6-0Xr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pHW-ZS-CB9"/>
+                <constraint firstItem="yiG-y6-0Xr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pbL-6N-EDq"/>
+                <constraint firstAttribute="trailing" secondItem="ZaD-70-Qwq" secondAttribute="trailing" id="sqW-vn-NLD"/>
+                <constraint firstItem="ZaD-70-Qwq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wfY-EY-TNg"/>
+            </constraints>
+            <connections>
+                <outlet property="secondImage" destination="nyG-Rr-0dZ" id="zzW-qu-lpQ"/>
+                <outlet property="secondLinkBtn" destination="yiG-y6-0Xr" id="ikb-ir-1WC"/>
+                <outlet property="secondTextLabel" destination="ZaD-70-Qwq" id="p43-j9-sl8"/>
+            </connections>
+            <point key="canvasLocation" x="210.68702290076334" y="9.8591549295774659"/>
         </collectionViewCell>
     </objects>
 </document>
