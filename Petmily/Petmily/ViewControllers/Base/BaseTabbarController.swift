@@ -41,32 +41,39 @@ class BaseTabbarController: UITabBarController {
         self.tabBar.borderColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9176470588, alpha: 1)
         // 데일리
         self.tabBar.items![0].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
-        self.tabBar.items![0].image = UIImage(named: "icNaviHome")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items![0].selectedImage = UIImage(named: "icNaviHomeOn")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![0].image = UIImage(systemName: "sun.max")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![0].selectedImage = UIImage(systemName: "sun.max.fill")?.withRenderingMode(.alwaysOriginal)
         self.tabBar.items![0].title = "데일리"
+        /*
+             self.tabBar.items![0].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+             self.tabBar.items![0].image = UIImage(systemName: "sun.max")?.withTintColor(.red) // 아이콘 색상 변경
+             self.tabBar.items![0].selectedImage = UIImage(systemName: "sun.max.fill")?.withTintColor(.brown) // 선택된 아이콘 색상 변경
+             self.tabBar.items![0].title = "데일리"
+         */
+        
         
         // 정보공유
         self.tabBar.items![1].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
-        self.tabBar.items![1].image = UIImage(named: "icNaviCafe")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items![1].selectedImage = UIImage(named: "icNaviCafeOn")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![1].image = UIImage(systemName: "person.2")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![1].selectedImage = UIImage(systemName: "person.2.fill")?.withRenderingMode(.alwaysOriginal)
         self.tabBar.items![1].title = "정보공유" // Cafééé
         
         // 추가
         self.tabBar.items![2].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
-        self.tabBar.items![2].image = UIImage(named: "icNaviConnect")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items![2].selectedImage = UIImage(named: "icNaviConnectOn")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![2].image = UIImage(systemName: "plus.app")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![2].selectedImage = UIImage(systemName: "plus.app.fill")?.withRenderingMode(.alwaysOriginal)
         self.tabBar.items![2].title = "Add"
         
         // 펫스티벌
         self.tabBar.items![3].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
-        self.tabBar.items![3].image = UIImage(named: "icNaviConnect")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items![3].selectedImage = UIImage(named: "icNaviConnectOn")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![3].image = UIImage(systemName: "pawprint")?.withRenderingMode(.alwaysOriginal).withTintColor(.black) // 항상 원본 색상으로 설정하고, 갈색으로 변경
+        self.tabBar.items![3].selectedImage = UIImage(systemName: "pawprint.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.brown) // 항상 원본 색상으로 설정하고, 갈색으로 변경
         self.tabBar.items![3].title = "펫스티벌"
         
         // 마이페이지
         self.tabBar.items![4].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
-        self.tabBar.items![4].image = UIImage(named: "icNaviOther")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items![4].selectedImage = UIImage(named: "icNaviOtherOn")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![4].image = UIImage(systemName: "person")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![4].selectedImage = UIImage(systemName: "person.fill")?.withRenderingMode(.alwaysOriginal)
         self.tabBar.items![4].title = "마이페이지"
         
         // iOS13이상에서 탭바의 타이틀 컬러가 적용안되는 이슈 해결 modify by subway 20191024
@@ -85,7 +92,7 @@ class BaseTabbarController: UITabBarController {
 
             appearance.stackedLayoutAppearance.selected.iconColor = .blue
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.231372549, green: 0.3568627451, blue: 0.8509803922, alpha: 1),
+                NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1),
 //              NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Medium", size: 12)!
             ]
 
