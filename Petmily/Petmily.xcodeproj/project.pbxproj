@@ -56,8 +56,6 @@
 		FF7D0D362A8D442900F96E02 /* MyPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */; };
 		FF7D0D372A8D444700F96E02 /* InfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */; };
 		FF7D0D382A8D445100F96E02 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8422A8CAF2100B8A875 /* UserList.swift */; };
-		FFA8AAB52A8F121100869E3D /* BorderTextfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8AAB32A8F121100869E3D /* BorderTextfieldView.swift */; };
-		FFA8AAB62A8F121100869E3D /* BorderTextfieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA8AAB42A8F121100869E3D /* BorderTextfieldView.xib */; };
 		FFEFD89E2A8E7016007D2F30 /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEFD89D2A8E7016007D2F30 /* CommonHeaderView.xib */; };
 /* End PBXBuildFile section */
 
@@ -131,8 +129,6 @@
 		FF2663282A8CB300000222B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
-		FFA8AAB32A8F121100869E3D /* BorderTextfieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BorderTextfieldView.swift; path = "../../../../../../Downloads/무제 폴더/BorderTextfieldView.swift"; sourceTree = "<group>"; };
-		FFA8AAB42A8F121100869E3D /* BorderTextfieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BorderTextfieldView.xib; path = "../../../../../../Downloads/무제 폴더/BorderTextfieldView.xib"; sourceTree = "<group>"; };
 		FFEFD89D2A8E7016007D2F30 /* CommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,8 +261,6 @@
 				569A356A2A89DB6D00FE098E /* MyPageViewController.xib */,
 				FF2663282A8CB300000222B3 /* ProfileViewController.swift */,
 				FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */,
-				FFA8AAB32A8F121100869E3D /* BorderTextfieldView.swift */,
-				FFA8AAB42A8F121100869E3D /* BorderTextfieldView.xib */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -461,7 +455,6 @@
 				569A351A2A89C98600FE098E /* LaunchScreen.storyboard in Resources */,
 				569A35712A89DB6D00FE098E /* AddViewController.xib in Resources */,
 				569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */,
-				FFA8AAB62A8F121100869E3D /* BorderTextfieldView.xib in Resources */,
 				56C3CF2F2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib in Resources */,
 				DF06F8472A8CBFC500B8A875 /* (null) in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
@@ -525,7 +518,6 @@
 				56C3CF312A8E4A4200541EB8 /* BaseHeaderViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
 				56DD2D922A8CBEF8008A9E12 /* ReelData.swift in Sources */,
-				FFA8AAB52A8F121100869E3D /* BorderTextfieldView.swift in Sources */,
 				DF06F8412A8CAE3500B8A875 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,12 +5,16 @@
 //  Created by t2023-m0056 on 2023/08/16.
 //
 
+import AVFoundation
+import Photos
 import UIKit
 
 class ProfileViewController: BaseHeaderViewController {
     
+    let photo = UIImagePickerController() // 앨범
+    
     let datePicker = UIDatePicker()
-
+    
     let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +32,7 @@ class ProfileViewController: BaseHeaderViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-//        stackView.alignment = .center
+        //        stackView.alignment = .center
         stackView.distribution = .fillProportionally
         stackView.spacing = 5
         return stackView
@@ -46,7 +50,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let petNameLabel: UILabel = {
         let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
+        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "동물 이름"
         label.font = UIFont.systemFont(ofSize: 14)
         label.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -55,7 +59,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let petNameTextField: UITextField = {
         let tField = UITextField()
-//        tField.translatesAutoresizingMaskIntoConstraints = false
+        //        tField.translatesAutoresizingMaskIntoConstraints = false
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
@@ -65,7 +69,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let myNameLabel: UILabel = {
         let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
+        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "주인 이름"
         label.font = UIFont.systemFont(ofSize: 14)
         label.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -74,7 +78,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let myNameTextField: UITextField = {
         let tField = UITextField()
-//        tField.translatesAutoresizingMaskIntoConstraints = false
+        //        tField.translatesAutoresizingMaskIntoConstraints = false
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
@@ -84,7 +88,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let genderLabel: UILabel = {
         let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
+        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "성별"
         label.font = UIFont.systemFont(ofSize: 14)
         label.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -93,7 +97,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let genderStackView: UIStackView = {
         let stackView = UIStackView()
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
+        //        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 2
@@ -103,7 +107,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let firstGenderBtn: UIButton = {
         let btn = UIButton()
-//        btn.translatesAutoresizingMaskIntoConstraints = false
+        //        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = .systemGray
         btn.setTitle("남", for: .normal)
         btn.cornerRadius = 5
@@ -112,7 +116,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let secondGenderBtn: UIButton = {
         let btn = UIButton()
-//        btn.translatesAutoresizingMaskIntoConstraints = false
+        //        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = .systemGray3
         btn.setTitle("여", for: .normal)
         btn.cornerRadius = 5
@@ -121,7 +125,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let birthLabel: UILabel = {
         let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
+        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "생년월일"
         label.font = UIFont.systemFont(ofSize: 14)
         label.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -130,7 +134,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let birthTextField: UITextField = {
         let tField = UITextField()
-//        tField.translatesAutoresizingMaskIntoConstraints = false
+        //        tField.translatesAutoresizingMaskIntoConstraints = false
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
@@ -140,7 +144,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let breedLabel: UILabel = {
         let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
+        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "종"
         label.font = UIFont.systemFont(ofSize: 14)
         label.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -149,7 +153,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let breedTextField: UITextField = {
         let tField = UITextField()
-//        tField.translatesAutoresizingMaskIntoConstraints = false
+        //        tField.translatesAutoresizingMaskIntoConstraints = false
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
@@ -159,7 +163,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let commentLabel: UILabel = {
         let label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
+        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "자기 소개"
         label.font = UIFont.systemFont(ofSize: 14)
         label.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -168,7 +172,7 @@ class ProfileViewController: BaseHeaderViewController {
     
     let commentTextView: UITextView = {
         let tv = UITextView()
-//        tv.translatesAutoresizingMaskIntoConstraints = false
+        //        tv.translatesAutoresizingMaskIntoConstraints = false
         tv.layer.cornerRadius = 5
         tv.layer.borderWidth = 1
         tv.layer.borderColor = UIColor.gray.cgColor
@@ -178,8 +182,9 @@ class ProfileViewController: BaseHeaderViewController {
     
     let completeBtn: UIButton = {
         let btn = UIButton()
-//        btn.translatesAutoresizingMaskIntoConstraints = false
+        //        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("확인", for: .normal)
+        btn.backgroundColor = .darkGray
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         btn.cornerRadius = 20
         btn.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -189,9 +194,10 @@ class ProfileViewController: BaseHeaderViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.photo.delegate = self
+        
         setHeaderTitleName(title: "프로필")
         configureView()
-        
     }
     
     func configureView() {
@@ -199,11 +205,15 @@ class ProfileViewController: BaseHeaderViewController {
         
         setScrollView()
         setStackView()
+        
+        setProfileImage()
         setGenderStackView()
         setFirstGenderBtn()
         setSecondGenderBtn()
         setDatePicker()
         setDateToolBar()
+        
+        setCompleteBtn()
     }
     
     func setMenuBtn() {
@@ -258,10 +268,28 @@ class ProfileViewController: BaseHeaderViewController {
             stackView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor),
-            stackView.heightAnchor.constraint(greaterThanOrEqualTo: contentScrollView.heightAnchor),
-//            stackView.widthAnchor.constraint(greaterThanOrEqualTo: contentScrollView.widthAnchor)
+            stackView.heightAnchor.constraint(greaterThanOrEqualTo: contentScrollView.heightAnchor)
+            //            stackView.widthAnchor.constraint(greaterThanOrEqualTo: contentScrollView.widthAnchor)
         ])
     }
+    
+    func setProfileImage() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped(_:)))
+        profileImage.isUserInteractionEnabled = true
+        profileImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageViewTapped(_ sender: AnyObject) {
+        selectImage()
+    }
+    
+    func selectImage(){
+            DispatchQueue.main.async {
+                self.photo.sourceType = .photoLibrary // 앨범 지정 실시
+                self.photo.allowsEditing = true // 편집을 허용하지 않음
+                self.present(self.photo, animated: false, completion: nil)
+            }
+        }
     
     func setGenderStackView() {
         genderStackView.addArrangedSubview(firstGenderBtn)
@@ -329,20 +357,49 @@ class ProfileViewController: BaseHeaderViewController {
     }
     
     func setDateToolBar() {
-        
         let toolBar = UIToolbar()
-
+        
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonHandeler))
-
+        
         toolBar.items = [flexibleSpace, doneButton]
         toolBar.sizeToFit()
         birthTextField.inputAccessoryView = toolBar
     }
-
+    
     @objc func doneButtonHandeler(_ sender: UIBarButtonItem) {
         birthTextField.text = dateFormat(date: datePicker.date)
         // 키보드 내리기
         birthTextField.resignFirstResponder()
+    }
+    
+    func setCompleteBtn() {
+        completeBtn.addTarget(self, action: #selector(clickCompleteBtn), for: .touchUpInside)
+    }
+    
+    @objc func clickCompleteBtn() {
+//        let vc = MyPageViewController()
+//        vc.dummyUserList[0] = User(name: myNameTextField.text ?? "")
+        navigationPopViewController(animated: false) {
+//            CommonUtil.print(output: vc.dummyUserList[0].name)
+        }
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate,  UINavigationControllerDelegate{
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let img = info[UIImagePickerController.InfoKey.originalImage]{
+            // 이미지 뷰에 앨범에서 선택한 사진 표시
+            CommonUtil.print(output: img)
+            self.profileImage.image = img as? UIImage
+        }
+        // 이미지 파커 닫기
+        dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // 이미지 파커 닫기
+        self.dismiss(animated: true, completion: nil)
     }
 }

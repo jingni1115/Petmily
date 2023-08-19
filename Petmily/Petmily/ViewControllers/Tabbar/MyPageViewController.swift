@@ -11,14 +11,7 @@ class MyPageViewController: BaseViewController {
     private var customCollectionView: CustomCollectionView!
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
-    let dummyList = [UIImage(systemName: "pencil"),UIImage(systemName: "pencil"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo"),UIImage(systemName: "photo")]
-    
-//    let contentScrollView: UIScrollView = {
-//        let scrollView = UIScrollView()
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.showsVerticalScrollIndicator = false
-//        return scrollView
-//    }()
+    var dummyUserList = UserList.list
     
     let menuBtn: UIButton = {
         let btn = UIButton()
@@ -43,11 +36,10 @@ class MyPageViewController: BaseViewController {
     }()
 
     var profileImg: UIImageView = {
-        let movieImg = UIImageView()
-        movieImg.image = UIImage(named: "profile-placeholder")
-        movieImg.translatesAutoresizingMaskIntoConstraints = false
-        movieImg.layer.cornerRadius = 50
-        return movieImg
+        let Img = UIImageView()
+        Img.translatesAutoresizingMaskIntoConstraints = false
+        Img.layer.cornerRadius = 50
+        return Img
     }()
 
     var myName: UILabel = {
@@ -157,6 +149,17 @@ class MyPageViewController: BaseViewController {
         super.viewDidLoad()
 
         configureView()
+        
+        CommonUtil.print(output: self.dummyUserList[0].name)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureView()
+        CommonUtil.print(output: self.dummyUserList[0].name)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        CommonUtil.print(output: self.dummyUserList[0].name)
     }
     
     func configureView() {
@@ -164,7 +167,6 @@ class MyPageViewController: BaseViewController {
         setCollectionView()
         
         setMenuBtn()
-//        setScrollView()
         
         setFirstStackView()
         setProfileImg()
@@ -194,17 +196,6 @@ class MyPageViewController: BaseViewController {
         ])
     }
     
-//    func setScrollView() {
-//        view.addSubview(contentScrollView)
-//
-//        NSLayoutConstraint.activate([
-//            contentScrollView.topAnchor.constraint(equalTo: menuBtn.bottomAnchor, constant: 16),
-//            contentScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            contentScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            contentScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-//        ])
-//    }
-    
     func setFirstStackView() {
 //        contentScrollView.addSubview(firstStackView)
         view.addSubview(firstStackView)
@@ -228,6 +219,7 @@ class MyPageViewController: BaseViewController {
     
     func setProfileImg() {
         profileView.addSubview(profileImg)
+        profileImg.image = (dummyUserList[0].image != nil) ? dummyUserList[0].image : UIImage(named: "profile-placeholder")
         NSLayoutConstraint.activate([
             profileImg.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 4),
             profileImg.leadingAnchor.constraint(equalTo: profileView.leadingAnchor, constant: 16),
@@ -239,7 +231,7 @@ class MyPageViewController: BaseViewController {
     
     func setMyName() {
         profileView.addSubview(myName)
-        myName.text = "OO님의"
+        myName.text = "\(dummyUserList[0].name)님의"
         myName.font = UIFont.systemFont(ofSize: 18)
         NSLayoutConstraint.activate([
             myName.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 4),
@@ -274,8 +266,8 @@ class MyPageViewController: BaseViewController {
         secondStackView.layer.shadowOpacity = 1
         secondStackView.layer.shadowRadius = 5.0
         
-//        secondStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-//        secondStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        secondStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        secondStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
     }
     
     func setPetComment() {
@@ -287,7 +279,7 @@ class MyPageViewController: BaseViewController {
     @objc
     func updateProfile(_ gesture: UITapGestureRecognizer) {
         let vc = ProfileViewController()
-        navigationController?.pushViewController(vc, animated: false)
+        self.navigationPushController(viewController: vc, animated: false)
     }
     
     func setThirdStackView() {
@@ -304,7 +296,7 @@ class MyPageViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             thirdStackView.leadingAnchor.constraint(equalTo: secondStackView.leadingAnchor, constant: 20),
-//            thirdStackView.trailingAnchor.constraint(equalTo: secondStackView.trailingAnchor, constant: -20)
+            thirdStackView.trailingAnchor.constraint(equalTo: secondStackView.trailingAnchor, constant: -20)
         ])
     }
     
