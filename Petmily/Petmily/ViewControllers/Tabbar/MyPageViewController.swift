@@ -140,11 +140,13 @@ class MyPageViewController: BaseViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    
+    var profileData: UserModel?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureView()
+        getProfileData()
     }
     
     func configureView() {
@@ -169,6 +171,14 @@ class MyPageViewController: BaseViewController {
         setBtnStackView()
         setDailyBtn()
         setInfoBtn()
+    }
+    
+    func getProfileData() {
+        MyFirestore().getUserData { result in
+            self.profileData = result
+            print(self.profileData)
+            self.configureView()
+        }
     }
     
     func setMenuBtn() {
@@ -225,7 +235,7 @@ class MyPageViewController: BaseViewController {
     
     func setMyName() {
         profileView.addSubview(myName)
-        myName.text = "OO님의"
+        myName.text = "\(profileData?.name ?? "")님의"
         myName.font = UIFont.systemFont(ofSize: 18)
         NSLayoutConstraint.activate([
             myName.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 4),
@@ -235,7 +245,7 @@ class MyPageViewController: BaseViewController {
     
     func setPetName() {
         profileView.addSubview(petName)
-        petName.text = "동물이름"
+        petName.text = profileData?.animalName ?? ""
         petName.font = UIFont.boldSystemFont(ofSize: 22)
         NSLayoutConstraint.activate([
             petName.topAnchor.constraint(equalTo: myName.bottomAnchor, constant: 4),
@@ -255,7 +265,7 @@ class MyPageViewController: BaseViewController {
     
     func setPetComment() {
         secondStackView.addArrangedSubview(petComment)
-        petComment.text = "\"안녕하세요 OO이네 강아지 OO입니다\""
+        petComment.text = "\"안녕하세요 \(profileData?.name ?? "")네 강아지 \(profileData?.animalName ?? "")입니다\""
         petComment.font = UIFont.boldSystemFont(ofSize: 14)
     }
     
@@ -282,17 +292,17 @@ class MyPageViewController: BaseViewController {
     }
     
     func setPetGender() {
-        petGender.text = "성별: O"
+        petGender.text = "성별: \(profileData?.gender ?? "")"
         petGender.font = UIFont.systemFont(ofSize: 12)
     }
     
     func setPetBirth() {
-        petBirth.text = "생일: OOOO-OO-OO"
+        petBirth.text = "생일: \(profileData?.birth ?? "")"
         petBirth.font = UIFont.systemFont(ofSize: 12)
     }
     
     func setPetBreed() {
-        petBreed.text = "종: OOO"
+        petBreed.text = "종: \(profileData?.type ?? "")"
         petBreed.font = UIFont.systemFont(ofSize: 12)
     }
     

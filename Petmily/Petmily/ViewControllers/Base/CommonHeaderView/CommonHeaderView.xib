@@ -40,7 +40,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0p4-6Z-L67">
-                            <rect key="frame" x="60" y="0.0" width="255" height="48"/>
+                            <rect key="frame" x="60" y="0.0" width="245" height="48"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -48,7 +48,6 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="0p4-6Z-L67" secondAttribute="trailing" constant="60" id="51T-C8-sjh"/>
                         <constraint firstItem="Vti-rp-tX9" firstAttribute="top" secondItem="mUc-yC-ecr" secondAttribute="top" id="Mli-0M-DrT"/>
                         <constraint firstAttribute="trailing" secondItem="hp8-fY-Cgh" secondAttribute="trailing" id="ODO-nj-cJ0"/>
                         <constraint firstAttribute="bottom" secondItem="Vti-rp-tX9" secondAttribute="bottom" id="R3m-iC-o4c"/>
@@ -56,6 +55,7 @@
                         <constraint firstItem="0p4-6Z-L67" firstAttribute="top" secondItem="mUc-yC-ecr" secondAttribute="top" id="VTe-hX-JFW"/>
                         <constraint firstItem="0p4-6Z-L67" firstAttribute="leading" secondItem="Vti-rp-tX9" secondAttribute="trailing" id="W2O-0L-ddk"/>
                         <constraint firstItem="Vti-rp-tX9" firstAttribute="leading" secondItem="mUc-yC-ecr" secondAttribute="leading" id="YVy-Kt-TDJ"/>
+                        <constraint firstAttribute="trailing" secondItem="0p4-6Z-L67" secondAttribute="trailing" constant="70" id="am2-KA-moH"/>
                         <constraint firstAttribute="bottom" secondItem="hp8-fY-Cgh" secondAttribute="bottom" id="ekM-AK-M2w"/>
                         <constraint firstItem="hp8-fY-Cgh" firstAttribute="top" secondItem="0p4-6Z-L67" secondAttribute="bottom" constant="1" id="uhg-Ue-NZu"/>
                     </constraints>

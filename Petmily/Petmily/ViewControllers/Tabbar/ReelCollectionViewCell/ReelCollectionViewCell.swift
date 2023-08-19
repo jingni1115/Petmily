@@ -15,7 +15,8 @@ class ReelCollectionViewCell: UICollectionViewCell {
     var isMuted = false
     var pause = false
 
-    var reelData : ReelData?
+    var reelData : DailyModel?
+    weak var delegate: DailyViewController?
     
     let playerView : UIView = {
         let pv = UIView()
@@ -34,6 +35,12 @@ class ReelCollectionViewCell: UICollectionViewCell {
         addSubview(playerView)
 //        addSubview(reelDetails)
         setUpConstrains()
+        NotificationCenter.default
+            .addObserver(self,
+            selector: #selector(playerDidFinishPlaying),
+            name: .AVPlayerItemDidPlayToEndTime,
+            object: avplayerLayer
+        )
         
 //        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction))
 //        addGestureRecognizer(longPress)
@@ -78,6 +85,10 @@ class ReelCollectionViewCell: UICollectionViewCell {
         ])
     }
     
+    @objc func playerDidFinishPlaying(note: NSNotification) {
+        print("Video Finished")
+        delegate?.overMove()
+    }
     
     
 //    @objc func doubleTap(_ gesture : UIGestureRecognizer){

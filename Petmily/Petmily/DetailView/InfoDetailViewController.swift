@@ -29,8 +29,8 @@ class InfoDetailViewController: BaseHeaderViewController {
     @IBOutlet weak var contentImageHeight: NSLayoutConstraint!
     
     // 이전 화면에서 선택된 정보 데이터
-    var selectedInfo: Info?
-    var selectedUser : User?
+    var selectedInfo: InfoModel?
+    var selectedUser : UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,31 +74,31 @@ class InfoDetailViewController: BaseHeaderViewController {
             return
         }
         
-        // 선택된 정보의 사용자 정보가 있을 경우 UI에 반영
-        // 사용자 프로필 이미지 설정 또는 기본 이미지 설정
-        if let profileImage = user.image {
-            userImageLabel.image = profileImage
-        } else {
-            userImageLabel.image = UIImage(named: "profile-placeholder")
-        }
+//        // 선택된 정보의 사용자 정보가 있을 경우 UI에 반영
+//        // 사용자 프로필 이미지 설정 또는 기본 이미지 설정
+//        if let profileImage = user.image {
+//            userImageLabel.image = profileImage
+//        } else {
+//            userImageLabel.image = UIImage(named: "profile-placeholder")
+//        }
         
         // 사용자 정보 관련 UI 설정 
-        nameLabel.text = info.userName
+        nameLabel.text = user.name
         titleLabel.text = info.title
-        timeLabel.text = DateFormatter.formatInfoDate(date: info.time)
-        contentLabel.text = info.description
-        tagLabel.text = info.tag
+//        timeLabel.text = DateFormatter.formatInfoDate(date: info.time)
+        contentLabel.text = info.content
+//        tagLabel.text = info.tag
         
-        // 정보에 첨부된 이미지가 있는 경우 이미지뷰에 이미지 설정 및 크기 조정
-        if let firstImage = info.images?.first, let actualImage = firstImage {
-            contentImageLabel.image = actualImage
-            contentImageLabel.isHidden = false
-            contentImageHeight.constant = (actualImage.size.height / actualImage.size.width) * contentImageLabel.frame.width
-        } else {
-            // 첨부된 이미지가 없을 경우 이미지뷰를 숨김 처리하고 높이 조정
-            contentImageLabel.isHidden = true
-            contentImageHeight.constant = 0
-        }
+//        // 정보에 첨부된 이미지가 있는 경우 이미지뷰에 이미지 설정 및 크기 조정
+//        if let firstImage = info.images?.first, let actualImage = firstImage {
+//            contentImageLabel.image = actualImage
+//            contentImageLabel.isHidden = false
+//            contentImageHeight.constant = (actualImage.size.height / actualImage.size.width) * contentImageLabel.frame.width
+//        } else {
+//            // 첨부된 이미지가 없을 경우 이미지뷰를 숨김 처리하고 높이 조정
+//            contentImageLabel.isHidden = true
+//            contentImageHeight.constant = 0
+//        }
         // UI 업데이트 적용
         view.layoutIfNeeded()
     }
