@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		565C8B062A90CE8500167A92 /* ReplySheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C8B052A90CE8500167A92 /* ReplySheetViewController.swift */; };
+		565C8B0F2A9129C900167A92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */; };
 		569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A350D2A89C98500FE098E /* AppDelegate.swift */; };
 		569A35122A89C98500FE098E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35112A89C98500FE098E /* ViewController.swift */; };
 		569A35172A89C98600FE098E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 569A35162A89C98600FE098E /* Assets.xcassets */; };
@@ -39,7 +40,6 @@
 		56C3CF342A8E4AE600541EB8 /* InfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */; };
 		56C3CF382A8E765000541EB8 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF372A8E765000541EB8 /* InfoModel.swift */; };
 		56C3CF3A2A8E768D00541EB8 /* MyFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF392A8E768D00541EB8 /* MyFirestore.swift */; };
-		56C3CF3C2A8E76E200541EB8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56C3CF3B2A8E76E200541EB8 /* GoogleService-Info.plist */; };
 		56C3CF3F2A8E77B600541EB8 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 56C3CF3E2A8E77B600541EB8 /* FirebaseAppCheck */; };
 		56C3CF412A8E77B600541EB8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 56C3CF402A8E77B600541EB8 /* FirebaseAuth */; };
 		56C3CF432A8E77B600541EB8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 56C3CF422A8E77B600541EB8 /* FirebaseDatabase */; };
@@ -96,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		565C8B052A90CE8500167A92 /* ReplySheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplySheetViewController.swift; sourceTree = "<group>"; };
+		565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		569A350A2A89C98500FE098E /* Petmily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petmily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569A350D2A89C98500FE098E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		569A35112A89C98500FE098E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +133,6 @@
 		56C3CF322A8E4A5C00541EB8 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		56C3CF372A8E765000541EB8 /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
 		56C3CF392A8E768D00541EB8 /* MyFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirestore.swift; sourceTree = "<group>"; };
-		56C3CF3B2A8E76E200541EB8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		56C3CF562A8F348A00541EB8 /* DailyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 		56C3CF582A8F349A00541EB8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		56DD2D932A8CC68F008A9E12 /* demo1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo1.mp4; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 				569A35772A89FB8600FE098E /* Main.storyboard */,
 				569A35162A89C98600FE098E /* Assets.xcassets */,
 				569A35182A89C98600FE098E /* LaunchScreen.storyboard */,
-				56C3CF3B2A8E76E200541EB8 /* GoogleService-Info.plist */,
+				565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */,
 				569A351B2A89C98600FE098E /* Info.plist */,
 			);
 			path = Petmily;
@@ -532,7 +532,6 @@
 				56C3CF2F2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib in Resources */,
 				DF06F8472A8CBFC500B8A875 /* (null) in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
-				56C3CF3C2A8E76E200541EB8 /* GoogleService-Info.plist in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
 				6BBEA34B2A8E791F00406C4C /* CommonHeaderView.xib in Resources */,
 				DFD3A23F2A8E9333006867A0 /* CommonHeaderView.xib in Resources */,
@@ -542,6 +541,7 @@
 				569A35782A89FB8600FE098E /* Main.storyboard in Resources */,
 				569A35702A89DB6D00FE098E /* MyPageViewController.xib in Resources */,
 				569A35722A89DB6D00FE098E /* InfoViewController.xib in Resources */,
+				565C8B0F2A9129C900167A92 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
