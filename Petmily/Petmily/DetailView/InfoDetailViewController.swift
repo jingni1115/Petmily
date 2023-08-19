@@ -30,6 +30,10 @@ class InfoDetailViewController: BaseHeaderViewController {
     
     @IBOutlet weak var tvReply: UITableView!
     
+    @IBOutlet weak var tvReplyHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var tfReply: UITextField!
+    
     // 이전 화면에서 선택된 정보 데이터
     var selectedInfo: InfoModel?
     var selectedUser : UserModel?
@@ -101,19 +105,41 @@ class InfoDetailViewController: BaseHeaderViewController {
 //            contentImageLabel.isHidden = true
 //            contentImageHeight.constant = 0
 //        }
+        
         let nib = UINib(nibName: "ReplyTableViewCell", bundle: nil)
         tvReply.register(nib, forCellReuseIdentifier: "ReplyTableViewCell")
         self.tvReply.delegate = self
         self.tvReply.dataSource = self
         
+        tfReply.delegate = self
+
+        
         // UI 업데이트 적용
         view.layoutIfNeeded()
     }
+    
+    @IBAction func submitButtonTapped(_ sender: UIButton) {
+        submitReply()
+    }
+    
+    // 댓글 작성 버튼이 눌렸을 때 호출될 메서드
+    func submitReply() {
+        if let reply = tfReply.text, !reply.isEmpty {
+            // 댓글을 저장하거나 처리하는 코드를 작성
+            // selectedInfo?.reply에 추가하거나 데이터베이스에 저장
+            // 댓글 작성 후 필요한 업데이트도 수행 가능
+            tfReply.text = "" // 댓글 작성 후 텍스트 필드 초기화
+            // 댓글 작성 후 댓글창 높이 업데이트
+            updateReplyTableViewHeight()
+        }
+    }
 }
-extension InfoDetailViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension InfoDetailViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedInfo?.reply.count ?? 0
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReplyTableViewCell", for: indexPath) as! ReplyTableViewCell
@@ -129,5 +155,26 @@ extension InfoDetailViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    // 댓글창 높이 업데이트
+    func updateReplyTableViewHeight() {
+        let numRows = selectedInfo?.reply.count ?? 0
+        print("--------------\(numRows)")
+        let rowHeight = 68.0
+        let newHeight = CGFloat(numRows) * rowHeight
+        tvReplyHeight.constant = newHeight
+    }
     
+    // 뷰가 나타날 때 댓글 테이블 뷰 높이 업데이트
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateReplyTableViewHeight()
+    }
+    
+    // 텍스트 필드의 Return 키를 눌렀을 때 동작 설정
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // 키보드 닫기
+        submitReply() // 댓글 작성 버튼 호출
+        return true
+    }
 }
+
