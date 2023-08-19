@@ -147,19 +147,12 @@ class MyPageViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureView()
-        
-        CommonUtil.print(output: self.dummyUserList[0].name)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        configureView()
-        CommonUtil.print(output: self.dummyUserList[0].name)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        CommonUtil.print(output: self.dummyUserList[0].name)
+        setCollectionView()
+        setFirstStackView()
     }
     
     func configureView() {
@@ -385,8 +378,10 @@ class MyPageViewController: BaseViewController {
         
         customCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
+//        customCollectionView.topAnchor.constraint(equalTo: btnStackView.bottomAnchor).isActive = true
 //        customCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
 //        customCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+//        customCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 }
 
