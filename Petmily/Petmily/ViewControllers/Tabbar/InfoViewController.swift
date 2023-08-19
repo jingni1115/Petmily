@@ -17,6 +17,9 @@ class InfoViewController: BaseViewController, UISearchBarDelegate {
     // 검색 결과를 저장할 배열
     var filteredInfoList = [Info]()
     
+    var infoData: [InfoModel]?
+    var userData: UserModel?
+    
     @IBOutlet weak var tbvInfo: UITableView!
     
     @IBOutlet weak var infoSearchBar: UISearchBar!
@@ -25,6 +28,23 @@ class InfoViewController: BaseViewController, UISearchBarDelegate {
         super.viewDidLoad()
         tbvInfo.reloadData()
         setUI()
+        getInfoData()
+    }
+    
+    func getInfoData() {
+        MyFirestore().fetchInfoData { result in
+            self.infoData = result
+            print(result)
+            self.getUserData()
+        }
+    }
+    
+    func getUserData() {
+        MyFirestore().getUserData { result in
+            self.userData = result
+            print(result)
+            self.tbvInfo.reloadData()
+        }
     }
     
     func setUI() {
@@ -77,13 +97,13 @@ class InfoViewController: BaseViewController, UISearchBarDelegate {
 extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
     // 출력할 셀의 개수
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredInfoList.count
+        return infoData?.count ?? 0
     }
     
     // 셀 설정
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
-        cell.setInfo(filteredInfoList[indexPath.row])
+        cell.setInfo(info: infoData?[indexPath.row])
         return cell
     }
     
@@ -92,8 +112,9 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         tbvInfo.deselectRow(at: indexPath, animated: true)
         
         // 선택한 정보 가져오기
-        let selectedInfo = filteredInfoList[indexPath.row]
-        let selectedUser = UserList.list[indexPath.row]
+        let selectedInfo = infoData?[indexPath.row]
+        let selectedUser = userData
+        
         
         // 목표 뷰 컨트롤러 초기화
         let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)

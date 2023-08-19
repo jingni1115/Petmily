@@ -173,12 +173,15 @@ class ProfileViewController: BaseViewController {
         return btn
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
         
     }
+    
+
     
     func configureView() {
         setMenuBtn()
@@ -189,6 +192,8 @@ class ProfileViewController: BaseViewController {
         setFirstGenderBtn()
         setSecondGenderBtn()
     }
+    
+
     
     func setMenuBtn() {
         view.addSubview(menuBtn)
