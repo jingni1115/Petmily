@@ -28,6 +28,8 @@ class InfoDetailViewController: BaseHeaderViewController {
     
     @IBOutlet weak var contentImageHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var tvReply: UITableView!
+    
     // 이전 화면에서 선택된 정보 데이터
     var selectedInfo: InfoModel?
     var selectedUser : UserModel?
@@ -99,10 +101,33 @@ class InfoDetailViewController: BaseHeaderViewController {
 //            contentImageLabel.isHidden = true
 //            contentImageHeight.constant = 0
 //        }
+        let nib = UINib(nibName: "ReplyTableViewCell", bundle: nil)
+        tvReply.register(nib, forCellReuseIdentifier: "ReplyTableViewCell")
+        self.tvReply.delegate = self
+        self.tvReply.dataSource = self
+        
         // UI 업데이트 적용
         view.layoutIfNeeded()
     }
 }
-
-
-
+extension InfoDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return selectedInfo?.reply.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReplyTableViewCell", for: indexPath) as! ReplyTableViewCell
+        var name: [String] = []
+        var reply: [String] = []
+        for (key,value) in selectedInfo?.reply ?? [:] {
+            name.append(key)
+            reply.append(value)
+        }
+        cell.lblName.text = name[indexPath.row]
+        cell.lblReply.text = reply[indexPath.row]
+        
+        return cell
+    }
+    
+    
+}

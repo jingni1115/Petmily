@@ -32,7 +32,7 @@ class InfoViewController: BaseViewController, UISearchBarDelegate {
     }
     
     func getInfoData() {
-        MyFirestore().fetchInfoData { result in
+        FirestoreService().fetchInfoData { result in
             self.infoData = result
             print(result)
             self.getUserData()
@@ -40,7 +40,7 @@ class InfoViewController: BaseViewController, UISearchBarDelegate {
     }
     
     func getUserData() {
-        MyFirestore().getUserData { result in
+        FirestoreService().getUserData { result in
             self.userData = result
             print(result)
             self.tbvInfo.reloadData()
