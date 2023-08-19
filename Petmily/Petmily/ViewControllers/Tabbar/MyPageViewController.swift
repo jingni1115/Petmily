@@ -174,7 +174,7 @@ class MyPageViewController: BaseViewController {
     }
     
     func getProfileData() {
-        MyFirestore().getUserData { result in
+        FirestoreService().getUserData { result in
             self.profileData = result
             print(self.profileData)
             self.configureView()

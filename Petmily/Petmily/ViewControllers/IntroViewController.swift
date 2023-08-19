@@ -11,19 +11,14 @@ class IntroViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppDelegate.applicationDelegate().changeInitViewController(type: .Main)
-        // Do any additional setup after loading the view.
+        getUserData()
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getUserData() {
+        FirestoreService().getUserData { result in
+            DataManager.sharedInstance.userInfo = result
+            CommonUtil.print(output: result)
+            AppDelegate.applicationDelegate().changeInitViewController(type: .Main)
+        }
     }
-    */
-
 }

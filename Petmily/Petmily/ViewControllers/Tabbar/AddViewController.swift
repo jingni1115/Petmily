@@ -170,7 +170,7 @@ class AddViewController: BaseViewController {
     }
     
     func requestAddDaily() {
-        MyFirestore().addDocument(content: shortTxtF.text ?? "", imageURL: dailyImageURL ?? "")
+        FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", imageURL: dailyImageURL ?? "")
     }
     
     

@@ -12,11 +12,13 @@ struct InfoModel: Codable {
     var imageURL: String = ""
     let title: String?
     let content: String?
+    var reply: [String: String]
     var like: Int = 0
 
     enum CodingKeys: String, CodingKey {
         case id
         case title
         case content
+        case reply
     }
 }

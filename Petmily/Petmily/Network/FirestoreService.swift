@@ -1,5 +1,5 @@
 //
-//  MyFirestore.swift
+//  FirestoreService.swift
 //  Petmily
 //
 //  Created by 김지은 on 2023/08/18.
@@ -9,14 +9,38 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-final class MyFirestore {
+final class FirestoreService {
     let db = Firestore.firestore()
     var id: String = ""
+    var userID = DataManager.sharedInstance.userInfo?.id ?? ""
     
-    func addDocument(content: String, imageURL: String) {
+    // UserInfo 데이터 불러오기
+    func getUserData(completion: @escaping (UserModel) -> Void) {
+        var names: [String:Any] = [:]
+        var result: UserModel?
+        
+        db.collection("users").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                completion(result!) // 호출하는 쪽에 빈 배열 전달
+                return
+            }
+            
+            for document in querySnapshot!.documents {
+                if document.documentID == "y527FpLxOC4LWg2jMO01" {
+                    names = document.data()
+                }
+            }
+            result = self.dicToObject(objectType: UserModel.self, dictionary: names)
+            completion(result!) // 성공 시 이름 배열 전달
+        }
+    }
+    
+    // Daily Document 추가
+    func addDailyDocument(content: String, imageURL: String) {
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
-        ref = db.collection("daily").addDocument(data: [
+        ref = db.collection("daily").document().collection(self.userID).addDocument(data: [
             "content": content,
             "imageURL": imageURL
         ]) { err in
@@ -28,18 +52,34 @@ final class MyFirestore {
         }
     }
     
-    func getDocumentID() {
-        Firestore.firestore().collection("daily").getDocuments() { (querySnapshot, err) in
+    // Daily의 Reply 추가
+    func addDailyReply(reply: String) {
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        let replyRef = db.collection("daily").document().collection(self.userID).document("reply")
+        replyRef.updateData([
+            "content": reply
+        ]) { err in
             if let err = err {
-                print("Error getting documents: \(err)")
+                print("Error adding document: \(err)")
             } else {
-                for document in querySnapshot!.documents {
-                    self.id = document.documentID
-                    print("\(document.documentID)") // Get documentID
-                }
+                print("Document added with ID: \(ref!.documentID)")
             }
         }
     }
+    
+//    func getDocumentID() {
+//        Firestore.firestore().collection("daily").getDocuments() { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    self.id = document.documentID
+//                    print("\(document.documentID)") // Get documentID
+//                }
+//            }
+//        }
+//    }
     
     //    func addData() {
     //        do {
@@ -49,40 +89,7 @@ final class MyFirestore {
     //        }
     //    }
     
-    func updateData() {
-        let washingtonRef = db.collection("cities").document("DC")
-        
-        // Set the "capital" field of the city 'DC'
-        washingtonRef.updateData([
-            "capital": true
-        ]) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated")
-            }
-        }
-    }
-    
-    func getDocuments() {
-        //        var dic: [DailyModel] = []
-        //        let userDocument = self.db.collection("daily")
-        //        userDocument.getDocument(completion: { document, error in
-        //            guard let user = try! document?.data(as: [DailyModel].self) else { return }
-        //            dic = user
-        //        })
-        //        return dic
-        //        db.collection("daily").getDocuments() { (querySnapshot, err) in
-        //            if let err = err {
-        //                print("Error getting documents: \(err)")
-        //            } else {
-        //                for document in querySnapshot!.documents {
-        //                    print("\(document.documentID) => \(document.data())")
-        //                    guard let user = try! document.data(as: [DailyModel]?.self) else { return }
-        //                    self.dic = user
-        //                }
-        //            }
-        //        }
+    func getDailyDocuments() {
         let userDocument = self.db.collection("daily")
         userDocument.getDocuments { (snapshot, err) in
             if let err = err {
@@ -92,8 +99,8 @@ final class MyFirestore {
                 for document in snapshot.documents {
                     if document.documentID == self.id {
                         // 서버에 저장된 딕셔너리 데이터를 가져온다.
-                        guard let user = try! document.data(as: [DailyModel]?.self) else { return }
-                        print("\(self.id) => \(user)")
+                        guard let data = try! document.data(as: [DailyModel]?.self) else { return }
+                        print("\(self.userID) => \(data)")
                         //                        guard var data = document["Map"] as? [String : String] else { return }
                         //                        // 딕셔너리 데이터를 직접 삭제
                         //                        data["Key1"] = nil
@@ -105,29 +112,6 @@ final class MyFirestore {
         }
     }
     
-    // 데이터 읽어오기
-    func getUserData(completion: @escaping (UserModel) -> Void) {
-        var names: [String:Any] = [:]
-        var mmm: UserModel?
-        
-        db.collection("users").getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-                completion(mmm!) // 호출하는 쪽에 빈 배열 전달
-                return
-            }
-            
-            for document in querySnapshot!.documents {
-                if document.documentID == "y527FpLxOC4LWg2jMO01" {
-                    if let name = document.data() as? [String:Any] {
-                        names = name
-                    }
-                }
-            }
-            mmm = self.dicToObject(objectType: UserModel.self, dictionary: names)
-            completion(mmm!) // 성공 시 이름 배열 전달
-        }
-    }
     
     // 데이터 읽어오기
     func fetchUserData(completion: @escaping ([DailyModel]) -> Void) {
@@ -174,12 +158,12 @@ final class MyFirestore {
             completion(mmm!) // 성공 시 이름 배열 전달
         }
     }
-
+    
     
     
 }
 
-extension MyFirestore {
+extension FirestoreService {
     func dictionaryToObject<T:Decodable>(objectType:T.Type,dictionary:[[String:Any]]) -> [T]? {
         
         guard let dictionaries = try? JSONSerialization.data(withJSONObject: dictionary) else { return nil }
