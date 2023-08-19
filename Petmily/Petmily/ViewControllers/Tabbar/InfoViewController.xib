@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoViewController" customModule="Petmily" customModuleProvider="target">
             <connections>
-                <outlet property="infoSearchBar" destination="7mO-Gl-jtx" id="tj6-AF-fTw"/>
+                <outlet property="infoSearchBar" destination="7mO-Gl-jtx" id="Acq-Z8-vhw"/>
                 <outlet property="tbvInfo" destination="9Es-A2-h6T" id="Msw-u4-nWP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,9 +29,6 @@
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7mO-Gl-jtx">
                     <rect key="frame" x="8" y="125.66666666666669" width="377" height="56"/>
                     <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="BMQ-Gm-fvj"/>
-                    </connections>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9Es-A2-h6T">
                     <rect key="frame" x="0.0" y="189.66666666666669" width="393" height="628.33333333333326"/>
@@ -50,7 +47,7 @@
                 <constraint firstItem="blk-xc-Uja" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Lv6-mx-xbF"/>
                 <constraint firstItem="9Es-A2-h6T" firstAttribute="top" secondItem="7mO-Gl-jtx" secondAttribute="bottom" constant="8" id="UBM-CS-YGF"/>
                 <constraint firstItem="7mO-Gl-jtx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="Y3O-FY-4Xk"/>
-                <constraint firstItem="blk-xc-Uja" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="81" id="v2W-yj-CEf"/>
+                <constraint firstItem="blk-xc-Uja" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="22" id="v2W-yj-CEf"/>
             </constraints>
             <point key="canvasLocation" x="-14.503816793893129" y="19.718309859154932"/>
         </view>

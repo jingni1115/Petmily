@@ -191,6 +191,7 @@ class ProfileViewController: BaseHeaderViewController {
         return btn
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -199,6 +200,8 @@ class ProfileViewController: BaseHeaderViewController {
         setHeaderTitleName(title: "프로필")
         configureView()
     }
+    
+
     
     func configureView() {
         setMenuBtn()
@@ -215,6 +218,8 @@ class ProfileViewController: BaseHeaderViewController {
         
         setCompleteBtn()
     }
+    
+
     
     func setMenuBtn() {
         view.addSubview(menuBtn)

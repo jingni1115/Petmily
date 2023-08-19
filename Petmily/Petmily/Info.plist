@@ -3,9 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
+<<<<<<< HEAD
 	<string>앨범 사용</string>
 	<key>NSCameraUsageDescription</key>
 	<string>카메라 사용</string>
+=======
+	<string>qwe</string>
+>>>>>>> main
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 </dict>
