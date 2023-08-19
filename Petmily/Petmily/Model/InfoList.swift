@@ -11,6 +11,15 @@ struct InfoList {
         Info(images: [UIImage(named: "sample7.png")], id: 4, title: "쳐다보는 초코", description: "고놈 참 귀엽구나!", userName: "허수빈", time: Date(), tag: "#초코샴#초코#고양이")
     ]
 
+//    static func editInfo(UIImage: [UIImage?]?, title: String, description: String, time: Date) {
+//        for index in 0 ..< list.count {
+//            if list[index].id == info.id {
+//                list[index].title = title
+//                list[index].time = time
+//            }
+//        }
+//    }
+    
     // 페이지와 페이지 당 아이템 개수를 받아 새로운 데이터를 생성하는 메서드
        static func loadMoreData(page: Int, itemsPerPage: Int) -> [Info] {
            // 실제 데이터 로드 로직이 들어가야 함!!!!

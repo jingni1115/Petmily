@@ -1,6 +1,7 @@
 import UIKit
 
-class InfoViewController: BaseViewController {
+class InfoViewController: BaseViewController, UISearchBarDelegate {
+    
     
     
     // 현재 페이지
@@ -11,6 +12,10 @@ class InfoViewController: BaseViewController {
     var isMoreDataAvailable = true
     // 데이터 로딩 여부
     var isLoadingData = false
+    // 검색중 여부
+    var isSearching = false
+    // 검색 결과를 저장할 배열
+    var filteredInfoList = [Info]()
     
     @IBOutlet weak var tbvInfo: UITableView!
     
@@ -18,6 +23,7 @@ class InfoViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tbvInfo.reloadData()
         setUI()
     }
     
@@ -30,23 +36,54 @@ class InfoViewController: BaseViewController {
         tbvInfo.register(nib, forCellReuseIdentifier: "InfoTableViewCell")
         
         // 서치바 설정
+        infoSearchBar.delegate = self
         infoSearchBar.backgroundImage = UIImage()
         infoSearchBar.placeholder = "원하시는 동물 종을 검색해보세요"
+        filteredInfoList = InfoList.list
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.trimmingCharacters(in: .whitespaces).isEmpty{
+            // 검색어가 비어있으면 전체 리스트를 보여줌
+            isSearching = false
+            filteredInfoList = InfoList.list
+        } else
+        if searchText.count == 1 {
+            isSearching = true
+            // 검색어가 1개인 경우 아무 동작도 하지 않음
+            filteredInfoList = []
+        } else {
+            isSearching = true
+            filteredInfoList = InfoList.list.filter { info in
+                let lowercasedSearchText = searchText.lowercased()
+                
+                // 제목, 본문, 해시태그 중 하나라도 일치하는지 확인
+                let titleMatches = info.title.lowercased().contains(lowercasedSearchText)
+                let contentMatches = info.description.lowercased().contains(lowercasedSearchText)
+                let hashtagMatches = info.tag.lowercased().contains(lowercasedSearchText)
+                
+                return titleMatches || contentMatches || hashtagMatches
+            }
+        }
+        tbvInfo.reloadData()
+    }
+    
+    
 }
+
+
 
 
 extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
     // 출력할 셀의 개수
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return InfoList.list.count
+        return filteredInfoList.count
     }
     
     // 셀 설정
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
-        cell.setInfo(InfoList.list[indexPath.row])
+        cell.setInfo(filteredInfoList[indexPath.row])
         return cell
     }
     
@@ -55,7 +92,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         tbvInfo.deselectRow(at: indexPath, animated: true)
         
         // 선택한 정보 가져오기
-        let selectedInfo = InfoList.list[indexPath.row]
+        let selectedInfo = filteredInfoList[indexPath.row]
         let selectedUser = UserList.list[indexPath.row]
         
         // 목표 뷰 컨트롤러 초기화
@@ -85,6 +122,11 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         
+        // 검색중이라면 종료
+        guard !isSearching else {
+            return
+        }
+        
         // 데이터 로딩 중임을 표시
         isLoadingData = true
         
@@ -104,6 +146,8 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
                     UserList.list.insert(contentsOf: newUserData, at: 0)
                     // 현재 페이지를 증가시킴
                     self?.currentPage += 1
+                    // 필터된 데이터도 업데이트
+                    self?.filteredInfoList.insert(contentsOf: newData, at: 0)
                 }
                 
                 // 데이터 로딩이 완료되었으므로 상태를 업데이트

@@ -82,7 +82,7 @@ class InfoDetailViewController: BaseHeaderViewController {
             userImageLabel.image = UIImage(named: "profile-placeholder")
         }
         
-        // 사용자 정보 관련 UI 설정
+        // 사용자 정보 관련 UI 설정 
         nameLabel.text = info.userName
         titleLabel.text = info.title
         timeLabel.text = DateFormatter.formatInfoDate(date: info.time)
