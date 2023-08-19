@@ -34,11 +34,10 @@ class InfoViewController: BaseViewController, UISearchBarDelegate {
     }
     
     func getInfoData() {
-        FirestoreService().fetchInfoData { result in
+        FirestoreService().getInfoData { result in
             self.infoData = result
             self.filteredInfoList = self.infoData ?? []
             print(result)
-            print("겟 인포 데이터 : \(result.count)")
             self.getUserData()
         }
     }

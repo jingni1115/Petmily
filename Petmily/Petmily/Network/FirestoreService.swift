@@ -11,10 +11,11 @@ import FirebaseFirestoreSwift
 
 final class FirestoreService {
     let db = Firestore.firestore()
-    var id: String = ""
     var userID = DataManager.sharedInstance.userInfo?.id ?? ""
     
-    // UserInfo 데이터 불러오기
+    /**
+     @brief userData를 불러온다,
+     */
     func getUserData(completion: @escaping (UserModel) -> Void) {
         var names: [String:Any] = [:]
         var result: UserModel?
@@ -36,23 +37,79 @@ final class FirestoreService {
         }
     }
     
-    // Daily Document 추가
+    /**
+     @brief dailyData를 불러온다,
+     */
+    func getDailyData(completion: @escaping ([DailyModel]?) -> Void) {
+        var names: [[String:Any]] = [[:]]
+        var daily: [DailyModel]?
+        
+        db.collection("dailyJJab").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                completion(daily) // 호출하는 쪽에 빈 배열 전달
+                return
+            }
+            
+            for document in querySnapshot!.documents {
+                names.append(document.data())
+            }
+            
+            names.remove(at: 0)
+            daily = self.dictionaryToObject(objectType: DailyModel.self, dictionary: names)
+            completion(daily) // 성공 시 이름 배열 전달
+        }
+    }
+    
+    /**
+     @brief infoData를 불러온다,
+     */
+    func getInfoData(completion: @escaping ([InfoModel]?) -> Void) {
+        var names: [[String:Any]] = [[:]]
+        var info: [InfoModel]?
+        
+        db.collection("Info").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                completion(info) // 호출하는 쪽에 빈 배열 전달
+                return
+            }
+            
+            for document in querySnapshot!.documents {
+                names.append(document.data())
+            }
+            names.remove(at: 0)
+            info = self.dictionaryToObject(objectType: InfoModel.self, dictionary: names)
+            completion(info) // 성공 시 이름 배열 전달
+        }
+    }
+    
+    /**
+     @brief dailyData를 추가한다,
+     
+     @param content, imageURL
+     */
     func addDailyDocument(content: String, imageURL: String) {
         // Add a new document with a generated ID
-        var ref: DocumentReference? = nil
-        ref = db.collection("daily").document().collection(self.userID).addDocument(data: [
+        db.collection("aaa").document(DataManager.sharedInstance.userInfo?.id ?? "").collection("aaa").addDocument(data: [
             "content": content,
-            "imageURL": imageURL
+            "imageURL": imageURL,
+            "reply": nil,
+            "like": nil
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Document added with ID: \(ref!.documentID)")
+                print("Daily Document added")
             }
         }
     }
     
-    // Daily의 Reply 추가
+    /**
+     @brief dailyReply를 추가한다,
+     
+     @param reply
+     */
     func addDailyReply(reply: String) {
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
@@ -68,99 +125,36 @@ final class FirestoreService {
         }
     }
     
-//    func getDocumentID() {
-//        Firestore.firestore().collection("daily").getDocuments() { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    self.id = document.documentID
-//                    print("\(document.documentID)") // Get documentID
-//                }
-//            }
-//        }
-//    }
-    
-    //    func addData() {
-    //        do {
-    //            try db.collection("daily").document(id).setData(from: City(id: id, title: "qwe", content: "QWEq"))
-    //        } catch let error {
-    //            print("Error writing city to Firestore: \(error)")
-    //        }
-    //    }
-    
-    func getDailyDocuments() {
-        let userDocument = self.db.collection("daily")
-        userDocument.getDocuments { (snapshot, err) in
+    /**
+     @brief infoData를 추가한다,
+     
+     @param content, imageURL
+     */
+    func addInfoDocument(content: String, imageURL: String) {
+        // Add a new document with a generated ID
+        db.collection("aaa").document(DataManager.sharedInstance.userInfo?.id ?? "").collection("aaa").addDocument(data: [
+            "content": content,
+            "imageURL": imageURL,
+            "reply": nil,
+            "like": nil
+        ]) { err in
             if let err = err {
-                print(err)
+                print("Error adding document: \(err)")
             } else {
-                guard let snapshot = snapshot else { return }
-                for document in snapshot.documents {
-                    if document.documentID == self.id {
-                        // 서버에 저장된 딕셔너리 데이터를 가져온다.
-                        guard let data = try! document.data(as: [DailyModel]?.self) else { return }
-                        print("\(self.userID) => \(data)")
-                        //                        guard var data = document["Map"] as? [String : String] else { return }
-                        //                        // 딕셔너리 데이터를 직접 삭제
-                        //                        data["Key1"] = nil
-                        //                        // 원하는 아이템이 삭제된 딕셔너리를 다시 서버에 저장
-                        //                        path.document("ExampleDocument1").updateData(["Map" : data])
-                    }
-                }
+                print("Info Document added")
             }
         }
     }
     
-    
-    // 데이터 읽어오기
-    func fetchUserData(completion: @escaping ([DailyModel]) -> Void) {
-        var names: [[String:Any]] = [[:]]
-        var mmm: [DailyModel]?
-        
-        db.collection("daily").getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-                completion(mmm!) // 호출하는 쪽에 빈 배열 전달
-                return
+    func deleteInfoDocument() {
+        db.collection("aaa").document("aaa").delete(){ err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
             }
-            
-            for document in querySnapshot!.documents {
-                if let name = document.data() as? [String:Any] {
-                    names.append(name)
-                }
-            }
-            names.remove(at: 0)
-            mmm = self.dictionaryToObject(objectType: DailyModel.self, dictionary: names)
-            completion(mmm!) // 성공 시 이름 배열 전달
         }
     }
-    
-    // 데이터 읽어오기
-    func fetchInfoData(completion: @escaping ([InfoModel]) -> Void) {
-        var names: [[String:Any]] = [[:]]
-        var mmm: [InfoModel]?
-        
-        db.collection("Info").getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-                completion(mmm!) // 호출하는 쪽에 빈 배열 전달
-                return
-            }
-            
-            for document in querySnapshot!.documents {
-                if let name = document.data() as? [String:Any] {
-                    names.append(name)
-                }
-            }
-            names.remove(at: 0)
-            mmm = self.dictionaryToObject(objectType: InfoModel.self, dictionary: names)
-            completion(mmm!) // 성공 시 이름 배열 전달
-        }
-    }
-    
-    
-    
 }
 
 extension FirestoreService {

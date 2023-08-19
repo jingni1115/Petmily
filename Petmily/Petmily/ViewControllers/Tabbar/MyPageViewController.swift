@@ -142,6 +142,7 @@ class MyPageViewController: BaseViewController {
     }()
     
     var profileData: UserModel?
+    var infoData: [InfoModel]?
 
 
     override func viewDidLoad() {
@@ -178,6 +179,14 @@ class MyPageViewController: BaseViewController {
             self.profileData = result
             print(self.profileData)
             self.configureView()
+        }
+    }
+    
+    func getInfoData() {
+        FirestoreService().getInfoData { result in
+            self.infoData = result
+            CommonUtil.print(output: result)
+            self.tableView.reloadData()
         }
     }
     
@@ -360,16 +369,16 @@ class MyPageViewController: BaseViewController {
 
 extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return InfoList.list.count
+        return infoData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
         cell.tagLabel.isHidden = true
         cell.userTimeLabel.isHidden = true
-        cell.imageLabel.image = InfoList.list[indexPath.row].images?[0]
-        cell.titleLabel.text = InfoList.list[indexPath.row].title
-        cell.descriptionLabel.text = InfoList.list[indexPath.row].description
+//        cell.imageLabel.image = InfoList.list[indexPath.row].images?[0]
+        cell.titleLabel.text = infoData?[indexPath.row].title
+        cell.descriptionLabel.text = infoData?[indexPath.row].content
         return cell
     }
 }
@@ -384,12 +393,12 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return InfoList.list.count
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = customCollectionView.dequeueReusableCell(withReuseIdentifier: "MyPageCollectionViewCell", for: indexPath) as! MyPageCollectionViewCell
-        cell.collectionViewImage.image = InfoList.list[indexPath.row].images?[0]
+//        cell.collectionViewImage.image = InfoList.list[indexPath.row].images?[0]
         return cell
     }
 }

@@ -12,6 +12,7 @@ struct InfoModel: Codable {
     var imageURL: String = ""
     let title: String?
     let content: String?
+    let date: String?
     var reply: [String: String]
     var like: Int = 0
 
@@ -20,5 +21,6 @@ struct InfoModel: Codable {
         case title
         case content
         case reply
+        case date
     }
 }

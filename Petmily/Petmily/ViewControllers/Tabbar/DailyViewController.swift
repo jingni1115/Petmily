@@ -17,7 +17,7 @@ class DailyViewController: UIViewController {
     @IBOutlet weak var lblHeartCount: UILabel!
     @IBOutlet weak var lblReplyCount: UILabel!
     var isPlay = false
-    var dailyData: [DailyModel] = []
+    var dailyData: [DailyModel]?
     var userIndex = 0
     var nowPage = 0
     let reelCVCell = ReelCollectionViewCell()
@@ -44,7 +44,7 @@ class DailyViewController: UIViewController {
     
     func getddd() {
         // 데이터 읽어오기 사용 예시
-        FirestoreService().fetchUserData { result in
+        FirestoreService().getDailyData() { result in
             CommonUtil.print(output: "Result of Daily : \(result)")
             self.dailyData = result
             self.cvMain.reloadData()
@@ -53,7 +53,7 @@ class DailyViewController: UIViewController {
     
         func overMove() {
             // 현재페이지가 마지막 페이지일 경우
-            if nowPage == dailyData.count-1 {
+            if nowPage == (dailyData?.count ?? 0)-1 {
             // 맨 처음 페이지로 돌아감
                 cvMain.scrollToItem(at: NSIndexPath(item: 0, section: 0) as IndexPath, at: .right, animated: true)
                 nowPage = 0
@@ -101,14 +101,14 @@ class DailyViewController: UIViewController {
 extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dailyData.count
+        return dailyData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReelCollectionViewCell", for: indexPath) as! ReelCollectionViewCell
-        cell.reelData = dailyData[indexPath.row]
+        cell.reelData = dailyData?[indexPath.row]
         userIndex = indexPath.row
-        if let urlPath = Bundle.main.url(forResource: dailyData[indexPath.row].imageURL, withExtension: "mp4"){
+        if let urlPath = Bundle.main.url(forResource: dailyData?[indexPath.row].imageURL, withExtension: "mp4"){
             cell.setUpPlayer(url: urlPath, bounds: collectionView.frame)
             if !isPlay{
                 cell.avQueuePlayer?.play()

@@ -33,7 +33,7 @@ class InfoTableViewCell: UITableViewCell {
         tagLabel.text = ""
         titleLabel.text = info.title
         descriptionLabel.text = info.content
-//        userTimeLabel.text = "\(info.userName) · \(DateFormatter.formatInfoDate(date: info.time))"
+        userTimeLabel.text = "\(String(describing: info.id)) · \(String(describing: info.date ?? ""))"
         
 //        // 첫 번째 이미지를 셀의 이미지 뷰에 설정
 //        if let image = info.imageURL.first {

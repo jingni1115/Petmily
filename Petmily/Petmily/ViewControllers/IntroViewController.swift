@@ -18,7 +18,10 @@ class IntroViewController: BaseViewController {
         FirestoreService().getUserData { result in
             DataManager.sharedInstance.userInfo = result
             CommonUtil.print(output: result)
-            AppDelegate.applicationDelegate().changeInitViewController(type: .Main)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                AppDelegate.applicationDelegate().changeInitViewController(type: .Main)
+            }
         }
     }
 }
