@@ -113,12 +113,20 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         tbvInfo.deselectRow(at: indexPath, animated: true)
         
         // 선택한 정보 가져오기
-        let selectedInfo = filteredInfoList[indexPath.row]
+
+        
         let selectedUser = userData
         
         // 목표 뷰 컨트롤러 초기화
         let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
-        vc.selectedInfo = selectedInfo // 정보 전달
+        
+        // 정보 전달
+        if isSearching {
+            vc.selectedInfo = filteredInfoList[indexPath.row]
+        } else {
+            vc.selectedInfo = infoData?[indexPath.row]
+        }
+        
         vc.selectedUser = selectedUser // 유저 정보
         navigationPushController(viewController: vc, animated: true)
     }
