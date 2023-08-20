@@ -21,10 +21,10 @@ class AddViewController: BaseViewController{
     @IBOutlet var completeBtn: UIButton!
     
     /** @brief 뷰1 */
-    @IBOutlet var view1: UIView!
+    @IBOutlet var view1: UIScrollView!
     
     /** @brief 뷰2 */
-    @IBOutlet var view2: UIView!
+    @IBOutlet var view2: UIScrollView!
     
     /** @brief 세그먼트버튼 */
     @IBOutlet var segBtn: UISegmentedControl!
@@ -50,14 +50,15 @@ class AddViewController: BaseViewController{
     /** @brief 데일리 간단한 설명글 */
     @IBOutlet var shortTxtF: UITextField!
     @IBOutlet var vPlayer: UIView!
+    @IBOutlet weak var csrConfirmBottomMargin: NSLayoutConstraint!
     
     let imagePicker = UIImagePickerController()
     var previousText: String = ""
     
     var dailyImageURL: String?
-    var avQueuePlayer: AVQueuePlayer? // 일련의 플레이어 항목을 재생하는 개체
-    var avplayerLayer: AVPlayerLayer?
-    var imgORVideo: String = "img"
+    var avQueuePlayer : AVQueuePlayer? // 일련의 플레이어 항목을 재생하는 개체
+    var avplayerLayer : AVPlayerLayer?
+    var imgORVideo: String = "video"
     
     var user: UserModel?
     var imageUrl: String?
@@ -94,6 +95,9 @@ class AddViewController: BaseViewController{
             vPlayer.trailingAnchor.constraint(equalTo: vPlayer.trailingAnchor),
             vPlayer.bottomAnchor.constraint(equalTo: vPlayer.bottomAnchor)
         ])
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -136,6 +140,26 @@ class AddViewController: BaseViewController{
         requestPhotosPermission()
     }
     
+    /** @brief textField enter Event, next */
+    @objc func _keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            var inset:UIEdgeInsets = self.view1.contentInset
+            inset.bottom = keyboardHeight - Common.kBottomHeight
+            view1.contentInset = inset
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            //                guard let `self` = self else {return}
+            self.csrConfirmBottomMargin.constant = inset.bottom
+            //            }
+        }
+    }
+    /** @brief textField enter Event, close */
+    @objc func _keyboardWillHide(_ notification: Notification) {
+        view1.contentInset = .zero
+        csrConfirmBottomMargin.constant = 0
+    }
+    
     private func requestPhotosPermission() {
         let photoAuthorizationStatusStatus = PHPhotoLibrary.authorizationStatus()
         CommonUtil.print(output: photoAuthorizationStatusStatus)
@@ -175,7 +199,19 @@ class AddViewController: BaseViewController{
     }
     
     func requestAddDaily() {
-        FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", imageURL: dailyImageURL ?? "")
+        if shortTxtF.text ?? "" != "" {
+            FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", imageURL: dailyImageURL ?? "") { reuslt in
+                BaseTabbarController().moveToTabBarIndex(index: .Daily)
+            }
+        }
+    }
+    
+    func requsetAddInfo() {
+        if infoTitle.text ?? "" != "" {
+            FirestoreService().addInfoDocument(title: infoTitle.text ?? "", content: txtvContents.text ?? "", hashTag: tfInfoHashTag.text ?? "", imageURL: "") { result in
+                BaseTabbarController().moveToTabBarIndex(index: .Info)
+            }
+        }
     }
     
     // 액션 이쪽으로 옮길것
@@ -204,8 +240,16 @@ class AddViewController: BaseViewController{
     }
     
     @IBAction func completeBtn(_ sender: UIButton) {
-        // 완료 버튼 눌렀을 때 현재 창이 꺼지면서 입력했던 자료들이 데일리와 정보공유 게시판에 올라가는 것을 구현해라
-        requestAddDaily()
+        //완료 버튼 눌렀을 때 현재 창이 꺼지면서 입력했던 자료들이 데일리와 정보공유 게시판에 올라가는 것을 구현해라
+        switch imgORVideo {
+        case "img":
+            requsetAddInfo()
+        case "video":
+            requestAddDaily()
+        default:
+            break
+        }
+        
     }
 }
 

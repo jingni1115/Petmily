@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,8 +13,10 @@
             <connections>
                 <outlet property="cvMain" destination="6Lh-4s-pRY" id="S0b-k7-c5i"/>
                 <outlet property="imgHeart" destination="Ewo-lT-xR5" id="qdx-o4-Tkr"/>
+                <outlet property="lblContent" destination="O0f-CC-RST" id="UgM-fd-6z9"/>
                 <outlet property="lblHeartCount" destination="01a-xh-pXD" id="Udo-2I-ZSW"/>
                 <outlet property="lblReplyCount" destination="PQc-bg-b4C" id="Bdk-lc-bmU"/>
+                <outlet property="lblUserName" destination="M4s-xv-UQa" id="NZF-nM-I1R"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -156,10 +158,29 @@
                         <constraint firstAttribute="height" constant="170" id="izt-Ca-PPM"/>
                     </constraints>
                 </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cTW-3t-mhU">
+                    <rect key="frame" x="20.000000000000004" y="717.33333333333337" width="44.333333333333343" height="50.666666666666629"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4s-xv-UQa">
+                            <rect key="frame" x="0.0" y="0.0" width="44.333333333333336" height="20.333333333333332"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0f-CC-RST">
+                            <rect key="frame" x="0.0" y="30.333333333333258" width="44.333333333333336" height="20.333333333333329"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cTW-3t-mhU" secondAttribute="bottom" constant="50" id="OLI-vQ-5Ay"/>
+                <constraint firstItem="cTW-3t-mhU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="R0U-KY-d9T"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tC2-xn-lfg" secondAttribute="bottom" constant="20" id="VoK-zr-AKv"/>
                 <constraint firstItem="rEU-Pa-ZkZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="48" id="Wo7-XI-3sU"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Lh-4s-pRY" secondAttribute="trailing" id="ZiL-Xq-u14"/>
