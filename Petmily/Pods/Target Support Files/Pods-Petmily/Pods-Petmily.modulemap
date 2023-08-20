@@ -1,0 +1,6 @@
+framework module Pods_Petmily {
+  umbrella header "Pods-Petmily-umbrella.h"
+
+  export *
+  module * { export * }
+}
