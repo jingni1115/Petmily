@@ -17,13 +17,14 @@ class DailyViewController: UIViewController {
     @IBOutlet weak var lblHeartCount: UILabel!
     @IBOutlet weak var lblReplyCount: UILabel!
     var isPlay = false
-    var dailyData: [DailyModel] = []
+    var dailyData: [DailyModel]?
+    var userIndex = 0
     var nowPage = 0
     let reelCVCell = ReelCollectionViewCell()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MyFirestore().getDocumentID()
+//        FirestoreService().getDocumentID()
         getddd()
         //        dailyData =
         //        DispatchQueue.main.asyncAfter(deadline: 1) {
@@ -43,16 +44,16 @@ class DailyViewController: UIViewController {
     
     func getddd() {
         // 데이터 읽어오기 사용 예시
-        MyFirestore().fetchUserData { names in
-            print("Fetched names: \(names)")
-            self.dailyData = names ?? []
+        FirestoreService().getDailyData() { result in
+            CommonUtil.print(output: "Result of Daily : \(result)")
+            self.dailyData = result
             self.cvMain.reloadData()
         }
     }
     
         func overMove() {
             // 현재페이지가 마지막 페이지일 경우
-            if nowPage == dailyData.count-1 {
+            if nowPage == (dailyData?.count ?? 0)-1 {
             // 맨 처음 페이지로 돌아감
                 cvMain.scrollToItem(at: NSIndexPath(item: 0, section: 0) as IndexPath, at: .right, animated: true)
                 nowPage = 0
@@ -69,9 +70,16 @@ class DailyViewController: UIViewController {
     }
     
     @IBAction func replyButtonTouched(_ sender: Any) {
-        let vc = ReplySheetViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: false, completion: nil)
+        let vc = ReplyViewController.init(nibName: "ReplyViewController", bundle: nil)
+        vc.replyData = self.dailyData
+        vc.index = self.userIndex
+        guard let sheet = vc.presentationController as? UISheetPresentationController else {
+            return
+        }
+        sheet.detents = [.medium(), .large()]
+        sheet.largestUndimmedDetentIdentifier = .large
+        sheet.prefersGrabberVisible = true
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func shareButtonTouched(_ sender: Any) {
@@ -93,15 +101,14 @@ class DailyViewController: UIViewController {
 extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let doc = MyFirestore().getDocuments()
-        return dailyData.count
+        return dailyData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let reels = MyFirestore().getDocuments()
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReelCollectionViewCell", for: indexPath) as! ReelCollectionViewCell
-        cell.reelData = dailyData[indexPath.row]
-        if let urlPath = Bundle.main.url(forResource: dailyData[indexPath.row].imageURL, withExtension: "mp4"){
+        cell.reelData = dailyData?[indexPath.row]
+        userIndex = indexPath.row
+        if let urlPath = Bundle.main.url(forResource: dailyData?[indexPath.row].imageURL, withExtension: "mp4"){
             cell.setUpPlayer(url: urlPath, bounds: collectionView.frame)
             if !isPlay{
                 cell.avQueuePlayer?.play()
@@ -127,7 +134,6 @@ extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        MyFirestore().addData()
         
         
     }

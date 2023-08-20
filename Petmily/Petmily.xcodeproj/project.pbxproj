@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		565C8B062A90CE8500167A92 /* ReplySheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C8B052A90CE8500167A92 /* ReplySheetViewController.swift */; };
 		565C8B0F2A9129C900167A92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */; };
+		565C8B122A912DD600167A92 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C8B102A912DD600167A92 /* ReplyViewController.swift */; };
+		565C8B132A912DD600167A92 /* ReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B112A912DD600167A92 /* ReplyViewController.xib */; };
+		565C8B162A912E8800167A92 /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C8B142A912E8800167A92 /* ReplyTableViewCell.swift */; };
+		565C8B172A912E8800167A92 /* ReplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B152A912E8800167A92 /* ReplyTableViewCell.xib */; };
+		565C8B1A2A9137D200167A92 /* demo2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B192A91376F00167A92 /* demo2.mp4 */; };
 		569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A350D2A89C98500FE098E /* AppDelegate.swift */; };
 		569A35122A89C98500FE098E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35112A89C98500FE098E /* ViewController.swift */; };
 		569A35172A89C98600FE098E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 569A35162A89C98600FE098E /* Assets.xcassets */; };
@@ -21,15 +25,13 @@
 		569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35452A89CE0C00FE098E /* DailyViewController.swift */; };
 		569A354B2A89CE2200FE098E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35492A89CE2200FE098E /* InfoViewController.swift */; };
 		569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A354D2A89CE2F00FE098E /* AddViewController.swift */; };
-		569A35532A89CE5300FE098E /* AdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35512A89CE5300FE098E /* AdoptViewController.swift */; };
 		569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35592A89CF1B00FE098E /* UIView+Extension.swift */; };
 		569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A355B2A89D10A00FE098E /* CommonUtil.swift */; };
-		569A355E2A89D13400FE098E /* Datamanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A355D2A89D13400FE098E /* Datamanager.swift */; };
+		569A355E2A89D13400FE098E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A355D2A89D13400FE098E /* DataManager.swift */; };
 		569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35692A89DB6C00FE098E /* DailyViewController.xib */; };
 		569A35702A89DB6D00FE098E /* MyPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A356A2A89DB6D00FE098E /* MyPageViewController.xib */; };
 		569A35712A89DB6D00FE098E /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A356B2A89DB6D00FE098E /* AddViewController.xib */; };
 		569A35722A89DB6D00FE098E /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A356C2A89DB6D00FE098E /* InfoViewController.xib */; };
-		569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A356D2A89DB6D00FE098E /* AdoptViewController.xib */; };
 		569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35752A89DBBD00FE098E /* IntroViewController.xib */; };
 		569A35782A89FB8600FE098E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569A35772A89FB8600FE098E /* Main.storyboard */; };
 		56C3CF282A8E475E00541EB8 /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF262A8E475E00541EB8 /* CommonHeaderView.swift */; };
@@ -39,7 +41,7 @@
 		56C3CF332A8E4A5C00541EB8 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF322A8E4A5C00541EB8 /* Common.swift */; };
 		56C3CF342A8E4AE600541EB8 /* InfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */; };
 		56C3CF382A8E765000541EB8 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF372A8E765000541EB8 /* InfoModel.swift */; };
-		56C3CF3A2A8E768D00541EB8 /* MyFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF392A8E768D00541EB8 /* MyFirestore.swift */; };
+		56C3CF3A2A8E768D00541EB8 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF392A8E768D00541EB8 /* FirestoreService.swift */; };
 		56C3CF3F2A8E77B600541EB8 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 56C3CF3E2A8E77B600541EB8 /* FirebaseAppCheck */; };
 		56C3CF412A8E77B600541EB8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 56C3CF402A8E77B600541EB8 /* FirebaseAuth */; };
 		56C3CF432A8E77B600541EB8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 56C3CF422A8E77B600541EB8 /* FirebaseDatabase */; };
@@ -54,27 +56,25 @@
 		56C3CF552A8E77B600541EB8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 56C3CF542A8E77B600541EB8 /* FirebaseStorage */; };
 		56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF562A8F348A00541EB8 /* DailyModel.swift */; };
 		56C3CF592A8F349A00541EB8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF582A8F349A00541EB8 /* UserModel.swift */; };
-		56DD2D972A8CC781008A9E12 /* demo1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D932A8CC68F008A9E12 /* demo1.mp4 */; };
-		56DD2D982A8CC781008A9E12 /* demo2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D962A8CC68F008A9E12 /* demo2.mp4 */; };
-		56DD2D992A8CC781008A9E12 /* demo3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D942A8CC68F008A9E12 /* demo3.mp4 */; };
-		56DD2D9A2A8CC781008A9E12 /* demo4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 56DD2D952A8CC68F008A9E12 /* demo4.mp4 */; };
 		56DD2DB82A8E41B5008A9E12 /* ReelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */; };
-		6BBEA34B2A8E791F00406C4C /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BBEA34A2A8E791F00406C4C /* CommonHeaderView.xib */; };
-		DF06F8412A8CAE3500B8A875 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8402A8CAE3500B8A875 /* User.swift */; };
+		B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F405522A91F8420085F4A9 /* AdoptViewController.swift */; };
+		B3F405552A91F8420085F4A9 /* AdoptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F405532A91F8420085F4A9 /* AdoptViewController.xib */; };
+		B3F405562A91F9190085F4A9 /* ContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BF4D772A91EBFF00DFA28E /* ContentsCollectionViewCell.xib */; };
+		B3F405582A91F9280085F4A9 /* ContentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BF4D762A91EBFC00DFA28E /* ContentsCollectionViewCell.swift */; };
+		CB0540A4B7FEAD0DD9BFF0E4 /* Pods_Petmily_PetmilyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCB8754505F6B2538B76706 /* Pods_Petmily_PetmilyUITests.framework */; };
 		DF06F8462A8CBFC500B8A875 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		DF06F8472A8CBFC500B8A875 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		DF103ED12A921A17006BDF18 /* launch-screen.gif in Resources */ = {isa = PBXBuildFile; fileRef = DF103ED02A921A17006BDF18 /* launch-screen.gif */; };
 		DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */; };
 		DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */; };
 		DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */; };
-		DF1059CE2A8C7AD300F10DE1 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059CD2A8C7AD300F10DE1 /* Info.swift */; };
-		DFD3A23F2A8E9333006867A0 /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD3A23E2A8E9333006867A0 /* CommonHeaderView.xib */; };
+		E437717E1DB888321482D570 /* Pods_PetmilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */; };
 		FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2663282A8CB300000222B3 /* ProfileViewController.swift */; };
 		FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */; };
 		FF7D0D342A8D43CC00F96E02 /* BaseTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35432A89CB7D00FE098E /* BaseTabbarController.swift */; };
 		FF7D0D352A8D43EA00F96E02 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35552A89CE7200FE098E /* MyPageViewController.swift */; };
 		FF7D0D362A8D442900F96E02 /* MyPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */; };
-		FF7D0D372A8D444700F96E02 /* InfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */; };
-		FF7D0D382A8D445100F96E02 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8422A8CAF2100B8A875 /* UserList.swift */; };
+		FFB32C1E81E1C61BA9C4F51A /* Pods_Petmily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FE733832C32CE5B2A46AD0 /* Pods_Petmily.framework */; };
 		FFEFD89E2A8E7016007D2F30 /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEFD89D2A8E7016007D2F30 /* CommonHeaderView.xib */; };
 		FFFB1E7F2A91603D00263D6D /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB1E7E2A91603D00263D6D /* FirebaseStorageManager.swift */; };
 /* End PBXBuildFile section */
@@ -97,8 +97,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		565C8B052A90CE8500167A92 /* ReplySheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplySheetViewController.swift; sourceTree = "<group>"; };
+		230CD642811FD4A07031BA63 /* Pods-PetmilyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetmilyTests.release.xcconfig"; path = "Target Support Files/Pods-PetmilyTests/Pods-PetmilyTests.release.xcconfig"; sourceTree = "<group>"; };
+		2BE0D3DBC8AA9A473D93D7B5 /* Pods-PetmilyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetmilyTests.debug.xcconfig"; path = "Target Support Files/Pods-PetmilyTests/Pods-PetmilyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3C595EDD8E8E55BAEC433D26 /* Pods-Petmily-PetmilyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily-PetmilyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4BCB8754505F6B2538B76706 /* Pods_Petmily_PetmilyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petmily_PetmilyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		565C8B102A912DD600167A92 /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
+		565C8B112A912DD600167A92 /* ReplyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyViewController.xib; sourceTree = "<group>"; };
+		565C8B142A912E8800167A92 /* ReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTableViewCell.swift; sourceTree = "<group>"; };
+		565C8B152A912E8800167A92 /* ReplyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyTableViewCell.xib; sourceTree = "<group>"; };
+		565C8B192A91376F00167A92 /* demo2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo2.mp4; sourceTree = "<group>"; };
 		569A350A2A89C98500FE098E /* Petmily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petmily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569A350D2A89C98500FE098E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		569A35112A89C98500FE098E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,16 +124,14 @@
 		569A35452A89CE0C00FE098E /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		569A35492A89CE2200FE098E /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		569A354D2A89CE2F00FE098E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		569A35512A89CE5300FE098E /* AdoptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptViewController.swift; sourceTree = "<group>"; };
 		569A35552A89CE7200FE098E /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		569A35592A89CF1B00FE098E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		569A355B2A89D10A00FE098E /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
-		569A355D2A89D13400FE098E /* Datamanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datamanager.swift; sourceTree = "<group>"; };
+		569A355D2A89D13400FE098E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		569A35692A89DB6C00FE098E /* DailyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyViewController.xib; sourceTree = "<group>"; };
 		569A356A2A89DB6D00FE098E /* MyPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPageViewController.xib; sourceTree = "<group>"; };
 		569A356B2A89DB6D00FE098E /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
 		569A356C2A89DB6D00FE098E /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
-		569A356D2A89DB6D00FE098E /* AdoptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdoptViewController.xib; sourceTree = "<group>"; };
 		569A35752A89DBBD00FE098E /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		569A35772A89FB8600FE098E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		56C3CF262A8E475E00541EB8 /* CommonHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
@@ -134,24 +140,24 @@
 		56C3CF302A8E4A4200541EB8 /* BaseHeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHeaderViewController.swift; sourceTree = "<group>"; };
 		56C3CF322A8E4A5C00541EB8 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		56C3CF372A8E765000541EB8 /* InfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModel.swift; sourceTree = "<group>"; };
-		56C3CF392A8E768D00541EB8 /* MyFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirestore.swift; sourceTree = "<group>"; };
+		56C3CF392A8E768D00541EB8 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		56C3CF562A8F348A00541EB8 /* DailyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 		56C3CF582A8F349A00541EB8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		56DD2D932A8CC68F008A9E12 /* demo1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo1.mp4; sourceTree = "<group>"; };
-		56DD2D942A8CC68F008A9E12 /* demo3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo3.mp4; sourceTree = "<group>"; };
-		56DD2D952A8CC68F008A9E12 /* demo4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo4.mp4; sourceTree = "<group>"; };
-		56DD2D962A8CC68F008A9E12 /* demo2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo2.mp4; sourceTree = "<group>"; };
 		56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelCollectionViewCell.swift; sourceTree = "<group>"; };
-		6BBEA34A2A8E791F00406C4C /* CommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
-		DF06F8402A8CAE3500B8A875 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		DF06F8422A8CAF2100B8A875 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
+		633E801253E9A9E9DD6A8217 /* Pods-Petmily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily.release.xcconfig"; path = "Target Support Files/Pods-Petmily/Pods-Petmily.release.xcconfig"; sourceTree = "<group>"; };
+		6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetmilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9ADE19EC564B42522E24C87 /* Pods-Petmily-PetmilyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily-PetmilyUITests.release.xcconfig"; path = "Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B3BF4D762A91EBFC00DFA28E /* ContentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B3BF4D772A91EBFF00DFA28E /* ContentsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentsCollectionViewCell.xib; sourceTree = "<group>"; };
+		B3F405522A91F8420085F4A9 /* AdoptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptViewController.swift; sourceTree = "<group>"; };
+		B3F405532A91F8420085F4A9 /* AdoptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdoptViewController.xib; sourceTree = "<group>"; };
+		C29B249BDBFA1CA5A80548A3 /* Pods-Petmily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily.debug.xcconfig"; path = "Target Support Files/Pods-Petmily/Pods-Petmily.debug.xcconfig"; sourceTree = "<group>"; };
+		C2FE733832C32CE5B2A46AD0 /* Pods_Petmily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petmily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF103ED02A921A17006BDF18 /* launch-screen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "launch-screen.gif"; sourceTree = "<group>"; };
 		DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
 		DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailViewController.xib; sourceTree = "<group>"; };
-		DF1059CD2A8C7AD300F10DE1 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
-		DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoList.swift; sourceTree = "<group>"; };
-		DFD3A23E2A8E9333006867A0 /* CommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 		FF2663282A8CB300000222B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
@@ -176,6 +182,7 @@
 				56C3CF492A8E77B600541EB8 /* FirebaseFirestore in Frameworks */,
 				56C3CF532A8E77B600541EB8 /* FirebaseMessaging in Frameworks */,
 				56C3CF512A8E77B600541EB8 /* FirebaseInstallations in Frameworks */,
+				FFB32C1E81E1C61BA9C4F51A /* Pods_Petmily.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E437717E1DB888321482D570 /* Pods_PetmilyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0540A4B7FEAD0DD9BFF0E4 /* Pods_Petmily_PetmilyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,8 +208,8 @@
 		565C8B032A90C69500167A92 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				56C3CF392A8E768D00541EB8 /* MyFirestore.swift */,
 				FFFB1E7E2A91603D00263D6D /* FirebaseStorageManager.swift */,
+				56C3CF392A8E768D00541EB8 /* FirestoreService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -216,6 +225,61 @@
 			path = Video/Model;
 			sourceTree = "<group>";
 		};
+		565C8B1B2A914E3C00167A92 /* Reply */ = {
+			isa = PBXGroup;
+			children = (
+				565C8B102A912DD600167A92 /* ReplyViewController.swift */,
+				565C8B112A912DD600167A92 /* ReplyViewController.xib */,
+				565C8B142A912E8800167A92 /* ReplyTableViewCell.swift */,
+				565C8B152A912E8800167A92 /* ReplyTableViewCell.xib */,
+			);
+			path = Reply;
+			sourceTree = "<group>";
+		};
+		565C8B1C2A91815F00167A92 /* InfoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */,
+				DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */,
+			);
+			path = InfoDetail;
+			sourceTree = "<group>";
+		};
+		565C8B1D2A91816A00167A92 /* InfoTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */,
+				DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */,
+			);
+			path = InfoTableViewCell;
+			sourceTree = "<group>";
+		};
+		565C8B1E2A91817D00167A92 /* URLBtnCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				56C3CF2C2A8E482900541EB8 /* UrlBtnCollectionViewCell.swift */,
+				56C3CF2D2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib */,
+			);
+			path = URLBtnCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		565C8B1F2A9181F100167A92 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FF2663282A8CB300000222B3 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		565C8B202A9181F700167A92 /* MyPageCollection */ = {
+			isa = PBXGroup;
+			children = (
+				FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */,
+				FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */,
+			);
+			path = MyPageCollection;
+			sourceTree = "<group>";
+		};
 		569A35012A89C98500FE098E = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +288,8 @@
 				569A352D2A89C98700FE098E /* PetmilyUITests */,
 				569A350B2A89C98500FE098E /* Products */,
 				56C3CF242A8E457000541EB8 /* Recovered References */,
+				C0CF94A51A635334C7528B8D /* Pods */,
+				C4AEF5EA3D050982F08F0E53 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,19 +308,17 @@
 			children = (
 				569A350D2A89C98500FE098E /* AppDelegate.swift */,
 				569A35112A89C98500FE098E /* ViewController.swift */,
-				56DD2D882A8CB84A008A9E12 /* Video */,
+				565C8B192A91376F00167A92 /* demo2.mp4 */,
 				565C8B042A90C6AC00167A92 /* Model */,
 				565C8B032A90C69500167A92 /* Network */,
 				569A357D2A89FCA900FE098E /* Util */,
 				569A357A2A89FC6300FE098E /* ViewControllers */,
-				DF1059C62A8C564400F10DE1 /* Cell */,
-				DF1059C72A8C743A00F10DE1 /* DetailView */,
-				DF1059CC2A8C7AB100F10DE1 /* Model */,
 				569A35772A89FB8600FE098E /* Main.storyboard */,
 				569A35162A89C98600FE098E /* Assets.xcassets */,
 				569A35182A89C98600FE098E /* LaunchScreen.storyboard */,
 				565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */,
 				569A351B2A89C98600FE098E /* Info.plist */,
+				DF103ED02A921A17006BDF18 /* launch-screen.gif */,
 			);
 			path = Petmily;
 			sourceTree = "<group>";
@@ -311,18 +375,22 @@
 			children = (
 				569A35452A89CE0C00FE098E /* DailyViewController.swift */,
 				569A35692A89DB6C00FE098E /* DailyViewController.xib */,
-				565C8B052A90CE8500167A92 /* ReplySheetViewController.swift */,
+				565C8B1B2A914E3C00167A92 /* Reply */,
 				56DD2DB92A8E41EB008A9E12 /* ReelCollectionViewCell */,
 				569A35492A89CE2200FE098E /* InfoViewController.swift */,
 				569A356C2A89DB6D00FE098E /* InfoViewController.xib */,
+				565C8B1C2A91815F00167A92 /* InfoDetail */,
+				565C8B1D2A91816A00167A92 /* InfoTableViewCell */,
 				569A354D2A89CE2F00FE098E /* AddViewController.swift */,
 				569A356B2A89DB6D00FE098E /* AddViewController.xib */,
-				569A35512A89CE5300FE098E /* AdoptViewController.swift */,
-				569A356D2A89DB6D00FE098E /* AdoptViewController.xib */,
+				B3F405522A91F8420085F4A9 /* AdoptViewController.swift */,
+				B3F405532A91F8420085F4A9 /* AdoptViewController.xib */,
+				B3BF4D752A91EBD200DFA28E /* AdoptCollectionViewCell */,
+				565C8B1E2A91817D00167A92 /* URLBtnCollectionViewCell */,
 				569A35552A89CE7200FE098E /* MyPageViewController.swift */,
 				569A356A2A89DB6D00FE098E /* MyPageViewController.xib */,
-				FF2663282A8CB300000222B3 /* ProfileViewController.swift */,
-				FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */,
+				565C8B202A9181F700167A92 /* MyPageCollection */,
+				565C8B1F2A9181F100167A92 /* Profile */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -330,7 +398,7 @@
 		569A357D2A89FCA900FE098E /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				569A355D2A89D13400FE098E /* Datamanager.swift */,
+				569A355D2A89D13400FE098E /* DataManager.swift */,
 				569A355B2A89D10A00FE098E /* CommonUtil.swift */,
 				56C3CF322A8E4A5C00541EB8 /* Common.swift */,
 				569A35792A89FC5900FE098E /* Extension */,
@@ -341,8 +409,6 @@
 		569A35AB2A8C7B6500FE098E /* CommonHeaderView */ = {
 			isa = PBXGroup;
 			children = (
-				6BBEA34A2A8E791F00406C4C /* CommonHeaderView.xib */,
-				DFD3A23E2A8E9333006867A0 /* CommonHeaderView.xib */,
 				FFEFD89D2A8E7016007D2F30 /* CommonHeaderView.xib */,
 				56C3CF262A8E475E00541EB8 /* CommonHeaderView.swift */,
 			);
@@ -356,17 +422,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		56DD2D882A8CB84A008A9E12 /* Video */ = {
-			isa = PBXGroup;
-			children = (
-				56DD2D932A8CC68F008A9E12 /* demo1.mp4 */,
-				56DD2D962A8CC68F008A9E12 /* demo2.mp4 */,
-				56DD2D942A8CC68F008A9E12 /* demo3.mp4 */,
-				56DD2D952A8CC68F008A9E12 /* demo4.mp4 */,
-			);
-			path = Video;
-			sourceTree = "<group>";
-		};
 		56DD2DB92A8E41EB008A9E12 /* ReelCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,36 +430,36 @@
 			path = ReelCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		DF1059C62A8C564400F10DE1 /* Cell */ = {
+		B3BF4D752A91EBD200DFA28E /* AdoptCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */,
-				DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */,
-				DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */,
-				56C3CF2C2A8E482900541EB8 /* UrlBtnCollectionViewCell.swift */,
-				56C3CF2D2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib */,
+				B3BF4D772A91EBFF00DFA28E /* ContentsCollectionViewCell.xib */,
+				B3BF4D762A91EBFC00DFA28E /* ContentsCollectionViewCell.swift */,
 			);
-			path = Cell;
+			path = AdoptCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		DF1059C72A8C743A00F10DE1 /* DetailView */ = {
+		C0CF94A51A635334C7528B8D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */,
-				DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */,
+				C29B249BDBFA1CA5A80548A3 /* Pods-Petmily.debug.xcconfig */,
+				633E801253E9A9E9DD6A8217 /* Pods-Petmily.release.xcconfig */,
+				3C595EDD8E8E55BAEC433D26 /* Pods-Petmily-PetmilyUITests.debug.xcconfig */,
+				A9ADE19EC564B42522E24C87 /* Pods-Petmily-PetmilyUITests.release.xcconfig */,
+				2BE0D3DBC8AA9A473D93D7B5 /* Pods-PetmilyTests.debug.xcconfig */,
+				230CD642811FD4A07031BA63 /* Pods-PetmilyTests.release.xcconfig */,
 			);
-			path = DetailView;
+			path = Pods;
 			sourceTree = "<group>";
 		};
-		DF1059CC2A8C7AB100F10DE1 /* Model */ = {
+		C4AEF5EA3D050982F08F0E53 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DF1059CD2A8C7AD300F10DE1 /* Info.swift */,
-				DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */,
-				DF06F8402A8CAE3500B8A875 /* User.swift */,
-				DF06F8422A8CAF2100B8A875 /* UserList.swift */,
+				C2FE733832C32CE5B2A46AD0 /* Pods_Petmily.framework */,
+				4BCB8754505F6B2538B76706 /* Pods_Petmily_PetmilyUITests.framework */,
+				6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */,
 			);
-			path = Model;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,9 +469,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 569A35342A89C98700FE098E /* Build configuration list for PBXNativeTarget "Petmily" */;
 			buildPhases = (
+				2FB429B78EFCBA94D44B9AA3 /* [CP] Check Pods Manifest.lock */,
 				569A35062A89C98500FE098E /* Sources */,
 				569A35072A89C98500FE098E /* Frameworks */,
 				569A35082A89C98500FE098E /* Resources */,
+				556C3BC84E9BCE6D1D327F6F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -445,6 +502,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 569A35372A89C98700FE098E /* Build configuration list for PBXNativeTarget "PetmilyTests" */;
 			buildPhases = (
+				870CF25DED99953EAECEF55F /* [CP] Check Pods Manifest.lock */,
 				569A351C2A89C98700FE098E /* Sources */,
 				569A351D2A89C98700FE098E /* Frameworks */,
 				569A351E2A89C98700FE098E /* Resources */,
@@ -463,9 +521,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 569A353A2A89C98700FE098E /* Build configuration list for PBXNativeTarget "PetmilyUITests" */;
 			buildPhases = (
+				F5A687A5A586232CAE8BBD1E /* [CP] Check Pods Manifest.lock */,
 				569A35262A89C98700FE098E /* Sources */,
 				569A35272A89C98700FE098E /* Frameworks */,
 				569A35282A89C98700FE098E /* Resources */,
+				CC84662994DD9DA684C7D2B1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -528,20 +588,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56DD2D972A8CC781008A9E12 /* demo1.mp4 in Resources */,
-				56DD2D982A8CC781008A9E12 /* demo2.mp4 in Resources */,
-				56DD2D992A8CC781008A9E12 /* demo3.mp4 in Resources */,
-				56DD2D9A2A8CC781008A9E12 /* demo4.mp4 in Resources */,
 				569A351A2A89C98600FE098E /* LaunchScreen.storyboard in Resources */,
 				569A35712A89DB6D00FE098E /* AddViewController.xib in Resources */,
-				569A35732A89DB6D00FE098E /* AdoptViewController.xib in Resources */,
+				565C8B172A912E8800167A92 /* ReplyTableViewCell.xib in Resources */,
+				565C8B132A912DD600167A92 /* ReplyViewController.xib in Resources */,
+				B3F405562A91F9190085F4A9 /* ContentsCollectionViewCell.xib in Resources */,
 				56C3CF2F2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib in Resources */,
 				DF06F8472A8CBFC500B8A875 /* (null) in Resources */,
+				565C8B1A2A9137D200167A92 /* demo2.mp4 in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
+				DF103ED12A921A17006BDF18 /* launch-screen.gif in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
 				FFEFD89E2A8E7016007D2F30 /* CommonHeaderView.xib in Resources */,
-				6BBEA34B2A8E791F00406C4C /* CommonHeaderView.xib in Resources */,
-				DFD3A23F2A8E9333006867A0 /* CommonHeaderView.xib in Resources */,
+				B3F405552A91F8420085F4A9 /* AdoptViewController.xib in Resources */,
 				DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */,
 				56C3CF342A8E4AE600541EB8 /* InfoDetailViewController.xib in Resources */,
 				569A35172A89C98600FE098E /* Assets.xcassets in Resources */,
@@ -568,22 +627,122 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2FB429B78EFCBA94D44B9AA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Petmily-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		556C3BC84E9BCE6D1D327F6F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Petmily/Pods-Petmily-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Petmily/Pods-Petmily-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Petmily/Pods-Petmily-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		870CF25DED99953EAECEF55F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PetmilyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC84662994DD9DA684C7D2B1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5A687A5A586232CAE8BBD1E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Petmily-PetmilyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		569A35062A89C98500FE098E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */,
-				DF1059CE2A8C7AD300F10DE1 /* Info.swift in Sources */,
-				569A35532A89CE5300FE098E /* AdoptViewController.swift in Sources */,
 				FF7D0D362A8D442900F96E02 /* MyPageCollectionViewCell.swift in Sources */,
-				56C3CF3A2A8E768D00541EB8 /* MyFirestore.swift in Sources */,
+				56C3CF3A2A8E768D00541EB8 /* FirestoreService.swift in Sources */,
 				DF06F8462A8CBFC500B8A875 /* (null) in Sources */,
 				569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */,
 				56C3CF592A8F349A00541EB8 /* UserModel.swift in Sources */,
 				56DD2DB82A8E41B5008A9E12 /* ReelCollectionViewCell.swift in Sources */,
 				56C3CF2E2A8E482900541EB8 /* UrlBtnCollectionViewCell.swift in Sources */,
-				FF7D0D382A8D445100F96E02 /* UserList.swift in Sources */,
 				569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */,
 				FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */,
 				56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */,
@@ -591,22 +750,23 @@
 				56C3CF332A8E4A5C00541EB8 /* Common.swift in Sources */,
 				569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */,
 				FF7D0D342A8D43CC00F96E02 /* BaseTabbarController.swift in Sources */,
-				565C8B062A90CE8500167A92 /* ReplySheetViewController.swift in Sources */,
 				FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */,
 				56C3CF282A8E475E00541EB8 /* CommonHeaderView.swift in Sources */,
 				569A35122A89C98500FE098E /* ViewController.swift in Sources */,
-				569A355E2A89D13400FE098E /* Datamanager.swift in Sources */,
+				569A355E2A89D13400FE098E /* DataManager.swift in Sources */,
+				B3F405582A91F9280085F4A9 /* ContentsCollectionViewCell.swift in Sources */,
+				565C8B162A912E8800167A92 /* ReplyTableViewCell.swift in Sources */,
 				56C3CF382A8E765000541EB8 /* InfoModel.swift in Sources */,
 				569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */,
-				FF7D0D372A8D444700F96E02 /* InfoList.swift in Sources */,
+				565C8B122A912DD600167A92 /* ReplyViewController.swift in Sources */,
 				DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */,
 				FF7D0D352A8D43EA00F96E02 /* MyPageViewController.swift in Sources */,
 				DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */,
 				569A354B2A89CE2200FE098E /* InfoViewController.swift in Sources */,
 				FFFB1E7F2A91603D00263D6D /* FirebaseStorageManager.swift in Sources */,
 				56C3CF312A8E4A4200541EB8 /* BaseHeaderViewController.swift in Sources */,
+				B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
-				DF06F8412A8CAE3500B8A875 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +930,7 @@
 		};
 		569A35352A89C98700FE098E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C29B249BDBFA1CA5A80548A3 /* Pods-Petmily.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -796,6 +957,7 @@
 		};
 		569A35362A89C98700FE098E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633E801253E9A9E9DD6A8217 /* Pods-Petmily.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -822,6 +984,7 @@
 		};
 		569A35382A89C98700FE098E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BE0D3DBC8AA9A473D93D7B5 /* Pods-PetmilyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -842,6 +1005,7 @@
 		};
 		569A35392A89C98700FE098E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 230CD642811FD4A07031BA63 /* Pods-PetmilyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -862,6 +1026,7 @@
 		};
 		569A353B2A89C98700FE098E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C595EDD8E8E55BAEC433D26 /* Pods-Petmily-PetmilyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -880,6 +1045,7 @@
 		};
 		569A353C2A89C98700FE098E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9ADE19EC564B42522E24C87 /* Pods-Petmily-PetmilyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

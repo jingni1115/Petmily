@@ -7,9 +7,10 @@
 
 import UIKit
 import Firebase
+import Gifu
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+  class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     /**

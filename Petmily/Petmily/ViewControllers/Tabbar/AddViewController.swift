@@ -80,7 +80,7 @@ class AddViewController: BaseViewController {
         /* changedHashTagColor(tfInfoHashTag, shouldChangeCharactersIn: <#T##NSRange#>, replacementString: <#T##String#>)
          changedHashTagColor(tfDailyHashTag, shouldChangeCharactersIn: <#T##NSRange#>, replacementString: <#T##String#>) */
         
-        MyFirestore().getUserData { result in
+        FirestoreService().getUserData { result in
             self.user = result
             print(result)
         }
@@ -175,7 +175,7 @@ class AddViewController: BaseViewController {
     }
     
     func requestAddDaily() {
-        MyFirestore().addDocument(content: shortTxtF.text ?? "", imageURL: dailyImageURL ?? "")
+        FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", imageURL: dailyImageURL ?? "")
     }
     
     // 액션 이쪽으로 옮길것
