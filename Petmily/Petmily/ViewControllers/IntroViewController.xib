@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntroViewController" customModule="Petmily" customModuleProvider="target">
             <connections>
+                <outlet property="gifImageView" destination="2a9-T5-4xZ" id="o5O-Fn-mzb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,17 +19,25 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Frame 5 (2)" translatesAutoresizingMaskIntoConstraints="NO" id="2a9-T5-4xZ">
-                    <rect key="frame" x="59" y="297" width="275" height="200"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-screen.gif" translatesAutoresizingMaskIntoConstraints="NO" id="2a9-T5-4xZ" customClass="GIFImageView" customModule="Gifu">
+                    <rect key="frame" x="50" y="279.66666666666669" width="293" height="293.00000000000006"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2a9-T5-4xZ" secondAttribute="height" multiplier="1:1" id="s7B-ft-HOD"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.9529411793" green="0.93333333730000001" blue="0.87450981139999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="2a9-T5-4xZ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="5dP-1T-I6D"/>
+                <constraint firstItem="2a9-T5-4xZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CGK-lH-y3R"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2a9-T5-4xZ" secondAttribute="trailing" constant="50" id="KBn-Rl-J7J"/>
+                <constraint firstItem="2a9-T5-4xZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="UWq-Ge-WMi"/>
+            </constraints>
             <point key="canvasLocation" x="49.618320610687022" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>
-        <image name="Frame 5 (2)" width="186" height="186"/>
+        <image name="launch-screen.gif" width="186" height="186"/>
     </resources>
 </document>
