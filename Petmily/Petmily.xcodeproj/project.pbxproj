@@ -57,7 +57,6 @@
 		56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF562A8F348A00541EB8 /* DailyModel.swift */; };
 		56C3CF592A8F349A00541EB8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF582A8F349A00541EB8 /* UserModel.swift */; };
 		56DD2DB82A8E41B5008A9E12 /* ReelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */; };
-		B32DF1652A92170E005730E1 /* launch-screen.gif in Resources */ = {isa = PBXBuildFile; fileRef = B32DF1642A92170E005730E1 /* launch-screen.gif */; };
 		B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F405522A91F8420085F4A9 /* AdoptViewController.swift */; };
 		B3F405552A91F8420085F4A9 /* AdoptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F405532A91F8420085F4A9 /* AdoptViewController.xib */; };
 		B3F405562A91F9190085F4A9 /* ContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BF4D772A91EBFF00DFA28E /* ContentsCollectionViewCell.xib */; };
@@ -69,7 +68,6 @@
 		DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */; };
 		DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */; };
 		DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */; };
-		DFD3A23F2A8E9333006867A0 /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD3A23E2A8E9333006867A0 /* CommonHeaderView.xib */; };
 		E437717E1DB888321482D570 /* Pods_PetmilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */; };
 		FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2663282A8CB300000222B3 /* ProfileViewController.swift */; };
 		FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */; };
@@ -149,7 +147,6 @@
 		633E801253E9A9E9DD6A8217 /* Pods-Petmily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily.release.xcconfig"; path = "Target Support Files/Pods-Petmily/Pods-Petmily.release.xcconfig"; sourceTree = "<group>"; };
 		6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetmilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9ADE19EC564B42522E24C87 /* Pods-Petmily-PetmilyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily-PetmilyUITests.release.xcconfig"; path = "Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B32DF1642A92170E005730E1 /* launch-screen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "launch-screen.gif"; path = "../../../../Downloads/launch-screen.gif"; sourceTree = "<group>"; };
 		B3BF4D762A91EBFC00DFA28E /* ContentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3BF4D772A91EBFF00DFA28E /* ContentsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B3F405522A91F8420085F4A9 /* AdoptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdoptViewController.swift; sourceTree = "<group>"; };
@@ -161,7 +158,6 @@
 		DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
 		DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailViewController.xib; sourceTree = "<group>"; };
-		DFD3A23E2A8E9333006867A0 /* CommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 		FF2663282A8CB300000222B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
@@ -320,7 +316,6 @@
 				569A35772A89FB8600FE098E /* Main.storyboard */,
 				569A35162A89C98600FE098E /* Assets.xcassets */,
 				569A35182A89C98600FE098E /* LaunchScreen.storyboard */,
-				B32DF1642A92170E005730E1 /* launch-screen.gif */,
 				565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */,
 				569A351B2A89C98600FE098E /* Info.plist */,
 				DF103ED02A921A17006BDF18 /* launch-screen.gif */,
@@ -601,7 +596,6 @@
 				56C3CF2F2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib in Resources */,
 				DF06F8472A8CBFC500B8A875 /* (null) in Resources */,
 				565C8B1A2A9137D200167A92 /* demo2.mp4 in Resources */,
-				B32DF1652A92170E005730E1 /* launch-screen.gif in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
 				DF103ED12A921A17006BDF18 /* launch-screen.gif in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
