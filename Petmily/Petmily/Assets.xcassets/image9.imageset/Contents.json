@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "animal-1850192_1280 1.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Frame 3.png",
+      "filename" : "animal-1850192_1280.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "animal-1850192_1280 2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

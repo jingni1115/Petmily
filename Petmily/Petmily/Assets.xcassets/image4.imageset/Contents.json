@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "gorilla-448731_1280 1.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -10,6 +11,7 @@
       "scale" : "2x"
     },
     {
+      "filename" : "gorilla-448731_1280 2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }
