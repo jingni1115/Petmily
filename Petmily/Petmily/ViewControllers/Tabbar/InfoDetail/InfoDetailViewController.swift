@@ -125,13 +125,24 @@ class InfoDetailViewController: BaseHeaderViewController {
     // 댓글 작성 버튼이 눌렸을 때 호출될 메서드
     func submitReply() {
         if let reply = tfReply.text, !reply.isEmpty {
+            
             // 댓글을 저장하거나 처리하는 코드를 작성
             // selectedInfo?.reply에 추가하거나 데이터베이스에 저장
             // 댓글 작성 후 필요한 업데이트도 수행 가능
+            requestSubmitReply()
             tfReply.text = "" // 댓글 작성 후 텍스트 필드 초기화
             // 댓글 작성 후 댓글창 높이 업데이트
             updateReplyTableViewHeight()
         }
+    }
+    
+    func requestSubmitReply() {
+        FirestoreService().addDailyReply(reply: tfReply.text ?? "")
+        getInfoReplyData()
+    }
+    
+    func getInfoReplyData() {
+        
     }
     
     @IBAction func deleteButtonTouched(_ sender: Any) {
