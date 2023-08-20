@@ -64,10 +64,10 @@
 		CB0540A4B7FEAD0DD9BFF0E4 /* Pods_Petmily_PetmilyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCB8754505F6B2538B76706 /* Pods_Petmily_PetmilyUITests.framework */; };
 		DF06F8462A8CBFC500B8A875 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		DF06F8472A8CBFC500B8A875 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		DF103ED12A921A17006BDF18 /* launch-screen.gif in Resources */ = {isa = PBXBuildFile; fileRef = DF103ED02A921A17006BDF18 /* launch-screen.gif */; };
 		DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */; };
 		DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */; };
 		DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */; };
-		DF29F3B12A920D00006A1823 /* launch-screen.gif in Resources */ = {isa = PBXBuildFile; fileRef = DF29F3B02A920D00006A1823 /* launch-screen.gif */; };
 		DFD3A23F2A8E9333006867A0 /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFD3A23E2A8E9333006867A0 /* CommonHeaderView.xib */; };
 		E437717E1DB888321482D570 /* Pods_PetmilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */; };
 		FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2663282A8CB300000222B3 /* ProfileViewController.swift */; };
@@ -152,11 +152,11 @@
 		B3F405532A91F8420085F4A9 /* AdoptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdoptViewController.xib; sourceTree = "<group>"; };
 		C29B249BDBFA1CA5A80548A3 /* Pods-Petmily.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily.debug.xcconfig"; path = "Target Support Files/Pods-Petmily/Pods-Petmily.debug.xcconfig"; sourceTree = "<group>"; };
 		C2FE733832C32CE5B2A46AD0 /* Pods_Petmily.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petmily.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF103ED02A921A17006BDF18 /* launch-screen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "launch-screen.gif"; sourceTree = "<group>"; };
 		DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
 		DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailViewController.xib; sourceTree = "<group>"; };
-		DF29F3B02A920D00006A1823 /* launch-screen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "launch-screen.gif"; path = "../../../../Documents/launch-screen.gif"; sourceTree = "<group>"; };
 		DFD3A23E2A8E9333006867A0 /* CommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
 		FF2663282A8CB300000222B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 				569A35182A89C98600FE098E /* LaunchScreen.storyboard */,
 				565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */,
 				569A351B2A89C98600FE098E /* Info.plist */,
-				DF29F3B02A920D00006A1823 /* launch-screen.gif */,
+				DF103ED02A921A17006BDF18 /* launch-screen.gif */,
 			);
 			path = Petmily;
 			sourceTree = "<group>";
@@ -594,7 +594,7 @@
 				DF06F8472A8CBFC500B8A875 /* (null) in Resources */,
 				565C8B1A2A9137D200167A92 /* demo2.mp4 in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
-				DF29F3B12A920D00006A1823 /* launch-screen.gif in Resources */,
+				DF103ED12A921A17006BDF18 /* launch-screen.gif in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
 				B3F405552A91F8420085F4A9 /* AdoptViewController.xib in Resources */,
 				DFD3A23F2A8E9333006867A0 /* CommonHeaderView.xib in Resources */,
