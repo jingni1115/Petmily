@@ -14,6 +14,7 @@
                 <outlet property="cvMain" destination="6Lh-4s-pRY" id="S0b-k7-c5i"/>
                 <outlet property="imgHeart" destination="Ewo-lT-xR5" id="qdx-o4-Tkr"/>
                 <outlet property="lblContent" destination="O0f-CC-RST" id="UgM-fd-6z9"/>
+                <outlet property="lblHashTag" destination="H6k-wk-eMO" id="78M-eb-1CK"/>
                 <outlet property="lblHeartCount" destination="01a-xh-pXD" id="Udo-2I-ZSW"/>
                 <outlet property="lblReplyCount" destination="PQc-bg-b4C" id="Bdk-lc-bmU"/>
                 <outlet property="lblUserName" destination="M4s-xv-UQa" id="NZF-nM-I1R"/>
@@ -159,7 +160,7 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cTW-3t-mhU">
-                    <rect key="frame" x="20.000000000000004" y="717.33333333333337" width="44.333333333333343" height="50.666666666666629"/>
+                    <rect key="frame" x="20.000000000000004" y="687" width="44.333333333333343" height="81"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4s-xv-UQa">
                             <rect key="frame" x="0.0" y="0.0" width="44.333333333333336" height="20.333333333333332"/>
@@ -168,9 +169,16 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0f-CC-RST">
-                            <rect key="frame" x="0.0" y="30.333333333333258" width="44.333333333333336" height="20.333333333333329"/>
+                            <rect key="frame" x="0.0" y="30.333333333333371" width="44.333333333333336" height="20.333333333333329"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6k-wk-eMO">
+                            <rect key="frame" x="0.0" y="60.666666666666636" width="44.333333333333336" height="20.333333333333336"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" systemColor="systemBlueColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -199,6 +207,9 @@
         <image name="text.bubble" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
