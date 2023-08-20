@@ -137,7 +137,7 @@ class InfoDetailViewController: BaseHeaderViewController {
     }
     
     func requestSubmitReply() {
-        FirestoreService().addDailyReply(reply: tfReply.text ?? "")
+//        FirestoreService().addDailyReply(reply: tfReply.text ?? "")
         getInfoReplyData()
     }
     
