@@ -26,7 +26,7 @@ class IntroViewController: BaseViewController {
             DataManager.sharedInstance.userInfo = result
             CommonUtil.print(output: result)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                 AppDelegate.applicationDelegate().changeInitViewController(type: .Main)
             }
         }

@@ -10,7 +10,7 @@
 #endif
 #endif
 
-#import "Gifu.h"
+#import <Gifu/Gifu.h>
 
 FOUNDATION_EXPORT double GifuVersionNumber;
 FOUNDATION_EXPORT const unsigned char GifuVersionString[];
