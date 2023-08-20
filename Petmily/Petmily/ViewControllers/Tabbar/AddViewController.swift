@@ -11,7 +11,7 @@ import Photos
 import PhotosUI
 import UIKit
 
-class AddViewController: BaseViewController {
+class AddViewController: BaseViewController{
     @IBOutlet var dailyImg: UIImageView!
     
     /** @brief 플러스버튼테두리구현뷰 */
@@ -220,41 +220,23 @@ extension AddViewController: UITextViewDelegate {
 }
 
 extension AddViewController: UITextFieldDelegate {
-    /* func changedHashTagColor(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-     // 현재 입력된 텍스트를 가져옵니다.
-     guard let currentText = textField.text else {
-     return true
-     }
-     // 이전에 입력한 문자열을 저장하고, 입력된 문자열과 비교합니다.
-     let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
-     if newText == " " {
-     // 특정 문구가 입력되었을 때 이전에 입력한 문자열의 색상을 변경합니다.
-     let attributedString = NSMutableAttributedString(string: newText)
-     let range = (newText as NSString).range(of: previousText)
-     attributedString.addAttribute(.foregroundColor, value: UIColor.red, range: range)
-     textField.attributedText = attributedString
-     }
-     // 현재 입력된 문자열을 이전 문자열로 업데이트합니다.
-     previousText = newText
-     return true
-     } */
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let currentText = textField.text else {
+            // 현재 입력된 텍스트 가져오기
+            let currentText = textField.text ?? ""
+            
+            // 띄어쓰기가 입력되었는지 확인
+            if string == " " {
+                // 이전 텍스트를 파란색으로 변경한 NSAttributedString 생성
+                let attributedString = NSMutableAttributedString(string: currentText)
+                attributedString.addAttribute(.foregroundColor, value: UIColor.blue, range: NSRange(location: 0, length: currentText.count))
+                
+                // 텍스트 필드에 적용
+                textField.attributedText = attributedString
+            }
+            
             return true
         }
-        // 이전에 입력한 문자열을 저장하고, 입력된 문자열과 비교합니다.
-        let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
-        if newText == " " {
-            // 특정 문구가 입력되었을 때 이전에 입력한 문자열의 색상을 변경합니다.
-            let attributedString = NSMutableAttributedString(string: newText)
-            let range = (newText as NSString).range(of: previousText)
-            attributedString.addAttribute(.foregroundColor, value: UIColor.red, range: range)
-            textField.attributedText = attributedString
-        }
-        // 현재 입력된 문자열을 이전 문자열로 업데이트합니다.
-        previousText = newText
-        return true
-    }
+    
 }
 
 extension AddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -266,18 +248,18 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
         present(videoPicker, animated: true, completion: nil)
     }
     
-//    func setUpPlayer(url:URL ,bounds:CGRect){
-//        avQueuePlayer = AVQueuePlayer(url: url)
-//        avplayerLayer = AVPlayerLayer(player: avQueuePlayer!)
-//        avplayerLayer?.frame = bounds
-//        avplayerLayer?.fillMode = .both // 애니메이션 시작과 끝에 어떻게 보일지 설정하는 속성
-//        avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-//        playerView.layer.addSublayer(avplayerLayer!)
-//    }
+    //    func setUpPlayer(url:URL ,bounds:CGRect){
+    //        avQueuePlayer = AVQueuePlayer(url: url)
+    //        avplayerLayer = AVPlayerLayer(player: avQueuePlayer!)
+    //        avplayerLayer?.frame = bounds
+    //        avplayerLayer?.fillMode = .both // 애니메이션 시작과 끝에 어떻게 보일지 설정하는 속성
+    //        avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+    //        playerView.layer.addSublayer(avplayerLayer!)
+    //    }
     
     // 선택한 비디오를 AVQueuePlayer로 재생
     func playVideoWithURL(_ videoURL: URL) {
-//        let playerItem = AVPlayerItem(url: videoURL)
+        //        let playerItem = AVPlayerItem(url: videoURL)
         
         DispatchQueue.main.async {
             self.avQueuePlayer = AVQueuePlayer(url: videoURL)
@@ -287,7 +269,7 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
             self.avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             self.avQueuePlayer?.play()
             self.vPlayer.layer.addSublayer(self.avplayerLayer!)
-//            self.vPlayer.bringSubviewToFront(self.view)
+            //            self.vPlayer.bringSubviewToFront(self.view)
             self.vPlayer.backgroundColor = .red
         }
         //         self.vPlayer.addSubview(self.playerView)
@@ -328,7 +310,7 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
                     }
                 }
                 self.playVideoWithURL(URL(string: "https://firebasestorage.googleapis.com:443/v0/b/petmily-6b63f.appspot.com/o/9A2F089B-EA35-497C-9FD7-32C7B9CC7D511692519908.925446?alt=media&token=713f9e4d-7163-4e9e-b189-b043845df4b1")!)
-//                self.dailyImageURL = videoURL.absoluteString
+                //                self.dailyImageURL = videoURL.absoluteString
             }
         default:
             break
