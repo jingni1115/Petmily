@@ -66,7 +66,14 @@ class DailyViewController: UIViewController {
     
     @IBAction func heartButtonTouched(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        imgHeart.image = sender.isSelected ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        
+        if sender.isSelected {
+            imgHeart.image = UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate)
+            imgHeart.tintColor = UIColor.systemPink
+        } else {
+            imgHeart.image = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)
+            imgHeart.tintColor = UIColor.white // 원하는 색상으로 변경 가능
+        }
     }
     
     @IBAction func replyButtonTouched(_ sender: Any) {
