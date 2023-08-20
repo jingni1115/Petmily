@@ -92,6 +92,7 @@ final class MyFirestore {
                 for document in snapshot.documents {
                     if document.documentID == self.id {
                         // 서버에 저장된 딕셔너리 데이터를 가져온다.
+                        print("here: \(document)")
                         guard let user = try! document.data(as: [DailyModel]?.self) else { return }
                         print("\(self.id) => \(user)")
                         //                        guard var data = document["Map"] as? [String : String] else { return }

@@ -22,12 +22,6 @@ class ProfileViewController: BaseHeaderViewController {
         return scrollView
     }()
     
-    let menuBtn: UIButton = {
-        let btn = UIButton()
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        return btn
-    }()
-    
     let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -204,8 +198,6 @@ class ProfileViewController: BaseHeaderViewController {
 
     
     func configureView() {
-        setMenuBtn()
-        
         setScrollView()
         setStackView()
         
@@ -219,24 +211,11 @@ class ProfileViewController: BaseHeaderViewController {
         setCompleteBtn()
     }
     
-
-    
-    func setMenuBtn() {
-        view.addSubview(menuBtn)
-        menuBtn.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
-        NSLayoutConstraint.activate([
-            menuBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            menuBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
-            menuBtn.widthAnchor.constraint(equalToConstant: 50),
-            menuBtn.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
     func setScrollView() {
         view.addSubview(contentScrollView)
         
         NSLayoutConstraint.activate([
-            contentScrollView.topAnchor.constraint(equalTo: menuBtn.bottomAnchor, constant: 16),
+            contentScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 49),
             contentScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             contentScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             contentScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)

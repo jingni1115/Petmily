@@ -76,6 +76,7 @@
 		FF7D0D372A8D444700F96E02 /* InfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059CF2A8C7B5100F10DE1 /* InfoList.swift */; };
 		FF7D0D382A8D445100F96E02 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06F8422A8CAF2100B8A875 /* UserList.swift */; };
 		FFEFD89E2A8E7016007D2F30 /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEFD89D2A8E7016007D2F30 /* CommonHeaderView.xib */; };
+		FFFB1E7F2A91603D00263D6D /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB1E7E2A91603D00263D6D /* FirebaseStorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,7 @@
 		FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF26632C2A8CB9FE000222B3 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		FFEFD89D2A8E7016007D2F30 /* CommonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonHeaderView.xib; sourceTree = "<group>"; };
+		FFFB1E7E2A91603D00263D6D /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				56C3CF392A8E768D00541EB8 /* MyFirestore.swift */,
+				FFFB1E7E2A91603D00263D6D /* FirebaseStorageManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				FF7D0D352A8D43EA00F96E02 /* MyPageViewController.swift in Sources */,
 				DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */,
 				569A354B2A89CE2200FE098E /* InfoViewController.swift in Sources */,
+				FFFB1E7F2A91603D00263D6D /* FirebaseStorageManager.swift in Sources */,
 				56C3CF312A8E4A4200541EB8 /* BaseHeaderViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
 				DF06F8412A8CAE3500B8A875 /* User.swift in Sources */,

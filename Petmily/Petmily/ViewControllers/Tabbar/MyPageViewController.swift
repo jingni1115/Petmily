@@ -25,7 +25,7 @@ class MyPageViewController: BaseViewController {
         stackView.axis = .vertical
 //        stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = 10
+        stackView.spacing = 20
         return stackView
     }()
 
@@ -146,18 +146,20 @@ class MyPageViewController: BaseViewController {
     }()
     
     var profileData: UserModel?
+    var infoData: [InfoModel]?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getProfileData()
-        configureView()
+        getInfoData()
+//        configureView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        setCollectionView()
-        setFirstStackView()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        setMenuBtn()
+//        setCollectionView()
+//        setFirstStackView()
+//    }
     
     func configureView() {
         setTableView()
@@ -182,6 +184,14 @@ class MyPageViewController: BaseViewController {
         setInfoBtn()
     }
     
+    func getInfoData() {
+        MyFirestore().fetchInfoData { result in
+            self.infoData = result
+            print(result)
+            self.getProfileData()
+        }
+    }
+    
     func getProfileData() {
         MyFirestore().getUserData { result in
             self.profileData = result
@@ -192,7 +202,7 @@ class MyPageViewController: BaseViewController {
     
     func setMenuBtn() {
         view.addSubview(menuBtn)
-        menuBtn.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
+        menuBtn.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
         NSLayoutConstraint.activate([
             menuBtn.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             menuBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
@@ -268,7 +278,7 @@ class MyPageViewController: BaseViewController {
         secondStackView.layer.masksToBounds = false
         secondStackView.layer.shadowColor = UIColor.darkGray.cgColor
         secondStackView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        secondStackView.layer.shadowOpacity = 1
+        secondStackView.layer.shadowOpacity = 0.5
         secondStackView.layer.shadowRadius = 5.0
         
         secondStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
@@ -331,26 +341,26 @@ class MyPageViewController: BaseViewController {
         dailyBtn.addTarget(self, action: #selector(setDailybtn), for: .touchUpInside)
         dailyBtn.backgroundColor = .systemGray
         
-        dailyBtn.layer.borderWidth = 1
-        dailyBtn.layer.borderColor = UIColor.clear.cgColor
-        dailyBtn.layer.masksToBounds = false
-        dailyBtn.layer.shadowColor = UIColor.darkGray.cgColor
-        dailyBtn.layer.shadowOffset = CGSize(width: 0, height: 1)
-        dailyBtn.layer.shadowOpacity = 1
-        dailyBtn.layer.shadowRadius = 5.0
+//        dailyBtn.layer.borderWidth = 1
+//        dailyBtn.layer.borderColor = UIColor.clear.cgColor
+//        dailyBtn.layer.masksToBounds = false
+//        dailyBtn.layer.shadowColor = UIColor.darkGray.cgColor
+//        dailyBtn.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        dailyBtn.layer.shadowOpacity = 1
+//        dailyBtn.layer.shadowRadius = 5.0
     }
         
     func setInfoBtn() {
         infoBtn.addTarget(self, action: #selector(setInfobtn), for: .touchUpInside)
         infoBtn.backgroundColor = .systemGray3
         
-        infoBtn.layer.borderWidth = 1
-        infoBtn.layer.borderColor = UIColor.clear.cgColor
-        infoBtn.layer.masksToBounds = false
-        infoBtn.layer.shadowColor = UIColor.darkGray.cgColor
-        infoBtn.layer.shadowOffset = CGSize(width: 0, height: 1)
-        infoBtn.layer.shadowOpacity = 1
-        infoBtn.layer.shadowRadius = 5.0
+//        infoBtn.layer.borderWidth = 1
+//        infoBtn.layer.borderColor = UIColor.clear.cgColor
+//        infoBtn.layer.masksToBounds = false
+//        infoBtn.layer.shadowColor = UIColor.darkGray.cgColor
+//        infoBtn.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        infoBtn.layer.shadowOpacity = 1
+//        infoBtn.layer.shadowRadius = 5.0
     }
     
     @objc
@@ -412,13 +422,14 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 셀 선택 해제
         tableView.deselectRow(at: indexPath, animated: true)
         
         // 선택한 정보 가져오기
-        let selectedInfo = InfoList.list[indexPath.row]
-        let selectedUser = UserList.list[indexPath.row]
+        let selectedInfo = infoData?[indexPath.row]
+        let selectedUser = profileData
+        
         
         // 목표 뷰 컨트롤러 초기화
         let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
@@ -454,8 +465,8 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         collectionView.deselectItem(at: indexPath, animated: true)
         
         // 선택한 정보 가져오기
-        let selectedInfo = InfoList.list[indexPath.row]
-        let selectedUser = UserList.list[indexPath.row]
+        let selectedInfo = infoData?[indexPath.row]
+        let selectedUser = profileData
         
         // 목표 뷰 컨트롤러 초기화
         let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
