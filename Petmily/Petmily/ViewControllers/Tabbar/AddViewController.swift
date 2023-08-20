@@ -11,7 +11,7 @@ import Photos
 import PhotosUI
 import UIKit
 
-class AddViewController: BaseViewController {
+class AddViewController: BaseViewController{
     @IBOutlet var dailyImg: UIImageView!
     
     /** @brief 플러스버튼테두리구현뷰 */
@@ -21,10 +21,10 @@ class AddViewController: BaseViewController {
     @IBOutlet var completeBtn: UIButton!
     
     /** @brief 뷰1 */
-    @IBOutlet var view1: UIView!
+    @IBOutlet var view1: UIScrollView!
     
     /** @brief 뷰2 */
-    @IBOutlet var view2: UIView!
+    @IBOutlet var view2: UIScrollView!
     
     /** @brief 세그먼트버튼 */
     @IBOutlet var segBtn: UISegmentedControl!
@@ -50,14 +50,15 @@ class AddViewController: BaseViewController {
     /** @brief 데일리 간단한 설명글 */
     @IBOutlet var shortTxtF: UITextField!
     @IBOutlet var vPlayer: UIView!
+    @IBOutlet weak var csrConfirmBottomMargin: NSLayoutConstraint!
     
     let imagePicker = UIImagePickerController()
     var previousText: String = ""
     
     var dailyImageURL: String?
-    var avQueuePlayer: AVQueuePlayer? // 일련의 플레이어 항목을 재생하는 개체
-    var avplayerLayer: AVPlayerLayer?
-    var imgORVideo: String = "img"
+    var avQueuePlayer : AVQueuePlayer? // 일련의 플레이어 항목을 재생하는 개체
+    var avplayerLayer : AVPlayerLayer?
+    var imgORVideo: String = "video"
     
     var user: UserModel?
     var imageUrl: String?
@@ -94,6 +95,9 @@ class AddViewController: BaseViewController {
             vPlayer.trailingAnchor.constraint(equalTo: vPlayer.trailingAnchor),
             vPlayer.bottomAnchor.constraint(equalTo: vPlayer.bottomAnchor)
         ])
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -136,6 +140,26 @@ class AddViewController: BaseViewController {
         requestPhotosPermission()
     }
     
+    /** @brief textField enter Event, next */
+    @objc func _keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            var inset:UIEdgeInsets = self.view1.contentInset
+            inset.bottom = keyboardHeight - Common.kBottomHeight
+            view1.contentInset = inset
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+            //                guard let `self` = self else {return}
+            self.csrConfirmBottomMargin.constant = inset.bottom
+            //            }
+        }
+    }
+    /** @brief textField enter Event, close */
+    @objc func _keyboardWillHide(_ notification: Notification) {
+        view1.contentInset = .zero
+        csrConfirmBottomMargin.constant = 0
+    }
+    
     private func requestPhotosPermission() {
         let photoAuthorizationStatusStatus = PHPhotoLibrary.authorizationStatus()
         CommonUtil.print(output: photoAuthorizationStatusStatus)
@@ -175,7 +199,19 @@ class AddViewController: BaseViewController {
     }
     
     func requestAddDaily() {
-        FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", imageURL: dailyImageURL ?? "")
+        if shortTxtF.text ?? "" != "" {
+            FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", imageURL: dailyImageURL ?? "") { reuslt in
+                BaseTabbarController().moveToTabBarIndex(index: .Daily)
+            }
+        }
+    }
+    
+    func requsetAddInfo() {
+        if infoTitle.text ?? "" != "" {
+            FirestoreService().addInfoDocument(title: infoTitle.text ?? "", content: txtvContents.text ?? "", hashTag: tfInfoHashTag.text ?? "", imageURL: "") { result in
+                BaseTabbarController().moveToTabBarIndex(index: .Info)
+            }
+        }
     }
     
     // 액션 이쪽으로 옮길것
@@ -204,8 +240,16 @@ class AddViewController: BaseViewController {
     }
     
     @IBAction func completeBtn(_ sender: UIButton) {
-        // 완료 버튼 눌렀을 때 현재 창이 꺼지면서 입력했던 자료들이 데일리와 정보공유 게시판에 올라가는 것을 구현해라
-        requestAddDaily()
+        //완료 버튼 눌렀을 때 현재 창이 꺼지면서 입력했던 자료들이 데일리와 정보공유 게시판에 올라가는 것을 구현해라
+        switch imgORVideo {
+        case "img":
+            requsetAddInfo()
+        case "video":
+            requestAddDaily()
+        default:
+            break
+        }
+        
     }
 }
 
@@ -220,41 +264,23 @@ extension AddViewController: UITextViewDelegate {
 }
 
 extension AddViewController: UITextFieldDelegate {
-    /* func changedHashTagColor(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-     // 현재 입력된 텍스트를 가져옵니다.
-     guard let currentText = textField.text else {
-     return true
-     }
-     // 이전에 입력한 문자열을 저장하고, 입력된 문자열과 비교합니다.
-     let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
-     if newText == " " {
-     // 특정 문구가 입력되었을 때 이전에 입력한 문자열의 색상을 변경합니다.
-     let attributedString = NSMutableAttributedString(string: newText)
-     let range = (newText as NSString).range(of: previousText)
-     attributedString.addAttribute(.foregroundColor, value: UIColor.red, range: range)
-     textField.attributedText = attributedString
-     }
-     // 현재 입력된 문자열을 이전 문자열로 업데이트합니다.
-     previousText = newText
-     return true
-     } */
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let currentText = textField.text else {
+            // 현재 입력된 텍스트 가져오기
+            let currentText = textField.text ?? ""
+            
+            // 띄어쓰기가 입력되었는지 확인
+            if string == " " {
+                // 이전 텍스트를 파란색으로 변경한 NSAttributedString 생성
+                let attributedString = NSMutableAttributedString(string: currentText)
+                attributedString.addAttribute(.foregroundColor, value: UIColor.blue, range: NSRange(location: 0, length: currentText.count))
+                
+                // 텍스트 필드에 적용
+                textField.attributedText = attributedString
+            }
+            
             return true
         }
-        // 이전에 입력한 문자열을 저장하고, 입력된 문자열과 비교합니다.
-        let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
-        if newText == " " {
-            // 특정 문구가 입력되었을 때 이전에 입력한 문자열의 색상을 변경합니다.
-            let attributedString = NSMutableAttributedString(string: newText)
-            let range = (newText as NSString).range(of: previousText)
-            attributedString.addAttribute(.foregroundColor, value: UIColor.red, range: range)
-            textField.attributedText = attributedString
-        }
-        // 현재 입력된 문자열을 이전 문자열로 업데이트합니다.
-        previousText = newText
-        return true
-    }
+    
 }
 
 extension AddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -266,18 +292,18 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
         present(videoPicker, animated: true, completion: nil)
     }
     
-//    func setUpPlayer(url:URL ,bounds:CGRect){
-//        avQueuePlayer = AVQueuePlayer(url: url)
-//        avplayerLayer = AVPlayerLayer(player: avQueuePlayer!)
-//        avplayerLayer?.frame = bounds
-//        avplayerLayer?.fillMode = .both // 애니메이션 시작과 끝에 어떻게 보일지 설정하는 속성
-//        avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-//        playerView.layer.addSublayer(avplayerLayer!)
-//    }
+    //    func setUpPlayer(url:URL ,bounds:CGRect){
+    //        avQueuePlayer = AVQueuePlayer(url: url)
+    //        avplayerLayer = AVPlayerLayer(player: avQueuePlayer!)
+    //        avplayerLayer?.frame = bounds
+    //        avplayerLayer?.fillMode = .both // 애니메이션 시작과 끝에 어떻게 보일지 설정하는 속성
+    //        avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+    //        playerView.layer.addSublayer(avplayerLayer!)
+    //    }
     
     // 선택한 비디오를 AVQueuePlayer로 재생
     func playVideoWithURL(_ videoURL: URL) {
-//        let playerItem = AVPlayerItem(url: videoURL)
+        //        let playerItem = AVPlayerItem(url: videoURL)
         
         DispatchQueue.main.async {
             self.avQueuePlayer = AVQueuePlayer(url: videoURL)
@@ -287,7 +313,7 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
             self.avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             self.avQueuePlayer?.play()
             self.vPlayer.layer.addSublayer(self.avplayerLayer!)
-//            self.vPlayer.bringSubviewToFront(self.view)
+            //            self.vPlayer.bringSubviewToFront(self.view)
             self.vPlayer.backgroundColor = .red
         }
         //         self.vPlayer.addSubview(self.playerView)
@@ -328,7 +354,7 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
                     }
                 }
                 self.playVideoWithURL(URL(string: "https://firebasestorage.googleapis.com:443/v0/b/petmily-6b63f.appspot.com/o/9A2F089B-EA35-497C-9FD7-32C7B9CC7D511692519908.925446?alt=media&token=713f9e4d-7163-4e9e-b189-b043845df4b1")!)
-//                self.dailyImageURL = videoURL.absoluteString
+                //                self.dailyImageURL = videoURL.absoluteString
             }
         default:
             break

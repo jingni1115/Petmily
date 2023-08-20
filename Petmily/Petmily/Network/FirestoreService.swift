@@ -44,7 +44,7 @@ final class FirestoreService {
         var names: [[String:Any]] = [[:]]
         var daily: [DailyModel]?
         
-        db.collection("dailyJJab").getDocuments { (querySnapshot, error) in
+        db.collection("daily").getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
                 completion(daily) // 호출하는 쪽에 빈 배열 전달
@@ -85,22 +85,68 @@ final class FirestoreService {
     }
     
     /**
+     @brief infoData를 불러온다,
+     */
+    func getReplyData(completion: @escaping (String?) -> Void) {
+        var names: String = ""
+        var info: [InfoModel]?
+        
+        db.collection("daily").document().collection(self.userID).document("reply").getDocument { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+                completion(names) // 호출하는 쪽에 빈 배열 전달
+                return
+            }
+            names = querySnapshot!.description
+            do {
+                let jsonCreate = try JSONSerialization.data(withJSONObject: names, options: .prettyPrinted)
+                
+                // json 데이터를 변수에 삽입 실시
+                names = String(data: jsonCreate, encoding: .utf8) ?? ""
+            } catch {
+                
+            }
+//            names = self.dictionaryToObject(objectType: InfoModel.self, dictionary: names)
+            completion(names) // 성공 시 이름 배열 전달
+        }
+    }
+    
+    /**
      @brief dailyData를 추가한다,
      
      @param content, imageURL
      */
-    func addDailyDocument(content: String, imageURL: String) {
+    func addDailyDocument(content: String, imageURL: String, completion: @escaping (String) -> Void) {
         // Add a new document with a generated ID
-        db.collection("aaa").document(DataManager.sharedInstance.userInfo?.id ?? "").collection("aaa").addDocument(data: [
+        db.collection("daily").document(content).setData([
+            "userName": DataManager.sharedInstance.userInfo?.name,
             "content": content,
             "imageURL": imageURL,
             "reply": nil,
-            "like": nil
+            "like": 0
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-                print("Daily Document added")
+                completion("Daily Document added")
+            }
+        }
+    }
+    
+    /**
+     @brief daily heart를 추가한다,
+     */
+    func addDailyLike(like: Int) {
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        let replyRef = db.collection("dailyJJab").document("dailyJJab")
+        replyRef.updateData([
+            "like": like
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+//                print("Document added with ID: \(ref!.documentID)")
             }
         }
     }
@@ -130,18 +176,20 @@ final class FirestoreService {
      
      @param content, imageURL
      */
-    func addInfoDocument(content: String, imageURL: String) {
+    func addInfoDocument(title: String, content: String, hashTag: String, imageURL: String, completion: @escaping (String) -> Void) {
         // Add a new document with a generated ID
         db.collection("aaa").document(DataManager.sharedInstance.userInfo?.id ?? "").collection("aaa").addDocument(data: [
+            "title": title,
             "content": content,
+            "hashTag": hashTag,
             "imageURL": imageURL,
             "reply": nil,
             "like": nil
         ]) { err in
             if let err = err {
-                print("Error adding document: \(err)")
+                CommonUtil.print(output: "Error adding document: \(err)")
             } else {
-                print("Info Document added")
+                completion("Info Document added")
             }
         }
     }

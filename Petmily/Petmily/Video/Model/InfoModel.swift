@@ -13,6 +13,7 @@ struct InfoModel: Codable {
     let title: String?
     let content: String?
     let date: String?
+    var hashTag: String?
     var reply: [String: String]
     var like: Int = 0
 
@@ -20,6 +21,7 @@ struct InfoModel: Codable {
         case id
         case title
         case content
+        case hashTag
         case reply
         case date
     }
