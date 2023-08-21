@@ -118,6 +118,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         
         // 목표 뷰 컨트롤러 초기화
         let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
+
         
         // 정보 전달
         if isSearching {
@@ -127,6 +128,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         vc.selectedUser = selectedUser // 유저 정보
+        vc.index = indexPath.row // index 정보
         navigationPushController(viewController: vc, animated: true)
     }
 }

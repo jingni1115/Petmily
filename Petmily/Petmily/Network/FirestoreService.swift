@@ -156,17 +156,39 @@ final class FirestoreService {
      
      @param reply
      */
-    func addDailyReply(reply: String) {
+    func addDailyReply(reply: [String: String], completion: @escaping (String) -> Void) {
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
-        let replyRef = db.collection("daily").document().collection(self.userID).document("reply")
+        let replyRef = db.collection("daily").document("s2V3qzzc2Z0XFOkrIuvQ")
         replyRef.updateData([
-            "content": reply
+            "reply": reply
         ]) { err in
             if let err = err {
-                print("Error adding document: \(err)")
+                completion("Error adding document: \(err)")
             } else {
-                print("Document added with ID: \(ref!.documentID)")
+                completion("Document added")
+//                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
+    /**
+     @brief infoReply를 추가한다,
+     
+     @param reply, title
+     */
+    func addInfoReply(title: String,reply: [String: String], completion: @escaping (String) -> Void) {
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        let replyRef = db.collection("Info").document(title)
+        replyRef.updateData([
+            "reply": reply
+        ]) { err in
+            if let err = err {
+                completion("Error adding document: \(err)")
+            } else {
+                completion("Document added")
+//                print("Document added with ID: \(ref!.documentID)")
             }
         }
     }

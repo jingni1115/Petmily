@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReplyViewController" customModule="Petmily" customModuleProvider="target">
             <connections>
+                <outlet property="csrConfirmBottomMargin" destination="ms2-sU-onn" id="4hZ-Wl-z5S"/>
+                <outlet property="tfReply" destination="1SS-zo-Ms9" id="hOv-fh-Qm7"/>
                 <outlet property="tvMain" destination="h6Y-4n-rTk" id="dEu-hf-0c5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,19 +23,45 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="h6Y-4n-rTk">
-                    <rect key="frame" x="0.0" y="79" width="393" height="739"/>
+                    <rect key="frame" x="0.0" y="79" width="393" height="630.66666666666663"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1SS-zo-Ms9">
+                    <rect key="frame" x="10" y="719.66666666666663" width="373" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pas-kR-7Mp">
+                    <rect key="frame" x="10" y="763.66666666666663" width="373" height="34.333333333333371"/>
+                    <color key="backgroundColor" red="0.32549020649999999" green="0.32549020649999999" blue="0.32549020649999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="작성"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="addReplyButtonTouched:" destination="-1" eventType="touchUpInside" id="BI1-x8-FDr"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="1SS-zo-Ms9" firstAttribute="top" secondItem="h6Y-4n-rTk" secondAttribute="bottom" constant="10" id="0Tx-Fi-j4x"/>
                 <constraint firstItem="h6Y-4n-rTk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Hoe-MH-ILw"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="h6Y-4n-rTk" secondAttribute="bottom" id="KDk-z1-kGC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pas-kR-7Mp" secondAttribute="trailing" constant="10" id="Jdw-mw-E10"/>
+                <constraint firstItem="1SS-zo-Ms9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="RkZ-dj-8qd"/>
                 <constraint firstItem="h6Y-4n-rTk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tfe-3M-pE2"/>
+                <constraint firstItem="pas-kR-7Mp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Wxc-fD-s6i"/>
+                <constraint firstItem="pas-kR-7Mp" firstAttribute="top" secondItem="1SS-zo-Ms9" secondAttribute="bottom" constant="10" id="Ywb-dy-vra"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1SS-zo-Ms9" secondAttribute="trailing" constant="10" id="biI-1A-xB5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h6Y-4n-rTk" secondAttribute="trailing" id="cLK-hN-dvS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="pas-kR-7Mp" secondAttribute="bottom" constant="20" id="ms2-sU-onn"/>
             </constraints>
-            <point key="canvasLocation" x="22" y="-12"/>
+            <point key="canvasLocation" x="20.610687022900763" y="-12.67605633802817"/>
         </view>
     </objects>
     <resources>

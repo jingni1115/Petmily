@@ -18,6 +18,7 @@ class DailyViewController: UIViewController {
     @IBOutlet weak var lblReplyCount: UILabel!
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblContent: UILabel!
+    @IBOutlet weak var lblHashTag: UILabel!
     
     var isPlay = false
     var dailyData: [DailyModel]?
@@ -136,6 +137,7 @@ extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSo
         lblContent.text = dailyData?[indexPath.row].content
         let replyCount = dailyData?[indexPath.row].reply.count ?? 0
         lblReplyCount.text = String(replyCount)
+        lblHashTag.text = "#\(String(describing: dailyData?[indexPath.row].hashTag?.replacingOccurrences(of: " ", with: " #") ?? ""))"
         userIndex = indexPath.row
         if let urlPath = Bundle.main.url(forResource: dailyData?[indexPath.row].imageURL, withExtension: "mp4"){
             cell.setUpPlayer(url: urlPath, bounds: collectionView.frame)

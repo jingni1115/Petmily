@@ -13,14 +13,14 @@ struct DailyModel: Codable {
     let imageURL: String?
     let content: String?
     var reply: [String: String]
-//    let date: String
+    let hashTag: String?
     var like: Int = 0
 
     enum CodingKeys: String, CodingKey {
         case userName
         case imageURL
         case content
-//        case date
+        case hashTag
         case like
         case reply
     }
