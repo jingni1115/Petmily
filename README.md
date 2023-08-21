@@ -32,13 +32,32 @@ https://github.com/jingni1115/Petmily
 <img width="1072" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/5caae6f9-93c0-49b9-9d40-c033d4792201">
 
 # 주요 기능
-1. UITableView, UICollectionView 사용
-2. Search 기능
-3. Segmented Button에 의한 뷰 hidden 처리
-4. UIImagePicker로 이미지 선택 기능
-5. 링크 연결
-6. 프로필 수정
-
+1. AVPlayer로 동영상 재생
+<img width="357" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/78762262-1a28-445b-b89e-c000bbf9eaf9">
+<br>
+2. UITableView, UICollectionView 사용
+<img width="340" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/274503e0-2dad-4509-b95f-6cabccf83d75">
+<img width="363" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/9c497bc5-560d-44f0-aea3-39c0061789b6">
+<br>
+3. Search 기능
+<img width="343" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/e41cb0e9-fc79-49cd-9221-282feda7fc73">
+<br>
+4. Segmented Button에 의한 뷰 hidden 처리
+<img width="331" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/04b7764c-db96-4ab3-ac07-246a2b71f55f">
+<img width="333" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/be184464-beda-4698-a2dd-ea9b56cdb69b">
+<br>
+5. UIImagePicker로 이미지 선택 기능
+<img width="357" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/49439c21-6b83-4b47-a6af-c76f4e6abce8">
+<br>
+6. 링크 연결
+<img width="352" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/41b4f364-468a-4a93-bd84-9c219c138c66">
+<br>
+7. 프로필 수정
+<img width="339" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/6a7868ce-19d1-43f0-b191-7875bd925b48">
+<br>
+8. UIDatePicker
+<img width="351" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/7a6fdd2e-cc7c-4058-89ae-e62d81406c16">
+<br>
 # 디렉토리 구조
 <img width="311" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/e33e5631-5331-4682-b172-6351fc392921">
 
