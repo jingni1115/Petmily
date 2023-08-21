@@ -141,14 +141,22 @@ class InfoDetailViewController: BaseHeaderViewController {
     func requestInfoData() {
         FirestoreService().getInfoData() { result in
             CommonUtil.print(output: result)
-            self.selectedInfo = result?[self.index]
-            self.tvReply.reloadData()
+            if let updatedInfo = result?[self.index] {
+                self.selectedInfo?.reply = updatedInfo.reply
+                self.tvReply.reloadData()
+            }
         }
     }
     
     func addInfoReplyData() {
+        let newReply = [DataManager.sharedInstance.userInfo?.name ?? "": tfReply.text ?? ""]
         
-        FirestoreService().addInfoReply(title: selectedInfo?.title ?? "", reply: [DataManager.sharedInstance.userInfo?.name ?? "":tfReply.text ?? ""]) { result in
+        requestReplyData = selectedInfo?.reply ?? [:]
+        
+        for (key, value) in newReply {
+            requestReplyData?[key] = value
+        }
+        FirestoreService().addInfoReply(title: selectedInfo?.title ?? "", reply: requestReplyData ?? [:]) { result in
             CommonUtil.print(output: result)
             self.requestInfoData()
         }
