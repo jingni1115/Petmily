@@ -40,7 +40,7 @@ final class FirestoreService {
     /**
      @brief userData를 수정한다,
      */
-    func editUserData(name: String, animalName: String, birth: String, gender: String, imageURL: String, type: String, completion: @escaping (UserModel) -> Void) {
+    func editUserData(name: String, animalName: String, birth: String, gender: String, imageURL: String, type: String, completion: @escaping (UserModel?) -> Void) {
         var names: [String:Any] = [:]
         var result: UserModel?
         
@@ -54,7 +54,7 @@ final class FirestoreService {
             "type" : type
         ])
         result = self.dicToObject(objectType: UserModel.self, dictionary: names)
-        completion(result!) // 성공 시 이름 배열 전달
+        completion(result) // 성공 시 이름 배열 전달
     }
     
     /**
@@ -218,15 +218,17 @@ final class FirestoreService {
      
      @param content, imageURL
      */
-    func addInfoDocument(title: String, content: String, hashTag: String, imageURL: String, completion: @escaping (String) -> Void) {
+    func addInfoDocument(title: String, content: String, date: String, hashTag: String, imageURL: String, completion: @escaping (String) -> Void) {
         // Add a new document with a generated ID
-        db.collection("aaa").document(DataManager.sharedInstance.userInfo?.id ?? "").collection("aaa").addDocument(data: [
+        db.collection("Info").document(title).setData([
+            "id": userID,
             "title": title,
             "content": content,
+            "date": date,
             "hashTag": hashTag,
             "imageURL": imageURL,
-            "reply": nil,
-            "like": nil
+            "reply": [:],
+            "like": 0
         ]) { err in
             if let err = err {
                 CommonUtil.print(output: "Error adding document: \(err)")

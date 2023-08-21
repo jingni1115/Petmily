@@ -54,6 +54,7 @@ class ProfileViewController: BaseHeaderViewController {
     let petNameTextField: UITextField = {
         let tField = UITextField()
         //        tField.translatesAutoresizingMaskIntoConstraints = false
+        tField.text = DataManager.sharedInstance.userInfo?.animalName ?? ""
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
@@ -73,6 +74,7 @@ class ProfileViewController: BaseHeaderViewController {
     let myNameTextField: UITextField = {
         let tField = UITextField()
         //        tField.translatesAutoresizingMaskIntoConstraints = false
+        tField.text = DataManager.sharedInstance.userInfo?.name ?? ""
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
@@ -129,6 +131,7 @@ class ProfileViewController: BaseHeaderViewController {
     let birthTextField: UITextField = {
         let tField = UITextField()
         //        tField.translatesAutoresizingMaskIntoConstraints = false
+        tField.text = DataManager.sharedInstance.userInfo?.birth ?? ""
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
@@ -148,6 +151,7 @@ class ProfileViewController: BaseHeaderViewController {
     let breedTextField: UITextField = {
         let tField = UITextField()
         //        tField.translatesAutoresizingMaskIntoConstraints = false
+        tField.text = DataManager.sharedInstance.userInfo?.type ?? ""
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
@@ -362,14 +366,23 @@ class ProfileViewController: BaseHeaderViewController {
     }
     
     @objc func clickCompleteBtn() {
+        if petNameTextField.text ?? "" == "" {
+            CommonUtil().showOneButtonAlertView(title: "동물 이름", message: "작성이 필요합니다.")
+        }
+        if myNameTextField.text ?? "" == "" {
+            CommonUtil().showOneButtonAlertView(title: "주인 이름", message: "작성이 필요합니다.")
+        }
+        if birthTextField.text ?? "" == "" {
+            CommonUtil().showOneButtonAlertView(title: "생년 월일", message: "작성이 필요합니다.")
+        }
+        if breedTextField.text ?? "" == "" {
+            CommonUtil().showOneButtonAlertView(title: "종", message: "작성이 필요합니다.")
+        }
+        
         FirestoreService().editUserData(name: myNameTextField.text ?? "", animalName: petNameTextField.text ?? "", birth: birthTextField.text ?? "", gender: "여자", imageURL: "", type: breedTextField.text ?? "") { result in
             self.navigationPopViewController(animated: false) {
-    //            CommonUtil.print(output: vc.dummyUserList[0].name)
             }
         }
-//        let vc = MyPageViewController()
-//        vc.dummyUserList[0] = User(name: myNameTextField.text ?? "")
-        
     }
 }
 

@@ -147,7 +147,6 @@ class MyPageViewController: BaseViewController {
     var profileData: UserModel?
     var dailyData: [DailyModel]?
     var infoData: [InfoModel]?
-    var dailyData: [DailyModel]?
     var dailyThumbnail: UIImage?
 
     override func viewDidLoad() {
@@ -194,7 +193,7 @@ class MyPageViewController: BaseViewController {
                 filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
             })
             CommonUtil.print(output: result)
-            configureView()  
+            self.configureView()
 //            self.tableView.reloadData()
         }
     }

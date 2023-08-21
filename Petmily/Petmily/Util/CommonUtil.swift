@@ -352,4 +352,14 @@ struct CommonUtil {
             AppDelegate.applicationTopViewController()?.present(alertController, animated: true, completion: nil)
         }
     }
+    
+    func showOneButtonAlertView(title: String, message: String) {
+        let sheet = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        sheet.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { _ in CommonUtil.print(output: "yes 클릭") }))
+        
+        DispatchQueue.main.async {
+            AppDelegate.applicationTopViewController()?.present(sheet, animated: true, completion: nil)
+        }
+    }
 }

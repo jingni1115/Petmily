@@ -26,7 +26,14 @@ class InfoViewController: BaseViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getInfoData()
+        setUI()
         
+        tbvInfo.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         getInfoData()
         setUI()
         

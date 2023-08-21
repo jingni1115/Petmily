@@ -12,6 +12,13 @@ import PhotosUI
 import UIKit
 
 class AddViewController: BaseViewController{
+    
+    var selectedInfo: InfoModel?
+    var selectedUser: UserModel?
+    
+   
+    @IBOutlet weak var imageView: UIImageView!
+    
     @IBOutlet var dailyImg: UIImageView!
     
     /** @brief 플러스버튼테두리구현뷰 */
@@ -213,17 +220,25 @@ class AddViewController: BaseViewController{
     
     func requestAddDaily() {
         if shortTxtF.text ?? "" != "" {
-            FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", imageURL: dailyImageURL ?? "") { reuslt in
+            FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", imageURL: imageUrl ?? "") { reuslt in
                 BaseTabbarController().moveToTabBarIndex(index: .Daily)
             }
+        } else {
+            CommonUtil().showOneButtonAlertView(title: "내용을 입력하세요.", message: "")
         }
     }
     
     func requsetAddInfo() {
         if infoTitle.text ?? "" != "" {
-            FirestoreService().addInfoDocument(title: infoTitle.text ?? "", content: txtvContents.text ?? "", hashTag: tfInfoHashTag.text ?? "", imageURL: "") { result in
+            let nowDate = Date() // 현재의 Date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let str = dateFormatter.string(from: nowDate)
+            FirestoreService().addInfoDocument(title: infoTitle.text ?? "", content: txtvContents.text ?? "", date: str, hashTag: tfInfoHashTag.text ?? "", imageURL: imageUrl ?? "") { result in
                 BaseTabbarController().moveToTabBarIndex(index: .Info)
             }
+        } else {
+            CommonUtil().showOneButtonAlertView(title: "제목을 입력하세요.", message: "")
         }
     }
     
@@ -346,12 +361,10 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
                         self.imageUrl = url.absoluteString
                         print(self.imageUrl!)
                         FirebaseStorageManager.downloadVideo(urlString: self.imageUrl!) { [weak self] video in
-                            self!.playVideoWithURL(URL(string: "https://firebasestorage.googleapis.com/v0/b/petmily-6b63f.appspot.com/o/AF672DDB-C272-4646-84CD-D439C78118661692541910.367245?alt=media&token=2c5110d4-0497-4e47-9d86-7c405796a6a6")!)
+                            self!.playVideoWithURL(video!)
                         }
                     }
                 }
-//                self.playVideoWithURL(URL(string: "https://firebasestorage.googleapis.com:443/v0/b/petmily-6b63f.appspot.com/o/9A2F089B-EA35-497C-9FD7-32C7B9CC7D511692519908.925446?alt=media&token=713f9e4d-7163-4e9e-b189-b043845df4b1")!)
-                //                self.dailyImageURL = videoURL.absoluteString
             }
         default:
             break
@@ -362,4 +375,5 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
         // 이미지 파커 닫기
         dismiss(animated: true, completion: nil)
     }
+    
 }
