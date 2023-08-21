@@ -98,6 +98,13 @@ class AddViewController: BaseViewController{
         
         NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+                // view2에 대한 Notification 등록
+        NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillShowForView2(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(_keyboardWillHideForView2(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -142,23 +149,38 @@ class AddViewController: BaseViewController{
     
     /** @brief textField enter Event, next */
     @objc func _keyboardWillShow(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            var inset:UIEdgeInsets = self.view1.contentInset
-            inset.bottom = keyboardHeight - Common.kBottomHeight
-            view1.contentInset = inset
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
-            //                guard let `self` = self else {return}
-            self.csrConfirmBottomMargin.constant = inset.bottom
-            //            }
-        }
-    }
-    /** @brief textField enter Event, close */
-    @objc func _keyboardWillHide(_ notification: Notification) {
-        view1.contentInset = .zero
-        csrConfirmBottomMargin.constant = 0
-    }
+           if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+               let keyboardRectangle = keyboardFrame.cgRectValue
+               let keyboardHeight = keyboardRectangle.height
+               var inset:UIEdgeInsets = self.view1.contentInset
+               inset.bottom = keyboardHeight - Common.kBottomHeight
+               
+               view1.contentInset = inset
+               self.csrConfirmBottomMargin.constant = inset.bottom
+           }
+       }
+
+       @objc func _keyboardWillHide(_ notification: Notification) {
+           view1.contentInset = .zero
+           csrConfirmBottomMargin.constant = 0
+       }
+
+       @objc func _keyboardWillShowForView2(_ notification: Notification) {
+           if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+               let keyboardRectangle = keyboardFrame.cgRectValue
+               let keyboardHeight = keyboardRectangle.height
+               var inset:UIEdgeInsets = self.view2.contentInset
+               inset.bottom = keyboardHeight - Common.kBottomHeight
+               
+               view2.contentInset = inset
+               self.csrConfirmBottomMargin.constant = inset.bottom
+           }
+       }
+
+       @objc func _keyboardWillHideForView2(_ notification: Notification) {
+           view2.contentInset = .zero
+           csrConfirmBottomMargin.constant = 0
+       }
     
     private func requestPhotosPermission() {
         let photoAuthorizationStatusStatus = PHPhotoLibrary.authorizationStatus()
