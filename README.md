@@ -6,10 +6,11 @@
 펫을 키우는 반려인을 위한 SNS
 
 # 프로젝트 로고나 이미지
-로고 / 스플래시
+* 로고후보 <br>
+<img width="319" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/3ec45958-dcec-4e4a-b533-bd81aea3a613">
 
 # Repository 방문 횟수
-인사이트 사진
+<img width="908" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/bf7925a4-ba19-45b7-9d53-6ee976bc0446">
 
 # 프로젝트 기간
 2023/08/14 - 2023/08/20
@@ -28,7 +29,7 @@ https://github.com/jingni1115/Petmily
 * Firebase Storage
 
 # 화면 구성
-와이어 프레임 사진
+<img width="1072" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/5caae6f9-93c0-49b9-9d40-c033d4792201">
 
 # 주요 기능
 
