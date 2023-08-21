@@ -63,13 +63,6 @@ class AddViewController: BaseViewController{
     var user: UserModel?
     var imageUrl: String?
     
-    let playerView: UIView = {
-        let pv = UIView()
-        pv.translatesAutoresizingMaskIntoConstraints = false
-        pv.isUserInteractionEnabled = true
-        return pv
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -311,34 +304,17 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
         videoPicker.delegate = self
         present(videoPicker, animated: true, completion: nil)
     }
-    
-    //    func setUpPlayer(url:URL ,bounds:CGRect){
-    //        avQueuePlayer = AVQueuePlayer(url: url)
-    //        avplayerLayer = AVPlayerLayer(player: avQueuePlayer!)
-    //        avplayerLayer?.frame = bounds
-    //        avplayerLayer?.fillMode = .both // 애니메이션 시작과 끝에 어떻게 보일지 설정하는 속성
-    //        avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-    //        playerView.layer.addSublayer(avplayerLayer!)
-    //    }
-    
+
     // 선택한 비디오를 AVQueuePlayer로 재생
     func playVideoWithURL(_ videoURL: URL) {
-        //        let playerItem = AVPlayerItem(url: videoURL)
-        
-        DispatchQueue.main.async {
             self.avQueuePlayer = AVQueuePlayer(url: videoURL)
             self.avplayerLayer = AVPlayerLayer(player: self.avQueuePlayer!)
-            self.avplayerLayer?.frame = self.playerView.bounds
+            self.avplayerLayer?.frame = self.vPlayer.bounds
             self.avplayerLayer?.fillMode = .both // 애니메이션 시작과 끝에 어떻게 보일지 설정하는 속성
             self.avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             self.vPlayer.layer.addSublayer(self.avplayerLayer!)
-            
             self.avQueuePlayer?.play()
-            //            self.vPlayer.bringSubviewToFront(self.view)
-            self.vPlayer.backgroundColor = .red
-        }
-        print("avplayer@@@@@@@@@@@@")
-        //         self.vPlayer.addSubview(self.playerView)
+            self.vPlayer.backgroundColor = .black
         
         // MARK: HAVETO 작동 x
     }
@@ -374,7 +350,7 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
                         }
                     }
                 }
-                self.playVideoWithURL(URL(string: "https://firebasestorage.googleapis.com:443/v0/b/petmily-6b63f.appspot.com/o/9A2F089B-EA35-497C-9FD7-32C7B9CC7D511692519908.925446?alt=media&token=713f9e4d-7163-4e9e-b189-b043845df4b1")!)
+//                self.playVideoWithURL(URL(string: "https://firebasestorage.googleapis.com:443/v0/b/petmily-6b63f.appspot.com/o/9A2F089B-EA35-497C-9FD7-32C7B9CC7D511692519908.925446?alt=media&token=713f9e4d-7163-4e9e-b189-b043845df4b1")!)
                 //                self.dailyImageURL = videoURL.absoluteString
             }
         default:

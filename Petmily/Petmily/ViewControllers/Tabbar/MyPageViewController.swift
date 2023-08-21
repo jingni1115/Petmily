@@ -155,11 +155,12 @@ class MyPageViewController: BaseViewController {
 //        configureView()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        configureView()
 //        setMenuBtn()
 //        setCollectionView()
 //        setFirstStackView()
-//    }
+    }
     
     func configureView() {
         setTableView()
@@ -206,7 +207,6 @@ class MyPageViewController: BaseViewController {
             CommonUtil.print(output: "Result of Daily : \(result)")
             self.dailyData = result
 //            CommonUtil.print(output: self.thumbNailList)
-            self.dailyThumbnail = self.urlToThumbnail(URL(string: "https://firebasestorage.googleapis.com/v0/b/petmily-6b63f.appspot.com/o/AF672DDB-C272-4646-84CD-D439C78118661692541910.367245?alt=media&token=2c5110d4-0497-4e47-9d86-7c405796a6a6")!)
             self.configureView()
 //            self.tableView.reloadData()
         }
@@ -254,11 +254,12 @@ class MyPageViewController: BaseViewController {
 //                self.profileImg.image = UIImage(data: data!)
 //            }
 //        }
-        if (profileData!.imageURL) != "" {
-            profileImg.load(url: URL(string: profileData!.imageURL)!)
-        } else {
-            profileImg.image = UIImage(named: "profile-placeholder")
-        }
+        
+//        if (profileData!.imageURL) != "" {
+//            profileImg.load(url: URL(string: profileData!.imageURL)!)
+//        } else {
+//            profileImg.image = UIImage(named: "profile-placeholder")
+//        }
         
         NSLayoutConstraint.activate([
             profileImg.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 4),
