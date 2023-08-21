@@ -7,7 +7,9 @@
 
 # 프로젝트 로고나 이미지
 * 로고후보 <br>
-<img width="319" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/3ec45958-dcec-4e4a-b533-bd81aea3a613">
+<img width="319" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/3ec45958-dcec-4e4a-b533-bd81aea3a613"> <br>
+* 런치 스크린
+![launch-screen](https://github.com/jingni1115/Petmily/assets/61182499/33fb4705-1077-446d-ae25-1b408bba5ccc)
 
 # Repository 방문 횟수
 <img width="908" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/bf7925a4-ba19-45b7-9d53-6ee976bc0446">
