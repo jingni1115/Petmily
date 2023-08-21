@@ -173,6 +173,27 @@ final class FirestoreService {
     }
     
     /**
+     @brief infoReply를 추가한다,
+     
+     @param reply, title
+     */
+    func addInfoReply(title: String,reply: [String: String], completion: @escaping (String) -> Void) {
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        let replyRef = db.collection("Info").document(title)
+        replyRef.updateData([
+            "reply": reply
+        ]) { err in
+            if let err = err {
+                completion("Error adding document: \(err)")
+            } else {
+                completion("Document added")
+//                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
+    /**
      @brief infoData를 추가한다,
      
      @param content, imageURL
