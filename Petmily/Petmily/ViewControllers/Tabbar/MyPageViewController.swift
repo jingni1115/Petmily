@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MyPageViewController: BaseViewController {
     private var customCollectionView: CustomCollectionView!
@@ -145,7 +146,8 @@ class MyPageViewController: BaseViewController {
     
     var profileData: UserModel?
     var infoData: [InfoModel]?
-
+    var dailyData: [DailyModel]?
+    var dailyThumbnail: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,21 +183,32 @@ class MyPageViewController: BaseViewController {
         setDailyBtn()
         setInfoBtn()
     }
-   
-    func getProfileData() {
-        FirestoreService().getUserData { result in
-            self.profileData = result
-            print(self.profileData)
-            self.configureView()
-        }
-    }
     
     func getInfoData() {
         FirestoreService().getInfoData { result in
             self.infoData = result
             CommonUtil.print(output: result)
             self.getProfileData()
-            self.tableView.reloadData()
+        }
+    }
+   
+    func getProfileData() {
+        FirestoreService().getUserData { result in
+            self.profileData = result
+            print(self.profileData)
+            self.getdailyData()
+        }
+    }
+    
+    func getdailyData() {
+        // 데이터 읽어오기 사용 예시
+        FirestoreService().getDailyData() { result in
+            CommonUtil.print(output: "Result of Daily : \(result)")
+            self.dailyData = result
+//            CommonUtil.print(output: self.thumbNailList)
+            self.dailyThumbnail = self.urlToThumbnail(URL(string: "https://firebasestorage.googleapis.com/v0/b/petmily-6b63f.appspot.com/o/AF672DDB-C272-4646-84CD-D439C78118661692541910.367245?alt=media&token=2c5110d4-0497-4e47-9d86-7c405796a6a6")!)
+            self.configureView()
+//            self.tableView.reloadData()
         }
     }
     
@@ -234,7 +247,19 @@ class MyPageViewController: BaseViewController {
     func setProfileImg() {
         profileView.addSubview(profileImg)
 //        profileImg.image = (dummyUserList[0].image != nil) ? dummyUserList[0].image : UIImage(named: "profile-placeholder")
-        profileImg.image = UIImage(systemName: "pencil")
+//        let url = URL(string: self.profileData!.imageURL)
+//        DispatchQueue.global().async {
+//            let data = try? Data(contentsOf: url)
+//            DispatchQueue.main.async {
+//                self.profileImg.image = UIImage(data: data!)
+//            }
+//        }
+        if (profileData!.imageURL) != "" {
+            profileImg.load(url: URL(string: profileData!.imageURL)!)
+        } else {
+            profileImg.image = UIImage(named: "profile-placeholder")
+        }
+        
         NSLayoutConstraint.activate([
             profileImg.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 4),
             profileImg.leadingAnchor.constraint(equalTo: profileView.leadingAnchor, constant: 16),
@@ -363,8 +388,7 @@ class MyPageViewController: BaseViewController {
 //        infoBtn.layer.shadowRadius = 5.0
     }
     
-    @objc
-    func setDailybtn() {
+    @objc func setDailybtn() {
         tableView.isHidden = !isHidden
         customCollectionView.isHidden = isHidden
         dailyBtn.backgroundColor = .systemGray
@@ -373,8 +397,7 @@ class MyPageViewController: BaseViewController {
         print("collection: \(customCollectionView.isHidden)")
     }
     
-    @objc
-    func setInfobtn() {
+    @objc func setInfobtn() {
         tableView.isHidden = isHidden
         customCollectionView.isHidden = !isHidden
         dailyBtn.backgroundColor = .systemGray3
@@ -405,6 +428,16 @@ class MyPageViewController: BaseViewController {
 //        customCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
 //        customCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
+    
+    func urlToThumbnail(_ url: URL) -> UIImage {
+        let myUrl = url
+        let myAsset = AVAsset(url: myUrl)
+        let imageGenerator = AVAssetImageGenerator(asset: myAsset)
+        let time: CMTime = CMTime(value: 600, timescale: 600)
+        guard let cgImage = try? imageGenerator.copyCGImage(at: time, actualTime: nil) else { fatalError() }
+        let uiImage = UIImage(cgImage: cgImage)
+        return uiImage
+    }
 }
 
 extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
@@ -416,7 +449,6 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
         cell.tagLabel.isHidden = true
         cell.userTimeLabel.isHidden = true
-//        cell.imageLabel.image = InfoList.list[indexPath.row].images?[0]
         cell.titleLabel.text = infoData?[indexPath.row].title
         cell.descriptionLabel.text = infoData?[indexPath.row].content
         return cell
@@ -456,23 +488,36 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = customCollectionView.dequeueReusableCell(withReuseIdentifier: "MyPageCollectionViewCell", for: indexPath) as! MyPageCollectionViewCell
-//        cell.collectionViewImage.image = InfoList.list[indexPath.row].images?[0]
+//        cell.collectionViewImage.image = thumbNailList![indexPath.row]
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // 셀 선택 해제
-        collectionView.deselectItem(at: indexPath, animated: true)
-        
-        // 선택한 정보 가져오기
-        let selectedInfo = infoData?[indexPath.row]
-        let selectedUser = profileData
-        
-        // 목표 뷰 컨트롤러 초기화
-        let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
-        vc.selectedInfo = selectedInfo // 정보 전달
-        vc.selectedUser = selectedUser // 유저 정보
-        navigationPushController(viewController: vc, animated: true)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        // 셀 선택 해제
+//        collectionView.deselectItem(at: indexPath, animated: true)
+//
+//        // 선택한 정보 가져오기
+//        let selectedInfo = dailyData?[indexPath.row]
+//        let selectedUser = profileData
+//
+//        // 목표 뷰 컨트롤러 초기화
+//        let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
+//        vc.selectedInfo = selectedInfo // 정보 전달
+//        vc.selectedUser = selectedUser // 유저 정보
+//        navigationPushController(viewController: vc, animated: true)
+//    }
 }
 
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
