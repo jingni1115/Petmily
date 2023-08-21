@@ -12,6 +12,13 @@ import PhotosUI
 import UIKit
 
 class AddViewController: BaseViewController{
+    
+    var selectedInfo: InfoModel?
+    var selectedUser: UserModel?
+    
+   
+    @IBOutlet weak var imageView: UIImageView!
+    
     @IBOutlet var dailyImg: UIImageView!
     
     /** @brief 플러스버튼테두리구현뷰 */
@@ -387,4 +394,5 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
         // 이미지 파커 닫기
         dismiss(animated: true, completion: nil)
     }
+    
 }
