@@ -32,10 +32,15 @@ https://github.com/jingni1115/Petmily
 <img width="1072" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/5caae6f9-93c0-49b9-9d40-c033d4792201">
 
 # 주요 기능
+1. UITableView, UICollectionView 사용
+2. Search 기능
+3. Segmented Button에 의한 뷰 hidden 처리
+4. UIImagePicker로 이미지 선택 기능
+5. 링크 연결
+6. 프로필 수정
 
-
-# 아키텍쳐
-
+# 디렉토리 구조
+<img width="311" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/e33e5631-5331-4682-b172-6351fc392921">
 
 # 기타 추가 사항들
 
