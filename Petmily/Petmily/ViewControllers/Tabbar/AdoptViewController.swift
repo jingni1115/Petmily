@@ -15,7 +15,7 @@ class AdoptViewController: BaseViewController {
     @IBOutlet weak var cvSecondMain: UICollectionView!
     
     
-    let imageNames = ["image1", "image2", "image3", "image4", "image5", "image6", "image7", "image8"] // 이미지 파일 이름
+    let imageNames = ["image7", "image10", "image3", "image4", "image5", "image6", "image1", "image8"] // 이미지 파일 이름
     let textNames = ["분양", "강아지 MBTI", "애견동반 펜션", "고양이 츄르", "애견 미용", "동물 병원", "산책로", "캣타워" ]
     let linkURLs = [
             "http://barkbark.co.kr/category/%EA%B0%95%EC%95%84%EC%A7%80%EB%B6%84%EC%96%91/12/",
@@ -92,10 +92,10 @@ extension AdoptViewController: UICollectionViewDelegate, UICollectionViewDataSou
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContentsCollectionViewCell", for: indexPath) as! ContentsCollectionViewCell
             
             // 두 번째 컬렉션 뷰 셀의 설정을 필요에 맞게 해주세요.
-            let secondImageNames = ["image9", "image10", "image11", "image12"]
+            let secondImageNames = ["image9", "image2", "image11", "image12"]
             cell.secondImage.image = UIImage(named: secondImageNames[indexPath.item])
             
-            let secondLabelTexts = ["장난감", "애완 마켓", "강형욱", "몰라 이제"] // 원하는 텍스트로 변경
+            let secondLabelTexts = ["장난감", "애완 마켓", "강형욱", "훈육법"] // 원하는 텍스트로 변경
             cell.secondTextLabel.text = secondLabelTexts[indexPath.item]
         
             if indexPath.item < secondLinkURLs.count {

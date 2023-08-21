@@ -16,33 +16,38 @@ class DailyViewController: UIViewController {
     
     @IBOutlet weak var lblHeartCount: UILabel!
     @IBOutlet weak var lblReplyCount: UILabel!
+    @IBOutlet weak var lblUserName: UILabel!
+    @IBOutlet weak var lblContent: UILabel!
+    @IBOutlet weak var lblHashTag: UILabel!
+    
     var isPlay = false
     var dailyData: [DailyModel]?
     var userIndex = 0
     var nowPage = 0
     let reelCVCell = ReelCollectionViewCell()
+    var like: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        FirestoreService().getDocumentID()
-        getddd()
-        //        dailyData =
-        //        DispatchQueue.main.asyncAfter(deadline: 1) {
+        getDailyData()
         self.cvMain.register(ReelCollectionViewCell.self, forCellWithReuseIdentifier: "ReelCollectionViewCell")
         self.cvMain.delegate = self
         self.cvMain.dataSource = self
-        //        }
         reelCVCell.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         cvMain.reloadData()
-        
     }
     
-    func getddd() {
+    func getReply() {
+        FirestoreService().getReplyData { result in
+            CommonUtil.print(output: "aaaaaaaa: \(result)")
+        }
+    }
+    
+    func getDailyData() {
         // 데이터 읽어오기 사용 예시
         FirestoreService().getDailyData() { result in
             CommonUtil.print(output: "Result of Daily : \(result)")
@@ -51,22 +56,41 @@ class DailyViewController: UIViewController {
         }
     }
     
-        func overMove() {
-            // 현재페이지가 마지막 페이지일 경우
-            if nowPage == (dailyData?.count ?? 0)-1 {
+    func requestAddLike() {
+        FirestoreService().addDailyLike(like: like)
+    }
+    
+    func overMove() {
+        // 현재페이지가 마지막 페이지일 경우
+        if nowPage == (dailyData?.count ?? 0)-1 {
             // 맨 처음 페이지로 돌아감
-                cvMain.scrollToItem(at: NSIndexPath(item: 0, section: 0) as IndexPath, at: .right, animated: true)
-                nowPage = 0
-                return
-            }
-            // 다음 페이지로 전환
-            nowPage += 1
-            cvMain.scrollToItem(at: NSIndexPath(item: nowPage, section: 0) as IndexPath, at: .right, animated: true)
+            cvMain.scrollToItem(at: NSIndexPath(item: 0, section: 0) as IndexPath, at: .right, animated: true)
+            nowPage = 0
+            return
         }
+        // 다음 페이지로 전환
+        nowPage += 1
+        cvMain.scrollToItem(at: NSIndexPath(item: nowPage, section: 0) as IndexPath, at: .right, animated: true)
+    }
     
     @IBAction func heartButtonTouched(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        imgHeart.image = sender.isSelected ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart")
+        
+        if sender.isSelected {
+            imgHeart.image = UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate)
+            imgHeart.tintColor = UIColor.systemPink
+            like += 1
+        } else {
+            imgHeart.image = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)
+            imgHeart.tintColor = UIColor.white // 원하는 색상으로 변경 가능
+            like -= 1
+        }
+        // 음수 방지
+        if like < 0 {
+            like = 0
+        }
+        requestAddLike()
+        lblHeartCount.text = String(like)
     }
     
     @IBAction func replyButtonTouched(_ sender: Any) {
@@ -84,10 +108,10 @@ class DailyViewController: UIViewController {
     
     @IBAction func shareButtonTouched(_ sender: Any) {
         var objectsToShare = [String]()
-//        if let text = textField.text {
-//            objectsToShare.append(text)
-//            print("[INFO] textField's Text : ", text)
-//        }
+        //        if let text = textField.text {
+        //            objectsToShare.append(text)
+        //            print("[INFO] textField's Text : ", text)
+        //        }
         
         let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
@@ -107,6 +131,13 @@ extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReelCollectionViewCell", for: indexPath) as! ReelCollectionViewCell
         cell.reelData = dailyData?[indexPath.row]
+        like = dailyData?[indexPath.row].like ?? 0
+        lblHeartCount.text = String(like)
+        lblUserName.text = dailyData?[indexPath.row].userName
+        lblContent.text = dailyData?[indexPath.row].content
+        let replyCount = dailyData?[indexPath.row].reply.count ?? 0
+        lblReplyCount.text = String(replyCount)
+        lblHashTag.text = "#\(String(describing: dailyData?[indexPath.row].hashTag?.replacingOccurrences(of: " ", with: " #") ?? ""))"
         userIndex = indexPath.row
         if let urlPath = Bundle.main.url(forResource: dailyData?[indexPath.row].imageURL, withExtension: "mp4"){
             cell.setUpPlayer(url: urlPath, bounds: collectionView.frame)
@@ -118,7 +149,7 @@ extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-   
+    
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

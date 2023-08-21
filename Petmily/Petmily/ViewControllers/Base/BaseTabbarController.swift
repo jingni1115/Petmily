@@ -40,11 +40,13 @@ class BaseTabbarController: UITabBarController {
         self.tabBar.borderWidth = 1
         self.tabBar.borderColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9176470588, alpha: 1)
         // 데일리
+        // 데일리
         self.tabBar.items![0].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
-        self.tabBar.items![0].image = UIImage(systemName: "sun.max")?.withRenderingMode(.alwaysOriginal)
-        self.tabBar.items![0].selectedImage = UIImage(systemName: "sun.max.fill")?.withRenderingMode(.alwaysOriginal)
+        self.tabBar.items![0].image = UIImage(systemName: "sun.max")?.withRenderingMode(.alwaysOriginal).withTintColor(.black)
+        self.tabBar.items![0].selectedImage = UIImage(systemName: "sun.max.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.black)
         self.tabBar.items![0].title = "데일리"
-        /*
+
+        /*.
              self.tabBar.items![0].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
              self.tabBar.items![0].image = UIImage(systemName: "sun.max")?.withTintColor(.red) // 아이콘 색상 변경
              self.tabBar.items![0].selectedImage = UIImage(systemName: "sun.max.fill")?.withTintColor(.brown) // 선택된 아이콘 색상 변경
@@ -67,7 +69,7 @@ class BaseTabbarController: UITabBarController {
         // 펫스티벌
         self.tabBar.items![3].imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
         self.tabBar.items![3].image = UIImage(systemName: "pawprint")?.withRenderingMode(.alwaysOriginal).withTintColor(.black) // 항상 원본 색상으로 설정하고, 갈색으로 변경
-        self.tabBar.items![3].selectedImage = UIImage(systemName: "pawprint.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.brown) // 항상 원본 색상으로 설정하고, 갈색으로 변경
+        self.tabBar.items![3].selectedImage = UIImage(systemName: "pawprint.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.black) // 항상 원본 색상으로 설정하고, 갈색으로 변경
         self.tabBar.items![3].title = "펫스티벌"
         
         // 마이페이지
@@ -90,7 +92,7 @@ class BaseTabbarController: UITabBarController {
 //              NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Medium", size: 12)!
             ]
 
-            appearance.stackedLayoutAppearance.selected.iconColor = .blue
+            appearance.stackedLayoutAppearance.selected.iconColor = .black
             appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
                 NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 1),
 //              NSAttributedString.Key.font: UIFont(name: "AppleSDGothicNeo-Medium", size: 12)!
