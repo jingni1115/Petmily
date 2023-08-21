@@ -63,13 +63,6 @@ class AddViewController: BaseViewController{
     var user: UserModel?
     var imageUrl: String?
     
-    let playerView: UIView = {
-        let pv = UIView()
-        pv.translatesAutoresizingMaskIntoConstraints = false
-        pv.isUserInteractionEnabled = true
-        return pv
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,9 +78,6 @@ class AddViewController: BaseViewController{
             self.user = result
             print(result)
         }
-        
-        view.addSubview(vPlayer)
-        
         
         NSLayoutConstraint.activate([
             vPlayer.topAnchor.constraint(equalTo: vPlayer.topAnchor),
@@ -144,7 +134,8 @@ class AddViewController: BaseViewController{
     }
     
     @objc func imageViewTapped(_ sender: AnyObject) {
-        requestPhotosPermission()
+        //        requestPhotosPermission()
+        requestCollection()
     }
     
     /** @brief textField enter Event, next */
@@ -313,32 +304,17 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
         videoPicker.delegate = self
         present(videoPicker, animated: true, completion: nil)
     }
-    
-    //    func setUpPlayer(url:URL ,bounds:CGRect){
-    //        avQueuePlayer = AVQueuePlayer(url: url)
-    //        avplayerLayer = AVPlayerLayer(player: avQueuePlayer!)
-    //        avplayerLayer?.frame = bounds
-    //        avplayerLayer?.fillMode = .both // 애니메이션 시작과 끝에 어떻게 보일지 설정하는 속성
-    //        avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-    //        playerView.layer.addSublayer(avplayerLayer!)
-    //    }
-    
+
     // 선택한 비디오를 AVQueuePlayer로 재생
     func playVideoWithURL(_ videoURL: URL) {
-        //        let playerItem = AVPlayerItem(url: videoURL)
-        
-        DispatchQueue.main.async {
             self.avQueuePlayer = AVQueuePlayer(url: videoURL)
             self.avplayerLayer = AVPlayerLayer(player: self.avQueuePlayer!)
-            self.avplayerLayer?.frame = self.playerView.bounds
+            self.avplayerLayer?.frame = self.vPlayer.bounds
             self.avplayerLayer?.fillMode = .both // 애니메이션 시작과 끝에 어떻게 보일지 설정하는 속성
             self.avplayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            self.avQueuePlayer?.play()
             self.vPlayer.layer.addSublayer(self.avplayerLayer!)
-            //            self.vPlayer.bringSubviewToFront(self.view)
-            self.vPlayer.backgroundColor = .red
-        }
-        //         self.vPlayer.addSubview(self.playerView)
+            self.avQueuePlayer?.play()
+            self.vPlayer.backgroundColor = .black
         
         // MARK: HAVETO 작동 x
     }
@@ -346,18 +322,17 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         switch imgORVideo {
         case "img":
-            if let img = info[UIImagePickerController.InfoKey.originalImage] {
-                // 이미지 뷰에 앨범에서 선택한 사진 표시
-                guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-                FirebaseStorageManager.uploadImage(image: selectedImage, pathRoot: user!.id)
-                { url in
-                    if let url = url {
-                        self.imageUrl = url.absoluteString
-                        FirebaseStorageManager.downloadImage(urlString: self.imageUrl!) { [weak self] image in
-                            self?.dailyImg.image = image
-                        }
+            // 이미지 뷰에 앨범에서 선택한 사진 표시
+            guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+            FirebaseStorageManager.uploadImage(image: selectedImage, pathRoot: user!.id)
+            { url in
+                if let url = url {
+                    self.imageUrl = url.absoluteString
+                    FirebaseStorageManager.downloadImage(urlString: self.imageUrl!) { [weak self] image in
+//                        self?.dailyImg.image = image
                     }
                 }
+                
             }
             // 이미지 파커 닫기
             dismiss(animated: true, completion: nil)
@@ -369,13 +344,13 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
                     url in
                     if let url = url {
                         self.imageUrl = url.absoluteString
-                        print(self.imageUrl)
+                        print(self.imageUrl!)
                         FirebaseStorageManager.downloadVideo(urlString: self.imageUrl!) { [weak self] video in
-                            self!.playVideoWithURL(video!)
+                            self!.playVideoWithURL(URL(string: "https://firebasestorage.googleapis.com/v0/b/petmily-6b63f.appspot.com/o/AF672DDB-C272-4646-84CD-D439C78118661692541910.367245?alt=media&token=2c5110d4-0497-4e47-9d86-7c405796a6a6")!)
                         }
                     }
                 }
-                self.playVideoWithURL(URL(string: "https://firebasestorage.googleapis.com:443/v0/b/petmily-6b63f.appspot.com/o/9A2F089B-EA35-497C-9FD7-32C7B9CC7D511692519908.925446?alt=media&token=713f9e4d-7163-4e9e-b189-b043845df4b1")!)
+//                self.playVideoWithURL(URL(string: "https://firebasestorage.googleapis.com:443/v0/b/petmily-6b63f.appspot.com/o/9A2F089B-EA35-497C-9FD7-32C7B9CC7D511692519908.925446?alt=media&token=713f9e4d-7163-4e9e-b189-b043845df4b1")!)
                 //                self.dailyImageURL = videoURL.absoluteString
             }
         default:
