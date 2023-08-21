@@ -152,6 +152,24 @@ final class FirestoreService {
     }
     
     /**
+     @brief info heart를 추가한다,
+     */
+    func addInfoLike(title: String, like: Int) {
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        let replyRef = db.collection("Info").document(title)
+        replyRef.updateData([
+            "like": like
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+//                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
+    /**
      @brief dailyReply를 추가한다,
      
      @param reply

@@ -14,6 +14,8 @@
                 <outlet property="contentImageHeight" destination="oFs-7R-vr6" id="O5P-jD-Nry"/>
                 <outlet property="contentImageLabel" destination="EHd-8D-gWP" id="axX-hC-8qj"/>
                 <outlet property="contentLabel" destination="laa-cU-0QY" id="DPq-8C-1gA"/>
+                <outlet property="imgHeart" destination="nWb-6Z-C7G" id="2kd-22-BvY"/>
+                <outlet property="lblHeartCount" destination="sJd-1W-z1t" id="puC-Kv-GHK"/>
                 <outlet property="nameLabel" destination="xdF-Gz-g5C" id="4F6-Lp-nTJ"/>
                 <outlet property="scrollView" destination="7Y9-Df-YnQ" id="SrS-w0-Im3"/>
                 <outlet property="tagLabel" destination="VkM-Ma-6Hx" id="69H-Ei-3kZ"/>
@@ -176,6 +178,28 @@
                                 <constraint firstItem="VR9-sn-hqS" firstAttribute="leading" secondItem="onZ-JQ-vIe" secondAttribute="leading" id="dZY-gR-zWD"/>
                             </constraints>
                         </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="x2Q-y4-ZSV">
+                            <rect key="frame" x="149" y="305" width="75" height="127"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JED-h0-ktz">
+                                    <rect key="frame" x="0.0" y="0.0" width="75" height="34.333333333333336"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    <connections>
+                                        <action selector="heartButtonTouched:" destination="-1" eventType="touchUpInside" id="UC1-u9-unh"/>
+                                    </connections>
+                                </button>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-6Z-C7G">
+                                    <rect key="frame" x="27.333333333333336" y="62.333333333333343" width="20.666666666666664" height="17.333333333333343"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJd-1W-z1t">
+                                    <rect key="frame" x="17.000000000000004" y="106.66666666666666" width="41.333333333333343" height="20.333333333333329"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <constraints>
                         <constraint firstItem="onZ-JQ-vIe" firstAttribute="centerX" secondItem="7Y9-Df-YnQ" secondAttribute="centerX" id="NIE-bE-ehI"/>
@@ -199,6 +223,7 @@
         </view>
     </objects>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="profile-placeholder" width="250" height="250"/>
         <image name="square.and.pencil" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="117" height="128"/>
