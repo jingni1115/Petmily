@@ -291,8 +291,8 @@ class MyPageViewController: BaseViewController {
         secondStackView.layer.shadowOpacity = 0.5
         secondStackView.layer.shadowRadius = 5.0
         
-        secondStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        secondStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+//        secondStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+//        secondStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
     }
     
     func setPetComment() {
