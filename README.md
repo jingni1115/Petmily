@@ -8,7 +8,7 @@
 # 프로젝트 로고나 이미지
 * 로고후보 <br>
 <img width="319" alt="image" src="https://github.com/jingni1115/Petmily/assets/61182499/3ec45958-dcec-4e4a-b533-bd81aea3a613"> <br>
-* 런치 스크린
+* 런치 스크린 <br>
 ![launch-screen](https://github.com/jingni1115/Petmily/assets/61182499/33fb4705-1077-446d-ae25-1b408bba5ccc)
 
 # Repository 방문 횟수
