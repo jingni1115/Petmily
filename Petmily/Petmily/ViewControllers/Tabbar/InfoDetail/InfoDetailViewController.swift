@@ -34,6 +34,13 @@ class InfoDetailViewController: BaseHeaderViewController {
     
     @IBOutlet weak var tfReply: UITextField!
     
+    @IBOutlet weak var imgHeart: UIImageView!
+    
+    @IBOutlet weak var lblHeartCount: UILabel!
+    
+    
+    var like: Int = 0
+    
     // 이전 화면에서 선택된 정보 데이터
     var selectedInfo: InfoModel?
     var selectedUser : UserModel?
@@ -41,6 +48,8 @@ class InfoDetailViewController: BaseHeaderViewController {
     var infoData: [InfoModel]?
     var index = 0
     var requestReplyData: [String: String]?
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,31 +93,42 @@ class InfoDetailViewController: BaseHeaderViewController {
             return
         }
         
-        //        // 선택된 정보의 사용자 정보가 있을 경우 UI에 반영
-        //        // 사용자 프로필 이미지 설정 또는 기본 이미지 설정
-        //        if let profileImage = user.image {
-        //            userImageLabel.image = profileImage
-        //        } else {
-        //            userImageLabel.image = UIImage(named: "profile-placeholder")
-        //        }
+        // 선택된 정보의 사용자 정보가 있을 경우 UI에 반영
+        // 사용자 프로필 이미지 설정 또는 기본 이미지 설정
+        
+        if user.imageURL == "" {
+            userImageLabel.image = UIImage(named: "profile-placeholder")
+        } else {
+            FirebaseStorageManager.downloadImage(urlString: selectedInfo?.imageURL ?? "") { result in
+                    self.userImageLabel.image = result
+                }
+        }
+
         
         // 사용자 정보 관련 UI 설정
         nameLabel.text = info.id
         titleLabel.text = info.title
         timeLabel.text = info.date
         contentLabel.text = info.content
-        //        tagLabel.text = info.tag
+        tagLabel.text = info.hashTag
+
         
-        //        // 정보에 첨부된 이미지가 있는 경우 이미지뷰에 이미지 설정 및 크기 조정
-        //        if let firstImage = info.images?.first, let actualImage = firstImage {
-        //            contentImageLabel.image = actualImage
-        //            contentImageLabel.isHidden = false
-        //            contentImageHeight.constant = (actualImage.size.height / actualImage.size.width) * contentImageLabel.frame.width
-        //        } else {
-        //            // 첨부된 이미지가 없을 경우 이미지뷰를 숨김 처리하고 높이 조정
-        //            contentImageLabel.isHidden = true
-        //            contentImageHeight.constant = 0
-        //        }
+        
+        
+        if info.imageURL != "" {
+            FirebaseStorageManager.downloadImage(urlString: info.imageURL ?? "", completion: { result in
+                self.contentImageLabel.image = result
+                self.contentImageLabel.isHidden = false
+                self.contentImageHeight.constant = ((result?.size.height ?? 0) / (result?.size.width ?? 0)) * self.contentImageLabel.frame.width
+            })
+        } else {
+            // 첨부된 이미지가 없을 경우 이미지뷰를 숨김 처리하고 높이 조정
+            contentImageLabel.isHidden = true
+            contentImageHeight.constant = 0
+        }
+        
+        
+
         
         let nib = UINib(nibName: "ReplyTableViewCell", bundle: nil)
         tvReply.register(nib, forCellReuseIdentifier: "ReplyTableViewCell")
@@ -126,16 +146,41 @@ class InfoDetailViewController: BaseHeaderViewController {
         submitReply()
     }
     
+    @IBAction func heartButtonTouched(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        
+        if sender.isSelected {
+            imgHeart.image = UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysTemplate)
+            imgHeart.tintColor = UIColor.systemPink
+            like += 1
+        } else {
+            imgHeart.image = UIImage(systemName: "heart")?.withRenderingMode(.alwaysTemplate)
+            imgHeart.tintColor = UIColor.white // 원하는 색상으로 변경 가능
+            like -= 1
+        }
+        // 음수 방지
+        if like < 0 {
+            like = 0
+        }
+        requestAddLike()
+        lblHeartCount.text = String(like)
+    }
+    
+    
     // 댓글 작성 버튼이 눌렸을 때 호출될 메서드
     func submitReply() {
         if let reply = tfReply.text, !reply.isEmpty {
             
             addInfoReplyData()
-
+            
             // 댓글 작성 후 댓글창 높이 업데이트
             updateReplyTableViewHeight()
             tfReply.text = "" // 댓글 작성 후 텍스트 필드 초기화
         }
+    }
+    
+    func requestAddLike() {
+        FirestoreService().addInfoLike(title: titleLabel.text ?? "", like: like)
     }
     
     func requestInfoData() {

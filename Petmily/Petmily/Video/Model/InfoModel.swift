@@ -9,7 +9,7 @@ import Foundation
 
 struct InfoModel: Codable {
     let id: String
-    var imageURL: String = ""
+    let imageURL: String?
     let title: String?
     let content: String?
     let date: String?
@@ -24,5 +24,7 @@ struct InfoModel: Codable {
         case hashTag
         case reply
         case date
+        case like
+        case imageURL
     }
 }

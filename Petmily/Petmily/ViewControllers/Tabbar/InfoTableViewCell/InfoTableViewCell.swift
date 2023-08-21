@@ -23,6 +23,11 @@ class InfoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imageLabel: UIImageView!
     
+    @IBOutlet weak var replyLabel: UILabel!
+    
+    @IBOutlet weak var likeLabel: UILabel!
+    
+    
     // Info 데이터를 설정하여 셀을 업데이트하는 메서드
     func setInfo(info: InfoModel?) {
         guard let info = info else {
@@ -30,20 +35,25 @@ class InfoTableViewCell: UITableViewCell {
         }
         
         // UI 요소들에 정보 데이터 반영
-        tagLabel.text = ""
+        tagLabel.text = info.hashTag
         titleLabel.text = info.title
         descriptionLabel.text = info.content
+        replyLabel.text = String(info.reply.count)
+        likeLabel.text = String(info.like)
         userTimeLabel.text = "\(String(describing: info.id)) · \(String(describing: info.date ?? ""))"
         
-//        // 첫 번째 이미지를 셀의 이미지 뷰에 설정
-//        if let image = info.imageURL.first {
-//            imageLabel.image = image
-//        } else {
-//            // 이미지가 없을 경우 이미지 뷰를 비움
-//            imageLabel.image = nil
-//        }
+        
+        print("정보 공유 화면 본문 사진 썸네일 :::::::: \(info.imageURL)")
+        if info.imageURL != "" {
+            FirebaseStorageManager.downloadImage(urlString: info.imageURL ?? "" ) { result in
+                self.imageLabel.isHidden = false
+                self.imageLabel.image = result
+            }
+        } else {
+            self.imageLabel.isHidden = true
+        }
     }
-
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
