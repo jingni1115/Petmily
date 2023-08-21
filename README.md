@@ -22,7 +22,7 @@ https://github.com/jingni1115/Petmily
 |김지은|박상우|박현빈|최진훈|허수빈|
 |:---:|:---:|:---:|:---:|:---:|
 |[jingni1115](https://github.com/jingni1115)|[angwoo0503](https://github.com/angwoo0503)|[Park-hyun-bin](https://github.com/Park-hyun-bin)|[pinocchio22](https://github.com/pinocchio22)|[Heasoobean](https://github.com/Heasoobean)|
-
+|![](https://avatars.githubusercontent.com/u/105254025?v=4)|![](https://avatars.githubusercontent.com/u/136118540?v=4)|![](https://avatars.githubusercontent.com/u/59433441?v=4)|![](https://avatars.githubusercontent.com/u/61182499?v=4)|![](https://avatars.githubusercontent.com/u/132876412?v=4)|
 
 
 # 기술 스택
