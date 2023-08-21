@@ -38,6 +38,10 @@ class InfoDetailViewController: BaseHeaderViewController {
     var selectedInfo: InfoModel?
     var selectedUser : UserModel?
     
+    var infoData: [InfoModel]?
+    var index = 0
+    var requestReplyData: [String: String]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // selectedInfo 데이터 확인
@@ -126,23 +130,36 @@ class InfoDetailViewController: BaseHeaderViewController {
     func submitReply() {
         if let reply = tfReply.text, !reply.isEmpty {
             
-            // 댓글을 저장하거나 처리하는 코드를 작성
-            // selectedInfo?.reply에 추가하거나 데이터베이스에 저장
-            // 댓글 작성 후 필요한 업데이트도 수행 가능
-            requestSubmitReply()
-            tfReply.text = "" // 댓글 작성 후 텍스트 필드 초기화
+            addInfoReplyData()
+
             // 댓글 작성 후 댓글창 높이 업데이트
             updateReplyTableViewHeight()
+            tfReply.text = "" // 댓글 작성 후 텍스트 필드 초기화
         }
     }
     
-    func requestSubmitReply() {
-//        FirestoreService().addDailyReply(reply: tfReply.text ?? "")
-        getInfoReplyData()
+    func requestInfoData() {
+        FirestoreService().getInfoData() { result in
+            CommonUtil.print(output: result)
+            if let updatedInfo = result?[self.index] {
+                self.selectedInfo?.reply = updatedInfo.reply
+                self.tvReply.reloadData()
+            }
+        }
     }
     
-    func getInfoReplyData() {
+    func addInfoReplyData() {
+        let newReply = [DataManager.sharedInstance.userInfo?.name ?? "": tfReply.text ?? ""]
         
+        requestReplyData = selectedInfo?.reply ?? [:]
+        
+        for (key, value) in newReply {
+            requestReplyData?[key] = value
+        }
+        FirestoreService().addInfoReply(title: selectedInfo?.title ?? "", reply: requestReplyData ?? [:]) { result in
+            CommonUtil.print(output: result)
+            self.requestInfoData()
+        }
     }
     
     @IBAction func deleteButtonTouched(_ sender: Any) {

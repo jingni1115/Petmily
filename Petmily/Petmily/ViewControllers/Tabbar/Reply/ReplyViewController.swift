@@ -41,7 +41,7 @@ class ReplyViewController: BaseViewController {
     }
     
     func requestAddReply() {
-        FirestoreService().addDailyReply(reply: requestReplyData ?? [:]) { resutlt in
+        FirestoreService().addDailyReply(content: replyData?[index].content ?? "", reply: requestReplyData ?? [:]) { resutlt in
             self.getDailyData()
         }
 

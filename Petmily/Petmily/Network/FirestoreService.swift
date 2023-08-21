@@ -38,6 +38,26 @@ final class FirestoreService {
     }
     
     /**
+     @brief userData를 수정한다,
+     */
+    func editUserData(name: String, animalName: String, birth: String, gender: String, imageURL: String, type: String, completion: @escaping (UserModel) -> Void) {
+        var names: [String:Any] = [:]
+        var result: UserModel?
+        
+        db.collection("users").document("y527FpLxOC4LWg2jMO01").updateData ([
+            "id": userID,
+            "name" : name,
+            "animalName" : animalName,
+            "birth" : birth,
+            "gender" : gender,
+            "imageURL" : imageURL,
+            "type" : type
+        ])
+        result = self.dicToObject(objectType: UserModel.self, dictionary: names)
+        completion(result!) // 성공 시 이름 배열 전달
+    }
+    
+    /**
      @brief dailyData를 불러온다,
      */
     func getDailyData(completion: @escaping ([DailyModel]?) -> Void) {
@@ -106,7 +126,7 @@ final class FirestoreService {
             } catch {
                 
             }
-//            names = self.dictionaryToObject(objectType: InfoModel.self, dictionary: names)
+            //            names = self.dictionaryToObject(objectType: InfoModel.self, dictionary: names)
             completion(names) // 성공 시 이름 배열 전달
         }
     }
@@ -136,17 +156,17 @@ final class FirestoreService {
     /**
      @brief daily heart를 추가한다,
      */
-    func addDailyLike(like: Int) {
+    func addDailyLike(content: String, like: Int) {
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
-        let replyRef = db.collection("dailyJJab").document("dailyJJab")
+        let replyRef = db.collection("daily").document(content)
         replyRef.updateData([
             "like": like
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
             } else {
-//                print("Document added with ID: \(ref!.documentID)")
+                //                print("Document added with ID: \(ref!.documentID)")
             }
         }
     }
@@ -154,12 +174,33 @@ final class FirestoreService {
     /**
      @brief dailyReply를 추가한다,
      
-     @param reply
+     @param reply, content
      */
-    func addDailyReply(reply: [String: String], completion: @escaping (String) -> Void) {
+    func addDailyReply(content: String, reply: [String: String], completion: @escaping (String) -> Void) {
         // Add a new document with a generated ID
         var ref: DocumentReference? = nil
-        let replyRef = db.collection("daily").document("s2V3qzzc2Z0XFOkrIuvQ")
+        let replyRef = db.collection("daily").document(content)
+        replyRef.updateData([
+            "reply": reply
+        ]) { err in
+            if let err = err {
+                completion("Error adding document: \(err)")
+            } else {
+                completion("Document added")
+                //                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+    }
+    
+    /**
+     @brief infoReply를 추가한다,
+     
+     @param reply, title
+     */
+    func addInfoReply(title: String,reply: [String: String], completion: @escaping (String) -> Void) {
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        let replyRef = db.collection("Info").document(title)
         replyRef.updateData([
             "reply": reply
         ]) { err in

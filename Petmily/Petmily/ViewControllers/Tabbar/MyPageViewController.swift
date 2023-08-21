@@ -145,26 +145,18 @@ class MyPageViewController: BaseViewController {
     }()
     
     var profileData: UserModel?
+    var dailyData: [DailyModel]?
     var infoData: [InfoModel]?
     var dailyData: [DailyModel]?
     var dailyThumbnail: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getInfoData()
-//        configureView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        configureView()
-//        setMenuBtn()
-//        setCollectionView()
-//        setFirstStackView()
+        getDailyData()
     }
     
     func configureView() {
-        setTableView()
-        setCollectionView()
+
         
         setMenuBtn()
         
@@ -183,32 +175,38 @@ class MyPageViewController: BaseViewController {
         setBtnStackView()
         setDailyBtn()
         setInfoBtn()
+        setTableView()
+        setCollectionView()
     }
-    
-    func getInfoData() {
-        FirestoreService().getInfoData { result in
-            self.infoData = result
-            CommonUtil.print(output: result)
-            self.getProfileData()
-        }
-    }
-   
+  
     func getProfileData() {
         FirestoreService().getUserData { result in
             self.profileData = result
             print(self.profileData)
-            self.getdailyData()
+            self.getInfoData()                                     
+        }
+    }
+
+
+    func getInfoData() {
+        FirestoreService().getInfoData { result in
+            self.infoData = result?.filter({ filt in
+                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
+            })
+            CommonUtil.print(output: result)
+            configureView()  
+//            self.tableView.reloadData()
         }
     }
     
-    func getdailyData() {
-        // 데이터 읽어오기 사용 예시
-        FirestoreService().getDailyData() { result in
-            CommonUtil.print(output: "Result of Daily : \(result)")
-            self.dailyData = result
-//            CommonUtil.print(output: self.thumbNailList)
-            self.configureView()
-//            self.tableView.reloadData()
+    func getDailyData() {
+        FirestoreService().getDailyData { result in
+            self.dailyData = result?.filter({ filt in
+                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
+            })
+            CommonUtil.print(output: result)
+            self.getProfileData()
+//            self.customCollectionView.reloadData()
         }
     }
     
@@ -231,8 +229,6 @@ class MyPageViewController: BaseViewController {
         firstStackView.addArrangedSubview(profileView)
         firstStackView.addArrangedSubview(secondStackView)
         firstStackView.addArrangedSubview(btnStackView)
-        firstStackView.addArrangedSubview(tableView)
-        firstStackView.addArrangedSubview(customCollectionView)
         
         NSLayoutConstraint.activate([
             firstStackView.topAnchor.constraint(equalTo: menuBtn.bottomAnchor, constant: 16),
@@ -247,20 +243,9 @@ class MyPageViewController: BaseViewController {
     func setProfileImg() {
         profileView.addSubview(profileImg)
 //        profileImg.image = (dummyUserList[0].image != nil) ? dummyUserList[0].image : UIImage(named: "profile-placeholder")
-//        let url = URL(string: self.profileData!.imageURL)
-//        DispatchQueue.global().async {
-//            let data = try? Data(contentsOf: url)
-//            DispatchQueue.main.async {
-//                self.profileImg.image = UIImage(data: data!)
-//            }
-//        }
-        
-//        if (profileData!.imageURL) != "" {
-//            profileImg.load(url: URL(string: profileData!.imageURL)!)
-//        } else {
-//            profileImg.image = UIImage(named: "profile-placeholder")
-//        }
-        
+
+        profileImg.image = UIImage(named: "profile-placeholder")
+
         NSLayoutConstraint.activate([
             profileImg.topAnchor.constraint(equalTo: profileView.topAnchor, constant: 4),
             profileImg.leadingAnchor.constraint(equalTo: profileView.leadingAnchor, constant: 16),
@@ -413,6 +398,7 @@ class MyPageViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isHidden = true
+        firstStackView.addArrangedSubview(tableView)
     }
     
     func setCollectionView() {
@@ -423,7 +409,7 @@ class MyPageViewController: BaseViewController {
         customCollectionView.dataSource = self
         
         customCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
+        firstStackView.addArrangedSubview(customCollectionView)
 //        customCollectionView.topAnchor.constraint(equalTo: btnStackView.bottomAnchor).isActive = true
 //        customCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
 //        customCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
@@ -484,29 +470,16 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return dailyData?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = customCollectionView.dequeueReusableCell(withReuseIdentifier: "MyPageCollectionViewCell", for: indexPath) as! MyPageCollectionViewCell
-//        cell.collectionViewImage.image = thumbNailList![indexPath.row]
+        FirebaseStorageManager.downloadImage(urlString: "gs://petmily-6b63f.appspot.com/DF52E2BD-8489-43F8-824B-C4F4D42B715A1692579160.0970469", completion: { result in
+            cell.collectionViewImage.image = result
+        })
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        // 셀 선택 해제
-//        collectionView.deselectItem(at: indexPath, animated: true)
-//
-//        // 선택한 정보 가져오기
-//        let selectedInfo = dailyData?[indexPath.row]
-//        let selectedUser = profileData
-//
-//        // 목표 뷰 컨트롤러 초기화
-//        let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
-//        vc.selectedInfo = selectedInfo // 정보 전달
-//        vc.selectedUser = selectedUser // 유저 정보
-//        navigationPushController(viewController: vc, animated: true)
-//    }
 }
 
 extension UIImageView {

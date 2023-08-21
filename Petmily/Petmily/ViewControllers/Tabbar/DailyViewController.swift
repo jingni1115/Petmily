@@ -26,6 +26,7 @@ class DailyViewController: UIViewController {
     var nowPage = 0
     let reelCVCell = ReelCollectionViewCell()
     var like: Int = 0
+    var indexContent = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +35,6 @@ class DailyViewController: UIViewController {
         self.cvMain.delegate = self
         self.cvMain.dataSource = self
         reelCVCell.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        cvMain.reloadData()
     }
     
     func getReply() {
@@ -57,7 +53,7 @@ class DailyViewController: UIViewController {
     }
     
     func requestAddLike() {
-        FirestoreService().addDailyLike(like: like)
+        FirestoreService().addDailyLike(content: indexContent, like: like)
     }
     
     func overMove() {
@@ -132,6 +128,7 @@ extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReelCollectionViewCell", for: indexPath) as! ReelCollectionViewCell
         cell.reelData = dailyData?[indexPath.row]
         like = dailyData?[indexPath.row].like ?? 0
+        indexContent = dailyData?[indexPath.row].content ?? ""
         lblHeartCount.text = String(like)
         lblUserName.text = dailyData?[indexPath.row].userName
         lblContent.text = dailyData?[indexPath.row].content
