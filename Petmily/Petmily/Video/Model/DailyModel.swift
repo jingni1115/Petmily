@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 struct DailyModel: Codable {
+    let id: String?
     let userName: String?
     let imageURL: String?
     let content: String?
@@ -17,6 +18,7 @@ struct DailyModel: Codable {
     var like: Int = 0
 
     enum CodingKeys: String, CodingKey {
+        case id
         case userName
         case imageURL
         case content

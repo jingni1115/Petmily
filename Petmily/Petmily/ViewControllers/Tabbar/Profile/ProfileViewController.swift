@@ -362,11 +362,14 @@ class ProfileViewController: BaseHeaderViewController {
     }
     
     @objc func clickCompleteBtn() {
+        FirestoreService().editUserData(name: myNameTextField.text ?? "", animalName: petNameTextField.text ?? "", birth: birthTextField.text ?? "", gender: "여자", imageURL: "", type: breedTextField.text ?? "") { result in
+            self.navigationPopViewController(animated: false) {
+    //            CommonUtil.print(output: vc.dummyUserList[0].name)
+            }
+        }
 //        let vc = MyPageViewController()
 //        vc.dummyUserList[0] = User(name: myNameTextField.text ?? "")
-        navigationPopViewController(animated: false) {
-//            CommonUtil.print(output: vc.dummyUserList[0].name)
-        }
+        
     }
 }
 
