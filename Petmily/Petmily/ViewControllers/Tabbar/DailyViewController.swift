@@ -136,11 +136,11 @@ extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSo
         lblReplyCount.text = String(replyCount)
         lblHashTag.text = "#\(String(describing: dailyData?[indexPath.row].hashTag?.replacingOccurrences(of: " ", with: " #") ?? ""))"
         userIndex = indexPath.row
-        if let urlPath = Bundle.main.url(forResource: dailyData?[indexPath.row].imageURL, withExtension: "mp4"){
-            cell.setUpPlayer(url: urlPath, bounds: collectionView.frame)
-            if !isPlay{
+        FirebaseStorageManager.downloadVideo(urlString: dailyData?[indexPath.row].imageURL ?? "") { [weak self] video in
+            cell.setUpPlayer(url: video!, bounds: collectionView.frame)
+            if !(self?.isPlay ?? false){
                 cell.avQueuePlayer?.play()
-                isPlay = true
+                self?.isPlay = true
             }
         }
         return cell

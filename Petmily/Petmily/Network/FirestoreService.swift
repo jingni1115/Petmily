@@ -136,13 +136,14 @@ final class FirestoreService {
      
      @param content, imageURL
      */
-    func addDailyDocument(content: String, imageURL: String, completion: @escaping (String) -> Void) {
+    func addDailyDocument(content: String, hashTag: String, imageURL: String, completion: @escaping (String) -> Void) {
         // Add a new document with a generated ID
         db.collection("daily").document(content).setData([
             "userName": DataManager.sharedInstance.userInfo?.name,
             "content": content,
+            "hashTag": hashTag,
             "imageURL": imageURL,
-            "reply": nil,
+            "reply": [:],
             "like": 0
         ]) { err in
             if let err = err {

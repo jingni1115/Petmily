@@ -220,7 +220,7 @@ class AddViewController: BaseViewController{
     
     func requestAddDaily() {
         if shortTxtF.text ?? "" != "" {
-            FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", imageURL: imageUrl ?? "") { reuslt in
+            FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", hashTag: tfDailyHashTag.text ?? "", imageURL: imageUrl ?? "") { reuslt in
                 BaseTabbarController().moveToTabBarIndex(index: .Daily)
             }
         } else {
@@ -240,6 +240,16 @@ class AddViewController: BaseViewController{
         } else {
             CommonUtil().showOneButtonAlertView(title: "제목을 입력하세요.", message: "")
         }
+    }
+    
+    func urlToThumbnail(_ url: URL) -> UIImage {
+        let myUrl = url
+        let myAsset = AVAsset(url: myUrl)
+        let imageGenerator = AVAssetImageGenerator(asset: myAsset)
+        let time: CMTime = CMTime(value: 600, timescale: 600)
+        guard let cgImage = try? imageGenerator.copyCGImage(at: time, actualTime: nil) else { fatalError() }
+        let uiImage = UIImage(cgImage: cgImage)
+        return uiImage
     }
     
     // 액션 이쪽으로 옮길것
@@ -344,11 +354,13 @@ extension AddViewController: UIImagePickerControllerDelegate, UINavigationContro
                 if let url = url {
                     self.imageUrl = url.absoluteString
                     FirebaseStorageManager.downloadImage(urlString: self.imageUrl!) { [weak self] image in
-//                        self?.dailyImg.image = image
+                        self?.imageView.image = image
+                        
                     }
                 }
                 
             }
+            
             // 이미지 파커 닫기
             dismiss(animated: true, completion: nil)
         case "video":

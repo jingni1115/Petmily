@@ -12,7 +12,6 @@
 		565C8B132A912DD600167A92 /* ReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B112A912DD600167A92 /* ReplyViewController.xib */; };
 		565C8B162A912E8800167A92 /* ReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C8B142A912E8800167A92 /* ReplyTableViewCell.swift */; };
 		565C8B172A912E8800167A92 /* ReplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B152A912E8800167A92 /* ReplyTableViewCell.xib */; };
-		565C8B1A2A9137D200167A92 /* demo2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B192A91376F00167A92 /* demo2.mp4 */; };
 		569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A350D2A89C98500FE098E /* AppDelegate.swift */; };
 		569A35122A89C98500FE098E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35112A89C98500FE098E /* ViewController.swift */; };
 		569A35172A89C98600FE098E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 569A35162A89C98600FE098E /* Assets.xcassets */; };
@@ -106,7 +105,6 @@
 		565C8B112A912DD600167A92 /* ReplyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyViewController.xib; sourceTree = "<group>"; };
 		565C8B142A912E8800167A92 /* ReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyTableViewCell.swift; sourceTree = "<group>"; };
 		565C8B152A912E8800167A92 /* ReplyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyTableViewCell.xib; sourceTree = "<group>"; };
-		565C8B192A91376F00167A92 /* demo2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo2.mp4; sourceTree = "<group>"; };
 		569A350A2A89C98500FE098E /* Petmily.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Petmily.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		569A350D2A89C98500FE098E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		569A35112A89C98500FE098E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 			children = (
 				569A350D2A89C98500FE098E /* AppDelegate.swift */,
 				569A35112A89C98500FE098E /* ViewController.swift */,
-				565C8B192A91376F00167A92 /* demo2.mp4 */,
 				565C8B042A90C6AC00167A92 /* Model */,
 				565C8B032A90C69500167A92 /* Network */,
 				569A357D2A89FCA900FE098E /* Util */,
@@ -595,7 +592,6 @@
 				B3F405562A91F9190085F4A9 /* ContentsCollectionViewCell.xib in Resources */,
 				56C3CF2F2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib in Resources */,
 				DF06F8472A8CBFC500B8A875 /* (null) in Resources */,
-				565C8B1A2A9137D200167A92 /* demo2.mp4 in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
 				DF103ED12A921A17006BDF18 /* launch-screen.gif in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
