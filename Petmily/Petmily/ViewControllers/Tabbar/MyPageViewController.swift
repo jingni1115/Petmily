@@ -19,6 +19,7 @@ class MyPageViewController: BaseViewController {
         var label = UILabel()
         label.text = "단지"
         label.textColor = .white
+        label.font = Font.myPageTitleFont
         return label
     }()
     
@@ -26,6 +27,7 @@ class MyPageViewController: BaseViewController {
         var btn = UIButton()
         btn.setTitle("기본 정보 수정하기", for: .normal)
         btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = Font.myPageLabelFont
         btn.backgroundColor = .systemGray6
         btn.cornerRadius = 5
         return btn
@@ -58,12 +60,14 @@ class MyPageViewController: BaseViewController {
     var petAgeLabel: UILabel = {
         var view = UILabel()
         view.text = "나이"
+        view.font = Font.myPageLabelFont
         return view
     }()
     
     var petAgeText: UILabel = {
         var view = UILabel()
         view.text = "7살"
+        view.font = Font.myPageTitleFont
         return view
     }()
     
@@ -75,12 +79,14 @@ class MyPageViewController: BaseViewController {
     var petGenderLabel: UILabel = {
         var view = UILabel()
         view.text = "성별"
+        view.font = Font.myPageLabelFont
         return view
     }()
     
     var petGenderText: UILabel = {
         var view = UILabel()
         view.text = "몰라"
+        view.font = Font.myPageTitleFont
         return view
     }()
     
@@ -92,12 +98,14 @@ class MyPageViewController: BaseViewController {
     var petBreedLabel: UILabel = {
         var view = UILabel()
         view.text = "종"
+        view.font = Font.myPageLabelFont
         return view
     }()
     
     var petBreedText: UILabel = {
         var view = UILabel()
         view.text = "강아지"
+        view.font = Font.myPageTitleFont
         return view
     }()
     
