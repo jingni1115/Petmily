@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MyPageViewController2: BaseViewController {
+class MyPageViewController: BaseViewController {
     var settingButton: UIButton = {
         var btn = UIButton()
         return btn
