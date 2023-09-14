@@ -40,9 +40,14 @@ class MyPageViewController: BaseViewController {
         return view
     }()
     
-    var profileStackView: UIStackView = {
-        var view = UIStackView()
+    lazy var petInfoStackView: UIStackView = {
+        var view = UIStackView(arrangedSubviews: [petAgeView, petGenderView, petBreedView])
         view.backgroundColor = .blue
+        return view
+    }()
+    
+    var petAgeView: UIView = {
+        var view = UIView()
         return view
     }()
     
@@ -58,6 +63,11 @@ class MyPageViewController: BaseViewController {
         return view
     }()
     
+    var petGenderView: UIView = {
+        var view = UIView()
+        return view
+    }()
+    
     var petGenderLabel: UILabel = {
         var view = UILabel()
         view.text = "성별"
@@ -67,6 +77,11 @@ class MyPageViewController: BaseViewController {
     var petGenderText: UILabel = {
         var view = UILabel()
         view.text = "몰라"
+        return view
+    }()
+    
+    var petBreedView: UIView = {
+        var view = UIView()
         return view
     }()
     
@@ -84,6 +99,10 @@ class MyPageViewController: BaseViewController {
     
     var postView: UIView = {
         var view = UIView()
+        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.systemGray.cgColor
+        view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
         view.backgroundColor = .green
         return view
     }()
@@ -92,6 +111,11 @@ class MyPageViewController: BaseViewController {
         var control = UISegmentedControl()
         control.backgroundColor = .orange
         return control
+    }()
+    
+    lazy var postStackView: UIStackView = {
+        var stackView = UIStackView(arrangedSubviews: [dailyCollectionView, infoTableView])
+        return stackView
     }()
     
     var dailyCollectionView: UICollectionView = {
@@ -108,10 +132,82 @@ class MyPageViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .systemPink
+        configureView()
     }
     
+    func configureView() {
+        view.backgroundColor = .systemPink
+        configureUI()
+    }
+    
+    func configureUI() {
+        // add & constraints
+        view.addSubview(settingButton)
+        
+        view.addSubview(userNameLabel)
+        view.addSubview(editProfileButton)
+        view.addSubview(profileImage)
+        
+        view.addSubview(petInfoStackView)
+        petAgeView.addSubview(petAgeLabel)
+        petAgeView.addSubview(petAgeText)
+        petGenderView.addSubview(petGenderLabel)
+        petGenderView.addSubview(petGenderText)
+        petBreedView.addSubview(petBreedLabel)
+        petBreedView.addSubview(petBreedText)
+        
+        view.addSubview(postView)
+        postView.addSubview(postSegmentControl)
+        postView.addSubview(postStackView)
+    }
+    
+    func setSettingButton() {
+        // click event
+    }
+    
+    func setUserNameLabel() {
+        // mapping
+    }
+    
+    func setEditProfile() {
+        // click event
+    }
+    
+    func setProfileImage() {
+        // mapping
+    }
+    
+    //    func setPetInfoStackView() {
+    //
+    //    }
+    
+    func setPetAge() {
+        // mapping
+    }
+    
+    func setPetGender() {
+        // mapping
+    }
+    
+    func setPetBreed() {
+        // mapping
+    }
+    
+    //    func setPostView() {
+    //
+    //    }
+    
+    func setSegmentedControl() {
+        // click event
+    }
+    
+    func setCollectionView() {
+        
+    }
+    
+    func setTableView() {
+        
+    }
     
     
 }
