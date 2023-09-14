@@ -11,6 +11,7 @@ import SnapKit
 class MyPageViewController: BaseViewController {
     var settingButton: UIButton = {
         var btn = UIButton()
+        btn.setImage(UIImage(systemName: "pencil"), for: .normal)
         return btn
     }()
     
@@ -41,9 +42,12 @@ class MyPageViewController: BaseViewController {
     }()
     
     lazy var petInfoStackView: UIStackView = {
-        var view = UIStackView(arrangedSubviews: [petAgeView, petGenderView, petBreedView])
-        view.backgroundColor = .blue
-        return view
+        var stackView = UIStackView(arrangedSubviews: [petAgeView, petGenderView, petBreedView])
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.distribution = .equalSpacing
+        stackView.backgroundColor = .blue
+        return stackView
     }()
     
     var petAgeView: UIView = {
@@ -114,15 +118,21 @@ class MyPageViewController: BaseViewController {
     }()
     
     lazy var postStackView: UIStackView = {
+        //        var stackView = UIStackView()
         var stackView = UIStackView(arrangedSubviews: [dailyCollectionView, infoTableView])
+        stackView.axis = .horizontal
         return stackView
     }()
     
-    var dailyCollectionView: UICollectionView = {
-        var view = UICollectionView()
-        view.backgroundColor = .magenta
-        return view
-    }()
+    var dailyCollectionView = CustomCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    
+    //    var dailyCollectionView: UICollectionView = {
+    //        var view = UICollectionView()
+    //        view = CustomCollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+    //        view.register(MyPageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "MyPageCollectionViewCell")
+    //        view.backgroundColor = .magenta
+    //        return view
+    //    }()
     
     var infoTableView: UITableView = {
         var view = UITableView()
@@ -130,18 +140,61 @@ class MyPageViewController: BaseViewController {
         return view
     }()
     
+    let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    
+    var profileData: UserModel?
+    var dailyData: [DailyModel]?
+    var infoData: [InfoModel]?
+    var dailyThumbnail: UIImage?
+    
+    
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        getDailyData()
+    }
+    
+    func getProfileData() {
+        FirestoreService().getUserData { result in
+            self.profileData = result
+            self.getInfoData()
+        }
+    }
+    
+    func getInfoData() {
+        FirestoreService().getInfoData { result in
+            self.infoData = result?.filter({ filt in
+                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
+            })
+            CommonUtil.print(output: result)
+            self.configureView()
+            //            self.tableView.reloadData()
+        }
+    }
+    
+    func getDailyData() {
+        FirestoreService().getDailyData { result in
+            self.dailyData = result?.filter({ filt in
+                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
+            })
+            CommonUtil.print(output: result)
+            self.getProfileData()
+            //            self.customCollectionView.reloadData()
+        }
     }
     
     func configureView() {
         view.backgroundColor = .systemPink
+        dailyCollectionView.register(MyPageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "MyPageCollectionViewCell")
+        
         configureUI()
+        
+        setCollectionView()
+        setTableView()
     }
     
     func configureUI() {
-        // add & constraints
+        // add
         view.addSubview(settingButton)
         
         view.addSubview(userNameLabel)
@@ -159,6 +212,95 @@ class MyPageViewController: BaseViewController {
         view.addSubview(postView)
         postView.addSubview(postSegmentControl)
         postView.addSubview(postStackView)
+        
+        // constraints
+        settingButton.snp.makeConstraints{
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(-10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.width.equalTo(30)
+            $0.height.equalTo(30)
+        }
+        
+        userNameLabel.snp.makeConstraints{
+            $0.top.equalTo(settingButton.snp.bottom).inset(-10)
+            // view?
+            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
+        }
+        
+        editProfileButton.snp.makeConstraints{
+            $0.top.equalTo(userNameLabel.snp.bottom).inset(-10)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
+        }
+        
+        profileImage.snp.makeConstraints{
+            $0.top.equalTo(settingButton.snp.bottom).inset(-10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.bottom.equalTo(editProfileButton)
+            $0.width.equalTo(60)
+            $0.height.equalTo(60)
+        }
+        
+        petInfoStackView.snp.makeConstraints{
+            $0.top.equalTo(editProfileButton.snp.bottom).inset(-10)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+        }
+        
+        petAgeLabel.snp.makeConstraints{
+            $0.top.equalTo(petAgeView).inset(10)
+            $0.leading.equalTo(petAgeView).inset(10)
+            $0.bottom.equalTo(petAgeView).inset(10)
+        }
+        
+        petAgeText.snp.makeConstraints{
+            $0.top.equalTo(petAgeView).inset(10)
+            $0.trailing.equalTo(petAgeView).inset(10)
+            $0.bottom.equalTo(petAgeView).inset(10)
+        }
+        
+        petGenderLabel.snp.makeConstraints{
+            $0.top.equalTo(petGenderView).inset(10)
+            $0.leading.equalTo(petGenderView).inset(10)
+            $0.bottom.equalTo(petGenderView).inset(10)
+        }
+        
+        petGenderText.snp.makeConstraints{
+            $0.top.equalTo(petGenderView).inset(10)
+            $0.trailing.equalTo(petGenderView).inset(10)
+            $0.bottom.equalTo(petGenderView).inset(10)
+        }
+        
+        petBreedLabel.snp.makeConstraints{
+            $0.top.equalTo(petBreedView).inset(10)
+            $0.leading.equalTo(petBreedView).inset(10)
+            $0.bottom.equalTo(petBreedView).inset(10)
+        }
+        
+        petBreedText.snp.makeConstraints{
+            $0.top.equalTo(petBreedView).inset(10)
+            $0.trailing.equalTo(petBreedView).inset(10)
+            $0.bottom.equalTo(petBreedView).inset(10)
+        }
+        
+        postView.snp.makeConstraints{
+            $0.top.equalTo(petInfoStackView.snp.bottom).inset(-10)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        postSegmentControl.snp.makeConstraints{
+            $0.top.equalTo(postView)
+            $0.leading.equalTo(postView)
+            $0.trailing.equalTo(postView)
+        }
+        
+        postStackView.snp.makeConstraints{
+            $0.top.equalTo(postSegmentControl.snp.bottom)
+            $0.leading.equalTo(postView)
+            $0.trailing.equalTo(postView)
+            $0.bottom.equalTo(postView)
+        }
     }
     
     func setSettingButton() {
@@ -202,15 +344,24 @@ class MyPageViewController: BaseViewController {
     }
     
     func setCollectionView() {
+        //        dailyCollectionView = CustomCollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
         
+        dailyCollectionView.delegate = self
+        dailyCollectionView.dataSource = self
+        
+        dailyCollectionView.backgroundColor = .cyan
+        
+//        let layout = UICollectionViewFlowLayout()
+//        layout.minimumLineSpacing = 0
+//        dailyCollectionView.setCollectionViewLayout(layout, animated: true)
     }
     
     func setTableView() {
-        
+        infoTableView.isHidden = true
     }
-    
-    
 }
+
+
 
 
 //import UIKit
@@ -665,40 +816,40 @@ class MyPageViewController: BaseViewController {
 //    }
 //}
 //
-//extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = view.bounds.width
-//        let itemSpacing: CGFloat = 10
-//        let cellWidth: CGFloat = (width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3
-//        let cellHeigt: CGFloat = (width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3
-////        let cellWidth: CGFloat = width / 3
-////        let cellHeigt: CGFloat = width / 3
-//        return CGSize(width: cellWidth, height: cellHeigt)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return dailyData?.count ?? 0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = customCollectionView.dequeueReusableCell(withReuseIdentifier: "MyPageCollectionViewCell", for: indexPath) as! MyPageCollectionViewCell
-//        FirebaseStorageManager.downloadImage(urlString: "gs://petmily-6b63f.appspot.com/DF52E2BD-8489-43F8-824B-C4F4D42B715A1692579160.0970469", completion: { result in
-//            cell.collectionViewImage.image = result
-//        })
-//        return cell
-//    }
-//}
-//
-//extension UIImageView {
-//    func load(url: URL) {
-//        DispatchQueue.global().async { [weak self] in
-//            if let data = try? Data(contentsOf: url) {
-//                if let image = UIImage(data: data) {
-//                    DispatchQueue.main.async {
-//                        self?.image = image
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
+extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = postView.bounds.width
+        //        let itemSpacing: CGFloat = 10
+        //        let cellWidth: CGFloat = (width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3
+        //        let cellHeigt: CGFloat = (width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3
+        let cellWidth: CGFloat = (width - 20) / 3
+        let cellHeigt: CGFloat = (width - 20) / 3
+        return CGSize(width: cellWidth, height: cellHeigt)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dailyData?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = dailyCollectionView.dequeueReusableCell(withReuseIdentifier: "MyPageCollectionViewCell", for: indexPath) as! MyPageCollectionViewCell
+        FirebaseStorageManager.downloadImage(urlString: "gs://petmily-6b63f.appspot.com/DF52E2BD-8489-43F8-824B-C4F4D42B715A1692579160.0970469", completion: { result in
+            cell.collectionViewImage.image = result
+        })
+        return cell
+    }
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
