@@ -11,12 +11,9 @@ class DailyViewController: UIViewController {
     
     /** @brief collectionView*/
     @IBOutlet weak var cvMain: UICollectionView!
-    
     @IBOutlet weak var imgHeart: UIImageView!
-    
     @IBOutlet weak var lblHeartCount: UILabel!
     @IBOutlet weak var lblReplyCount: UILabel!
-    @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblContent: UILabel!
     @IBOutlet weak var lblHashTag: UILabel!
     
@@ -103,18 +100,20 @@ class DailyViewController: UIViewController {
     }
     
     @IBAction func shareButtonTouched(_ sender: Any) {
-        var objectsToShare = [String]()
-        //        if let text = textField.text {
-        //            objectsToShare.append(text)
-        //            print("[INFO] textField's Text : ", text)
-        //        }
-        
-        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = self.view
-        
-        // 공유하기 기능 중 제외할 기능이 있을 때 사용
-        //        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
-        self.present(activityVC, animated: true, completion: nil)
+        let vc = CameraViewController.init(nibName: "CameraViewController", bundle: nil)
+        self.present(vc, animated: true, completion: nil)
+//        var objectsToShare = [String]()
+//        //        if let text = textField.text {
+//        //            objectsToShare.append(text)
+//        //            print("[INFO] textField's Text : ", text)
+//        //        }
+//
+//        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//        activityVC.popoverPresentationController?.sourceView = self.view
+//
+//        // 공유하기 기능 중 제외할 기능이 있을 때 사용
+//        //        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+//        self.present(activityVC, animated: true, completion: nil)
     }
 }
 
@@ -130,7 +129,6 @@ extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSo
         like = dailyData?[indexPath.row].like ?? 0
         indexContent = dailyData?[indexPath.row].content ?? ""
         lblHeartCount.text = String(like)
-        lblUserName.text = dailyData?[indexPath.row].userName
         lblContent.text = dailyData?[indexPath.row].content
         let replyCount = dailyData?[indexPath.row].reply.count ?? 0
         lblReplyCount.text = String(replyCount)

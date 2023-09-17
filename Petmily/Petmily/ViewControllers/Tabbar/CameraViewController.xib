@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController" customModule="Petmily" customModuleProvider="target">
             <connections>
+                <outlet property="btnFlash" destination="vsZ-aJ-qk2" id="t8q-tz-6GQ"/>
+                <outlet property="btnGallery" destination="PHg-cG-cfu" id="TFC-SN-9Te"/>
+                <outlet property="btnX" destination="bXK-yy-31Q" id="ZXN-GD-Pye"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,16 +34,25 @@
                     <rect key="frame" x="16" y="87" width="36" height="36"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="×"/>
+                    <connections>
+                        <action selector="xButtonTouched:" destination="-1" eventType="touchUpInside" id="9Y5-w9-xkp"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsZ-aJ-qk2">
                     <rect key="frame" x="176" y="82" width="41" height="48"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="bolt.slash"/>
+                    <connections>
+                        <action selector="flashButtonTouched:" destination="-1" eventType="touchUpInside" id="J9g-FD-rjW"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uET-4i-ysu">
                     <rect key="frame" x="329" y="82" width="48" height="48"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="gear"/>
+                    <connections>
+                        <action selector="gearButtonTouched:" destination="-1" eventType="touchUpInside" id="MQY-jh-rdy"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ocb-0q-Fee">
                     <rect key="frame" x="158.66666666666666" y="630" width="76" height="111"/>
@@ -59,6 +71,9 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="camera"/>
+                            <connections>
+                                <action selector="cameraButtonTouched:" destination="-1" eventType="touchUpInside" id="gGh-RJ-dg7"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,27 +87,27 @@
                         <constraint firstAttribute="trailing" secondItem="j7y-M8-PiV" secondAttribute="trailing" id="rve-wa-3BP"/>
                     </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NSt-hh-6aI">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHg-cG-cfu">
                     <rect key="frame" x="19" y="723" width="75" height="75"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="75" id="eHG-Wj-9vS"/>
-                        <constraint firstAttribute="width" constant="75" id="kY7-Ss-ItL"/>
+                        <constraint firstAttribute="height" constant="75" id="JdJ-rU-4iH"/>
+                        <constraint firstAttribute="width" constant="75" id="pFt-h0-FyR"/>
                     </constraints>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="30"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </imageView>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <connections>
+                        <action selector="galleryButtonTouched:" destination="-1" eventType="touchUpInside" id="sVR-5u-fdn"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="bXK-yy-31Q" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="28" id="1pi-xx-5cy"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="NSt-hh-6aI" secondAttribute="bottom" constant="20" id="Gh7-aC-cou"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uET-4i-ysu" secondAttribute="trailing" constant="16" id="H2u-Zo-Un3"/>
                 <constraint firstItem="bXK-yy-31Q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="OVQ-wl-Fhe"/>
                 <constraint firstAttribute="bottom" secondItem="wgk-RJ-twq" secondAttribute="bottom" id="PXm-Sw-TpQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="PHg-cG-cfu" secondAttribute="bottom" constant="20" id="QHq-KX-8ud"/>
+                <constraint firstItem="PHg-cG-cfu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="19" id="T78-MI-eMc"/>
                 <constraint firstItem="uET-4i-ysu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="23" id="b0M-I3-Zdk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ocb-0q-Fee" secondAttribute="bottom" constant="77" id="c1n-pf-jXA"/>
                 <constraint firstItem="wgk-RJ-twq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cQ9-G9-IM4"/>
@@ -101,7 +116,6 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="JTh-hN-w2S" secondAttribute="bottom" constant="32" id="hi3-I7-R7Q"/>
                 <constraint firstItem="vsZ-aJ-qk2" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="p0Y-gP-0Zq"/>
                 <constraint firstItem="Ocb-0q-Fee" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uKb-NT-9AC"/>
-                <constraint firstItem="NSt-hh-6aI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="19" id="uuc-UN-ASs"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JTh-hN-w2S" secondAttribute="trailing" constant="30.600000000000001" id="vLM-mJ-9Va"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wgk-RJ-twq" secondAttribute="trailing" id="w0F-qW-iln"/>
             </constraints>
