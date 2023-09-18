@@ -8,6 +8,6 @@
 import UIKit
 
 public enum Font {
-    static let myPageTitleFont = UIFont.systemFont(ofSize: 20)
-    static let myPageLabelFont = UIFont.boldSystemFont(ofSize: 16)
+    static let myPageTitleFont = UIFont.boldSystemFont(ofSize: 20)
+    static let myPageLabelFont = UIFont.systemFont(ofSize: 16)
 }
