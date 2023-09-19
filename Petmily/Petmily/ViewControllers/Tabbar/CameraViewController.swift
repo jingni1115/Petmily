@@ -8,113 +8,127 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController {
-
+class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
+    // http://yoonbumtae.com/?p=5762
     @IBOutlet weak var btnX: UIButton!
     @IBOutlet weak var btnFlash: UIButton!
-    @IBOutlet weak var btnGallery: UIButton!
+    @IBOutlet weak var vPreview: UIView!
+    @IBOutlet weak var img: UIImageView!
     
     var captureSession: AVCaptureSession!
-    
-    var backCamera: AVCaptureDevice!
-        var frontCamera: AVCaptureDevice!
-        var backInput: AVCaptureInput!
-        var frontInput: AVCaptureInput!
-    
-    var previewLayer: AVCaptureVideoPreviewLayer!
-
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    var stillImageOutput: AVCapturePhotoOutput!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        captureSession = AVCaptureSession()
+        captureSession.beginConfiguration()
 
+        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else { return }
+
+        do {
+            let cameraInput = try AVCaptureDeviceInput(device: captureDevice)
+            
+            stillImageOutput = AVCapturePhotoOutput()
+
+            captureSession.addInput(cameraInput)
+            captureSession.sessionPreset = .photo
+            captureSession.addOutput(stillImageOutput)
+            captureSession.commitConfiguration()
+        } catch {
+            print(error)
+        }
+        //preview
+        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        DispatchQueue.main.async {
+            self.videoPreviewLayer.frame = self.vPreview.bounds
+        }
+        videoPreviewLayer?.videoGravity = .resizeAspectFill
+        self.vPreview.layer.addSublayer(videoPreviewLayer)
+
+        captureSession.startRunning()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            setupAndStartCaptureSession()
-        }
+        super.viewDidAppear(animated)
+//        setupAndStartCaptureSession()
+    }
     
-    // MARK: - Camera Setup
-      func setupAndStartCaptureSession() {
-          DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
-              // 세션 초기화
-              captureSession = AVCaptureSession()
-              // 구성(configuration) 시작
-              captureSession.beginConfiguration()
-              
-              // session specific configuration
-                // 세션 프리셋을 설정하기 전에 지원 여부를 확인해야 합니다.
-                if captureSession.canSetSessionPreset(.photo) {
-                    captureSession.sessionPreset = .photo
-                }
-                
-                // 사용 가능한 경우 세션이 자동으로 광역 색상을 사용해야 하는지 여부를 지정합니다.
-                captureSession.automaticallyConfiguresCaptureDeviceForWideColor = true
-              
-              // Setup inputs
-                          setupInputs()
-              
-              // UI 관련 부분은 메인 스레드에서 실행되어야 합니다.
-                       DispatchQueue.main.async {
-                           // 미리보기 레이어 셋업
-                           self.setupPreviewLayer()
-                       }
-              
-              // commit configuration: 단일 atomic 업데이트에서 실행 중인 캡처 세션의 구성에 대한 하나 이상의 변경 사항을 커밋합니다.
-              self.captureSession.commitConfiguration()
-              // 캡처 세션 실행
-              captureSession.startRunning()
-          }
-      }
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let imageData = photo.fileDataRepresentation()
+            else { return }
+        
+        let image = UIImage(data: imageData)
+        img.image = image
+    }
     
-    func setupInputs() {
-            // 후면(back) 및 전면(front) 카메라
-            if let backCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back),
-               let frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) {
-                self.backCamera = backCamera
-                self.frontCamera = frontCamera
-            } else {
-                fatalError("No cameras.")
-            }
-            
-            // 이제 기기로부터 입력 오브젝트를 만들어야 합니다.
-            guard let backInput = try? AVCaptureDeviceInput(device: self.backCamera) else {
-                fatalError("could not create input device from back camera")
-            }
-            self.backInput = backInput
-            if !captureSession.canAddInput(self.backInput) {
-                fatalError("could not add back camera input to capture session")
-            }
-            
-            guard let frontInput = try? AVCaptureDeviceInput(device: self.frontCamera) else {
-                fatalError("could not create input device from front camera")
-            }
-            self.frontInput = frontInput
-            if !captureSession.canAddInput(self.frontInput) {
-                fatalError("could not add front camera input to capture session")
-            }
-            // **후면 카메라 입력을 세션에 연결합니다.
-            captureSession.addInput(backInput)
-        }
-    
-    func setupPreviewLayer() {
-           previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-           view.layer.insertSublayer(previewLayer, below: btnGallery.layer)
-           previewLayer.frame = self.view.frame
-       }
+    private func switchCamera(captureSession: AVCaptureSession?) {
+        captureSession?.beginConfiguration()
+        let currentInput = captureSession?.inputs.first as? AVCaptureDeviceInput
+        captureSession?.removeInput(currentInput!)
 
+        let newCameraDevice = currentInput?.device.position == .back ? camera(with: .front) : camera(with: .back)
+        let newVideoInput = try? AVCaptureDeviceInput(device: newCameraDevice!)
+        captureSession?.addInput(newVideoInput!)
+        captureSession?.commitConfiguration()
+    }
+
+    private func camera(with position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let devices = AVCaptureDevice.devices(for: AVMediaType.video)
+        return devices.filter { $0.position == position }.first
+    }
+    
+    func didTapBtnTakePicture(stillImageOutput: AVCapturePhotoOutput) {
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+//        settings.flashMode = flashMode.value == .off ? .off : .on
+        stillImageOutput.capturePhoto(with: settings, delegate: self)
+    }
+    
     @IBAction func gearButtonTouched(_ sender: Any) {
+        
     }
     
     @IBAction func cameraButtonTouched(_ sender: Any) {
+        stillImageOutput?.capturePhoto(with: AVCapturePhotoSettings(), delegate: self as AVCapturePhotoCaptureDelegate)
     }
     
-    @IBAction func galleryButtonTouched(_ sender: Any) {
+    @IBAction func flashButtonTouched(_ sender: UIButton) {
+        //카메라 디바이스 가져오기
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+         
+        //플래시를 지원한다면
+        if device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+         
+                //현재 off상태이면 on시키기
+                if device.torchMode == .off {
+                    device.torchMode = .on
+                    //플래시 버튼 이미지 변경
+                    sender.setImage(UIImage.init(systemName: "lightbulb"), for: .normal)
+                }
+                //현재 on상태이면 off시키기
+                else {
+                    device.torchMode = .off
+                    //플래시 버튼 이미지 변경
+                    sender.setImage(UIImage.init(systemName: "lightbulb.slash"), for: .normal)
+                }
+         
+                device.unlockForConfiguration()
+            } catch {
+                print("Torch could not be used")
+            }
+        } else {
+            print("Torch is not available")
+        }
+//        didTapBtnTakePicture(stillImageOutput: stillImageOutput)
     }
     
-    @IBAction func flashButtonTouched(_ sender: Any) {
+    @IBAction func conversionCameraButtonTouched(_ sender: Any) {
+        switchCamera(captureSession: captureSession)
     }
+    
     @IBAction func xButtonTouched(_ sender: Any) {
         self.dismiss(animated: true)
     }

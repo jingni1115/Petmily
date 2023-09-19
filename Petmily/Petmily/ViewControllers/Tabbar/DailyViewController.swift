@@ -101,6 +101,7 @@ class DailyViewController: UIViewController {
     
     @IBAction func shareButtonTouched(_ sender: Any) {
         let vc = CameraViewController.init(nibName: "CameraViewController", bundle: nil)
+        vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion: nil)
 //        var objectsToShare = [String]()
 //        //        if let text = textField.text {
