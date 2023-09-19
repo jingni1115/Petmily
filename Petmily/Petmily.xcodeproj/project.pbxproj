@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5632E6B42AA793B300728F87 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5632E6B22AA793B300728F87 /* CameraViewController.swift */; };
+		5632E6B52AA793B300728F87 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5632E6B32AA793B300728F87 /* CameraViewController.xib */; };
+		5632E6B82AA7998400728F87 /* EditVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5632E6B62AA7998400728F87 /* EditVideoViewController.swift */; };
+		5632E6B92AA7998400728F87 /* EditVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5632E6B72AA7998400728F87 /* EditVideoViewController.xib */; };
 		565C8B0F2A9129C900167A92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */; };
 		565C8B122A912DD600167A92 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C8B102A912DD600167A92 /* ReplyViewController.swift */; };
 		565C8B132A912DD600167A92 /* ReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B112A912DD600167A92 /* ReplyViewController.xib */; };
@@ -102,6 +106,10 @@
 		2BE0D3DBC8AA9A473D93D7B5 /* Pods-PetmilyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetmilyTests.debug.xcconfig"; path = "Target Support Files/Pods-PetmilyTests/Pods-PetmilyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3C595EDD8E8E55BAEC433D26 /* Pods-Petmily-PetmilyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily-PetmilyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4BCB8754505F6B2538B76706 /* Pods_Petmily_PetmilyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petmily_PetmilyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5632E6B22AA793B300728F87 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		5632E6B32AA793B300728F87 /* CameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
+		5632E6B62AA7998400728F87 /* EditVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoViewController.swift; sourceTree = "<group>"; };
+		5632E6B72AA7998400728F87 /* EditVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditVideoViewController.xib; sourceTree = "<group>"; };
 		565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		565C8B102A912DD600167A92 /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
 		565C8B112A912DD600167A92 /* ReplyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyViewController.xib; sourceTree = "<group>"; };
@@ -377,6 +385,10 @@
 			children = (
 				569A35452A89CE0C00FE098E /* DailyViewController.swift */,
 				569A35692A89DB6C00FE098E /* DailyViewController.xib */,
+				5632E6B22AA793B300728F87 /* CameraViewController.swift */,
+				5632E6B32AA793B300728F87 /* CameraViewController.xib */,
+				5632E6B62AA7998400728F87 /* EditVideoViewController.swift */,
+				5632E6B72AA7998400728F87 /* EditVideoViewController.xib */,
 				565C8B1B2A914E3C00167A92 /* Reply */,
 				56DD2DB92A8E41EB008A9E12 /* ReelCollectionViewCell */,
 				569A35492A89CE2200FE098E /* InfoViewController.swift */,
@@ -601,6 +613,7 @@
 				DF06F8472A8CBFC500B8A875 /* (null) in Resources */,
 				569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */,
 				DF103ED12A921A17006BDF18 /* launch-screen.gif in Resources */,
+				5632E6B52AA793B300728F87 /* CameraViewController.xib in Resources */,
 				569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */,
 				FFEFD89E2A8E7016007D2F30 /* CommonHeaderView.xib in Resources */,
 				B3F405552A91F8420085F4A9 /* AdoptViewController.xib in Resources */,
@@ -609,6 +622,7 @@
 				569A35172A89C98600FE098E /* Assets.xcassets in Resources */,
 				569A35782A89FB8600FE098E /* Main.storyboard in Resources */,
 				569A35702A89DB6D00FE098E /* MyPageViewController.xib in Resources */,
+				5632E6B92AA7998400728F87 /* EditVideoViewController.xib in Resources */,
 				569A35722A89DB6D00FE098E /* InfoViewController.xib in Resources */,
 				565C8B0F2A9129C900167A92 /* GoogleService-Info.plist in Resources */,
 			);
@@ -749,8 +763,10 @@
 				569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */,
 				FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */,
 				56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */,
+				5632E6B42AA793B300728F87 /* CameraViewController.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,
 				56C3CF332A8E4A5C00541EB8 /* Common.swift in Sources */,
+				5632E6B82AA7998400728F87 /* EditVideoViewController.swift in Sources */,
 				569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */,
 				FF7D0D342A8D43CC00F96E02 /* BaseTabbarController.swift in Sources */,
 				FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */,
