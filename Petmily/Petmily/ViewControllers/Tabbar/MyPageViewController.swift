@@ -5,8 +5,9 @@
 //  Created by 김지은 on 2023/08/14.
 //
 
-import UIKit
 import SnapKit
+import SwiftUI
+import UIKit
 
 class MyPageViewController: BaseViewController {
     var settingButton: UIButton = {
@@ -26,10 +27,11 @@ class MyPageViewController: BaseViewController {
     var editProfileButton: UIButton = {
         var btn = UIButton()
         btn.setTitle("기본 정보 수정하기", for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+        btn.setTitleColor(.darkGray, for: .normal)
         btn.titleLabel?.font = Font.myPageLabelFont
-        btn.backgroundColor = .systemGray6
-        btn.cornerRadius = 5
+        btn.backgroundColor = .systemGray5
+        btn.cornerRadius = 10
         return btn
     }()
     
@@ -47,13 +49,12 @@ class MyPageViewController: BaseViewController {
         var stackView = UIStackView(arrangedSubviews: [petAgeView, petGenderView, petBreedView])
         stackView.axis = .vertical
         stackView.spacing = 10
-        stackView.distribution = .equalSpacing
-        stackView.backgroundColor = .blue
         return stackView
     }()
     
     var petAgeView: UIView = {
         var view = UIView()
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -61,6 +62,7 @@ class MyPageViewController: BaseViewController {
         var view = UILabel()
         view.text = "나이"
         view.font = Font.myPageLabelFont
+        view.textColor = .white
         return view
     }()
     
@@ -68,11 +70,13 @@ class MyPageViewController: BaseViewController {
         var view = UILabel()
         view.text = "7살"
         view.font = Font.myPageTitleFont
+        view.textColor = .white
         return view
     }()
     
     var petGenderView: UIView = {
         var view = UIView()
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -80,6 +84,7 @@ class MyPageViewController: BaseViewController {
         var view = UILabel()
         view.text = "성별"
         view.font = Font.myPageLabelFont
+        view.textColor = .white
         return view
     }()
     
@@ -87,11 +92,13 @@ class MyPageViewController: BaseViewController {
         var view = UILabel()
         view.text = "몰라"
         view.font = Font.myPageTitleFont
+        view.textColor = .white
         return view
     }()
     
     var petBreedView: UIView = {
         var view = UIView()
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -99,6 +106,7 @@ class MyPageViewController: BaseViewController {
         var view = UILabel()
         view.text = "종"
         view.font = Font.myPageLabelFont
+        view.textColor = .white
         return view
     }()
     
@@ -106,6 +114,7 @@ class MyPageViewController: BaseViewController {
         var view = UILabel()
         view.text = "강아지"
         view.font = Font.myPageTitleFont
+        view.textColor = .white
         return view
     }()
     
@@ -115,32 +124,42 @@ class MyPageViewController: BaseViewController {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.systemGray.cgColor
         view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
-        view.backgroundColor = .green
         return view
     }()
     
     var postSegmentControl: UISegmentedControl = {
-        var control = UISegmentedControl()
-        control.backgroundColor = .orange
+        var control = UISegmentedControl(items: ["데일리", "정보공유"])
+        control.selectedSegmentTintColor = .gray
+        control.backgroundColor = .white
+        control.selectedSegmentIndex = 0
         return control
     }()
     
+    var shouldHideFirstView: Bool? {
+       didSet {
+         guard let shouldHideFirstView = self.shouldHideFirstView else { return }
+         self.dailyCollectionView.isHidden = shouldHideFirstView
+         self.infoTableView.isHidden = !self.dailyCollectionView.isHidden
+       }
+     }
+    
     lazy var postStackView: UIStackView = {
-        //        var stackView = UIStackView()
         var stackView = UIStackView(arrangedSubviews: [dailyCollectionView, infoTableView])
         stackView.axis = .horizontal
         return stackView
     }()
     
-    var dailyCollectionView = CustomCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    
-    //    var dailyCollectionView: UICollectionView = {
-    //        var view = UICollectionView()
-    //        view = CustomCollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-    //        view.register(MyPageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "MyPageCollectionViewCell")
-    //        view.backgroundColor = .magenta
-    //        return view
-    //    }()
+    let dailyCollectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        let rowCount: CGFloat = 3
+        flowLayout.scrollDirection = .vertical
+        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / rowCount) - 8, height: (UIScreen.main.bounds.width / rowCount) - 4)
+        flowLayout.minimumLineSpacing = 2
+        flowLayout.minimumInteritemSpacing = 2
+        
+        return collectionView
+    }()
     
     var infoTableView: UITableView = {
         var view = UITableView()
@@ -199,6 +218,7 @@ class MyPageViewController: BaseViewController {
         
         setCollectionView()
         setTableView()
+        setSegmentedControl()
     }
     
     func configureUI() {
@@ -301,6 +321,7 @@ class MyPageViewController: BaseViewController {
             $0.top.equalTo(postView)
             $0.leading.equalTo(postView)
             $0.trailing.equalTo(postView)
+            $0.height.equalTo(60)
         }
         
         postStackView.snp.makeConstraints{
@@ -349,6 +370,9 @@ class MyPageViewController: BaseViewController {
     
     func setSegmentedControl() {
         // click event
+        postSegmentControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
+        postSegmentControl.selectedSegmentIndex = 0
+        didChangeValue(segment: postSegmentControl)
     }
     
     func setCollectionView() {
@@ -356,8 +380,6 @@ class MyPageViewController: BaseViewController {
         
         dailyCollectionView.delegate = self
         dailyCollectionView.dataSource = self
-        
-        dailyCollectionView.backgroundColor = .cyan
         
 //        let layout = UICollectionViewFlowLayout()
 //        layout.minimumLineSpacing = 0
@@ -367,6 +389,10 @@ class MyPageViewController: BaseViewController {
     func setTableView() {
         infoTableView.isHidden = true
     }
+    
+    @objc private func didChangeValue(segment: UISegmentedControl) {
+       self.shouldHideFirstView = segment.selectedSegmentIndex != 0
+     }
 }
 
 
@@ -793,48 +819,38 @@ class MyPageViewController: BaseViewController {
 //    }
 //}
 //
-//extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return infoData?.count ?? 0
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
-//        cell.tagLabel.isHidden = true
-//        cell.userTimeLabel.isHidden = true
-//        cell.titleLabel.text = infoData?[indexPath.row].title
-//        cell.descriptionLabel.text = infoData?[indexPath.row].content
-//        return cell
-//    }
-//
-//    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        // 셀 선택 해제
-//        tableView.deselectRow(at: indexPath, animated: true)
-//
-//        // 선택한 정보 가져오기
-//        let selectedInfo = infoData?[indexPath.row]
-//        let selectedUser = profileData
-//
-//
-//        // 목표 뷰 컨트롤러 초기화
-//        let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
-//        vc.selectedInfo = selectedInfo // 정보 전달
-//        vc.selectedUser = selectedUser // 유저 정보
-//        navigationPushController(viewController: vc, animated: true)
-//    }
-//}
-//
-extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = postView.bounds.width
-        //        let itemSpacing: CGFloat = 10
-        //        let cellWidth: CGFloat = (width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3
-        //        let cellHeigt: CGFloat = (width - (sectionInsets.left + sectionInsets.right) - (itemSpacing * 2)) / 3
-        let cellWidth: CGFloat = (width - 20) / 3
-        let cellHeigt: CGFloat = (width - 20) / 3
-        return CGSize(width: cellWidth, height: cellHeigt)
+extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return infoData?.count ?? 0
     }
-    
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
+        cell.tagLabel.isHidden = true
+        cell.userTimeLabel.isHidden = true
+        cell.titleLabel.text = infoData?[indexPath.row].title
+        cell.descriptionLabel.text = infoData?[indexPath.row].content
+        return cell
+    }
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 셀 선택 해제
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        // 선택한 정보 가져오기
+        let selectedInfo = infoData?[indexPath.row]
+        let selectedUser = profileData
+
+
+        // 목표 뷰 컨트롤러 초기화
+        let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
+        vc.selectedInfo = selectedInfo // 정보 전달
+        vc.selectedUser = selectedUser // 유저 정보
+        navigationPushController(viewController: vc, animated: true)
+    }
+}
+
+extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dailyData?.count ?? 0
     }
@@ -860,4 +876,21 @@ extension UIImageView {
             }
         }
     }
+}
+
+// SwiftUI를 활용한 미리보기
+struct MyPageViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        MyPageVCReprsentable().edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct MyPageVCReprsentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let MyPageVC = MyPageViewController()
+        return UINavigationController(rootViewController: MyPageVC)
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+    typealias UIViewControllerType = UIViewController
 }
