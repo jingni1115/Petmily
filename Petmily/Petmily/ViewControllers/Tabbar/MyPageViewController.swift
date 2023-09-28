@@ -129,6 +129,8 @@ class MyPageViewController: BaseViewController {
     
     var postSegmentControl: UISegmentedControl = {
         var control = UISegmentedControl(items: ["데일리", "정보공유"])
+        let font = UIFont.boldSystemFont(ofSize: 20)
+        control.setTitleTextAttributes([NSAttributedString.Key.font: font],for: .normal)
         control.selectedSegmentTintColor = .gray
         control.backgroundColor = .white
         control.selectedSegmentIndex = 0
@@ -348,6 +350,9 @@ class MyPageViewController: BaseViewController {
     
     func setProfileImage() {
         // mapping
+        if let url = profileData?.imageURL {
+            profileImage.load(url: URL(string: url)!)
+        }
     }
     
     func setPetAge() {
@@ -429,33 +434,19 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
+// SwiftUI를 활용한 미리보기
+struct MyPageViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        MyPageVCReprsentable().edgesIgnoringSafeArea(.all)
     }
 }
 
-//// SwiftUI를 활용한 미리보기
-//struct MyPageViewController_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MyPageVCReprsentable().edgesIgnoringSafeArea(.all)
-//    }
-//}
-//
-//struct MyPageVCReprsentable: UIViewControllerRepresentable {
-//    func makeUIViewController(context: Context) -> UIViewController {
-//        let MyPageVC = MyPageViewController()
-//        return UINavigationController(rootViewController: MyPageVC)
-//    }
-//
-//    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
-//    typealias UIViewControllerType = UIViewController
-//}
+struct MyPageVCReprsentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let MyPageVC = MyPageViewController()
+        return UINavigationController(rootViewController: MyPageVC)
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+    typealias UIViewControllerType = UIViewController
+}
