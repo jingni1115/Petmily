@@ -38,6 +38,7 @@ class MyPageViewController: BaseViewController {
         btn.setTitleColor(.darkGray, for: .normal)
         btn.titleLabel?.font = Font.myPageLabelFont
         btn.backgroundColor = .systemGray5
+        btn.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
         btn.cornerRadius = 10
         return btn
     }()
@@ -393,6 +394,11 @@ class MyPageViewController: BaseViewController {
     
     func setTableView() {
         infoTableView.isHidden = true
+    }
+    
+    @objc func tappedEditButton() {
+        let vc = ProfileViewController()
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     @objc private func didChangeValue(segment: UISegmentedControl) {
