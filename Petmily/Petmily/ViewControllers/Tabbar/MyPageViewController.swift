@@ -269,8 +269,7 @@ class MyPageViewController: BaseViewController {
         
         settingButton.snp.makeConstraints{
             $0.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.width.equalTo(30)
-            $0.height.equalTo(30)
+            $0.width.height.equalTo(30)
         }
         
         userNameLabel.snp.makeConstraints{
@@ -289,26 +288,20 @@ class MyPageViewController: BaseViewController {
             $0.top.equalTo(settingButton.snp.bottom).inset(-10)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
             $0.bottom.equalTo(editProfileButton)
-            $0.width.equalTo(60)
-            $0.height.equalTo(60)
+            $0.width.height.equalTo(60)
         }
         
         petInfoStackView.snp.makeConstraints{
             $0.top.equalTo(editProfileButton.snp.bottom).inset(-10)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
         
         petAgeLabel.snp.makeConstraints{
-            $0.top.equalTo(petAgeView).inset(10)
-            $0.leading.equalTo(petAgeView).inset(10)
-            $0.bottom.equalTo(petAgeView).inset(10)
+            $0.top.leading.bottom.equalTo(petAgeView).inset(10)
         }
         
         petAgeText.snp.makeConstraints{
-            $0.top.equalTo(petAgeView).inset(10)
-            $0.trailing.equalTo(petAgeView).inset(10)
-            $0.bottom.equalTo(petAgeView).inset(10)
+            $0.top.trailing.bottom.equalTo(petAgeView).inset(10)
         }
         
         firstDivider.snp.makeConstraints {
@@ -317,15 +310,11 @@ class MyPageViewController: BaseViewController {
         }
         
         petGenderLabel.snp.makeConstraints{
-            $0.top.equalTo(petGenderView).inset(10)
-            $0.leading.equalTo(petGenderView).inset(10)
-            $0.bottom.equalTo(petGenderView).inset(10)
+            $0.top.leading.bottom.equalTo(petGenderView).inset(10)
         }
         
         petGenderText.snp.makeConstraints{
-            $0.top.equalTo(petGenderView).inset(10)
-            $0.trailing.equalTo(petGenderView).inset(10)
-            $0.bottom.equalTo(petGenderView).inset(10)
+            $0.top.trailing.bottom.equalTo(petGenderView).inset(10)
         }
         
         secondDivider.snp.makeConstraints {
@@ -334,36 +323,27 @@ class MyPageViewController: BaseViewController {
         }
         
         petBreedLabel.snp.makeConstraints{
-            $0.top.equalTo(petBreedView).inset(10)
-            $0.leading.equalTo(petBreedView).inset(10)
-            $0.bottom.equalTo(petBreedView).inset(10)
+            $0.top.leading.bottom.equalTo(petBreedView).inset(10)
         }
         
         petBreedText.snp.makeConstraints{
-            $0.top.equalTo(petBreedView).inset(10)
-            $0.trailing.equalTo(petBreedView).inset(10)
-            $0.bottom.equalTo(petBreedView).inset(10)
+            $0.top.trailing.bottom.equalTo(petBreedView).inset(10)
         }
         
         postView.snp.makeConstraints{
             $0.top.equalTo(petInfoStackView.snp.bottom).inset(-10)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
         postSegmentControl.snp.makeConstraints{
-            $0.top.equalTo(postView)
-            $0.leading.equalTo(postView)
-            $0.trailing.equalTo(postView)
+            $0.top.leading.trailing.equalTo(postView)
             $0.height.equalTo(60)
         }
         
         postStackView.snp.makeConstraints{
             $0.top.equalTo(postSegmentControl.snp.bottom)
-            $0.leading.equalTo(postView)
-            $0.trailing.equalTo(postView)
-            $0.bottom.equalTo(postView)
+            $0.leading.trailing.bottom.equalTo(postView)
         }
     }
     
