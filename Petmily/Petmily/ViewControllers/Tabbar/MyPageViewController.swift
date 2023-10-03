@@ -10,6 +10,13 @@ import SwiftUI
 import UIKit
 
 class MyPageViewController: BaseViewController {
+    var titleLabel: UILabel = {
+        var label = UILabel()
+        label.text = "My Pet"
+        label.font = Font.myPageTitleFont
+        return label
+    }()
+    
     var settingButton: UIButton = {
         var btn = UIButton()
         btn.setImage(UIImage(systemName: "pencil"), for: .normal)
@@ -236,6 +243,7 @@ class MyPageViewController: BaseViewController {
     
     func configureUI() {
         // add
+        view.addSubview(titleLabel)
         view.addSubview(settingButton)
         
         view.addSubview(userNameLabel)
@@ -255,16 +263,18 @@ class MyPageViewController: BaseViewController {
         postView.addSubview(postStackView)
         
         // constraints
+        titleLabel.snp.makeConstraints {
+            $0.top.centerX.equalTo(view.safeAreaLayoutGuide)
+        }
+        
         settingButton.snp.makeConstraints{
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(-10)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
             $0.width.equalTo(30)
             $0.height.equalTo(30)
         }
         
         userNameLabel.snp.makeConstraints{
-            $0.top.equalTo(settingButton.snp.bottom).inset(-10)
-            // view?
+            $0.top.equalTo(titleLabel.snp.bottom).inset(-10)
             $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
         
