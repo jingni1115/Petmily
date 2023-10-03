@@ -46,9 +46,8 @@ class MyPageViewController: BaseViewController {
     }()
     
     lazy var petInfoStackView: UIStackView = {
-        var stackView = UIStackView(arrangedSubviews: [petAgeView, petGenderView, petBreedView])
+        var stackView = UIStackView(arrangedSubviews: [petAgeView, firstDivider ,petGenderView, secondDivider, petBreedView])
         stackView.axis = .vertical
-        stackView.spacing = 10
         return stackView
     }()
     
@@ -74,6 +73,12 @@ class MyPageViewController: BaseViewController {
         return view
     }()
     
+    var firstDivider: UIView = {
+        var view = UIView()
+        view.backgroundColor = .systemGray
+        return view
+    }()
+    
     var petGenderView: UIView = {
         var view = UIView()
         view.backgroundColor = .clear
@@ -93,6 +98,12 @@ class MyPageViewController: BaseViewController {
         view.text = "몰라"
         view.font = Font.myPageTitleFont
         view.textColor = .white
+        return view
+    }()
+    
+    var secondDivider: UIView = {
+        var view = UIView()
+        view.backgroundColor = .systemGray
         return view
     }()
     
@@ -290,6 +301,11 @@ class MyPageViewController: BaseViewController {
             $0.bottom.equalTo(petAgeView).inset(10)
         }
         
+        firstDivider.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(1)
+        }
+        
         petGenderLabel.snp.makeConstraints{
             $0.top.equalTo(petGenderView).inset(10)
             $0.leading.equalTo(petGenderView).inset(10)
@@ -300,6 +316,11 @@ class MyPageViewController: BaseViewController {
             $0.top.equalTo(petGenderView).inset(10)
             $0.trailing.equalTo(petGenderView).inset(10)
             $0.bottom.equalTo(petGenderView).inset(10)
+        }
+        
+        secondDivider.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(1)
         }
         
         petBreedLabel.snp.makeConstraints{
