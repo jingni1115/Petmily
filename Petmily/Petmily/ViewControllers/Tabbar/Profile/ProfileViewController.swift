@@ -7,6 +7,8 @@
 
 import AVFoundation
 import Photos
+import SnapKit
+import SwiftUI
 import UIKit
 
 class ProfileViewController: BaseHeaderViewController {
@@ -15,85 +17,77 @@ class ProfileViewController: BaseHeaderViewController {
     
     let datePicker = UIDatePicker()
     
+    let profileImage: UIImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "profile-placeholder")
+        img.contentMode = .scaleAspectFit
+        return img
+    }()
+    
+    let myNickName: UITextField = {
+        let tf = UITextField(frame: CGRect(x: 0, y: 0, width: 152, height: 30))
+        tf.placeholder = "닉네임을 입력해주세요"
+        let bottomLineView = UIView(frame: CGRect(x: 0, y: tf.frame.size.height + 23, width: tf.frame.size.width, height: 1.0))
+        bottomLineView.backgroundColor = UIColor.gray
+        tf.addSubview(bottomLineView)
+        return tf
+    }()
+    
     let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
     let stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        //        stackView.alignment = .center
-        stackView.distribution = .fillProportionally
+//        stackView.distribution = .fillProportionally
         stackView.spacing = 5
         return stackView
     }()
     
-    let profileImage: UIImageView = {
-        let img = UIImageView()
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.image = UIImage(named: "profile-placeholder")
-        img.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        img.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        img.contentMode = .scaleAspectFit
-        return img
-    }()
-    
     let petNameLabel: UILabel = {
         let label = UILabel()
-        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "동물 이름"
         label.font = UIFont.systemFont(ofSize: 14)
-        label.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return label
     }()
     
     let petNameTextField: UITextField = {
         let tField = UITextField()
-        //        tField.translatesAutoresizingMaskIntoConstraints = false
         tField.text = DataManager.sharedInstance.userInfo?.animalName ?? ""
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
-        tField.heightAnchor.constraint(equalToConstant: 30).isActive = true
         return tField
     }()
     
     let myNameLabel: UILabel = {
         let label = UILabel()
-        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "주인 이름"
         label.font = UIFont.systemFont(ofSize: 14)
-        label.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return label
     }()
     
     let myNameTextField: UITextField = {
         let tField = UITextField()
-        //        tField.translatesAutoresizingMaskIntoConstraints = false
         tField.text = DataManager.sharedInstance.userInfo?.name ?? ""
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
-        tField.heightAnchor.constraint(equalToConstant: 30).isActive = true
         return tField
     }()
     
     let genderLabel: UILabel = {
         let label = UILabel()
-        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "성별"
         label.font = UIFont.systemFont(ofSize: 14)
-        label.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return label
     }()
     
     let genderStackView: UIStackView = {
         let stackView = UIStackView()
-        //        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 2
@@ -103,7 +97,6 @@ class ProfileViewController: BaseHeaderViewController {
     
     let firstGenderBtn: UIButton = {
         let btn = UIButton()
-        //        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = .systemGray
         btn.setTitle("남", for: .normal)
         btn.cornerRadius = 5
@@ -112,7 +105,6 @@ class ProfileViewController: BaseHeaderViewController {
     
     let secondGenderBtn: UIButton = {
         let btn = UIButton()
-        //        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = .systemGray3
         btn.setTitle("여", for: .normal)
         btn.cornerRadius = 5
@@ -121,71 +113,57 @@ class ProfileViewController: BaseHeaderViewController {
     
     let birthLabel: UILabel = {
         let label = UILabel()
-        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "생년월일"
         label.font = UIFont.systemFont(ofSize: 14)
-        label.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return label
     }()
     
     let birthTextField: UITextField = {
         let tField = UITextField()
-        //        tField.translatesAutoresizingMaskIntoConstraints = false
         tField.text = DataManager.sharedInstance.userInfo?.birth ?? ""
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
-        tField.heightAnchor.constraint(equalToConstant: 30).isActive = true
         return tField
     }()
     
     let breedLabel: UILabel = {
         let label = UILabel()
-        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "종"
         label.font = UIFont.systemFont(ofSize: 14)
-        label.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return label
     }()
     
     let breedTextField: UITextField = {
         let tField = UITextField()
-        //        tField.translatesAutoresizingMaskIntoConstraints = false
         tField.text = DataManager.sharedInstance.userInfo?.type ?? ""
         tField.layer.cornerRadius = 5
         tField.layer.borderWidth = 1
         tField.layer.borderColor = UIColor.gray.cgColor
-        tField.heightAnchor.constraint(equalToConstant: 30).isActive = true
         return tField
     }()
     
     let commentLabel: UILabel = {
         let label = UILabel()
-        //        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "자기 소개"
         label.font = UIFont.systemFont(ofSize: 14)
-        label.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return label
     }()
     
     let commentTextView: UITextView = {
         let tv = UITextView()
-        //        tv.translatesAutoresizingMaskIntoConstraints = false
         tv.layer.cornerRadius = 5
         tv.layer.borderWidth = 1
         tv.layer.borderColor = UIColor.gray.cgColor
-        tv.heightAnchor.constraint(equalToConstant: 100).isActive = true
         return tv
     }()
     
     let completeBtn: UIButton = {
         let btn = UIButton()
-        //        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitle("확인", for: .normal)
         btn.backgroundColor = .darkGray
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         btn.cornerRadius = 20
-        btn.heightAnchor.constraint(equalToConstant: 40).isActive = true
         return btn
     }()
     
@@ -196,15 +174,13 @@ class ProfileViewController: BaseHeaderViewController {
         self.photo.delegate = self
         
         setHeaderTitleName(title: "프로필")
-        configureView()
+        configureUI()
     }
     
 
     
-    func configureView() {
-        setScrollView()
-        setStackView()
-        
+    func configureUI() {
+        setupUI()
         setProfileImage()
         setGenderStackView()
         setFirstGenderBtn()
@@ -215,21 +191,11 @@ class ProfileViewController: BaseHeaderViewController {
         setCompleteBtn()
     }
     
-    func setScrollView() {
+    func setupUI() {
         view.addSubview(contentScrollView)
-        
-        NSLayoutConstraint.activate([
-            contentScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 49 + 20),
-            contentScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            contentScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            contentScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-        ])
-    }
-    
-    func setStackView() {
-        view.addSubview(stackView)
-        
-        stackView.addArrangedSubview(profileImage)
+        view.addSubview(profileImage)
+        view.addSubview(myNickName)
+        contentScrollView.addSubview(stackView)
         
         stackView.addArrangedSubview(petNameLabel)
         stackView.addArrangedSubview(petNameTextField)
@@ -251,14 +217,75 @@ class ProfileViewController: BaseHeaderViewController {
         
         stackView.addArrangedSubview(completeBtn)
         
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor),
-            stackView.heightAnchor.constraint(greaterThanOrEqualTo: contentScrollView.heightAnchor)
-            //            stackView.widthAnchor.constraint(greaterThanOrEqualTo: contentScrollView.widthAnchor)
-        ])
+        profileImage.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(10 + 49)
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+            $0.width.height.equalTo(100)
+        }
+        
+        myNickName.snp.makeConstraints {
+            $0.top.equalTo(profileImage.snp.bottom).inset(5)
+            $0.centerX.equalToSuperview()
+        }
+        
+        contentScrollView.snp.makeConstraints {
+            $0.top.equalTo(myNickName.snp.bottom).inset(10)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+        
+        // TODO: stackView Constraints
+        stackView.snp.makeConstraints {
+            $0.top.equalTo(myNickName.snp.bottom).inset(-10)
+            $0.leading.trailing.bottom.equalTo(contentScrollView).inset(10)
+        }
+        
+        petNameLabel.snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
+        
+        petNameTextField.snp.makeConstraints {
+            $0.height.equalTo(30)
+        }
+        
+        myNameLabel.snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
+        
+        myNameTextField.snp.makeConstraints {
+            $0.height.equalTo(30)
+        }
+        
+        genderLabel.snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
+        
+        birthLabel.snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
+        
+        birthTextField.snp.makeConstraints {
+            $0.height.equalTo(30)
+        }
+        
+        breedLabel.snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
+        
+        breedTextField.snp.makeConstraints {
+            $0.height.equalTo(30)
+        }
+        
+        commentLabel.snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
+        
+        commentTextView.snp.makeConstraints {
+            $0.height.equalTo(400)
+        }
+        
+        completeBtn.snp.makeConstraints {
+            $0.height.equalTo(40)
+        }
     }
     
     func setProfileImage() {
@@ -402,4 +429,21 @@ extension ProfileViewController: UIImagePickerControllerDelegate,  UINavigationC
         // 이미지 파커 닫기
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+// SwiftUI를 활용한 미리보기
+struct ProfileViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileVCReprsentable().edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct ProfileVCReprsentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> UIViewController {
+        let ProfileVC = ProfileViewController()
+        return UINavigationController(rootViewController: ProfileVC)
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+    typealias UIViewControllerType = UIViewController
 }
