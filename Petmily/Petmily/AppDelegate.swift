@@ -19,11 +19,6 @@ import Gifu
     var navigationController : UINavigationController?
     
     /**
-     @brief  tabBarController 객체
-     */
-    var tabBarController : BaseTabbarController?
-    
-    /**
      @enum StartType
      
      @brief  화면시작 지점 구분 enum
@@ -81,17 +76,7 @@ import Gifu
      */
     func changeInitViewController(type : StartType) {
         DataManager.sharedInstance.modalViewControllerList = nil
-        tabBarController = nil
-        let storyBoard = UIStoryboard(name: type.rawValue, bundle: nil)
-        self.navigationController = nil
-        self.tabBarController = nil
-        let navigationController : UINavigationController?
-        navigationController =  storyBoard.instantiateInitialViewController() as? UINavigationController
-        if  navigationController?.topViewController is UITabBarController {
-            tabBarController = navigationController!.topViewController as? BaseTabbarController
-        }
-        self.navigationController = navigationController
-        
+        navigationController = UINavigationController(rootViewController: TabBarController())
         //네비게이션바 히든
         navigationController?.isNavigationBarHidden = true;
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
