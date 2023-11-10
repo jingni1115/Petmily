@@ -221,7 +221,7 @@ class AddViewController: BaseViewController{
     func requestAddDaily() {
         if shortTxtF.text ?? "" != "" {
             FirestoreService().addDailyDocument(content: shortTxtF.text ?? "", hashTag: tfDailyHashTag.text ?? "", imageURL: imageUrl ?? "") { reuslt in
-                BaseTabbarController().moveToTabBarIndex(index: .Daily)
+//                BaseTabbarController().moveToTabBarIndex(index: .Daily)
             }
         } else {
             CommonUtil().showOneButtonAlertView(title: "내용을 입력하세요.", message: "")
@@ -235,7 +235,7 @@ class AddViewController: BaseViewController{
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let str = dateFormatter.string(from: nowDate)
             FirestoreService().addInfoDocument(title: infoTitle.text ?? "", content: txtvContents.text ?? "", date: str, hashTag: tfInfoHashTag.text ?? "", imageURL: imageUrl ?? "") { result in
-                BaseTabbarController().moveToTabBarIndex(index: .Info)
+//                BaseTabbarController().moveToTabBarIndex(index: .Info)
             }
         } else {
             CommonUtil().showOneButtonAlertView(title: "제목을 입력하세요.", message: "")
