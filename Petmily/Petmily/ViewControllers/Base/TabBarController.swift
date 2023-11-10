@@ -12,7 +12,9 @@ final class TabBarController: UIViewController {
     
     let dailyVC = DailyViewController(nibName: "DailyViewController", bundle: nil)
     let infoVC = InfoViewController(nibName: "InfoViewController", bundle: nil)
-    let locationVC = AdoptViewController(nibName: "AdoptViewController", bundle: nil)
+    // 기존 펫스티벌 뷰컨트롤러 주석 처리
+//    let locationVC = AdoptViewController(nibName: "AdoptViewController", bundle: nil)
+    let locationVC = LocationViewController()
     let mypageVC = MyPageViewController(nibName: "MyPageViewController", bundle: nil)
     private let tabBarView = TabBarView(frame: .zero)
     
