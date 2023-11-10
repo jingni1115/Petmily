@@ -11,6 +11,8 @@
 		5632E6B52AA793B300728F87 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5632E6B32AA793B300728F87 /* CameraViewController.xib */; };
 		5632E6B82AA7998400728F87 /* EditVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5632E6B62AA7998400728F87 /* EditVideoViewController.swift */; };
 		5632E6B92AA7998400728F87 /* EditVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5632E6B72AA7998400728F87 /* EditVideoViewController.xib */; };
+		5655C0B42AFE1519002BC9C6 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5655C0B32AFE1519002BC9C6 /* TabBarView.swift */; };
+		5655C0B62AFE18D3002BC9C6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5655C0B52AFE18D3002BC9C6 /* TabBarController.swift */; };
 		565C8B0F2A9129C900167A92 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */; };
 		565C8B122A912DD600167A92 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565C8B102A912DD600167A92 /* ReplyViewController.swift */; };
 		565C8B132A912DD600167A92 /* ReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 565C8B112A912DD600167A92 /* ReplyViewController.xib */; };
@@ -78,7 +80,6 @@
 		FF6E7F412AB366F2001A906B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FF6E7F402AB366F2001A906B /* SnapKit */; };
 		FF6E7F432AB3822C001A906B /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E7F422AB3822C001A906B /* Const.swift */; };
 		FF7D08222AC5C1460004CC4E /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7D08212AC5C1460004CC4E /* UIImageView+Extension.swift */; };
-		FF7D0D342A8D43CC00F96E02 /* BaseTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35432A89CB7D00FE098E /* BaseTabbarController.swift */; };
 		FF7D0D362A8D442900F96E02 /* MyPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */; };
 		FFB32C1E81E1C61BA9C4F51A /* Pods_Petmily.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2FE733832C32CE5B2A46AD0 /* Pods_Petmily.framework */; };
 		FFEFD89E2A8E7016007D2F30 /* CommonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFEFD89D2A8E7016007D2F30 /* CommonHeaderView.xib */; };
@@ -111,6 +112,8 @@
 		5632E6B32AA793B300728F87 /* CameraViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraViewController.xib; sourceTree = "<group>"; };
 		5632E6B62AA7998400728F87 /* EditVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVideoViewController.swift; sourceTree = "<group>"; };
 		5632E6B72AA7998400728F87 /* EditVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditVideoViewController.xib; sourceTree = "<group>"; };
+		5655C0B32AFE1519002BC9C6 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		5655C0B52AFE18D3002BC9C6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		565C8B0E2A9129C900167A92 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		565C8B102A912DD600167A92 /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
 		565C8B112A912DD600167A92 /* ReplyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplyViewController.xib; sourceTree = "<group>"; };
@@ -129,7 +132,6 @@
 		569A35302A89C98700FE098E /* PetmilyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetmilyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		569A353D2A89CB3B00FE098E /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		569A35412A89CB6E00FE098E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		569A35432A89CB7D00FE098E /* BaseTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabbarController.swift; sourceTree = "<group>"; };
 		569A35452A89CE0C00FE098E /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
 		569A35492A89CE2200FE098E /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		569A354D2A89CE2F00FE098E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -377,7 +379,8 @@
 			children = (
 				56C3CF302A8E4A4200541EB8 /* BaseHeaderViewController.swift */,
 				569A35412A89CB6E00FE098E /* BaseViewController.swift */,
-				569A35432A89CB7D00FE098E /* BaseTabbarController.swift */,
+				5655C0B32AFE1519002BC9C6 /* TabBarView.swift */,
+				5655C0B52AFE18D3002BC9C6 /* TabBarController.swift */,
 				569A35AB2A8C7B6500FE098E /* CommonHeaderView */,
 			);
 			path = Base;
@@ -765,13 +768,13 @@
 				56C3CF2E2A8E482900541EB8 /* UrlBtnCollectionViewCell.swift in Sources */,
 				569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */,
 				FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */,
+				5655C0B42AFE1519002BC9C6 /* TabBarView.swift in Sources */,
 				56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */,
 				5632E6B42AA793B300728F87 /* CameraViewController.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,
 				56C3CF332A8E4A5C00541EB8 /* Common.swift in Sources */,
 				5632E6B82AA7998400728F87 /* EditVideoViewController.swift in Sources */,
 				569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */,
-				FF7D0D342A8D43CC00F96E02 /* BaseTabbarController.swift in Sources */,
 				FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */,
 				56C3CF282A8E475E00541EB8 /* CommonHeaderView.swift in Sources */,
 				569A35122A89C98500FE098E /* ViewController.swift in Sources */,
@@ -786,6 +789,7 @@
 				DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */,
 				569A354B2A89CE2200FE098E /* InfoViewController.swift in Sources */,
 				FFFB1E7F2A91603D00263D6D /* FirebaseStorageManager.swift in Sources */,
+				5655C0B62AFE18D3002BC9C6 /* TabBarController.swift in Sources */,
 				56C3CF312A8E4A4200541EB8 /* BaseHeaderViewController.swift in Sources */,
 				B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
