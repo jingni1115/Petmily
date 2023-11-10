@@ -21,10 +21,10 @@
 https://github.com/jingni1115/Petmily
 
 # 팀 소개
-|김지은|박상우|박현빈|최진훈|허수빈|
+|김지은|박상우|박현빈|최진훈|한지욱|
 |:---:|:---:|:---:|:---:|:---:|
-|[jingni1115](https://github.com/jingni1115)|[angwoo0503](https://github.com/angwoo0503)|[Park-hyun-bin](https://github.com/Park-hyun-bin)|[pinocchio22](https://github.com/pinocchio22)|[Heasoobean](https://github.com/Heasoobean)|
-|![](https://avatars.githubusercontent.com/u/105254025?v=4)|![](https://avatars.githubusercontent.com/u/136118540?v=4)|![](https://avatars.githubusercontent.com/u/139093321?v=4)|![](https://avatars.githubusercontent.com/u/61182499?v=4)|![](https://avatars.githubusercontent.com/u/132876412?v=4)|
+|[jingni1115](https://github.com/jingni1115)|[angwoo0503](https://github.com/angwoo0503)|[Park-hyun-bin](https://github.com/Park-hyun-bin)|[pinocchio22](https://github.com/pinocchio22)|[z-wook](https://github.com/z-wook)|
+|![](https://avatars.githubusercontent.com/u/105254025?v=4)|![](https://avatars.githubusercontent.com/u/136118540?v=4)|![](https://avatars.githubusercontent.com/u/139093321?v=4)|![](https://avatars.githubusercontent.com/u/61182499?v=4)|![](https://avatars.githubusercontent.com/u/101041221?v=4)|
 
 
 # 기술 스택
