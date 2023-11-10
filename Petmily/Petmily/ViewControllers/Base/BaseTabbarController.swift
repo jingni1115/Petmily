@@ -28,7 +28,7 @@ class BaseTabbarController: UITabBarController {
      */
     func setTabControllers() {
         let dailyVC = DailyViewController(nibName: "DailyViewController", bundle: nil)
-        let infoVC = InfoViewController(nibName: "InfoViewController", bundle: nil)
+        let infoVC = InfoViewController()
         let addVC = AddViewController(nibName: "AddViewController", bundle: nil)
         let adoptVC = AdoptViewController(nibName: "AdoptViewController", bundle: nil)
         let mypageVC = MyPageViewController(nibName: "MyPageViewController", bundle: nil)
