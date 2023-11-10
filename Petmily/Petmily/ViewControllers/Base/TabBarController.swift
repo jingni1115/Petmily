@@ -29,6 +29,7 @@ private extension TabBarController {
     func configure() {
         view.backgroundColor = .systemBackground
         view.addSubview(dailyVC.view)
+        changeTintColor(buttonType: tabBarView.dailyBtn)
     }
     
     func setLayout() {
