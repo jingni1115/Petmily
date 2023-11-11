@@ -46,24 +46,36 @@ private extension TabBarController {
     }
     
     @objc func didTappedDaily() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
         view.addSubview(dailyVC.view)
         setLayout()
         changeTintColor(buttonType: tabBarView.dailyBtn)
     }
     
     @objc func didTappedInfo() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
         view.addSubview(infoVC.view)
         setLayout()
         changeTintColor(buttonType: tabBarView.infoBtn)
     }
     
     @objc func didTappedLocation() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
         view.addSubview(locationVC.view)
         setLayout()
         changeTintColor(buttonType: tabBarView.locationBtn)
     }
     
     @objc func didTappedMyPage() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
         view.addSubview(mypageVC.view)
         setLayout()
         changeTintColor(buttonType: tabBarView.myBtn)
