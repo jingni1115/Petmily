@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330C5A7A2AFEFFCE00F15272 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330C5A792AFEFFCE00F15272 /* SectionHeaderView.swift */; };
+		330C5A7C2AFF06DB00F15272 /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330C5A7B2AFF06DB00F15272 /* InfoViewModel.swift */; };
+		330C5A7E2AFF4DAA00F15272 /* PopularContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330C5A7D2AFF4DAA00F15272 /* PopularContentCell.swift */; };
+		330FD5402AFE83DD00EBA58C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330FD53F2AFE83DD00EBA58C /* InfoView.swift */; };
+		330FD5422AFE83FE00EBA58C /* ShareInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330FD5412AFE83FE00EBA58C /* ShareInfoViewCell.swift */; };
+		330FD5442AFE841E00EBA58C /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330FD5432AFE841E00EBA58C /* InfoViewController.swift */; };
 		5632E6B42AA793B300728F87 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5632E6B22AA793B300728F87 /* CameraViewController.swift */; };
 		5632E6B52AA793B300728F87 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5632E6B32AA793B300728F87 /* CameraViewController.xib */; };
 		5632E6B82AA7998400728F87 /* EditVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5632E6B62AA7998400728F87 /* EditVideoViewController.swift */; };
@@ -28,7 +34,6 @@
 		569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A353D2A89CB3B00FE098E /* IntroViewController.swift */; };
 		569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35412A89CB6E00FE098E /* BaseViewController.swift */; };
 		569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35452A89CE0C00FE098E /* DailyViewController.swift */; };
-		569A354B2A89CE2200FE098E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35492A89CE2200FE098E /* InfoViewController.swift */; };
 		569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A354D2A89CE2F00FE098E /* AddViewController.swift */; };
 		569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A35592A89CF1B00FE098E /* UIView+Extension.swift */; };
 		569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569A355B2A89D10A00FE098E /* CommonUtil.swift */; };
@@ -105,6 +110,12 @@
 /* Begin PBXFileReference section */
 		230CD642811FD4A07031BA63 /* Pods-PetmilyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetmilyTests.release.xcconfig"; path = "Target Support Files/Pods-PetmilyTests/Pods-PetmilyTests.release.xcconfig"; sourceTree = "<group>"; };
 		2BE0D3DBC8AA9A473D93D7B5 /* Pods-PetmilyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetmilyTests.debug.xcconfig"; path = "Target Support Files/Pods-PetmilyTests/Pods-PetmilyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		330C5A792AFEFFCE00F15272 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		330C5A7B2AFF06DB00F15272 /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
+		330C5A7D2AFF4DAA00F15272 /* PopularContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularContentCell.swift; sourceTree = "<group>"; };
+		330FD53F2AFE83DD00EBA58C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		330FD5412AFE83FE00EBA58C /* ShareInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfoViewCell.swift; sourceTree = "<group>"; };
+		330FD5432AFE841E00EBA58C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3C595EDD8E8E55BAEC433D26 /* Pods-Petmily-PetmilyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily-PetmilyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4BCB8754505F6B2538B76706 /* Pods_Petmily_PetmilyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petmily_PetmilyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5632E6B22AA793B300728F87 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -132,7 +143,6 @@
 		569A353D2A89CB3B00FE098E /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		569A35412A89CB6E00FE098E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		569A35452A89CE0C00FE098E /* DailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewController.swift; sourceTree = "<group>"; };
-		569A35492A89CE2200FE098E /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		569A354D2A89CE2F00FE098E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		569A35592A89CF1B00FE098E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		569A355B2A89D10A00FE098E /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
@@ -394,7 +404,12 @@
 				5632E6B72AA7998400728F87 /* EditVideoViewController.xib */,
 				565C8B1B2A914E3C00167A92 /* Reply */,
 				56DD2DB92A8E41EB008A9E12 /* ReelCollectionViewCell */,
-				569A35492A89CE2200FE098E /* InfoViewController.swift */,
+				330FD53F2AFE83DD00EBA58C /* InfoView.swift */,
+				330FD5412AFE83FE00EBA58C /* ShareInfoViewCell.swift */,
+				330C5A7D2AFF4DAA00F15272 /* PopularContentCell.swift */,
+				330C5A7B2AFF06DB00F15272 /* InfoViewModel.swift */,
+				330FD5432AFE841E00EBA58C /* InfoViewController.swift */,
+				330C5A792AFEFFCE00F15272 /* SectionHeaderView.swift */,
 				569A356C2A89DB6D00FE098E /* InfoViewController.xib */,
 				565C8B1C2A91815F00167A92 /* InfoDetail */,
 				565C8B1D2A91816A00167A92 /* InfoTableViewCell */,
@@ -768,10 +783,12 @@
 				5655C0B42AFE1519002BC9C6 /* TabBarView.swift in Sources */,
 				56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */,
 				5632E6B42AA793B300728F87 /* CameraViewController.swift in Sources */,
+				330FD5402AFE83DD00EBA58C /* InfoView.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,
 				56C3CF332A8E4A5C00541EB8 /* Common.swift in Sources */,
 				5632E6B82AA7998400728F87 /* EditVideoViewController.swift in Sources */,
 				569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */,
+				330FD5442AFE841E00EBA58C /* InfoViewController.swift in Sources */,
 				FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */,
 				56C3CF282A8E475E00541EB8 /* CommonHeaderView.swift in Sources */,
 				569A35122A89C98500FE098E /* ViewController.swift in Sources */,
@@ -781,15 +798,18 @@
 				56C3CF382A8E765000541EB8 /* InfoModel.swift in Sources */,
 				569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */,
 				FF6E7F3E2AB34E5A001A906B /* MyPageViewController.swift in Sources */,
+				330C5A7A2AFEFFCE00F15272 /* SectionHeaderView.swift in Sources */,
 				565C8B122A912DD600167A92 /* ReplyViewController.swift in Sources */,
+				330C5A7C2AFF06DB00F15272 /* InfoViewModel.swift in Sources */,
 				DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */,
 				DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */,
-				569A354B2A89CE2200FE098E /* InfoViewController.swift in Sources */,
 				FFFB1E7F2A91603D00263D6D /* FirebaseStorageManager.swift in Sources */,
 				5655C0B62AFE18D3002BC9C6 /* TabBarController.swift in Sources */,
 				56C3CF312A8E4A4200541EB8 /* BaseHeaderViewController.swift in Sources */,
+				330FD5422AFE83FE00EBA58C /* ShareInfoViewCell.swift in Sources */,
 				B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
+				330C5A7E2AFF4DAA00F15272 /* PopularContentCell.swift in Sources */,
 				FF6E7F432AB3822C001A906B /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,8 @@ import SnapKit
 final class TabBarController: UIViewController {
     
     let dailyVC = DailyViewController(nibName: "DailyViewController", bundle: nil)
-    let infoVC = InfoViewController(nibName: "InfoViewController", bundle: nil)
+//    let infoVC = InfoViewController(nibName: "InfoViewController", bundle: nil)
+    let infoVC = InfoViewController()
     let locationVC = AdoptViewController(nibName: "AdoptViewController", bundle: nil)
     let mypageVC = MyPageViewController(nibName: "MyPageViewController", bundle: nil)
     private let tabBarView = TabBarView(frame: .zero)
