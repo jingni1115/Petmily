@@ -13,7 +13,9 @@ final class TabBarController: UIViewController {
     let dailyVC = DailyViewController(nibName: "DailyViewController", bundle: nil)
 //    let infoVC = InfoViewController(nibName: "InfoViewController", bundle: nil)
     let infoVC = InfoViewController()
-    let locationVC = AdoptViewController(nibName: "AdoptViewController", bundle: nil)
+    // 기존 펫스티벌 뷰컨트롤러 주석 처리
+//    let locationVC = AdoptViewController(nibName: "AdoptViewController", bundle: nil)
+    let locationVC = LocationViewController()
     let mypageVC = MyPageViewController(nibName: "MyPageViewController", bundle: nil)
     private let tabBarView = TabBarView(frame: .zero)
     
@@ -45,24 +47,36 @@ private extension TabBarController {
     }
     
     @objc func didTappedDaily() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
         view.addSubview(dailyVC.view)
         setLayout()
         changeTintColor(buttonType: tabBarView.dailyBtn)
     }
     
     @objc func didTappedInfo() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
         view.addSubview(infoVC.view)
         setLayout()
         changeTintColor(buttonType: tabBarView.infoBtn)
     }
     
     @objc func didTappedLocation() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
         view.addSubview(locationVC.view)
         setLayout()
         changeTintColor(buttonType: tabBarView.locationBtn)
     }
     
     @objc func didTappedMyPage() {
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
         view.addSubview(mypageVC.view)
         setLayout()
         changeTintColor(buttonType: tabBarView.myBtn)
