@@ -9,20 +9,16 @@ import Foundation
 import UIKit
 
 struct DailyModel: Codable {
-    let id: String?
-    let userName: String?
-    let imageURL: String?
+    let video: String?
     let content: String?
-    var reply: [String: String]
-    let hashTag: String?
-    var like: Int = 0
+    let reply: [String: String]
+    let tag: String?
+    let like: [String: String]
 
     enum CodingKeys: String, CodingKey {
-        case id
-        case userName
-        case imageURL
+        case video
         case content
-        case hashTag
+        case tag
         case like
         case reply
     }
