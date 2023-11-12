@@ -61,7 +61,7 @@ final class FirestoreService {
      @brief dailyData를 불러온다,
      */
     func getDailyData(completion: @escaping ([DailyModel]?) -> Void) {
-        var names: [[String:Any]] = [[:]]
+        var dailyData: [[String:Any]] = [[:]]
         var daily: [DailyModel]?
         
         db.collection("daily").getDocuments { (querySnapshot, error) in
@@ -72,11 +72,11 @@ final class FirestoreService {
             }
             
             for document in querySnapshot!.documents {
-                names.append(document.data())
+                dailyData.append(document.data())
             }
             
-            names.remove(at: 0)
-            daily = self.dictionaryToObject(objectType: DailyModel.self, dictionary: names)
+            dailyData.remove(at: 0)
+            daily = self.dictionaryToObject(objectType: DailyModel.self, dictionary: dailyData)
             completion(daily) // 성공 시 이름 배열 전달
         }
     }
