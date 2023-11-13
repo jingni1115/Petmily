@@ -17,9 +17,17 @@ class MyPageViewController: BaseViewController {
         return label
     }()
     
+    private let profilechangebutton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
+        btn.tintColor = .black
+        return btn
+    }()
+    
     var settingButton: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(systemName: "pencil"), for: .normal)
+        btn.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
+        btn.tintColor = .black
         return btn
     }()
     
@@ -245,6 +253,7 @@ class MyPageViewController: BaseViewController {
     func configureUI() {
         // add
         view.addSubview(titleLabel)
+        view.addSubview(profilechangebutton)
         view.addSubview(settingButton)
         
         view.addSubview(userNameLabel)
@@ -266,6 +275,11 @@ class MyPageViewController: BaseViewController {
         // constraints
         titleLabel.snp.makeConstraints {
             $0.top.centerX.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        profilechangebutton.snp.makeConstraints {
+            $0.top.centerY.equalTo(titleLabel)
+            $0.leading.equalTo(titleLabel.snp.trailing).inset(-5)
         }
         
         settingButton.snp.makeConstraints{
