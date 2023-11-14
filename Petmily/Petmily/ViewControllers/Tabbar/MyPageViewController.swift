@@ -30,7 +30,7 @@ class MyPageViewController: BaseViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        getDailyData()
+//        getDailyData()
         
         setupUI()
         setCollectionView()
@@ -44,9 +44,7 @@ class MyPageViewController: BaseViewController {
     
     func getDailyData() {
         FirestoreService().getDailyData { result in
-            self.dailyData = result?.filter({ filt in
-                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
-            })
+            self.dailyData = result
             self.downloadImage()
             self.getProfileData()
             self.myPagePostView.dailyCollectionView.reloadData()
@@ -65,8 +63,6 @@ class MyPageViewController: BaseViewController {
             self.infoData = result?.filter({ filt in
                 filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
             })
-            self.setProfileImage()
-//            self.tableView.reloadData()
         }
     }
     
@@ -111,7 +107,7 @@ class MyPageViewController: BaseViewController {
     func downloadImage() {
         self.dailyData?.forEach { daily in
             print("@@@@@ \(daily)")
-            FirebaseStorageManager.downloadImage(urlString: daily.imageURL ?? "") { image in
+            FirebaseStorageManager.downloadImage(urlString: daily.video ?? "") { image in
                 print("@@@ \(image)")
             }
         }
