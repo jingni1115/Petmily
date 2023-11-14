@@ -11,6 +11,8 @@ import UIKit
 final class InfoView: UIView {
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: .init())
+        view.register(PopularContentCell.self,
+                      forCellWithReuseIdentifier: PopularContentCell.identifier)
         view.register(ShareInfoViewCell.self,
                       forCellWithReuseIdentifier: ShareInfoViewCell.identifier)
         view.register(SectionHeaderView.self,
@@ -18,6 +20,13 @@ final class InfoView: UIView {
                       withReuseIdentifier: SectionHeaderView.identifier)
         view.setCollectionViewLayout(collectionViewLayout(), animated: true)
         return view
+    }()
+    
+    lazy var searchButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        button.tintColor = .black
+        return button
     }()
     
     init() {
@@ -36,7 +45,8 @@ private extension InfoView {
         addSubview(collectionView)
         
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(self.safeAreaLayoutGuide).inset(AppConstraint.headerViewHeight)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
@@ -44,10 +54,9 @@ private extension InfoView {
         UICollectionViewCompositionalLayout { sectionNum, env  in
             switch sectionNum {
             case 0:
+                return self.popularSection()
+            case 1:
                 return self.infoSection()
-                
-//            case 1:
-                
             default:
                 return self.infoSection()
             }
@@ -56,8 +65,25 @@ private extension InfoView {
 }
 
 private extension InfoView {
-    func popularSection() {
+    func popularSection() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.35),
+            heightDimension: .estimated(146))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: 10, leading: 16, bottom: 50, trailing: 16)
+        section.interGroupSpacing = 16
+        
+        let sectionHeader = headerSection()
+        section.boundarySupplementaryItems = [sectionHeader]
+        return section
     }
     
     func infoSection() -> NSCollectionLayoutSection {
@@ -72,7 +98,7 @@ private extension InfoView {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+        section.contentInsets = .init(top: 0, leading: 16, bottom: 10, trailing: 16)
         section.interGroupSpacing = 16
         
         let sectionHeader = headerSection()
