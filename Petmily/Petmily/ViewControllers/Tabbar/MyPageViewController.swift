@@ -203,11 +203,36 @@ class MyPageViewController: BaseViewController {
     var infoData: [InfoModel]?
     var dailyThumbnail: UIImage?
     
+    var items: [UIAction] {
+        
+        let save = UIAction(
+            title: "첫번째 프로필",
+            handler: { [unowned self] _ in
+                print("@@@ 첫번째 프로필")
+            })
+
+        let delete = UIAction(
+            title: "두번째 프로필",
+            handler: { [unowned self] _ in
+                print("@@@ 두번째 프로필")
+            })
+
+        let Items = [save, delete]
+
+        return Items
+    }
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         getDailyData()
+        setupMenu()
+    }
+    
+    func setupMenu() {
+        let menu = UIMenu(title: "메뉴", children: items)
+        profilechangebutton.menu = menu
+        profilechangebutton.showsMenuAsPrimaryAction = true
     }
     
     func getProfileData() {
