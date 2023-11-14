@@ -12,196 +12,6 @@ import UIKit
 class MyPageViewController: BaseViewController {
     lazy var myPageProfileView = MyPageProfileView()
     lazy var myPagePostView = MyPagePostView()
-//    lazy var profileTextField: UITextField = {
-//        let textField = UITextField()
-//        textField.text = "프로필 변경"
-//        textField.inputView = pickerView
-//        return textField
-//    }()
-//    
-//    lazy var pickerView: UIPickerView = {
-//        let view = UIPickerView()
-//        return view
-//    }()
-//    
-//    private let profilechangebutton: UIButton = {
-//        let btn = UIButton()
-//        btn.setImage(UIImage(systemName: "arrowtriangle.down.fill"), for: .normal)
-//        btn.tintColor = .black
-//        return btn
-//    }()
-//    
-//    var settingButton: UIButton = {
-//        var btn = UIButton()
-//        btn.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
-//        btn.tintColor = .black
-//        return btn
-//    }()
-//    
-//    var userNameLabel: UILabel = {
-//        var label = UILabel()
-//        label.text = "단지"
-//        label.textColor = .white
-//        label.font = Font.myPageTitleFont
-//        return label
-//    }()
-//    
-//    var editProfileButton: UIButton = {
-//        var btn = UIButton()
-//        btn.setTitle("기본 정보 수정하기", for: .normal)
-//        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
-//        btn.setTitleColor(.darkGray, for: .normal)
-//        btn.titleLabel?.font = Font.myPageLabelFont
-//        btn.backgroundColor = .systemGray5
-//        btn.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
-//        btn.cornerRadius = 10
-//        return btn
-//    }()
-//    
-//    var profileImage: UIImageView = {
-//        var view = UIImageView()
-//        view.image = UIImage(systemName: "photo")
-//        view.bounds.size.width = 60
-//        view.bounds.size.height = 60
-//        view.cornerRadius = view.bounds.width / 2
-//        view.clipsToBounds = true
-//        return view
-//    }()
-//    
-//    lazy var petInfoStackView: UIStackView = {
-//        var stackView = UIStackView(arrangedSubviews: [petAgeView, firstDivider ,petGenderView, secondDivider, petBreedView])
-//        stackView.axis = .vertical
-//        return stackView
-//    }()
-//    
-//    var petAgeView: UIView = {
-//        var view = UIView()
-//        view.backgroundColor = .clear
-//        return view
-//    }()
-//    
-//    var petAgeLabel: UILabel = {
-//        var view = UILabel()
-//        view.text = "나이"
-//        view.font = Font.myPageLabelFont
-//        view.textColor = .white
-//        return view
-//    }()
-//    
-//    var petAgeText: UILabel = {
-//        var view = UILabel()
-//        view.text = "7살"
-//        view.font = Font.myPageTitleFont
-//        view.textColor = .white
-//        return view
-//    }()
-//    
-//    var firstDivider: UIView = {
-//        var view = UIView()
-//        view.backgroundColor = .systemGray
-//        return view
-//    }()
-//    
-//    var petGenderView: UIView = {
-//        var view = UIView()
-//        view.backgroundColor = .clear
-//        return view
-//    }()
-//    
-//    var petGenderLabel: UILabel = {
-//        var view = UILabel()
-//        view.text = "성별"
-//        view.font = Font.myPageLabelFont
-//        view.textColor = .white
-//        return view
-//    }()
-//    
-//    var petGenderText: UILabel = {
-//        var view = UILabel()
-//        view.text = "몰라"
-//        view.font = Font.myPageTitleFont
-//        view.textColor = .white
-//        return view
-//    }()
-//    
-//    var secondDivider: UIView = {
-//        var view = UIView()
-//        view.backgroundColor = .systemGray
-//        return view
-//    }()
-//    
-//    var petBreedView: UIView = {
-//        var view = UIView()
-//        view.backgroundColor = .clear
-//        return view
-//    }()
-//    
-//    var petBreedLabel: UILabel = {
-//        var view = UILabel()
-//        view.text = "종"
-//        view.font = Font.myPageLabelFont
-//        view.textColor = .white
-//        return view
-//    }()
-//    
-//    var petBreedText: UILabel = {
-//        var view = UILabel()
-//        view.text = "강아지"
-//        view.font = Font.myPageTitleFont
-//        view.textColor = .white
-//        return view
-//    }()
-//    
-//    var postView: UIView = {
-//        var view = UIView()
-//        view.layer.cornerRadius = 10
-//        view.layer.borderWidth = 1
-//        view.layer.borderColor = UIColor.systemGray.cgColor
-//        view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
-//        return view
-//    }()
-//    
-//    var postSegmentControl: UISegmentedControl = {
-//        var control = UISegmentedControl(items: ["데일리", "정보공유"])
-//        let font = UIFont.boldSystemFont(ofSize: 20)
-//        control.setTitleTextAttributes([NSAttributedString.Key.font: font],for: .normal)
-//        control.selectedSegmentTintColor = .gray
-//        control.backgroundColor = .white
-//        control.selectedSegmentIndex = 0
-//        return control
-//    }()
-//    
-//    var shouldHideFirstView: Bool? {
-//       didSet {
-//         guard let shouldHideFirstView = self.shouldHideFirstView else { return }
-//         self.dailyCollectionView.isHidden = shouldHideFirstView
-//         self.infoTableView.isHidden = !self.dailyCollectionView.isHidden
-//       }
-//     }
-//    
-//    lazy var postStackView: UIStackView = {
-//        var stackView = UIStackView(arrangedSubviews: [dailyCollectionView, infoTableView])
-//        stackView.axis = .horizontal
-//        return stackView
-//    }()
-//    
-//    let dailyCollectionView: UICollectionView = {
-//        let flowLayout = UICollectionViewFlowLayout()
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-//        let rowCount: CGFloat = 3
-//        flowLayout.scrollDirection = .vertical
-//        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / rowCount) - 8, height: (UIScreen.main.bounds.width / rowCount) - 4)
-//        flowLayout.minimumLineSpacing = 2
-//        flowLayout.minimumInteritemSpacing = 2
-//        
-//        return collectionView
-//    }()
-//    
-//    var infoTableView: UITableView = {
-//        var view = UITableView()
-//        view.backgroundColor = .purple
-//        return view
-//    }()
     
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
@@ -211,14 +21,36 @@ class MyPageViewController: BaseViewController {
     var infoData: [InfoModel]?
     var dailyThumbnail: UIImage?
     
+    lazy var backgroundImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "myPageBackground")
+        return view
+    }()
+    
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         getDailyData()
         
+        setupUI()
+        setCollectionView()
+        setTableView()
+        setSegmentedControl()
+        
         myPageProfileView.profileTextField.delegate = self
         myPageProfileView.pickerView.delegate = self
         myPageProfileView.pickerView.dataSource = self
+    }
+    
+    func getDailyData() {
+        FirestoreService().getDailyData { result in
+            self.dailyData = result?.filter({ filt in
+                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
+            })
+            self.downloadImage()
+            self.getProfileData()
+            self.myPagePostView.dailyCollectionView.reloadData()
+        }
     }
     
     func getProfileData() {
@@ -233,52 +65,19 @@ class MyPageViewController: BaseViewController {
             self.infoData = result?.filter({ filt in
                 filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
             })
-            self.configureView()
-            //            self.tableView.reloadData()
+            self.setProfileImage()
+//            self.tableView.reloadData()
         }
     }
     
-    func getDailyData() {
-        FirestoreService().getDailyData { result in
-            self.dailyData = result?.filter({ filt in
-                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
-            })
-            self.getProfileData()
-            //            self.customCollectionView.reloadData()
-        }
-    }
-    
-    func configureView() {
-        view.backgroundColor = .systemPink
-        myPagePostView.dailyCollectionView.register(MyPageCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "MyPageCollectionViewCell")
-        
-        configureUI()
-        
-        setCollectionView()
-        setTableView()
-        setSegmentedControl()
-    }
-    
-    func configureUI() {
-//        view.addSubview(profileTextField)
-//        view.addSubview(profilechangebutton)
-//        view.addSubview(settingButton)
-//        
-//        view.addSubview(userNameLabel)
-//        view.addSubview(editProfileButton)
-//        view.addSubview(profileImage)
-//        
-//        view.addSubview(petInfoStackView)
-//        petAgeView.addSubview(petAgeLabel)
-//        petAgeView.addSubview(petAgeText)
-//        petGenderView.addSubview(petGenderLabel)
-//        petGenderView.addSubview(petGenderText)
-//        petBreedView.addSubview(petBreedLabel)
-//        petBreedView.addSubview(petBreedText)
-//        
-//        view.addSubview(postView)
+    func setupUI() {
+        view.addSubview(backgroundImageView)
         view.addSubview(myPageProfileView)
         view.addSubview(myPagePostView)
+        
+        backgroundImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         
         myPageProfileView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
@@ -288,136 +87,37 @@ class MyPageViewController: BaseViewController {
             $0.top.equalTo(myPageProfileView.snp.bottom)
             $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
-//        
-//        postView.addSubview(postSegmentControl)
-//        postView.addSubview(postStackView)
-        
-//        profileTextField.snp.makeConstraints {
-//            $0.top.centerX.equalTo(view.safeAreaLayoutGuide)
-//        }
-//        
-//        profilechangebutton.snp.makeConstraints {
-//            $0.top.centerY.equalTo(profileTextField)
-//            $0.leading.equalTo(profileTextField.snp.trailing).inset(-5)
-//        }
-//        
-//        settingButton.snp.makeConstraints{
-//            $0.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-//            $0.width.height.equalTo(30)
-//        }
-//        
-//        userNameLabel.snp.makeConstraints{
-//            $0.top.equalTo(profileTextField.snp.bottom).inset(-10)
-//            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
-//        }
-//        
-//        editProfileButton.snp.makeConstraints{
-//            $0.top.equalTo(userNameLabel.snp.bottom).inset(-10)
-//            $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
-//            $0.width.equalTo(150)
-//            $0.height.equalTo(30)
-//        }
-//        
-//        profileImage.snp.makeConstraints{
-//            $0.top.equalTo(settingButton.snp.bottom).inset(-10)
-//            $0.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-//            $0.bottom.equalTo(editProfileButton)
-//            $0.width.height.equalTo(60)
-//        }
-//        
-//        petInfoStackView.snp.makeConstraints{
-//            $0.top.equalTo(editProfileButton.snp.bottom).inset(-10)
-//            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-//        }
-//        
-//        petAgeLabel.snp.makeConstraints{
-//            $0.top.leading.bottom.equalTo(petAgeView).inset(10)
-//        }
-//        
-//        petAgeText.snp.makeConstraints{
-//            $0.top.trailing.bottom.equalTo(petAgeView).inset(10)
-//        }
-//        
-//        firstDivider.snp.makeConstraints {
-//            $0.width.equalToSuperview()
-//            $0.height.equalTo(1)
-//        }
-//        
-//        petGenderLabel.snp.makeConstraints{
-//            $0.top.leading.bottom.equalTo(petGenderView).inset(10)
-//        }
-//        
-//        petGenderText.snp.makeConstraints{
-//            $0.top.trailing.bottom.equalTo(petGenderView).inset(10)
-//        }
-//        
-//        secondDivider.snp.makeConstraints {
-//            $0.width.equalToSuperview()
-//            $0.height.equalTo(1)
-//        }
-//        
-//        petBreedLabel.snp.makeConstraints{
-//            $0.top.leading.bottom.equalTo(petBreedView).inset(10)
-//        }
-//        
-//        petBreedText.snp.makeConstraints{
-//            $0.top.trailing.bottom.equalTo(petBreedView).inset(10)
-//        }
-//        
-//        postView.snp.makeConstraints{
-//            $0.top.equalTo(petInfoStackView.snp.bottom).inset(-10)
-//            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-//            $0.bottom.equalTo(view.safeAreaLayoutGuide)
-//        }
-//        
-//        postSegmentControl.snp.makeConstraints{
-//            $0.top.leading.trailing.equalTo(postView)
-//            $0.height.equalTo(60)
-//        }
-//        
-//        postStackView.snp.makeConstraints{
-//            $0.top.equalTo(postSegmentControl.snp.bottom)
-//            $0.leading.trailing.bottom.equalTo(postView)
-//        }
+    }
+    
+    private func setProfile() {
+        myPageProfileView.userNameLabel.text = "이름"
+        myPageProfileView.petAgeLabel.text = "나이"
+        myPageProfileView.petGenderLabel.text = "성별"
+        myPageProfileView.petBreedLabel.text = "종류"
     }
     
     private func setActions() {
         myPageProfileView.editProfileButton.addTarget(self, action: #selector(tappedEditButton), for: .touchUpInside)
     }
     
-    func setSettingButton() {
-        // click event
-    }
-    
-    func setUserNameLabel() {
-        // mapping
-    }
-    
-    func setEditProfile() {
-        // click event
-    }
-    
     func setProfileImage() {
-        // mapping
         if let url = profileData?.imageURL {
-            myPageProfileView.profileImage.load(url: URL(string: url)!)
+            if let url = URL(string: url) {
+                myPageProfileView.profileImage.load(url: url)
+            }
         }
     }
     
-    func setPetAge() {
-        // mapping
-    }
-    
-    func setPetGender() {
-        // mapping
-    }
-    
-    func setPetBreed() {
-        // mapping
+    func downloadImage() {
+        self.dailyData?.forEach { daily in
+            print("@@@@@ \(daily)")
+            FirebaseStorageManager.downloadImage(urlString: daily.imageURL ?? "") { image in
+                print("@@@ \(image)")
+            }
+        }
     }
 
     func setSegmentedControl() {
-        // click event
         myPagePostView.postSegmentControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
         myPagePostView.postSegmentControl.selectedSegmentIndex = 0
         didChangeValue(segment: myPagePostView.postSegmentControl)
@@ -430,7 +130,7 @@ class MyPageViewController: BaseViewController {
     }
     
     func setTableView() {
-        myPagePostView.infoTableView.isHidden = true
+        myPagePostView.infoCollectionView.isHidden = true
     }
     
     @objc func tappedEditButton() {

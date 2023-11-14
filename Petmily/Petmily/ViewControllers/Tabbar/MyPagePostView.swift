@@ -13,8 +13,6 @@ class MyPagePostView: UIView {
     var postView: UIView = {
         var view = UIView()
         view.layer.cornerRadius = 10
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.systemGray.cgColor
         view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
         return view
     }()
@@ -30,33 +28,44 @@ class MyPagePostView: UIView {
     }()
     
     var shouldHideFirstView: Bool? {
-       didSet {
-         guard let shouldHideFirstView = self.shouldHideFirstView else { return }
-         self.dailyCollectionView.isHidden = shouldHideFirstView
-         self.infoTableView.isHidden = !self.dailyCollectionView.isHidden
-       }
-     }
+        didSet {
+            guard let shouldHideFirstView = self.shouldHideFirstView else { return }
+            self.dailyCollectionView.isHidden = shouldHideFirstView
+            self.infoCollectionView.isHidden = !self.dailyCollectionView.isHidden
+            self.dailyCollectionView.reloadData()
+        }
+    }
     
     lazy var postStackView: UIStackView = {
-        var stackView = UIStackView(arrangedSubviews: [dailyCollectionView, infoTableView])
+        var stackView = UIStackView(arrangedSubviews: [dailyCollectionView, infoCollectionView])
         stackView.axis = .horizontal
         return stackView
     }()
     
-    let dailyCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+    private let flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        return layout
+    }()
+    
+    lazy var dailyCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
         let rowCount: CGFloat = 3
         flowLayout.scrollDirection = .vertical
         flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / rowCount) - 8, height: (UIScreen.main.bounds.width / rowCount) - 4)
         flowLayout.minimumLineSpacing = 2
         flowLayout.minimumInteritemSpacing = 2
-        
-        return collectionView
+        view.showsVerticalScrollIndicator = true
+        view.isScrollEnabled = false
+        view.register(MyPageCollectionViewCell.self, forCellWithReuseIdentifier: "MyPageCollectionViewCell")
+        return view
     }()
     
-    var infoTableView: UITableView = {
-        var view = UITableView()
+    lazy var infoCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
+        view.isScrollEnabled = true
+        view.showsVerticalScrollIndicator = true
+        //        view.register(MyCarCollectionViewCell.self, forCellWithReuseIdentifier: MyCarCollectionViewCell.identifier)
         view.backgroundColor = .purple
         return view
     }()
@@ -65,7 +74,7 @@ class MyPagePostView: UIView {
         super.init(frame: .zero)
         setupUI()
     }
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
