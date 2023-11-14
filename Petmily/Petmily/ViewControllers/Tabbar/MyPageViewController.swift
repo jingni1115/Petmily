@@ -221,14 +221,14 @@ class MyPageViewController: BaseViewController {
     }
     
     func getDailyData() {
-        FirestoreService().getDailyData { result in
-            self.dailyData = result?.filter({ filt in
-                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
-            })
-            CommonUtil.print(output: result)
-            self.getProfileData()
-            //            self.customCollectionView.reloadData()
-        }
+//        FirestoreService().getDailyData { result in
+//            self.dailyData = result?.filter({ filt in
+//                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
+//            })
+//            CommonUtil.print(output: result)
+//            self.getProfileData()
+//            //            self.customCollectionView.reloadData()
+//        }
     }
     
     func configureView() {

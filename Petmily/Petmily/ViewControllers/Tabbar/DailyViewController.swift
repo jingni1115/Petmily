@@ -34,6 +34,11 @@ class DailyViewController: UIViewController {
         reelCVCell.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        cvMain.reloadData()
+    }
+    
     func getReply() {
         FirestoreService().getReplyData { result in
             CommonUtil.print(output: "aaaaaaaa: \(result)")
@@ -127,20 +132,18 @@ extension DailyViewController : UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReelCollectionViewCell", for: indexPath) as! ReelCollectionViewCell
         cell.reelData = dailyData?[indexPath.row]
-        like = dailyData?[indexPath.row].like ?? 0
+//        like = dailyData?[indexPath.row].like ?? 0
         indexContent = dailyData?[indexPath.row].content ?? ""
         lblHeartCount.text = String(like)
         lblContent.text = dailyData?[indexPath.row].content
         let replyCount = dailyData?[indexPath.row].reply.count ?? 0
         lblReplyCount.text = String(replyCount)
-        lblHashTag.text = "#\(String(describing: dailyData?[indexPath.row].hashTag?.replacingOccurrences(of: " ", with: " #") ?? ""))"
+        lblHashTag.text = "#\(String(describing: dailyData?[indexPath.row].tag?.replacingOccurrences(of: " ", with: " #") ?? ""))"
         userIndex = indexPath.row
-        FirebaseStorageManager.downloadVideo(urlString: dailyData?[indexPath.row].imageURL ?? "") { [weak self] video in
-            cell.setUpPlayer(url: video!, bounds: collectionView.frame)
-            if !(self?.isPlay ?? false){
-                cell.avQueuePlayer?.play()
-                self?.isPlay = true
-            }
+        cell.setUpPlayer(url: URL(string: dailyData?[indexPath.row].video ?? "")!, bounds: collectionView.frame)
+        if !(self.isPlay ?? false){
+            cell.avQueuePlayer?.play()
+            self.isPlay = true
         }
         return cell
     }
