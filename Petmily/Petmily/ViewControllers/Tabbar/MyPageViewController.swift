@@ -10,11 +10,16 @@ import SwiftUI
 import UIKit
 
 class MyPageViewController: BaseViewController {
-    var titleLabel: UILabel = {
-        var label = UILabel()
-        label.text = "My Pet"
-        label.font = Font.myPageTitleFont
-        return label
+    lazy var profileTextField: UITextField = {
+        let textField = UITextField()
+        textField.text = "프로필 변경"
+        textField.inputView = pickerView
+        return textField
+    }()
+    
+    lazy var pickerView: UIPickerView = {
+        let view = UIPickerView()
+        return view
     }()
     
     private let profilechangebutton: UIButton = {
@@ -198,41 +203,20 @@ class MyPageViewController: BaseViewController {
     
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
+    var profileList = ["1번", "2번"]
     var profileData: UserModel?
     var dailyData: [DailyModel]?
     var infoData: [InfoModel]?
     var dailyThumbnail: UIImage?
     
-    var items: [UIAction] {
-        
-        let save = UIAction(
-            title: "첫번째 프로필",
-            handler: { [unowned self] _ in
-                print("@@@ 첫번째 프로필")
-            })
-
-        let delete = UIAction(
-            title: "두번째 프로필",
-            handler: { [unowned self] _ in
-                print("@@@ 두번째 프로필")
-            })
-
-        let Items = [save, delete]
-
-        return Items
-    }
-    
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         getDailyData()
-        setupMenu()
-    }
-    
-    func setupMenu() {
-        let menu = UIMenu(title: "메뉴", children: items)
-        profilechangebutton.menu = menu
-        profilechangebutton.showsMenuAsPrimaryAction = true
+        
+        profileTextField.delegate = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
     
     func getProfileData() {
@@ -276,8 +260,7 @@ class MyPageViewController: BaseViewController {
     }
     
     func configureUI() {
-        // add
-        view.addSubview(titleLabel)
+        view.addSubview(profileTextField)
         view.addSubview(profilechangebutton)
         view.addSubview(settingButton)
         
@@ -297,14 +280,13 @@ class MyPageViewController: BaseViewController {
         postView.addSubview(postSegmentControl)
         postView.addSubview(postStackView)
         
-        // constraints
-        titleLabel.snp.makeConstraints {
+        profileTextField.snp.makeConstraints {
             $0.top.centerX.equalTo(view.safeAreaLayoutGuide)
         }
         
         profilechangebutton.snp.makeConstraints {
-            $0.top.centerY.equalTo(titleLabel)
-            $0.leading.equalTo(titleLabel.snp.trailing).inset(-5)
+            $0.top.centerY.equalTo(profileTextField)
+            $0.leading.equalTo(profileTextField.snp.trailing).inset(-5)
         }
         
         settingButton.snp.makeConstraints{
@@ -313,7 +295,7 @@ class MyPageViewController: BaseViewController {
         }
         
         userNameLabel.snp.makeConstraints{
-            $0.top.equalTo(titleLabel.snp.bottom).inset(-10)
+            $0.top.equalTo(profileTextField.snp.bottom).inset(-10)
             $0.leading.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
         
@@ -488,6 +470,31 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         })
         return cell
     }
+}
+
+extension MyPageViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    // UIPickerViewDataSource와 UIPickerViewDelegate 메소드
+        func numberOfComponents(in pickerView: UIPickerView) -> Int {
+            return 1
+        }
+
+        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return profileList.count
+        }
+
+        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return profileList[row]
+        }
+
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            profileTextField.text = profileList[row]
+        }
+}
+
+extension MyPageViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            return false
+        }
 }
 
 // SwiftUI를 활용한 미리보기
