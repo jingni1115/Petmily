@@ -65,7 +65,7 @@ class MyPagePostView: UIView {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
         view.isScrollEnabled = true
         view.showsVerticalScrollIndicator = true
-        //        view.register(MyCarCollectionViewCell.self, forCellWithReuseIdentifier: MyCarCollectionViewCell.identifier)
+        view.register(ShareInfoViewCell.self, forCellWithReuseIdentifier: ShareInfoViewCell.identifier)
         view.backgroundColor = .purple
         return view
     }()
