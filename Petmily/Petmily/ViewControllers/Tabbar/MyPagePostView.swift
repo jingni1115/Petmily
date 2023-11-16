@@ -32,7 +32,6 @@ class MyPagePostView: UIView {
             guard let shouldHideFirstView = self.shouldHideFirstView else { return }
             self.dailyCollectionView.isHidden = shouldHideFirstView
             self.infoCollectionView.isHidden = !self.dailyCollectionView.isHidden
-            self.dailyCollectionView.reloadData()
         }
     }
     
@@ -66,12 +65,12 @@ class MyPagePostView: UIView {
         view.isScrollEnabled = true
         view.showsVerticalScrollIndicator = true
         view.register(ShareInfoViewCell.self, forCellWithReuseIdentifier: ShareInfoViewCell.identifier)
-        view.backgroundColor = .purple
         return view
     }()
     
     init() {
         super.init(frame: .zero)
+        postSegmentControl.selectedSegmentIndex = 0
         setupUI()
     }
     
