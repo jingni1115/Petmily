@@ -88,7 +88,7 @@ extension InfoViewController: UICollectionViewDataSource {
                 description: "내용",
                 writer: "작성자",
                 tag: "애완동물 & 자유로운",
-                image: UIImage(named: "sample1"))            
+                image: UIImage(named: "sample1"))
             return cell
             
         default:
