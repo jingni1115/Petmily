@@ -68,6 +68,7 @@
 		56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF562A8F348A00541EB8 /* DailyModel.swift */; };
 		56C3CF592A8F349A00541EB8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF582A8F349A00541EB8 /* UserModel.swift */; };
 		56CB42D92B0161940038B5F7 /* StroageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB42D82B0161940038B5F7 /* StroageManager.swift */; };
+		56CB42DB2B02237A0038B5F7 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB42DA2B02237A0038B5F7 /* CacheManager.swift */; };
 		56DD2DB82A8E41B5008A9E12 /* ReelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */; };
 		6BBF70942AFE9FC900F58080 /* NewPostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF70932AFE9FC900F58080 /* NewPostPage.swift */; };
 		B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F405522A91F8420085F4A9 /* AdoptViewController.swift */; };
@@ -171,6 +172,7 @@
 		56C3CF562A8F348A00541EB8 /* DailyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 		56C3CF582A8F349A00541EB8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		56CB42D82B0161940038B5F7 /* StroageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StroageManager.swift; sourceTree = "<group>"; };
+		56CB42DA2B02237A0038B5F7 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelCollectionViewCell.swift; sourceTree = "<group>"; };
 		633E801253E9A9E9DD6A8217 /* Pods-Petmily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily.release.xcconfig"; path = "Target Support Files/Pods-Petmily/Pods-Petmily.release.xcconfig"; sourceTree = "<group>"; };
 		6BBF70932AFE9FC900F58080 /* NewPostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostPage.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				FFFB1E7E2A91603D00263D6D /* FirebaseStorageManager.swift */,
 				56C3CF392A8E768D00541EB8 /* FirestoreService.swift */,
 				56CB42D82B0161940038B5F7 /* StroageManager.swift */,
+				56CB42DA2B02237A0038B5F7 /* CacheManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				569A35472A89CE0C00FE098E /* DailyViewController.swift in Sources */,
+				56CB42DB2B02237A0038B5F7 /* CacheManager.swift in Sources */,
 				FF7D0D362A8D442900F96E02 /* MyPageCollectionViewCell.swift in Sources */,
 				56C3CF3A2A8E768D00541EB8 /* FirestoreService.swift in Sources */,
 				DF06F8462A8CBFC500B8A875 /* (null) in Sources */,
