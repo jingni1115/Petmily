@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 class MyPageCollectionViewCell: UICollectionViewCell {
+    static let identifier = "MyPageCollectionViewCell"
+    
     var collectionViewImage: UIImageView = {
         let Img = UIImageView()
         Img.backgroundColor = .systemGray3

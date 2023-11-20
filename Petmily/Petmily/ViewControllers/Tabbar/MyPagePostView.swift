@@ -56,7 +56,7 @@ class MyPagePostView: UIView {
         flowLayout.minimumInteritemSpacing = 2
         view.showsVerticalScrollIndicator = true
         view.isScrollEnabled = false
-        view.register(MyPageCollectionViewCell.self, forCellWithReuseIdentifier: "MyPageCollectionViewCell")
+        view.backgroundColor = .red
         return view
     }()
     
@@ -64,7 +64,7 @@ class MyPagePostView: UIView {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
         view.isScrollEnabled = true
         view.showsVerticalScrollIndicator = true
-        view.register(ShareInfoViewCell.self, forCellWithReuseIdentifier: ShareInfoViewCell.identifier)
+        view.backgroundColor = .blue
         return view
     }()
     

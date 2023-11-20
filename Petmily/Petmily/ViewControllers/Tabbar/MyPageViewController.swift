@@ -11,7 +11,13 @@ import UIKit
 
 class MyPageViewController: BaseViewController {
     lazy var myPageProfileView = MyPageProfileView()
-    lazy var myPagePostView = MyPagePostView()
+    
+    lazy var myPagePostView: MyPagePostView = {
+        let view = MyPagePostView()
+        view.dailyCollectionView.register(MyPageCollectionViewCell.self, forCellWithReuseIdentifier: MyPageCollectionViewCell.identifier)
+        view.infoCollectionView.register(ShareInfoViewCell.self, forCellWithReuseIdentifier: ShareInfoViewCell.identifier)
+        return view
+    }()
     
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
@@ -117,7 +123,8 @@ class MyPageViewController: BaseViewController {
 
     func setSegmentedControl() {
         myPagePostView.postSegmentControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
-        myPagePostView.postSegmentControl.selectedSegmentIndex = 0
+//        myPagePostView.postSegmentControl.selectedSegmentIndex = 0
+        print("@@@@ mymy \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
         didChangeValue(segment: myPagePostView.postSegmentControl)
     }
     
@@ -134,9 +141,16 @@ class MyPageViewController: BaseViewController {
     }
     
     @objc private func didChangeValue(segment: UISegmentedControl) {
-        myPagePostView.shouldHideFirstView = segment.selectedSegmentIndex != 0
         myPagePostView.dailyCollectionView.reloadData()
-        myPagePostView.infoCollectionView.reloadData()
+//        print("@@@@ \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
+//        if segment.selectedSegmentIndex == 0 {
+//            print("@@@@ segemted daily")
+//            myPagePostView.dailyCollectionView.reloadData()
+//        } else {
+//            print("@@@@ segemted info")
+//            myPagePostView.infoCollectionView.reloadData()
+//        }
+        myPagePostView.shouldHideFirstView = segment.selectedSegmentIndex != 0
      }
 }
 
@@ -149,37 +163,54 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        print("@@@@ first \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
+//        print("@@@ collect \(collectionView == myPagePostView.dailyCollectionView)")
         if myPagePostView.postSegmentControl.selectedSegmentIndex != 1 {
-            let cell = myPagePostView.dailyCollectionView.dequeueReusableCell(withReuseIdentifier: "MyPageCollectionViewCell", for: indexPath) as! MyPageCollectionViewCell
+//        if collectionView == myPagePostView.dailyCollectionView {
+            let cell = myPagePostView.dailyCollectionView.dequeueReusableCell(withReuseIdentifier: MyPageCollectionViewCell.identifier, for: indexPath) as! MyPageCollectionViewCell
 //            print("@@@ 11111")
             cell.collectionViewImage.image = dailyDummy[indexPath.row]
             return cell
+        } else {
+            let cell = myPagePostView.infoCollectionView.dequeueReusableCell(withReuseIdentifier: ShareInfoViewCell.identifier, for: indexPath) as! ShareInfoViewCell
+            cell.configure(title: "제목", description: "내용", writer: "작성자", tag: "애완동물 & 자유로운", image: UIImage(named: "sample1"))
+            return cell
         }
-//        print("@@@ 22222")
-        let cell = myPagePostView.infoCollectionView.dequeueReusableCell(withReuseIdentifier: ShareInfoViewCell.identifier, for: indexPath) as! ShareInfoViewCell
-        cell.configure(title: "제목", description: "내용", writer: "작성자", tag: "애완동물 & 자유로운", image: UIImage(named: "sample1"))
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            if collectionView == myPagePostView.dailyCollectionView {
-                let collectionViewWidth = collectionView.bounds.width
-                let cellWidth = (collectionViewWidth - 10) / 3 // 한 줄에 3개의 셀, 간격을 고려하여 계산
-                let cellHeight = cellWidth // 정사각형 모양으로 설정
-                return CGSize(width: cellWidth, height: cellHeight)
-            } else if collectionView == myPagePostView.infoCollectionView {
-                let collectionViewWidth = collectionView.bounds.width
-                let cellWidth = collectionViewWidth - 10 // 한 줄에 1개의 셀, 간격을 고려하여 계산
-                let cellHeight: CGFloat = 100 // 원하는 높이로 설정
-                return CGSize(width: cellWidth, height: cellHeight)
-            }
-            
-            return CGSize.zero
+//            if collectionView == myPagePostView.dailyCollectionView {
+////                print("@@@@ 데일리")
+//                let collectionViewWidth = collectionView.bounds.width
+//                let cellWidth = (collectionViewWidth - 10) / 3
+//                let cellHeight = cellWidth
+//                return CGSize(width: cellWidth, height: cellHeight)
+//            } else if collectionView == myPagePostView.infoCollectionView {
+////                print("@@@@ 인포")
+//                let collectionViewWidth = collectionView.bounds.width
+//                let cellWidth = collectionViewWidth - 10
+//                let cellHeight: CGFloat = 100
+//                return CGSize(width: cellWidth, height: cellHeight)
+//            }
+//        print("@@@@ my \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
+        if myPagePostView.postSegmentControl.selectedSegmentIndex != 1  {
+            print("@@@@ 데일리")
+            let collectionViewWidth = collectionView.bounds.width
+            let cellWidth = (collectionViewWidth - 10) / 3
+            let cellHeight = cellWidth
+            return CGSize(width: cellWidth, height: cellHeight)
+        } else {
+            print("@@@@ 인포")
+            let collectionViewWidth = collectionView.bounds.width
+            let cellWidth = collectionViewWidth - 10
+            let cellHeight: CGFloat = 100
+            return CGSize(width: cellWidth, height: cellHeight)
         }
+        return CGSize(width: 0, height: 0)
+    }
 }
 
 extension MyPageViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    // UIPickerViewDataSource와 UIPickerViewDelegate 메소드
         func numberOfComponents(in pickerView: UIPickerView) -> Int {
             return 1
         }
