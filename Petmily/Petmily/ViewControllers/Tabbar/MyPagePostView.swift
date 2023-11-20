@@ -41,30 +41,34 @@ class MyPagePostView: UIView {
         return stackView
     }()
     
-    private let flowLayout: UICollectionViewFlowLayout = {
+    private let dailyFlowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        return layout
+    }()
+    
+    private let infoFlowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         return layout
     }()
     
     lazy var dailyCollectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.dailyFlowLayout)
         let rowCount: CGFloat = 3
-        flowLayout.scrollDirection = .vertical
-        flowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / rowCount) - 8, height: (UIScreen.main.bounds.width / rowCount) - 4)
-        flowLayout.minimumLineSpacing = 2
-        flowLayout.minimumInteritemSpacing = 2
+        dailyFlowLayout.scrollDirection = .vertical
+        dailyFlowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / rowCount) - 8, height: (UIScreen.main.bounds.width / rowCount) - 4)
+        dailyFlowLayout.minimumLineSpacing = 2
+        dailyFlowLayout.minimumInteritemSpacing = 2
         view.showsVerticalScrollIndicator = true
-        view.isScrollEnabled = false
-        view.backgroundColor = .red
+        view.isScrollEnabled = true
         return view
     }()
     
     lazy var infoCollectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.infoFlowLayout)
         view.isScrollEnabled = true
         view.showsVerticalScrollIndicator = true
-        view.backgroundColor = .blue
         return view
     }()
     

@@ -89,7 +89,9 @@ class MyPageViewController: BaseViewController {
         
         myPagePostView.snp.makeConstraints {
             $0.top.equalTo(myPageProfileView.snp.bottom)
-            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
+//            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(65 + 16)
         }
     }
     
@@ -141,15 +143,17 @@ class MyPageViewController: BaseViewController {
     }
     
     @objc private func didChangeValue(segment: UISegmentedControl) {
-        myPagePostView.dailyCollectionView.reloadData()
-//        print("@@@@ \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
-//        if segment.selectedSegmentIndex == 0 {
-//            print("@@@@ segemted daily")
+//        myPagePostView.dailyCollectionView.reloadData()
+        print("@@@@ \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
+        if segment.selectedSegmentIndex == 0 {
+            print("@@@@ segemted daily")
 //            myPagePostView.dailyCollectionView.reloadData()
-//        } else {
-//            print("@@@@ segemted info")
+            myPagePostView.dailyCollectionView.collectionViewLayout.invalidateLayout()
+        } else {
+            print("@@@@ segemted info")
 //            myPagePostView.infoCollectionView.reloadData()
-//        }
+            myPagePostView.infoCollectionView.collectionViewLayout.invalidateLayout()
+        }
         myPagePostView.shouldHideFirstView = segment.selectedSegmentIndex != 0
      }
 }
@@ -196,7 +200,7 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if myPagePostView.postSegmentControl.selectedSegmentIndex != 1  {
             print("@@@@ 데일리")
             let collectionViewWidth = collectionView.bounds.width
-            let cellWidth = (collectionViewWidth - 10) / 3
+            let cellWidth = (collectionViewWidth - 5) / 3
             let cellHeight = cellWidth
             return CGSize(width: cellWidth, height: cellHeight)
         } else {
