@@ -89,7 +89,6 @@ class MyPageViewController: BaseViewController {
         
         myPagePostView.snp.makeConstraints {
             $0.top.equalTo(myPageProfileView.snp.bottom)
-//            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(65 + 16)
         }
@@ -116,16 +115,13 @@ class MyPageViewController: BaseViewController {
     
     func downloadImage() {
         self.dailyData?.forEach { daily in
-//            print("@@@@@ \(daily)")
             FirebaseStorageManager.downloadImage(urlString: daily.video ?? "") { image in
-//                print("@@@ \(image)")
             }
         }
     }
 
     func setSegmentedControl() {
         myPagePostView.postSegmentControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
-//        myPagePostView.postSegmentControl.selectedSegmentIndex = 0
         print("@@@@ mymy \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
         didChangeValue(segment: myPagePostView.postSegmentControl)
     }
@@ -143,18 +139,12 @@ class MyPageViewController: BaseViewController {
     }
     
     @objc private func didChangeValue(segment: UISegmentedControl) {
-//        myPagePostView.dailyCollectionView.reloadData()
-        print("@@@@ \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
+        myPagePostView.shouldHideFirstView = segment.selectedSegmentIndex != 0
         if segment.selectedSegmentIndex == 0 {
-            print("@@@@ segemted daily")
-//            myPagePostView.dailyCollectionView.reloadData()
             myPagePostView.dailyCollectionView.collectionViewLayout.invalidateLayout()
         } else {
-            print("@@@@ segemted info")
-//            myPagePostView.infoCollectionView.reloadData()
             myPagePostView.infoCollectionView.collectionViewLayout.invalidateLayout()
         }
-        myPagePostView.shouldHideFirstView = segment.selectedSegmentIndex != 0
      }
 }
 
@@ -167,12 +157,8 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        print("@@@@ first \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
-//        print("@@@ collect \(collectionView == myPagePostView.dailyCollectionView)")
         if myPagePostView.postSegmentControl.selectedSegmentIndex != 1 {
-//        if collectionView == myPagePostView.dailyCollectionView {
             let cell = myPagePostView.dailyCollectionView.dequeueReusableCell(withReuseIdentifier: MyPageCollectionViewCell.identifier, for: indexPath) as! MyPageCollectionViewCell
-//            print("@@@ 11111")
             cell.collectionViewImage.image = dailyDummy[indexPath.row]
             return cell
         } else {
@@ -183,20 +169,6 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//            if collectionView == myPagePostView.dailyCollectionView {
-////                print("@@@@ 데일리")
-//                let collectionViewWidth = collectionView.bounds.width
-//                let cellWidth = (collectionViewWidth - 10) / 3
-//                let cellHeight = cellWidth
-//                return CGSize(width: cellWidth, height: cellHeight)
-//            } else if collectionView == myPagePostView.infoCollectionView {
-////                print("@@@@ 인포")
-//                let collectionViewWidth = collectionView.bounds.width
-//                let cellWidth = collectionViewWidth - 10
-//                let cellHeight: CGFloat = 100
-//                return CGSize(width: cellWidth, height: cellHeight)
-//            }
-//        print("@@@@ my \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
         if myPagePostView.postSegmentControl.selectedSegmentIndex != 1  {
             print("@@@@ 데일리")
             let collectionViewWidth = collectionView.bounds.width
@@ -210,7 +182,6 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let cellHeight: CGFloat = 100
             return CGSize(width: cellWidth, height: cellHeight)
         }
-        return CGSize(width: 0, height: 0)
     }
 }
 
@@ -238,19 +209,19 @@ extension MyPageViewController: UITextFieldDelegate {
         }
 }
 
-// SwiftUI를 활용한 미리보기
-struct MyPageViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        MyPageVCReprsentable().edgesIgnoringSafeArea(.all)
-    }
-}
-
-struct MyPageVCReprsentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-        let MyPageVC = MyPageViewController()
-        return UINavigationController(rootViewController: MyPageVC)
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
-    typealias UIViewControllerType = UIViewController
-}
+//// SwiftUI를 활용한 미리보기
+//struct MyPageViewController_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyPageVCReprsentable().edgesIgnoringSafeArea(.all)
+//    }
+//}
+//
+//struct MyPageVCReprsentable: UIViewControllerRepresentable {
+//    func makeUIViewController(context: Context) -> UIViewController {
+//        let MyPageVC = MyPageViewController()
+//        return UINavigationController(rootViewController: MyPageVC)
+//    }
+//
+//    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+//    typealias UIViewControllerType = UIViewController
+//}
