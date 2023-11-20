@@ -9,94 +9,38 @@ import SnapKit
 import UIKit
 
 final class InfoDetailView: UIView {
-    private lazy var profileView: UIImageView = {
-        let imageSize: CGFloat = 50
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFill
-        view.cornerRadius = imageSize / 2
-        view.clipsToBounds = true
-        
-        view.snp.makeConstraints {
-            $0.width.height.equalTo(imageSize)
-        }
+    private lazy var scrollView: UIScrollView = {
+        let scroll = UIScrollView()
+        return scroll
+    }()
+    
+    private lazy var contentView: UIView = {
+        let view = UIView()
         return view
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 22, weight: .bold)
-        label.textColor = .black
-        return label
-    }()
+    let infoDetailShareView = InfoDetailShareView()
     
-    private lazy var writerLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .darkGray
-        return label
-    }()
-    
-    private lazy var labelVStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .fill
-        stack.distribution = .fill
-        stack.spacing = 4
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
         
-        [titleLabel, writerLabel].forEach {
-            stack.addArrangedSubview($0)
-        }
-        return stack
-    }()
-    
-    private lazy var menuButon: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        button.tintColor = .black
-        
-        button.snp.makeConstraints {
-            $0.width.height.equalTo(50)
-        }
-        return button
-    }()
-    
-    private lazy var hStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.alignment = .fill
-        stack.distribution = .equalSpacing
-        stack.spacing = 10
-        
-        [profileView, labelVStack, menuButon].forEach {
-            stack.addArrangedSubview($0)
-        }
-        return stack
-    }()
-    
-    private lazy var contentImageView: UIImageView = {
-        let view = UIImageView()
-        view.contentMode = .scaleAspectFill
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.register(
+            InfoDetailCommentCell.self,
+            forCellWithReuseIdentifier: InfoDetailCommentCell.identifier)
+        view.register(
+            InfoDetailCommentHeader.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: InfoDetailCommentHeader.identifier)
+        view.backgroundColor = .systemBackground
+        view.isScrollEnabled = false
         return view
-    }()
-    
-    private lazy var contentLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 18, weight: .medium)
-        return label
-    }()
-
-    private lazy var tagLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 1
-        label.textColor = .black
-        label.font = .systemFont(ofSize: 14, weight: .regular)
-        return label
     }()
     
     init() {
         super.init(frame: .zero)
+        backgroundColor = .systemBackground
         setLayout()
     }
     
@@ -105,8 +49,51 @@ final class InfoDetailView: UIView {
     }
 }
 
+extension InfoDetailView {
+    func configure() {
+        infoDetailShareView.configure(user: nil, info: nil)
+    }
+    
+    func remakeLayout() {
+        collectionView.snp.remakeConstraints {
+            $0.top.equalTo(infoDetailShareView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(collectionView.contentSize.height)
+        }
+    }
+}
+
 private extension InfoDetailView {
     func setLayout() {
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
         
+        [infoDetailShareView, collectionView].forEach {
+            contentView.addSubview($0)
+        }
+        
+        scrollView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(AppConstraint.headerViewHeight)
+            $0.leading.bottom.trailing.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.edges.equalToSuperview()
+        }
+        
+        infoDetailShareView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.top.trailing.equalToSuperview()
+            $0.height.equalTo(infoDetailShareView.snp.height)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(infoDetailShareView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(collectionView.contentSize.height)
+        }
     }
 }

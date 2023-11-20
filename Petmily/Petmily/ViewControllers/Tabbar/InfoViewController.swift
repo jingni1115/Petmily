@@ -122,6 +122,7 @@ extension InfoViewController: UICollectionViewDataSource {
 
 extension InfoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("======> indexPath: \(indexPath)")
+        let infoDetailVC = InfoDetailViewController()
+        navigationPushController(viewController: infoDetailVC, animated: true)
     }
 }
