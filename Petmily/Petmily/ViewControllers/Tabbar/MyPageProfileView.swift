@@ -67,6 +67,7 @@ class MyPageProfileView: UIView {
     
     lazy var petInfoStackView: UIStackView = {
         var stackView = UIStackView(arrangedSubviews: [petAgeView, firstDivider ,petGenderView, secondDivider, petBreedView])
+        stackView.distribution = .equalSpacing
         stackView.axis = .vertical
         return stackView
     }()
@@ -212,6 +213,7 @@ class MyPageProfileView: UIView {
         petInfoStackView.snp.makeConstraints{
             $0.top.equalTo(editProfileButton.snp.bottom).inset(-10)
             $0.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide).inset(10)
+            $0.height.equalTo(150)
         }
         
         petAgeLabel.snp.makeConstraints{

@@ -60,15 +60,15 @@ class MyPagePostView: UIView {
         dailyFlowLayout.itemSize = CGSize(width: (UIScreen.main.bounds.width / rowCount) - 8, height: (UIScreen.main.bounds.width / rowCount) - 4)
         dailyFlowLayout.minimumLineSpacing = 2
         dailyFlowLayout.minimumInteritemSpacing = 2
-        view.showsVerticalScrollIndicator = true
-        view.isScrollEnabled = true
+        view.showsVerticalScrollIndicator = false
+        view.isScrollEnabled = false
         return view
     }()
     
     lazy var infoCollectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.infoFlowLayout)
-        view.isScrollEnabled = true
-        view.showsVerticalScrollIndicator = true
+        view.isScrollEnabled = false
+        view.showsVerticalScrollIndicator = false
         return view
     }()
     

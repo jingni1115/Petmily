@@ -19,16 +19,23 @@ class MyPageViewController: BaseViewController {
         return view
     }()
     
+    let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        return view
+    }()
+    
+    let contentView = UIView()
+    
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
-    var profileList = ["1번", "2번"]
+    var profileList = ["1번", "2번", "3번"]
     var profileData: UserModel?
     var dailyData: [DailyModel]?
     var infoData: [InfoModel]?
     var dailyThumbnail: UIImage?
     
     // dummy
-    let dailyDummy = [UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi")]
+    let dailyDummy = [UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"), UIImage(named: "danjy"), UIImage(named: "chichi"), UIImage(named: "danjy"),]
     
     lazy var backgroundImageView: UIImageView = {
         let view = UIImageView()
@@ -76,21 +83,40 @@ class MyPageViewController: BaseViewController {
     
     func setupUI() {
         view.addSubview(backgroundImageView)
-        view.addSubview(myPageProfileView)
-        view.addSubview(myPagePostView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(myPageProfileView)
+        contentView.addSubview(myPagePostView)
+        
+        scrollView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset((65 + 16))
+        }
         
         backgroundImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
+        contentView.snp.makeConstraints {
+            $0.edges.equalTo(scrollView)
+            $0.width.equalTo(scrollView.frameLayoutGuide)
+        }
+        
         myPageProfileView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            $0.top.leading.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
         }
         
         myPagePostView.snp.makeConstraints {
             $0.top.equalTo(myPageProfileView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(65 + 16)
+            $0.leading.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
+            $0.bottom.equalTo(contentView.safeAreaLayoutGuide)
+        }
+        
+        myPagePostView.dailyCollectionView.snp.makeConstraints {
+            var totalHeight: CGFloat = 0
+            let collectionViewWidth = ((UIScreen.main.bounds.size.width - 25) / 3)
+            totalHeight = (collectionViewWidth) * CGFloat(dailyDummy.count / 3)
+            $0.height.equalTo(totalHeight)
         }
     }
     
@@ -145,6 +171,7 @@ class MyPageViewController: BaseViewController {
         } else {
             myPagePostView.infoCollectionView.collectionViewLayout.invalidateLayout()
         }
+        // 셀 높이 정하기
      }
 }
 
@@ -170,13 +197,11 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if myPagePostView.postSegmentControl.selectedSegmentIndex != 1  {
-            print("@@@@ 데일리")
             let collectionViewWidth = collectionView.bounds.width
             let cellWidth = (collectionViewWidth - 5) / 3
             let cellHeight = cellWidth
             return CGSize(width: cellWidth, height: cellHeight)
         } else {
-            print("@@@@ 인포")
             let collectionViewWidth = collectionView.bounds.width
             let cellWidth = collectionViewWidth - 10
             let cellHeight: CGFloat = 100
