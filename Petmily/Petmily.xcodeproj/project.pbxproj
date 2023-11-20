@@ -85,6 +85,9 @@
 		DF103ED12A921A17006BDF18 /* launch-screen.gif in Resources */ = {isa = PBXBuildFile; fileRef = DF103ED02A921A17006BDF18 /* launch-screen.gif */; };
 		DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */; };
 		DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */; };
+		DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */; };
+		DF3C50F22B0AE6AF008F00AF /* KakaoMapsSDK_SPM in Frameworks */ = {isa = PBXBuildFile; productRef = DF3C50F12B0AE6AF008F00AF /* KakaoMapsSDK_SPM */; };
+		DF3C50F42B0B899A008F00AF /* KakaoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3C50F32B0B899A008F00AF /* KakaoMapViewController.swift */; };
 		DF6EB5072AFE73A800EFC2FB /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6EB5062AFE73A800EFC2FB /* LocationViewController.swift */; };
 		E437717E1DB888321482D570 /* Pods_PetmilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */; };
 		FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2663282A8CB300000222B3 /* ProfileViewController.swift */; };
@@ -195,6 +198,9 @@
 		DF103ED02A921A17006BDF18 /* launch-screen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "launch-screen.gif"; sourceTree = "<group>"; };
 		DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
+		DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
+		DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailViewController.xib; sourceTree = "<group>"; };
+		DF3C50F32B0B899A008F00AF /* KakaoMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapViewController.swift; sourceTree = "<group>"; };
 		DF6EB5062AFE73A800EFC2FB /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		FF2663282A8CB300000222B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5655C0C32B00BF19002BC9C6 /* FirebaseDatabaseSwift in Frameworks */,
+				DF3C50F22B0AE6AF008F00AF /* KakaoMapsSDK_SPM in Frameworks */,
 				5655C0BB2B00BF19002BC9C6 /* FirebaseAnalyticsSwift in Frameworks */,
 				5655C0BD2B00BF19002BC9C6 /* FirebaseAuth in Frameworks */,
 				FF6E7F412AB366F2001A906B /* SnapKit in Frameworks */,
@@ -451,6 +458,7 @@
 				565C8B202A9181F700167A92 /* MyPageCollection */,
 				565C8B1F2A9181F100167A92 /* Profile */,
 				DF6EB5062AFE73A800EFC2FB /* LocationViewController.swift */,
+				DF3C50F32B0B899A008F00AF /* KakaoMapViewController.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -561,6 +569,7 @@
 				5655C0C62B00BF19002BC9C6 /* FirebaseFirestoreSwift */,
 				5655C0C82B00BF19002BC9C6 /* FirebaseMessaging */,
 				5655C0CA2B00BF19002BC9C6 /* FirebaseStorage */,
+				DF3C50F12B0AE6AF008F00AF /* KakaoMapsSDK_SPM */,
 			);
 			productName = Petmily;
 			productReference = 569A350A2A89C98500FE098E /* Petmily.app */;
@@ -640,6 +649,7 @@
 			packageReferences = (
 				FF6E7F3F2AB366F2001A906B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				5655C0B72B00BF19002BC9C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DF3C50F02B0AE6AF008F00AF /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 569A350B2A89C98500FE098E /* Products */;
 			projectDirPath = "";
@@ -856,6 +866,7 @@
 				B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
 				FF7D08222AC5C1460004CC4E /* UIImageView+Extension.swift in Sources */,
+				DF3C50F42B0B899A008F00AF /* KakaoMapViewController.swift in Sources */,
 				FF6E7F432AB3822C001A906B /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1026,7 +1037,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YRZW7MZ3P5;
+				DEVELOPMENT_TEAM = NNZY5VCJT4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Petmily/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용";
@@ -1056,7 +1067,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YRZW7MZ3P5;
+				DEVELOPMENT_TEAM = NNZY5VCJT4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Petmily/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용";
@@ -1127,7 +1138,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YRZW7MZ3P5;
+				DEVELOPMENT_TEAM = NNZY5VCJT4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingni.PetmilyUITests;
@@ -1146,7 +1157,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YRZW7MZ3P5;
+				DEVELOPMENT_TEAM = NNZY5VCJT4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingni.PetmilyUITests;
@@ -1206,6 +1217,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 10.0.0;
+			};
+		};
+		DF3C50F02B0AE6AF008F00AF /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.3;
 			};
 		};
 		FF6E7F3F2AB366F2001A906B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1268,6 +1287,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5655C0B72B00BF19002BC9C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		DF3C50F12B0AE6AF008F00AF /* KakaoMapsSDK_SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3C50F02B0AE6AF008F00AF /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			productName = KakaoMapsSDK_SPM;
 		};
 		FF6E7F402AB366F2001A906B /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
