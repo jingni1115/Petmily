@@ -28,8 +28,7 @@ class MyPageViewController: BaseViewController {
     
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
-    var profileList = ["1번", "2번", "3번"]
-    var profileData: UserModel?
+    private var profileData = User(id: "id", nickName: "name", image: "image", pet: [Pet(id: "id1", name: "pet1", age: "age1", gender: "gender1", breed: "breed1"), Pet(id: "id2", name: "pet2", age: "age2", gender: "gender2", breed: "breed2"), Pet(id: "id3", name: "pet3", age: "age3", gender: "gender3", breed: "breed3")])
     var dailyData: [DailyModel]?
     var infoData: [InfoModel]?
     var dailyThumbnail: UIImage?
@@ -42,6 +41,8 @@ class MyPageViewController: BaseViewController {
         view.image = UIImage(named: "myPageBackground")
         return view
     }()
+    
+    private var currentProfileIndex = 0
     
     // MARK: LifeCycle
     override func viewDidLoad() {
@@ -57,28 +58,33 @@ class MyPageViewController: BaseViewController {
         myPageProfileView.pickerView.dataSource = self
     }
     
-    func getDailyData() {
-        FirestoreService().getDailyData { result in
-            self.dailyData = result
-            self.downloadImage()
-            self.getProfileData()
-            self.myPagePostView.dailyCollectionView.reloadData()
-        }
-    }
+//    func getDailyData() {
+//        FirestoreService().getDailyData { result in
+//            self.dailyData = result
+//            self.downloadImage()
+//            self.getProfileData()
+//            self.myPagePostView.dailyCollectionView.reloadData()
+//        }
+//    }
+//
+//    func getProfileData() {
+//        FirestoreService().getUserData { result in
+//            self.profileData = result
+//            self.getInfoData()
+//        }
+//    }
+//
+//    func getInfoData() {
+//        FirestoreService().getInfoData { result in
+//            self.infoData = result?.filter({ filt in
+//                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
+//            })
+//        }
+//    }
     
-    func getProfileData() {
-        FirestoreService().getUserData { result in
-            self.profileData = result
-            self.getInfoData()
-        }
-    }
-    
-    func getInfoData() {
-        FirestoreService().getInfoData { result in
-            self.infoData = result?.filter({ filt in
-                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
-            })
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setProfile()
     }
     
     func setupUI() {
@@ -121,10 +127,11 @@ class MyPageViewController: BaseViewController {
     }
     
     private func setProfile() {
-        myPageProfileView.userNameLabel.text = "이름"
-        myPageProfileView.petAgeLabel.text = "나이"
-        myPageProfileView.petGenderLabel.text = "성별"
-        myPageProfileView.petBreedLabel.text = "종류"
+        myPageProfileView.profileTextField.text = profileData.pet?.first?.name ?? "프로필 없음"
+        myPageProfileView.userNameLabel.text = profileData.pet?[currentProfileIndex].name
+        myPageProfileView.petAgeLabel.text = profileData.pet?[currentProfileIndex].age
+        myPageProfileView.petGenderLabel.text = profileData.pet?[currentProfileIndex].gender
+        myPageProfileView.petBreedLabel.text = profileData.pet?[currentProfileIndex].breed
     }
     
     private func setActions() {
@@ -132,7 +139,7 @@ class MyPageViewController: BaseViewController {
     }
     
     func setProfileImage() {
-        if let url = profileData?.imageURL {
+        if let url = profileData.image {
             if let url = URL(string: url) {
                 myPageProfileView.profileImage.load(url: url)
             }
@@ -216,15 +223,18 @@ extension MyPageViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         }
 
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return profileList.count
+            return profileData.pet?.count ?? 0
         }
 
         func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return profileList[row]
+            return profileData.pet?[row].name
         }
 
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            myPageProfileView.profileTextField.text = profileList[row]
+            self.currentProfileIndex = row
+            print("@@@ \(row)")
+            // profile reload
+            myPageProfileView.profileTextField.text = profileData.pet?[row].name
         }
 }
 
