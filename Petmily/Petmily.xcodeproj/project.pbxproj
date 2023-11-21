@@ -88,6 +88,7 @@
 		FF6E7F3E2AB34E5A001A906B /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E7F3D2AB34E5A001A906B /* MyPageViewController.swift */; };
 		FF6E7F412AB366F2001A906B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FF6E7F402AB366F2001A906B /* SnapKit */; };
 		FF6E7F432AB3822C001A906B /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6E7F422AB3822C001A906B /* Const.swift */; };
+		FF6F05D22B0C6DEE00241C09 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6F05D12B0C6DEE00241C09 /* Pet.swift */; };
 		FF7D08222AC5C1460004CC4E /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7D08212AC5C1460004CC4E /* UIImageView+Extension.swift */; };
 		FF7D0D362A8D442900F96E02 /* MyPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */; };
 		FF8746DC2B03BF7500F08056 /* MyPageProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8746DB2B03BF7500F08056 /* MyPageProfileView.swift */; };
@@ -195,6 +196,7 @@
 		FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
 		FF6E7F3D2AB34E5A001A906B /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		FF6E7F422AB3822C001A906B /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Const.swift; path = Petmily/Util/Const.swift; sourceTree = SOURCE_ROOT; };
+		FF6F05D12B0C6DEE00241C09 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		FF7D08212AC5C1460004CC4E /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		FF8746DB2B03BF7500F08056 /* MyPageProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileView.swift; sourceTree = "<group>"; };
 		FF8746DD2B03C13400F08056 /* MyPagePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePostView.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				56C3CF562A8F348A00541EB8 /* DailyModel.swift */,
 				56C3CF372A8E765000541EB8 /* InfoModel.swift */,
 				56C3CF582A8F349A00541EB8 /* UserModel.swift */,
+				FF6F05D12B0C6DEE00241C09 /* Pet.swift */,
 			);
 			name = Model;
 			path = Video/Model;
@@ -814,6 +817,7 @@
 				FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */,
 				5655C0B42AFE1519002BC9C6 /* TabBarView.swift in Sources */,
 				56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */,
+				FF6F05D22B0C6DEE00241C09 /* Pet.swift in Sources */,
 				339C820E2B0127FB0065AAAD /* NSAttributedString+.swift in Sources */,
 				5632E6B42AA793B300728F87 /* CameraViewController.swift in Sources */,
 				330FD5402AFE83DD00EBA58C /* InfoView.swift in Sources */,
@@ -823,7 +827,6 @@
 				5632E6B82AA7998400728F87 /* EditVideoViewController.swift in Sources */,
 				569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */,
 				330FD5442AFE841E00EBA58C /* InfoViewController.swift in Sources */,
-				FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */,
 				56C3CF282A8E475E00541EB8 /* CommonHeaderView.swift in Sources */,
 				569A35122A89C98500FE098E /* ViewController.swift in Sources */,
 				339C82102B012BB00065AAAD /* AppConstraint.swift in Sources */,

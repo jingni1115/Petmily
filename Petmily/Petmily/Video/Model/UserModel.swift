@@ -25,3 +25,10 @@ struct UserModel: Codable {
         case type
     }
 }
+
+struct User: Codable {
+    let id: String?
+    let nickName: String?
+    let image: String?
+    let pet: [Pet]?
+}
