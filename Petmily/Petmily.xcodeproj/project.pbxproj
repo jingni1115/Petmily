@@ -343,7 +343,6 @@
 		569A350C2A89C98500FE098E /* Petmily */ = {
 			isa = PBXGroup;
 			children = (
-				6BBF70922AFE9FA400F58080 /* New Group */,
 				569A350D2A89C98500FE098E /* AppDelegate.swift */,
 				569A35112A89C98500FE098E /* ViewController.swift */,
 				565C8B042A90C6AC00167A92 /* Model */,
@@ -390,6 +389,8 @@
 		569A357A2A89FC6300FE098E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6BBF70952B0E07DF00F58080 /* Login */,
+				6BBF70922AFE9FA400F58080 /* New Group */,
 				569A357B2A89FC7500FE098E /* Base */,
 				569A353D2A89CB3B00FE098E /* IntroViewController.swift */,
 				569A35752A89DBBD00FE098E /* IntroViewController.xib */,
@@ -488,6 +489,13 @@
 				6BBF70932AFE9FC900F58080 /* NewPostPage.swift */,
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		6BBF70952B0E07DF00F58080 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		B3BF4D752A91EBD200DFA28E /* AdoptCollectionViewCell */ = {

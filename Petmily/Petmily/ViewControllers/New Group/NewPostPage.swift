@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SwiftUI
 
 class NewPostPage: UIViewController {
     let titleLabel: UILabel = {
@@ -21,6 +22,7 @@ class NewPostPage: UIViewController {
         let textField = UITextField()
         textField.placeholder = "해쉬태그를 입력해주세요."
         textField.borderStyle = .roundedRect
+        textField.borderColor = .clear
         return textField
     }()
 
@@ -28,6 +30,7 @@ class NewPostPage: UIViewController {
         let textField = UITextField()
         textField.placeholder = "제목을 입력하세요."
         textField.borderStyle = .roundedRect
+        textField.borderColor = .clear
         return textField
     }()
 
@@ -36,7 +39,7 @@ class NewPostPage: UIViewController {
         textView.text = "강아지 관련된 질문이나 이야기를 해보세요."
         textView.textColor = UIColor.lightGray
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = UIColor.gray.cgColor
+        textView.layer.borderColor = UIColor.clear.cgColor
         textView.layer.cornerRadius = 5
         return textView
     }()
@@ -44,11 +47,21 @@ class NewPostPage: UIViewController {
     let completeButton: UIButton = {
         let button = UIButton()
         button.setTitle("완료", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .blue
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .clear
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    let closeButton: UIButton = {
+            let button = UIButton()
+            button.setTitle("X", for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+            return button
+        }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +74,8 @@ class NewPostPage: UIViewController {
         view.addSubview(titleTextField)
         view.addSubview(descriptionTextView)
         view.addSubview(completeButton)
+        view.addSubview(closeButton)
+
 
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(40)
@@ -87,14 +102,50 @@ class NewPostPage: UIViewController {
         }
 
         completeButton.snp.makeConstraints { make in
-            make.top.equalTo(descriptionTextView.snp.bottom).offset(20)
-            make.centerX.equalToSuperview()
-        }
+                    make.top.equalToSuperview().offset(40)
+                    make.trailing.equalToSuperview().offset(-20)
+                }
+        
+        closeButton.snp.makeConstraints { make in
+                    make.top.equalToSuperview().offset(40)
+                    make.leading.equalToSuperview().offset(20)
+                }
+        
+        
     }
+    @objc func closeButtonTapped() {
+            // 닫기 버튼 눌릴 때 로직을 입력하시오.
+        }
+    
+    @objc func completeButtonTapped() {
+    //완료버튼이 눌릴때 로직을 입력하세요.
+    }
+    
 }
 
-func completeButtonTapped() {
-//완료버튼
+
+
+extension UIViewController {
+    private struct Preview: UIViewControllerRepresentable {
+            let viewController: UIViewController
+
+            func makeUIViewController(context: Context) -> UIViewController {
+                return viewController
+            }
+
+            func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+            }
+        }
+
+        func toPreview() -> some View {
+            Preview(viewController: self)
+        }
+}
+
+struct MyViewController_PreViews: PreviewProvider {
+    static var previews: some View {
+        NewPostPage().toPreview()
+    }
 }
 
 
