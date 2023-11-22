@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 import SwiftUI
-
+//commit
 class NewPostPage: UIViewController {
     let titleLabel: UILabel = {
         let label = UILabel()
