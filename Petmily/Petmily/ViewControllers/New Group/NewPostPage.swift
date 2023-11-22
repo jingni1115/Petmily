@@ -10,6 +10,26 @@ import SnapKit
 import SwiftUI
 
 class NewPostPage: UIViewController {
+    
+    let lineView1: UIView = {
+            let view = UIView()
+            view.backgroundColor = .gray
+            return view
+        }()
+
+        let lineView2: UIView = {
+            let view = UIView()
+            view.backgroundColor = .gray
+            return view
+        }()
+    
+    let pictureButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.setImage(UIImage(systemName: "camera"), for: .normal)
+            button.addTarget(self, action: #selector(pictureButtonTapped), for: .touchUpInside)
+            return button
+        }()
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "정보공유 글쓰기"
@@ -21,7 +41,7 @@ class NewPostPage: UIViewController {
     let tagTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "해쉬태그를 입력해주세요."
-        textField.borderStyle = .roundedRect
+        textField.borderStyle = .none
         textField.borderColor = .clear
         return textField
     }()
@@ -29,7 +49,7 @@ class NewPostPage: UIViewController {
     let titleTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "제목을 입력하세요."
-        textField.borderStyle = .roundedRect
+        textField.borderStyle = .none
         textField.borderColor = .clear
         return textField
     }()
@@ -55,12 +75,14 @@ class NewPostPage: UIViewController {
     }()
     
     let closeButton: UIButton = {
-            let button = UIButton()
-            button.setTitle("X", for: .normal)
-            button.setTitleColor(.black, for: .normal)
-            button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-            return button
-        }()
+        let button = UIButton(type: .system)
+        if let image = UIImage(systemName: "xmark")?.withConfiguration(UIImage.SymbolConfiguration(weight: .regular)) {
+            button.setImage(image, for: .normal)
+        }
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
 
     override func viewDidLoad() {
@@ -75,44 +97,64 @@ class NewPostPage: UIViewController {
         view.addSubview(descriptionTextView)
         view.addSubview(completeButton)
         view.addSubview(closeButton)
+        view.addSubview(pictureButton)
+        view.addSubview(lineView1)
+        view.addSubview(lineView2)
 
 
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(40)
-            make.centerX.equalToSuperview()
-        }
+                    make.top.equalToSuperview().offset(20)
+                    make.centerX.equalToSuperview()
+                }
 
-        tagTextField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-        }
+                lineView1.snp.makeConstraints { make in
+                    make.top.equalTo(titleLabel.snp.bottom).offset(15)
+                    make.leading.equalToSuperview().offset(0)
+                    make.trailing.equalToSuperview().offset(0)
+                    make.height.equalTo(1)
+                }
 
-        titleTextField.snp.makeConstraints { make in
-            make.top.equalTo(tagTextField.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-        }
-
-        descriptionTextView.snp.makeConstraints { make in
-            make.top.equalTo(titleTextField.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(200)
-        }
-
-        completeButton.snp.makeConstraints { make in
-                    make.top.equalToSuperview().offset(40)
+                tagTextField.snp.makeConstraints { make in
+                    make.top.equalTo(lineView1.snp.bottom).offset(15)
+                    make.leading.equalToSuperview().offset(20)
                     make.trailing.equalToSuperview().offset(-20)
                 }
-        
-        closeButton.snp.makeConstraints { make in
-                    make.top.equalToSuperview().offset(40)
+
+                lineView2.snp.makeConstraints { make in
+                    make.top.equalTo(tagTextField.snp.bottom).offset(15)
+                    make.leading.equalToSuperview().offset(20)
+                    make.trailing.equalToSuperview().offset(-20)
+                    make.height.equalTo(1)
+                }
+
+                titleTextField.snp.makeConstraints { make in
+                    make.top.equalTo(lineView2.snp.bottom).offset(15)
+                    make.leading.equalToSuperview().offset(20)
+                    make.trailing.equalToSuperview().offset(-20)
+                }
+
+                descriptionTextView.snp.makeConstraints { make in
+                    make.top.equalTo(titleTextField.snp.bottom).offset(10)
+                    make.leading.equalToSuperview().offset(20)
+                    make.trailing.equalToSuperview().offset(-20)
+                    make.height.equalTo(200)
+                }
+
+                completeButton.snp.makeConstraints { make in
+                    make.top.equalToSuperview().offset(20)
+                    make.trailing.equalToSuperview().offset(-20)
+                }
+
+                closeButton.snp.makeConstraints { make in
+                    make.top.equalToSuperview().offset(20)
                     make.leading.equalToSuperview().offset(20)
                 }
-        
-        
-    }
+
+                pictureButton.snp.makeConstraints { make in
+                    make.bottom.equalToSuperview().offset(-20)
+                    make.leading.equalToSuperview().offset(20)
+                }
+            }
     @objc func closeButtonTapped() {
             // 닫기 버튼 눌릴 때 로직을 입력하시오.
         }
@@ -120,6 +162,10 @@ class NewPostPage: UIViewController {
     @objc func completeButtonTapped() {
     //완료버튼이 눌릴때 로직을 입력하세요.
     }
+    
+    @objc func pictureButtonTapped() {
+        //
+        }
     
 }
 
@@ -147,10 +193,5 @@ struct MyViewController_PreViews: PreviewProvider {
         NewPostPage().toPreview()
     }
 }
-
-
-
-
-
 
 
