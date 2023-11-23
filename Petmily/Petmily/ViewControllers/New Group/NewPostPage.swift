@@ -102,58 +102,53 @@ class NewPostPage: UIViewController {
         view.addSubview(lineView2)
 
 
-        titleLabel.snp.makeConstraints { make in
-                    make.top.equalToSuperview().offset(20)
-                    make.centerX.equalToSuperview()
-                }
+        titleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.centerX.equalToSuperview()
+        }
 
-                lineView1.snp.makeConstraints { make in
-                    make.top.equalTo(titleLabel.snp.bottom).offset(15)
-                    make.leading.equalToSuperview().offset(0)
-                    make.trailing.equalToSuperview().offset(0)
-                    make.height.equalTo(1)
-                }
+        lineView1.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(1)
+        }
 
-                tagTextField.snp.makeConstraints { make in
-                    make.top.equalTo(lineView1.snp.bottom).offset(15)
-                    make.leading.equalToSuperview().offset(20)
-                    make.trailing.equalToSuperview().offset(-20)
-                }
+        tagTextField.snp.makeConstraints {
+            $0.top.equalTo(lineView1.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
 
-                lineView2.snp.makeConstraints { make in
-                    make.top.equalTo(tagTextField.snp.bottom).offset(15)
-                    make.leading.equalToSuperview().offset(20)
-                    make.trailing.equalToSuperview().offset(-20)
-                    make.height.equalTo(1)
-                }
+        lineView2.snp.makeConstraints {
+            $0.top.equalTo(tagTextField.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(1)
+        }
 
-                titleTextField.snp.makeConstraints { make in
-                    make.top.equalTo(lineView2.snp.bottom).offset(15)
-                    make.leading.equalToSuperview().offset(20)
-                    make.trailing.equalToSuperview().offset(-20)
-                }
+        titleTextField.snp.makeConstraints {
+            $0.top.equalTo(lineView2.snp.bottom).offset(15)
+            $0.leading.trailing.equalToSuperview().inset(20)
+        }
 
-                descriptionTextView.snp.makeConstraints { make in
-                    make.top.equalTo(titleTextField.snp.bottom).offset(10)
-                    make.leading.equalToSuperview().offset(20)
-                    make.trailing.equalToSuperview().offset(-20)
-                    make.height.equalTo(200)
-                }
+        descriptionTextView.snp.makeConstraints {
+            $0.top.equalTo(titleTextField.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(200)
+        }
 
-                completeButton.snp.makeConstraints { make in
-                    make.top.equalToSuperview().offset(20)
-                    make.trailing.equalToSuperview().offset(-20)
-                }
+        completeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
+        }
 
-                closeButton.snp.makeConstraints { make in
-                    make.top.equalToSuperview().offset(20)
-                    make.leading.equalToSuperview().offset(20)
-                }
+        closeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(20)
+        }
 
-                pictureButton.snp.makeConstraints { make in
-                    make.bottom.equalToSuperview().offset(-20)
-                    make.leading.equalToSuperview().offset(20)
-                }
+        pictureButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-20)
+            $0.leading.equalToSuperview().offset(20)
+        }
             }
     @objc func closeButtonTapped() {
             // 닫기 버튼 눌릴 때 로직을 입력하시오.
@@ -171,27 +166,27 @@ class NewPostPage: UIViewController {
 
 
 
-extension UIViewController {
-    private struct Preview: UIViewControllerRepresentable {
-            let viewController: UIViewController
-
-            func makeUIViewController(context: Context) -> UIViewController {
-                return viewController
-            }
-
-            func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-            }
-        }
-
-        func toPreview() -> some View {
-            Preview(viewController: self)
-        }
-}
-
-struct MyViewController_PreViews: PreviewProvider {
-    static var previews: some View {
-        NewPostPage().toPreview()
-    }
-}
+//extension UIViewController {
+//    private struct Preview: UIViewControllerRepresentable {
+//            let viewController: UIViewController
+//
+//            func makeUIViewController(context: Context) -> UIViewController {
+//                return viewController
+//            }
+//
+//            func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+//            }
+//        }
+//
+//        func toPreview() -> some View {
+//            Preview(viewController: self)
+//        }
+//}
+//
+//struct MyViewController_PreViews: PreviewProvider {
+//    static var previews: some View {
+//        NewPostPage().toPreview()
+//    }
+//}
 
 
