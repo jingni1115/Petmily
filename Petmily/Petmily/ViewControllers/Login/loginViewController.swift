@@ -128,17 +128,18 @@ class loginViewController: UIViewController {
             $0.trailing.equalToSuperview().offset(-20)
             $0.height.equalTo(40)
         }
-
-        findIDButton.snp.makeConstraints {
-            $0.top.equalTo(loginButton.snp.bottom).offset(20)
-            $0.leading.equalToSuperview().offset(30)
-        }
-
+        
         findPasswordButton.snp.makeConstraints {
             $0.top.equalTo(loginButton.snp.bottom).offset(20)
             $0.centerX.equalToSuperview()
         }
 
+        findIDButton.snp.makeConstraints {
+            $0.top.equalTo(loginButton.snp.bottom).offset(20)
+            $0.trailing.equalTo(findPasswordButton.snp.leading).offset(-15)
+        }
+
+    
         signUpButton.snp.makeConstraints {
             $0.top.equalTo(loginButton.snp.bottom).offset(20)
             $0.leading.equalTo(findPasswordButton.snp.trailing).offset(15)
