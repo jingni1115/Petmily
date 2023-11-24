@@ -120,8 +120,8 @@ class MyPageViewController: BaseViewController {
         
         myPagePostView.dailyCollectionView.snp.makeConstraints {
             var totalHeight: CGFloat = 0
-            let collectionViewWidth = ((UIScreen.main.bounds.size.width - 25) / 3)
-            totalHeight = (collectionViewWidth) * CGFloat(dailyDummy.count / 3)
+            let collectionViewHeight = ((UIScreen.main.bounds.size.width - 25) / 3)
+            totalHeight = (collectionViewHeight) * CGFloat(dailyDummy.count / 3)
             $0.height.equalTo(totalHeight)
         }
     }
@@ -172,11 +172,26 @@ class MyPageViewController: BaseViewController {
     }
     
     @objc private func didChangeValue(segment: UISegmentedControl) {
+        var totalHeight: CGFloat = 0
         myPagePostView.shouldHideFirstView = segment.selectedSegmentIndex != 0
         if segment.selectedSegmentIndex == 0 {
+            myPagePostView.dailyCollectionView.snp.remakeConstraints {
+                let collectionViewHeight = ((UIScreen.main.bounds.size.width - 25) / 3)
+                totalHeight = (collectionViewHeight) * CGFloat(dailyDummy.count / 3)
+                $0.height.equalTo(totalHeight)
+            }
             myPagePostView.dailyCollectionView.collectionViewLayout.invalidateLayout()
+            myPagePostView.dailyCollectionView.layoutIfNeeded()
+            print("@@@ \(totalHeight)")
         } else {
+            myPagePostView.infoCollectionView.snp.remakeConstraints {
+                let collectionViewHeight: CGFloat = 100
+                totalHeight = (collectionViewHeight) * CGFloat(dailyDummy.count + 16)
+                $0.height.equalTo(totalHeight)
+            }
             myPagePostView.infoCollectionView.collectionViewLayout.invalidateLayout()
+            myPagePostView.infoCollectionView.layoutIfNeeded()
+            print("@@@ \(totalHeight)")
         }
         // 셀 높이 정하기
      }
@@ -211,7 +226,7 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         } else {
             let collectionViewWidth = collectionView.bounds.width
             let cellWidth = collectionViewWidth - 10
-            let cellHeight: CGFloat = 100
+            let cellHeight: CGFloat = 152
             return CGSize(width: cellWidth, height: cellHeight)
         }
     }
