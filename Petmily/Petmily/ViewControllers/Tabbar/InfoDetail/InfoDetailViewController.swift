@@ -22,6 +22,7 @@ final class InfoDetailViewController: BaseHeaderViewController {
         
         setHeaderView()
         configure()
+        setMoreButton()
         infoDetailView.configure()
     }
     
@@ -34,6 +35,46 @@ extension InfoDetailViewController {
     func configure() {
         infoDetailView.collectionView.delegate = self
         infoDetailView.collectionView.dataSource = self
+    }
+}
+
+private extension InfoDetailViewController {
+    func setMoreButton() {
+        let editImage = UIImage(systemName: "pencil")
+        let deleteImage = UIImage(systemName: "trash.fill")
+        let moreImage = UIImage(systemName: "ellipsis")
+          
+        let editAction = UIAction(
+            title: "수정",
+            image: editImage) { [weak self] _ in
+                guard let self else { return }
+                self.infoDetailView.infoDetailShareView.moreButon
+                    .setImage(editImage, for: .normal)
+            }
+        
+        let deleteAction = UIAction(
+            title: "삭제",
+            image: deleteImage) { [weak self] _ in
+                guard let self else { return }
+                self.infoDetailView.infoDetailShareView.moreButon
+                    .setImage(deleteImage, for: .normal)
+            }
+        let cancelAction = UIAction(
+            title: "취소",
+            attributes: .destructive) { [weak self] _ in
+                guard let self else { return }
+                infoDetailView.infoDetailShareView.moreButon
+                    .setTitle(nil, for: .normal)
+                infoDetailView.infoDetailShareView.moreButon
+                    .setImage(moreImage, for: .normal)
+            }
+        
+        let moreButton = UIMenu(
+            title: "더보기",
+            children: [editAction, deleteAction, cancelAction])
+        
+        infoDetailView.infoDetailShareView.moreButon.menu = moreButton
+        infoDetailView.infoDetailShareView.moreButon.showsMenuAsPrimaryAction = true
     }
 }
 

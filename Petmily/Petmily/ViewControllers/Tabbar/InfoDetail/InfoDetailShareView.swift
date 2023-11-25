@@ -51,7 +51,7 @@ final class InfoDetailShareView: UIView {
         return stack
     }()
     
-    private lazy var menuButon: UIButton = {
+    lazy var moreButon: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         button.tintColor = .black
@@ -69,13 +69,12 @@ final class InfoDetailShareView: UIView {
         stack.alignment = .fill
         stack.distribution = .equalSpacing
         
-        [profileView, labelVStack, menuButon].forEach {
+        [profileView, labelVStack, moreButon].forEach {
             stack.addArrangedSubview($0)
         }
-        
         labelVStack.snp.makeConstraints {
             $0.leading.equalTo(profileView.snp.trailing).offset(10)
-            $0.trailing.equalTo(menuButon.snp.leading).offset(-10)
+            $0.trailing.equalTo(moreButon.snp.leading).offset(-10)
         }
         return stack
     }()
