@@ -13,19 +13,22 @@ final class SectionHeaderView: UICollectionReusableView {
     
     private lazy var sectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = .systemFont(ofSize: 22, weight: .bold)
         return label
     }()
     
     lazy var editButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "pencil"), for: .normal)
+        button.tintColor = .black
         return button
     }()
     
     func configure(title: String?, buttonOn: Bool = false) {
         sectionTitleLabel.text = title
         if buttonOn {
+            editButton.isHidden = false
+        } else {
             editButton.isHidden = true
         }
     }
@@ -52,6 +55,7 @@ private extension SectionHeaderView {
         
         editButton.snp.makeConstraints {
             $0.top.trailing.bottom.equalToSuperview()
+            $0.width.height.equalTo(30)
         }
     }
 }

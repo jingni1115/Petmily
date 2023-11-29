@@ -11,7 +11,6 @@ import SnapKit
 final class TabBarController: UIViewController {
     
     let dailyVC = DailyViewController(nibName: "DailyViewController", bundle: nil)
-//    let infoVC = InfoViewController(nibName: "InfoViewController", bundle: nil)
     let infoVC = InfoViewController()
     // 기존 펫스티벌 뷰컨트롤러 주석 처리
 //    let locationVC = AdoptViewController(nibName: "AdoptViewController", bundle: nil)
@@ -71,6 +70,8 @@ private extension TabBarController {
         view.addSubview(locationVC.view)
         setLayout()
         changeTintColor(buttonType: tabBarView.locationBtn)
+        
+        locationVC.authenticationSucceeded()
     }
     
     @objc func didTappedMyPage() {

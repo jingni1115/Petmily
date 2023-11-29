@@ -221,14 +221,14 @@ class MyPageViewController: BaseViewController {
     }
     
     func getDailyData() {
-        FirestoreService().getDailyData { result in
-            self.dailyData = result?.filter({ filt in
-                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
-            })
-            CommonUtil.print(output: result)
-            self.getProfileData()
-            //            self.customCollectionView.reloadData()
-        }
+//        FirestoreService().getDailyData { result in
+//            self.dailyData = result?.filter({ filt in
+//                filt.id == DataManager.sharedInstance.userInfo?.id ?? ""
+//            })
+//            CommonUtil.print(output: result)
+//            self.getProfileData()
+//            //            self.customCollectionView.reloadData()
+//        }
     }
     
     func configureView() {
@@ -431,8 +431,8 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
 
         // 목표 뷰 컨트롤러 초기화
         let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
-        vc.selectedInfo = selectedInfo // 정보 전달
-        vc.selectedUser = selectedUser // 유저 정보
+//        vc.selectedInfo = selectedInfo // 정보 전달
+//        vc.selectedUser = selectedUser // 유저 정보
         navigationPushController(viewController: vc, animated: true)
     }
 }

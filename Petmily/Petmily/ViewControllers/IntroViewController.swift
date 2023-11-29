@@ -18,7 +18,10 @@ class IntroViewController: BaseViewController {
         gifImageView.animate(withGIFNamed: "launch-screen") {
             print("It's animating!")
         }
-        getUserData()
+//        getUserData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            AppDelegate.applicationDelegate().changeInitViewController(type: .Main)
+        }
     }
 
     func getUserData() {

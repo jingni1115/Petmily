@@ -12,6 +12,16 @@
 		330FD5402AFE83DD00EBA58C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330FD53F2AFE83DD00EBA58C /* InfoView.swift */; };
 		330FD5422AFE83FE00EBA58C /* ShareInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330FD5412AFE83FE00EBA58C /* ShareInfoViewCell.swift */; };
 		330FD5442AFE841E00EBA58C /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330FD5432AFE841E00EBA58C /* InfoViewController.swift */; };
+		33387A0A2B030F10000E8148 /* PopularContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387A092B030F10000E8148 /* PopularContentCell.swift */; };
+		33387A112B03EE2F000E8148 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387A102B03EE2F000E8148 /* InfoDetailViewController.swift */; };
+		33387A132B03F814000E8148 /* InfoDetailShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33387A122B03F814000E8148 /* InfoDetailShareView.swift */; };
+		338D5B452B09BB5700CA6666 /* InfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D5B442B09BB5700CA6666 /* InfoDetailView.swift */; };
+		338D5B472B09CE3000CA6666 /* InfoDetailCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D5B462B09CE3000CA6666 /* InfoDetailCommentCell.swift */; };
+		338D5B492B09D03900CA6666 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D5B482B09D03900CA6666 /* UIColor+.swift */; };
+		338D5B4B2B09D83B00CA6666 /* InfoDetailCommentHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338D5B4A2B09D83B00CA6666 /* InfoDetailCommentHeader.swift */; };
+		339C820A2B00C7100065AAAD /* InfoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C82092B00C7100065AAAD /* InfoContent.swift */; };
+		339C820E2B0127FB0065AAAD /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C820D2B0127FB0065AAAD /* NSAttributedString+.swift */; };
+		339C82102B012BB00065AAAD /* AppConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C820F2B012BB00065AAAD /* AppConstraint.swift */; };
 		5632E6B42AA793B300728F87 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5632E6B22AA793B300728F87 /* CameraViewController.swift */; };
 		5632E6B52AA793B300728F87 /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5632E6B32AA793B300728F87 /* CameraViewController.xib */; };
 		5632E6B82AA7998400728F87 /* EditVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5632E6B62AA7998400728F87 /* EditVideoViewController.swift */; };
@@ -51,7 +61,6 @@
 		569A356F2A89DB6D00FE098E /* DailyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35692A89DB6C00FE098E /* DailyViewController.xib */; };
 		569A35702A89DB6D00FE098E /* MyPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A356A2A89DB6D00FE098E /* MyPageViewController.xib */; };
 		569A35712A89DB6D00FE098E /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A356B2A89DB6D00FE098E /* AddViewController.xib */; };
-		569A35722A89DB6D00FE098E /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A356C2A89DB6D00FE098E /* InfoViewController.xib */; };
 		569A35762A89DBBD00FE098E /* IntroViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569A35752A89DBBD00FE098E /* IntroViewController.xib */; };
 		569A35782A89FB8600FE098E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 569A35772A89FB8600FE098E /* Main.storyboard */; };
 		56C3CF282A8E475E00541EB8 /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF262A8E475E00541EB8 /* CommonHeaderView.swift */; };
@@ -59,7 +68,6 @@
 		56C3CF2F2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C3CF2D2A8E482900541EB8 /* UrlBtnCollectionViewCell.xib */; };
 		56C3CF312A8E4A4200541EB8 /* BaseHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF302A8E4A4200541EB8 /* BaseHeaderViewController.swift */; };
 		56C3CF332A8E4A5C00541EB8 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF322A8E4A5C00541EB8 /* Common.swift */; };
-		56C3CF342A8E4AE600541EB8 /* InfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */; };
 		56C3CF382A8E765000541EB8 /* InfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF372A8E765000541EB8 /* InfoModel.swift */; };
 		56C3CF3A2A8E768D00541EB8 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF392A8E768D00541EB8 /* FirestoreService.swift */; };
 		56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C3CF562A8F348A00541EB8 /* DailyModel.swift */; };
@@ -68,6 +76,7 @@
 		56CB42DB2B02237A0038B5F7 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB42DA2B02237A0038B5F7 /* CacheManager.swift */; };
 		56DD2DB82A8E41B5008A9E12 /* ReelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */; };
 		6BBF70942AFE9FC900F58080 /* NewPostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF70932AFE9FC900F58080 /* NewPostPage.swift */; };
+		6BBF70972B0E4A7A00F58080 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF70962B0E4A7A00F58080 /* loginViewController.swift */; };
 		B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F405522A91F8420085F4A9 /* AdoptViewController.swift */; };
 		B3F405552A91F8420085F4A9 /* AdoptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F405532A91F8420085F4A9 /* AdoptViewController.xib */; };
 		B3F405562A91F9190085F4A9 /* ContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BF4D772A91EBFF00DFA28E /* ContentsCollectionViewCell.xib */; };
@@ -78,7 +87,8 @@
 		DF103ED12A921A17006BDF18 /* launch-screen.gif in Resources */ = {isa = PBXBuildFile; fileRef = DF103ED02A921A17006BDF18 /* launch-screen.gif */; };
 		DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */; };
 		DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */; };
-		DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */; };
+		DF3C50F22B0AE6AF008F00AF /* KakaoMapsSDK_SPM in Frameworks */ = {isa = PBXBuildFile; productRef = DF3C50F12B0AE6AF008F00AF /* KakaoMapsSDK_SPM */; };
+		DF3C50F42B0B899A008F00AF /* KakaoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3C50F32B0B899A008F00AF /* KakaoMapViewController.swift */; };
 		DF6EB5072AFE73A800EFC2FB /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6EB5062AFE73A800EFC2FB /* LocationViewController.swift */; };
 		E437717E1DB888321482D570 /* Pods_PetmilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */; };
 		FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2663282A8CB300000222B3 /* ProfileViewController.swift */; };
@@ -118,6 +128,16 @@
 		330FD53F2AFE83DD00EBA58C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		330FD5412AFE83FE00EBA58C /* ShareInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfoViewCell.swift; sourceTree = "<group>"; };
 		330FD5432AFE841E00EBA58C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		33387A092B030F10000E8148 /* PopularContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularContentCell.swift; sourceTree = "<group>"; };
+		33387A102B03EE2F000E8148 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
+		33387A122B03F814000E8148 /* InfoDetailShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailShareView.swift; sourceTree = "<group>"; };
+		338D5B442B09BB5700CA6666 /* InfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailView.swift; sourceTree = "<group>"; };
+		338D5B462B09CE3000CA6666 /* InfoDetailCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailCommentCell.swift; sourceTree = "<group>"; };
+		338D5B482B09D03900CA6666 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		338D5B4A2B09D83B00CA6666 /* InfoDetailCommentHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailCommentHeader.swift; sourceTree = "<group>"; };
+		339C82092B00C7100065AAAD /* InfoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContent.swift; sourceTree = "<group>"; };
+		339C820D2B0127FB0065AAAD /* NSAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+.swift"; sourceTree = "<group>"; };
+		339C820F2B012BB00065AAAD /* AppConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstraint.swift; sourceTree = "<group>"; };
 		3C595EDD8E8E55BAEC433D26 /* Pods-Petmily-PetmilyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily-PetmilyUITests.debug.xcconfig"; path = "Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4BCB8754505F6B2538B76706 /* Pods_Petmily_PetmilyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Petmily_PetmilyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5632E6B22AA793B300728F87 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -153,7 +173,6 @@
 		569A35692A89DB6C00FE098E /* DailyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyViewController.xib; sourceTree = "<group>"; };
 		569A356A2A89DB6D00FE098E /* MyPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPageViewController.xib; sourceTree = "<group>"; };
 		569A356B2A89DB6D00FE098E /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
-		569A356C2A89DB6D00FE098E /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 		569A35752A89DBBD00FE098E /* IntroViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroViewController.xib; sourceTree = "<group>"; };
 		569A35772A89FB8600FE098E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		56C3CF262A8E475E00541EB8 /* CommonHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
@@ -170,6 +189,7 @@
 		56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelCollectionViewCell.swift; sourceTree = "<group>"; };
 		633E801253E9A9E9DD6A8217 /* Pods-Petmily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily.release.xcconfig"; path = "Target Support Files/Pods-Petmily/Pods-Petmily.release.xcconfig"; sourceTree = "<group>"; };
 		6BBF70932AFE9FC900F58080 /* NewPostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostPage.swift; sourceTree = "<group>"; };
+		6BBF70962B0E4A7A00F58080 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetmilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9ADE19EC564B42522E24C87 /* Pods-Petmily-PetmilyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily-PetmilyUITests.release.xcconfig"; path = "Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B3BF4D762A91EBFC00DFA28E /* ContentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -181,8 +201,7 @@
 		DF103ED02A921A17006BDF18 /* launch-screen.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "launch-screen.gif"; sourceTree = "<group>"; };
 		DF1059C22A8C563E00F10DE1 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		DF1059C32A8C563E00F10DE1 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
-		DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
-		DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailViewController.xib; sourceTree = "<group>"; };
+		DF3C50F32B0B899A008F00AF /* KakaoMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapViewController.swift; sourceTree = "<group>"; };
 		DF6EB5062AFE73A800EFC2FB /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		FF2663282A8CB300000222B3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FF26632A2A8CB77C000222B3 /* MyPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -200,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5655C0C32B00BF19002BC9C6 /* FirebaseDatabaseSwift in Frameworks */,
+				DF3C50F22B0AE6AF008F00AF /* KakaoMapsSDK_SPM in Frameworks */,
 				5655C0BB2B00BF19002BC9C6 /* FirebaseAnalyticsSwift in Frameworks */,
 				5655C0BD2B00BF19002BC9C6 /* FirebaseAuth in Frameworks */,
 				FF6E7F412AB366F2001A906B /* SnapKit in Frameworks */,
@@ -270,8 +290,11 @@
 		565C8B1C2A91815F00167A92 /* InfoDetail */ = {
 			isa = PBXGroup;
 			children = (
-				DF1059C82A8C749900F10DE1 /* InfoDetailViewController.swift */,
-				DF1059C92A8C749900F10DE1 /* InfoDetailViewController.xib */,
+				338D5B442B09BB5700CA6666 /* InfoDetailView.swift */,
+				33387A122B03F814000E8148 /* InfoDetailShareView.swift */,
+				338D5B462B09CE3000CA6666 /* InfoDetailCommentCell.swift */,
+				338D5B4A2B09D83B00CA6666 /* InfoDetailCommentHeader.swift */,
+				33387A102B03EE2F000E8148 /* InfoDetailViewController.swift */,
 			);
 			path = InfoDetail;
 			sourceTree = "<group>";
@@ -337,7 +360,6 @@
 		569A350C2A89C98500FE098E /* Petmily */ = {
 			isa = PBXGroup;
 			children = (
-				6BBF70922AFE9FA400F58080 /* New Group */,
 				569A350D2A89C98500FE098E /* AppDelegate.swift */,
 				569A35112A89C98500FE098E /* ViewController.swift */,
 				565C8B042A90C6AC00167A92 /* Model */,
@@ -374,8 +396,10 @@
 		569A35792A89FC5900FE098E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				338D5B482B09D03900CA6666 /* UIColor+.swift */,
 				569A35592A89CF1B00FE098E /* UIView+Extension.swift */,
 				FF7D08212AC5C1460004CC4E /* UIImageView+Extension.swift */,
+				339C820D2B0127FB0065AAAD /* NSAttributedString+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -383,6 +407,8 @@
 		569A357A2A89FC6300FE098E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6BBF70952B0E07DF00F58080 /* Login */,
+				6BBF70922AFE9FA400F58080 /* New Group */,
 				569A357B2A89FC7500FE098E /* Base */,
 				569A353D2A89CB3B00FE098E /* IntroViewController.swift */,
 				569A35752A89DBBD00FE098E /* IntroViewController.xib */,
@@ -416,11 +442,12 @@
 				565C8B1B2A914E3C00167A92 /* Reply */,
 				56DD2DB92A8E41EB008A9E12 /* ReelCollectionViewCell */,
 				330FD53F2AFE83DD00EBA58C /* InfoView.swift */,
+				33387A092B030F10000E8148 /* PopularContentCell.swift */,
 				330FD5412AFE83FE00EBA58C /* ShareInfoViewCell.swift */,
+				339C82092B00C7100065AAAD /* InfoContent.swift */,
 				330C5A7B2AFF06DB00F15272 /* InfoViewModel.swift */,
 				330FD5432AFE841E00EBA58C /* InfoViewController.swift */,
 				330C5A792AFEFFCE00F15272 /* SectionHeaderView.swift */,
-				569A356C2A89DB6D00FE098E /* InfoViewController.xib */,
 				565C8B1C2A91815F00167A92 /* InfoDetail */,
 				565C8B1D2A91816A00167A92 /* InfoTableViewCell */,
 				569A354D2A89CE2F00FE098E /* AddViewController.swift */,
@@ -434,6 +461,7 @@
 				565C8B202A9181F700167A92 /* MyPageCollection */,
 				565C8B1F2A9181F100167A92 /* Profile */,
 				DF6EB5062AFE73A800EFC2FB /* LocationViewController.swift */,
+				DF3C50F32B0B899A008F00AF /* KakaoMapViewController.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -441,6 +469,7 @@
 		569A357D2A89FCA900FE098E /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				339C820F2B012BB00065AAAD /* AppConstraint.swift */,
 				569A355D2A89D13400FE098E /* DataManager.swift */,
 				569A355B2A89D10A00FE098E /* CommonUtil.swift */,
 				56C3CF322A8E4A5C00541EB8 /* Common.swift */,
@@ -479,6 +508,14 @@
 				6BBF70932AFE9FC900F58080 /* NewPostPage.swift */,
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		6BBF70952B0E07DF00F58080 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6BBF70962B0E4A7A00F58080 /* loginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		B3BF4D752A91EBD200DFA28E /* AdoptCollectionViewCell */ = {
@@ -543,6 +580,7 @@
 				5655C0C62B00BF19002BC9C6 /* FirebaseFirestoreSwift */,
 				5655C0C82B00BF19002BC9C6 /* FirebaseMessaging */,
 				5655C0CA2B00BF19002BC9C6 /* FirebaseStorage */,
+				DF3C50F12B0AE6AF008F00AF /* KakaoMapsSDK_SPM */,
 			);
 			productName = Petmily;
 			productReference = 569A350A2A89C98500FE098E /* Petmily.app */;
@@ -622,6 +660,7 @@
 			packageReferences = (
 				FF6E7F3F2AB366F2001A906B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				5655C0B72B00BF19002BC9C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DF3C50F02B0AE6AF008F00AF /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 569A350B2A89C98500FE098E /* Products */;
 			projectDirPath = "";
@@ -653,12 +692,10 @@
 				FFEFD89E2A8E7016007D2F30 /* CommonHeaderView.xib in Resources */,
 				B3F405552A91F8420085F4A9 /* AdoptViewController.xib in Resources */,
 				DF1059C52A8C563E00F10DE1 /* InfoTableViewCell.xib in Resources */,
-				56C3CF342A8E4AE600541EB8 /* InfoDetailViewController.xib in Resources */,
 				569A35172A89C98600FE098E /* Assets.xcassets in Resources */,
 				569A35782A89FB8600FE098E /* Main.storyboard in Resources */,
 				569A35702A89DB6D00FE098E /* MyPageViewController.xib in Resources */,
 				5632E6B92AA7998400728F87 /* EditVideoViewController.xib in Resources */,
-				569A35722A89DB6D00FE098E /* InfoViewController.xib in Resources */,
 				565C8B0F2A9129C900167A92 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,38 +830,48 @@
 				56C3CF3A2A8E768D00541EB8 /* FirestoreService.swift in Sources */,
 				DF06F8462A8CBFC500B8A875 /* (null) in Sources */,
 				569A35422A89CB6E00FE098E /* BaseViewController.swift in Sources */,
+				338D5B452B09BB5700CA6666 /* InfoDetailView.swift in Sources */,
 				6BBF70942AFE9FC900F58080 /* NewPostPage.swift in Sources */,
 				56C3CF592A8F349A00541EB8 /* UserModel.swift in Sources */,
 				56CB42D92B0161940038B5F7 /* StroageManager.swift in Sources */,
 				56DD2DB82A8E41B5008A9E12 /* ReelCollectionViewCell.swift in Sources */,
 				56C3CF2E2A8E482900541EB8 /* UrlBtnCollectionViewCell.swift in Sources */,
+				338D5B472B09CE3000CA6666 /* InfoDetailCommentCell.swift in Sources */,
 				569A355C2A89D10A00FE098E /* CommonUtil.swift in Sources */,
 				FF2663292A8CB300000222B3 /* ProfileViewController.swift in Sources */,
 				5655C0B42AFE1519002BC9C6 /* TabBarView.swift in Sources */,
 				56C3CF572A8F348A00541EB8 /* DailyModel.swift in Sources */,
+				339C820E2B0127FB0065AAAD /* NSAttributedString+.swift in Sources */,
 				5632E6B42AA793B300728F87 /* CameraViewController.swift in Sources */,
 				330FD5402AFE83DD00EBA58C /* InfoView.swift in Sources */,
 				566B8E672B1710B500FD2602 /* TimelineView.swift in Sources */,
+				33387A0A2B030F10000E8148 /* PopularContentCell.swift in Sources */,
 				569A355A2A89CF1B00FE098E /* UIView+Extension.swift in Sources */,
+				33387A112B03EE2F000E8148 /* InfoDetailViewController.swift in Sources */,
 				56C3CF332A8E4A5C00541EB8 /* Common.swift in Sources */,
 				5632E6B82AA7998400728F87 /* EditVideoViewController.swift in Sources */,
 				569A354F2A89CE2F00FE098E /* AddViewController.swift in Sources */,
 				330FD5442AFE841E00EBA58C /* InfoViewController.swift in Sources */,
 				FF26632D2A8CB9FE000222B3 /* CustomCollectionView.swift in Sources */,
+				6BBF70972B0E4A7A00F58080 /* loginViewController.swift in Sources */,
 				56C3CF282A8E475E00541EB8 /* CommonHeaderView.swift in Sources */,
 				569A35122A89C98500FE098E /* ViewController.swift in Sources */,
+				339C82102B012BB00065AAAD /* AppConstraint.swift in Sources */,
 				569A355E2A89D13400FE098E /* DataManager.swift in Sources */,
 				B3F405582A91F9280085F4A9 /* ContentsCollectionViewCell.swift in Sources */,
+				339C820A2B00C7100065AAAD /* InfoContent.swift in Sources */,
 				565C8B162A912E8800167A92 /* ReplyTableViewCell.swift in Sources */,
 				56C3CF382A8E765000541EB8 /* InfoModel.swift in Sources */,
 				569A350E2A89C98500FE098E /* AppDelegate.swift in Sources */,
 				FF6E7F3E2AB34E5A001A906B /* MyPageViewController.swift in Sources */,
 				330C5A7A2AFEFFCE00F15272 /* SectionHeaderView.swift in Sources */,
+				338D5B4B2B09D83B00CA6666 /* InfoDetailCommentHeader.swift in Sources */,
 				565C8B122A912DD600167A92 /* ReplyViewController.swift in Sources */,
+				338D5B492B09D03900CA6666 /* UIColor+.swift in Sources */,
+				33387A132B03F814000E8148 /* InfoDetailShareView.swift in Sources */,
 				330C5A7C2AFF06DB00F15272 /* InfoViewModel.swift in Sources */,
 				DF6EB5072AFE73A800EFC2FB /* LocationViewController.swift in Sources */,
 				DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */,
-				DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */,
 				FFFB1E7F2A91603D00263D6D /* FirebaseStorageManager.swift in Sources */,
 				5655C0B62AFE18D3002BC9C6 /* TabBarController.swift in Sources */,
 				56C3CF312A8E4A4200541EB8 /* BaseHeaderViewController.swift in Sources */,
@@ -832,6 +879,7 @@
 				B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */,
 				569A353F2A89CB3B00FE098E /* IntroViewController.swift in Sources */,
 				FF7D08222AC5C1460004CC4E /* UIImageView+Extension.swift in Sources */,
+				DF3C50F42B0B899A008F00AF /* KakaoMapViewController.swift in Sources */,
 				FF6E7F432AB3822C001A906B /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1002,7 +1050,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YRZW7MZ3P5;
+				DEVELOPMENT_TEAM = NNZY5VCJT4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Petmily/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용";
@@ -1032,7 +1080,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YRZW7MZ3P5;
+				DEVELOPMENT_TEAM = NNZY5VCJT4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Petmily/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "카메라 사용";
@@ -1103,7 +1151,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YRZW7MZ3P5;
+				DEVELOPMENT_TEAM = NNZY5VCJT4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingni.PetmilyUITests;
@@ -1122,7 +1170,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YRZW7MZ3P5;
+				DEVELOPMENT_TEAM = NNZY5VCJT4;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jingni.PetmilyUITests;
@@ -1182,6 +1230,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 10.0.0;
+			};
+		};
+		DF3C50F02B0AE6AF008F00AF /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.3;
 			};
 		};
 		FF6E7F3F2AB366F2001A906B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -1244,6 +1300,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5655C0B72B00BF19002BC9C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		DF3C50F12B0AE6AF008F00AF /* KakaoMapsSDK_SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3C50F02B0AE6AF008F00AF /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			productName = KakaoMapsSDK_SPM;
 		};
 		FF6E7F402AB366F2001A906B /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
