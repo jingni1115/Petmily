@@ -71,6 +71,7 @@
 		56CB42DB2B02237A0038B5F7 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CB42DA2B02237A0038B5F7 /* CacheManager.swift */; };
 		56DD2DB82A8E41B5008A9E12 /* ReelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DD2DB72A8E41B5008A9E12 /* ReelCollectionViewCell.swift */; };
 		6BBF70942AFE9FC900F58080 /* NewPostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF70932AFE9FC900F58080 /* NewPostPage.swift */; };
+		77329CD22B18690200FD32E8 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77329CD12B18690200FD32E8 /* UIImage+Extension.swift */; };
 		B3F405542A91F8420085F4A9 /* AdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F405522A91F8420085F4A9 /* AdoptViewController.swift */; };
 		B3F405552A91F8420085F4A9 /* AdoptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3F405532A91F8420085F4A9 /* AdoptViewController.xib */; };
 		B3F405562A91F9190085F4A9 /* ContentsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BF4D772A91EBFF00DFA28E /* ContentsCollectionViewCell.xib */; };
@@ -179,6 +180,7 @@
 		633E801253E9A9E9DD6A8217 /* Pods-Petmily.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily.release.xcconfig"; path = "Target Support Files/Pods-Petmily/Pods-Petmily.release.xcconfig"; sourceTree = "<group>"; };
 		6BBF70932AFE9FC900F58080 /* NewPostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostPage.swift; sourceTree = "<group>"; };
 		6D084C4719F602F994F684C3 /* Pods_PetmilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetmilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77329CD12B18690200FD32E8 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		A9ADE19EC564B42522E24C87 /* Pods-Petmily-PetmilyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Petmily-PetmilyUITests.release.xcconfig"; path = "Target Support Files/Pods-Petmily-PetmilyUITests/Pods-Petmily-PetmilyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B3BF4D762A91EBFC00DFA28E /* ContentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B3BF4D772A91EBFF00DFA28E /* ContentsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentsCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				569A35592A89CF1B00FE098E /* UIView+Extension.swift */,
 				FF7D08212AC5C1460004CC4E /* UIImageView+Extension.swift */,
 				339C820D2B0127FB0065AAAD /* NSAttributedString+.swift */,
+				77329CD12B18690200FD32E8 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -841,6 +844,7 @@
 				330C5A7A2AFEFFCE00F15272 /* SectionHeaderView.swift in Sources */,
 				565C8B122A912DD600167A92 /* ReplyViewController.swift in Sources */,
 				330C5A7C2AFF06DB00F15272 /* InfoViewModel.swift in Sources */,
+				77329CD22B18690200FD32E8 /* UIImage+Extension.swift in Sources */,
 				DF6EB5072AFE73A800EFC2FB /* LocationViewController.swift in Sources */,
 				DF1059C42A8C563E00F10DE1 /* InfoTableViewCell.swift in Sources */,
 				DF1059CA2A8C749900F10DE1 /* InfoDetailViewController.swift in Sources */,

@@ -31,7 +31,10 @@ class MyPageProfileView: UIView {
     
     var settingButton: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
+        let image = UIImage(systemName: "gearshape.fill")
+        let scaledImage = image?.scalePreservingAspectRatio(targetSize: CGSize(width: 30, height: 30))
+        btn.setImage(scaledImage, for: .normal)
+        btn.contentMode = .center
         btn.tintColor = .black
         return btn
     }()
@@ -66,7 +69,7 @@ class MyPageProfileView: UIView {
     }()
     
     lazy var petInfoStackView: UIStackView = {
-        var stackView = UIStackView(arrangedSubviews: [petAgeView, firstDivider ,petGenderView, secondDivider, petBreedView])
+        var stackView = UIStackView(arrangedSubviews: [petAgeView, firstDivider, petGenderView, secondDivider, petBreedView])
         stackView.distribution = .equalSpacing
         stackView.axis = .vertical
         return stackView
@@ -186,41 +189,41 @@ class MyPageProfileView: UIView {
             $0.leading.equalTo(profileTextField.snp.trailing).inset(-5)
         }
         
-        settingButton.snp.makeConstraints{
+        settingButton.snp.makeConstraints {
             $0.top.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
             $0.width.height.equalTo(30)
         }
         
-        userNameLabel.snp.makeConstraints{
+        userNameLabel.snp.makeConstraints {
             $0.top.equalTo(profileTextField.snp.bottom).inset(-10)
             $0.leading.equalTo(self.safeAreaLayoutGuide).inset(10)
         }
         
-        editProfileButton.snp.makeConstraints{
+        editProfileButton.snp.makeConstraints {
             $0.top.equalTo(userNameLabel.snp.bottom).inset(-10)
             $0.leading.equalTo(self.safeAreaLayoutGuide).inset(10)
             $0.width.equalTo(150)
             $0.height.equalTo(30)
         }
         
-        profileImage.snp.makeConstraints{
+        profileImage.snp.makeConstraints {
             $0.top.equalTo(settingButton.snp.bottom).inset(-10)
             $0.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
             $0.bottom.equalTo(editProfileButton)
             $0.width.height.equalTo(60)
         }
         
-        petInfoStackView.snp.makeConstraints{
+        petInfoStackView.snp.makeConstraints {
             $0.top.equalTo(editProfileButton.snp.bottom).inset(-10)
             $0.leading.trailing.bottom.equalTo(self.safeAreaLayoutGuide).inset(10)
             $0.height.equalTo(150)
         }
         
-        petAgeLabel.snp.makeConstraints{
+        petAgeLabel.snp.makeConstraints {
             $0.top.leading.bottom.equalTo(petAgeView).inset(10)
         }
         
-        petAgeText.snp.makeConstraints{
+        petAgeText.snp.makeConstraints {
             $0.top.trailing.bottom.equalTo(petAgeView).inset(10)
         }
         
@@ -229,11 +232,11 @@ class MyPageProfileView: UIView {
             $0.height.equalTo(1)
         }
         
-        petGenderLabel.snp.makeConstraints{
+        petGenderLabel.snp.makeConstraints {
             $0.top.leading.bottom.equalTo(petGenderView).inset(10)
         }
         
-        petGenderText.snp.makeConstraints{
+        petGenderText.snp.makeConstraints {
             $0.top.trailing.bottom.equalTo(petGenderView).inset(10)
         }
         
@@ -242,13 +245,14 @@ class MyPageProfileView: UIView {
             $0.height.equalTo(1)
         }
         
-        petBreedLabel.snp.makeConstraints{
+        petBreedLabel.snp.makeConstraints {
             $0.top.leading.bottom.equalTo(petBreedView).inset(10)
         }
         
-        petBreedText.snp.makeConstraints{
+        petBreedText.snp.makeConstraints {
             $0.top.trailing.bottom.equalTo(petBreedView).inset(10)
         }
     }
 }
+
 

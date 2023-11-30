@@ -42,7 +42,11 @@ class MyPageViewController: BaseViewController {
         return view
     }()
     
-    private var currentProfileIndex = 0
+    private var currentProfileIndex = 0 {
+        didSet {
+            setProfile()
+        }
+    }
     
     // MARK: LifeCycle
     override func viewDidLoad() {
@@ -129,9 +133,9 @@ class MyPageViewController: BaseViewController {
     private func setProfile() {
         myPageProfileView.profileTextField.text = profileData.pet?.first?.name ?? "프로필 없음"
         myPageProfileView.userNameLabel.text = profileData.pet?[currentProfileIndex].name
-        myPageProfileView.petAgeLabel.text = profileData.pet?[currentProfileIndex].age
-        myPageProfileView.petGenderLabel.text = profileData.pet?[currentProfileIndex].gender
-        myPageProfileView.petBreedLabel.text = profileData.pet?[currentProfileIndex].breed
+        myPageProfileView.petAgeText.text = profileData.pet?[currentProfileIndex].age
+        myPageProfileView.petGenderText.text = profileData.pet?[currentProfileIndex].gender
+        myPageProfileView.petBreedText.text = profileData.pet?[currentProfileIndex].breed
     }
     
     private func setActions() {
