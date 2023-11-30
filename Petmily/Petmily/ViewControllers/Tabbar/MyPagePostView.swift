@@ -38,6 +38,7 @@ class MyPagePostView: UIView {
     lazy var postStackView: UIStackView = {
         var stackView = UIStackView(arrangedSubviews: [dailyCollectionView, infoCollectionView])
         stackView.axis = .horizontal
+        stackView.backgroundColor = .clear
         return stackView
     }()
     
@@ -62,6 +63,7 @@ class MyPagePostView: UIView {
         dailyFlowLayout.minimumInteritemSpacing = 2
         view.showsVerticalScrollIndicator = false
         view.isScrollEnabled = false
+        view.backgroundColor = .clear
         return view
     }()
     

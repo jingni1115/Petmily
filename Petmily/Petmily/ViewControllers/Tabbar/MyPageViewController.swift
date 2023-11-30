@@ -128,6 +128,13 @@ class MyPageViewController: BaseViewController {
             totalHeight = (collectionViewHeight) * CGFloat(dailyDummy.count / 3)
             $0.height.equalTo(totalHeight)
         }
+        
+        myPagePostView.infoCollectionView.snp.makeConstraints {
+            var totalHeight: CGFloat = 0
+            let collectionViewHeight = ((UIScreen.main.bounds.size.width - 25) / 3)
+            totalHeight = (collectionViewHeight) * CGFloat(dailyDummy.count / 3)
+            $0.height.equalTo(totalHeight)
+        }
     }
     
     private func setProfile() {
@@ -179,6 +186,7 @@ class MyPageViewController: BaseViewController {
         var totalHeight: CGFloat = 0
         myPagePostView.shouldHideFirstView = segment.selectedSegmentIndex != 0
         if segment.selectedSegmentIndex == 0 {
+            myPagePostView.dailyCollectionView.snp.removeConstraints()
             myPagePostView.dailyCollectionView.snp.remakeConstraints {
                 let collectionViewHeight = ((UIScreen.main.bounds.size.width - 25) / 3)
                 totalHeight = (collectionViewHeight) * CGFloat(dailyDummy.count / 3)
@@ -186,18 +194,16 @@ class MyPageViewController: BaseViewController {
             }
             myPagePostView.dailyCollectionView.collectionViewLayout.invalidateLayout()
             myPagePostView.dailyCollectionView.layoutIfNeeded()
-            print("@@@ \(totalHeight)")
         } else {
-            myPagePostView.infoCollectionView.snp.remakeConstraints {
-                let collectionViewHeight: CGFloat = 100
-                totalHeight = (collectionViewHeight) * CGFloat(dailyDummy.count + 16)
+            myPagePostView.dailyCollectionView.snp.removeConstraints()
+            myPagePostView.infoCollectionView.snp.remakeConstraints() {
+                let collectionViewHeight: CGFloat = 152
+                totalHeight = (collectionViewHeight + 10) * CGFloat(10)
                 $0.height.equalTo(totalHeight)
             }
             myPagePostView.infoCollectionView.collectionViewLayout.invalidateLayout()
             myPagePostView.infoCollectionView.layoutIfNeeded()
-            print("@@@ \(totalHeight)")
         }
-        // 셀 높이 정하기
      }
 }
 
