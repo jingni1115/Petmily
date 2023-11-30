@@ -17,42 +17,56 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var vPreview: UIView!
     @IBOutlet weak var img: UIImageView!
     
-    var captureSession: AVCaptureSession!
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer!
-    var stillImageOutput: AVCapturePhotoOutput!
-    
-    var movieFileOutput: AVCaptureMovieFileOutput!
+    var captureSession = AVCaptureSession()
+    var videoPreviewLayer = AVCaptureVideoPreviewLayer()
+    var movieFileOutput = AVCaptureMovieFileOutput()
+    var audioFileOutput = AVCaptureAudioDataOutput()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        captureSession = AVCaptureSession()
-        captureSession.beginConfiguration()
+        setCamera()
+    }
+    
+    func setCamera() {
+        self.captureSession = AVCaptureSession()
+        self.captureSession.beginConfiguration()
         
-        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else { return }
-        
-        do {
-            let cameraInput = try AVCaptureDeviceInput(device: captureDevice)
-            
-            movieFileOutput = AVCaptureMovieFileOutput()
-            
-            captureSession.addInput(cameraInput)
-            captureSession.sessionPreset = .hd1280x720
-            captureSession.addOutput(movieFileOutput)
-            captureSession.commitConfiguration()
-        } catch {
-            print(error)
+        // AVCaptureSession 설정
+        guard let videoDevice = AVCaptureDevice.default(for: AVMediaType.video),
+              let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio),
+              let videoInput = try? AVCaptureDeviceInput(device: videoDevice),
+              let audioInput = try? AVCaptureDeviceInput(device: audioDevice) else {
+            // Error handling
+            return
         }
+        
+        self.movieFileOutput = AVCaptureMovieFileOutput()
+        self.audioFileOutput = AVCaptureAudioDataOutput()
+        
+        self.captureSession.addInput(videoInput)
+        self.captureSession.addInput(audioInput)
+        self.captureSession.sessionPreset = .hd1280x720
+        self.captureSession.addOutput(self.movieFileOutput)
+        self.captureSession.addOutput(self.audioFileOutput)
+        self.captureSession.commitConfiguration()
+        
+        self.setPreviewCamera()
+    }
+    
+    func setPreviewCamera() {
         //preview
-        videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
         DispatchQueue.main.async {
             self.videoPreviewLayer.frame = self.vPreview.bounds
         }
-        videoPreviewLayer?.videoGravity = .resizeAspectFill
-        self.vPreview.layer.addSublayer(videoPreviewLayer)
-        DispatchQueue.global(qos: .background).async {            self.captureSession.startRunning()
+        self.videoPreviewLayer.videoGravity = .resizeAspectFill
+        DispatchQueue.main.async {
+            self.vPreview.layer.addSublayer(self.videoPreviewLayer)
         }
-        // Do any additional setup after loading the view.
+        DispatchQueue.global(qos: .background).async {
+            self.captureSession.startRunning()
+        }
     }
     
     func startRecording() {
@@ -67,10 +81,11 @@ class CameraViewController: UIViewController {
         movieFileOutput.stopRecording()
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //        setupAndStartCaptureSession()
+    private func camera(with position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .unspecified)
+        
+        let devices = discoverySession.devices
+        return devices.filter { $0.position == position }.first
     }
     
     private func switchCamera(captureSession: AVCaptureSession?) {
@@ -84,26 +99,18 @@ class CameraViewController: UIViewController {
         captureSession?.commitConfiguration()
     }
     
-    private func camera(with position: AVCaptureDevice.Position) -> AVCaptureDevice? {
-        let devices = AVCaptureDevice.devices(for: AVMediaType.video)
-        return devices.filter { $0.position == position }.first
-    }
-    
-    //    func didTapBtnTakePicture(stillImageOutput: AVCaptureMovieFileOutput) {
-    ////        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.h264])
-    ////        settings.flashMode = flashMode.value == .off ? .off : .on
-    //        stillImageOutput.startRecording(to: settings, recordingDelegate: self)
-    //    }
     
     @IBAction func gearButtonTouched(_ sender: Any) {
         
     }
     
-    @IBAction func cameraButtonTouched(_ sender: Any) {
+    @IBAction func cameraButtonTouched(_ sender: UIButton) {
         if !movieFileOutput.isRecording {
             startRecording()
+            sender.setTitle("Recording", for: .normal)
         } else {
             stopRecording()
+            sender.setTitle("Record", for: .normal)
         }
         //        didTapBtnTakePicture(stillImageOutput: stillImageOutput)
         //        stillImageOutput?.capturePhoto(with: AVCapturePhotoSettings(), delegate: self as AVCapturePhotoCaptureDelegate)
