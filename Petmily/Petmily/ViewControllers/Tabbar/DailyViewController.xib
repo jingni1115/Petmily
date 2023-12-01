@@ -215,7 +215,7 @@
                                         <fragment content="멍뭉이">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="15" name=".AppleSDGothicNeoI-Regular"/>
+                                                <font key="NSFont" metaFont="system" size="15"/>
                                                 <font key="NSOriginalFont" metaFont="system" size="15"/>
                                             </attributes>
                                         </fragment>
