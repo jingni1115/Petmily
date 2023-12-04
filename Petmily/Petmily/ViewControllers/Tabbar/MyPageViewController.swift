@@ -28,7 +28,7 @@ class MyPageViewController: BaseViewController {
     
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
-    private var profileData = User(id: "id", nickName: "name", image: "image", pet: [Pet(id: "id1", name: "pet1", age: "age1", gender: "gender1", breed: "breed1"), Pet(id: "id2", name: "pet2", age: "age2", gender: "gender2", breed: "breed2"), Pet(id: "id3", name: "pet3", age: "age3", gender: "gender3", breed: "breed3")])
+    private var profileData = User(id: "id1", nickName: "user1", image: "image", pet: [Pet(id: "id1", name: "단지", age: "5살", gender: "남자", breed: "시츄"), Pet(id: "id2", name: "pet2", age: "age2", gender: "gender2", breed: "breed2"), Pet(id: "id3", name: "pet3", age: "age3", gender: "gender3", breed: "breed3")])
     var dailyData: [DailyModel]?
     var infoData: [InfoModel]?
     var dailyThumbnail: UIImage?
@@ -56,6 +56,7 @@ class MyPageViewController: BaseViewController {
         setupUI()
         setCollectionView()
         setSegmentedControl()
+        setActions()
         
         myPageProfileView.profileTextField.delegate = self
         myPageProfileView.pickerView.delegate = self
@@ -166,7 +167,6 @@ class MyPageViewController: BaseViewController {
 
     func setSegmentedControl() {
         myPagePostView.postSegmentControl.addTarget(self, action: #selector(didChangeValue(segment:)), for: .valueChanged)
-        print("@@@@ mymy \(myPagePostView.postSegmentControl.selectedSegmentIndex)")
         didChangeValue(segment: myPagePostView.postSegmentControl)
     }
     
@@ -178,8 +178,10 @@ class MyPageViewController: BaseViewController {
     }
     
     @objc func tappedEditButton() {
-        let vc = ProfileViewController()
-        navigationController?.pushViewController(vc, animated: false)
+//        let vc = ProfileViewController()
+//        navigationPushController(viewController: vc, animated: false)
+        let vc = MyPageSettingViewController()
+        navigationPushController(viewController: vc, animated: false)
     }
     
     @objc private func didChangeValue(segment: UISegmentedControl) {
