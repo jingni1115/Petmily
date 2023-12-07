@@ -209,6 +209,37 @@ class MyPageViewController: BaseViewController {
      }
 }
 
+extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return infoData?.count ?? 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InfoTableViewCell", for: indexPath) as! InfoTableViewCell
+        cell.tagLabel.isHidden = true
+        cell.userTimeLabel.isHidden = true
+        cell.titleLabel.text = infoData?[indexPath.row].title
+        cell.descriptionLabel.text = infoData?[indexPath.row].content
+        return cell
+    }
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 셀 선택 해제
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        // 선택한 정보 가져오기
+        let selectedInfo = infoData?[indexPath.row]
+        let selectedUser = profileData
+
+
+        // 목표 뷰 컨트롤러 초기화
+        let vc = InfoDetailViewController.init(nibName: "InfoDetailViewController", bundle: nil)
+//        vc.selectedInfo = selectedInfo // 정보 전달
+//        vc.selectedUser = selectedUser // 유저 정보
+        navigationPushController(viewController: vc, animated: true)
+    }
+}
+
 extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == myPagePostView.dailyCollectionView {
