@@ -7,7 +7,11 @@
 
 import UIKit
 
+import SnapKit
+
 class MyPageCollectionViewCell: UICollectionViewCell {
+    static let identifier = "MyPageCollectionViewCell"
+    
     var collectionViewImage: UIImageView = {
         let Img = UIImageView()
         Img.backgroundColor = .systemGray3
@@ -25,18 +29,17 @@ class MyPageCollectionViewCell: UICollectionViewCell {
         setUpCell()
     }
     
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        self.collectionViewImage.image = UIImage(systemName: "photo")
-//    }
-    
     func setUpCell() {
         contentView.addSubview(collectionViewImage)
-        NSLayoutConstraint.activate([
-            collectionViewImage.topAnchor.constraint(equalTo: topAnchor),
-            collectionViewImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionViewImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-            collectionViewImage.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        
+        collectionViewImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    
+    func bind(image: String) {
+        if let url = URL(string: image) {
+            collectionViewImage.load(url: url)
+        }
     }
 }
